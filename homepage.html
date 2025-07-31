@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Birding Portfolio</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .summary {
+            padding: 20px;
+            text-align: center;
+        }
+        #map {
+            height: 500px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Birding Portfolio</h1>
+        <p>Explore my bird sightings and adventures</p>
+    </header>
+    <div class="summary">
+        <h2>Birding Summary</h2>
+        <p><strong>Total Species Observed:</strong> 564</p>
+        <p><strong>Total Checklists Submitted:</strong> 1489</p>
+    </div>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([20, 0], 2);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+    </script>
+</body>
+</html>
