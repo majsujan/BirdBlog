@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        #title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        #sidebar {
+            width: 300px;
+            background: white;
+            height: 100vh;
+            padding-top: 60px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
         #map {
             height: 100vh;
+            flex-grow: 1;
         }
         .info {
             padding: 6px 8px;
@@ -17,12 +49,105 @@
             box-shadow: 0 0 15px rgba(0,0,0,0.2);
             border-radius: 5px;
         }
+        #legend {
+            padding: 10px;
+            line-height: 18px;
+            color: #555;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .tab {
+            padding: 15px;
+            display: none;
+        }
+        .tab.active {
+            display: block;
+        }
+        .tab-button {
+            padding: 15px;
+            background: #f8f8f8;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-weight: bold;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-button:hover {
+            background: #eee;
+        }
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: cover;
+        }
+        .profile-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .social-link {
+            color: #1DA1F2;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
+    <div id="header">
+        <div id="title">Birdblog by majsujan</div>
+    </div>
+    
+    <div id="sidebar">
+        <div class="profile-info">
+            <img src="https://via.placeholder.com/100" alt="Profile" class="profile-img">
+            <h3>Sujan Abu Jafar</h3>
+            <p>Trondheim, Norway</p>
+            <p>Medical doctor and bird photographer</p>
+            <a href="https://www.instagram.com/birdblog.majsujan/" class="social-link">@birdblog.majsujan</a>
+        </div>
+        
+        <button class="tab-button" onclick="openTab('details')">Details</button>
+        <div id="details" class="tab active">
+            <p><strong>eBirder since:</strong> 3 Nov 2020</p>
+            <p><strong>Oldest checklist:</strong> 20 Apr 2016</p>
+            <p><strong>Oldest media:</strong> 25 Nov 2020</p>
+            <p>Hobbyist birder/bird photographer, medical doctor and life science researcher based in Trondheim, Norway.</p>
+        </div>
+        
+        <button class="tab-button" onclick="openTab('species')">Total Species Observed</button>
+        <div id="species" class="tab">
+            <p><strong>Total species observed:</strong> 205</p>
+            <p><strong>Top countries:</strong></p>
+            <ul>
+                <li>Norway: 205</li>
+                <li>Bangladesh: 188</li>
+                <li>Thailand: 127</li>
+            </ul>
+        </div>
+        
+        <button class="tab-button" onclick="openTab('contact')">Contact</button>
+        <div id="contact" class="tab">
+            <p><strong>Profile URL:</strong></p>
+            <p><a href="https://ebird.org/profile/MTR2MTR3MO">https://ebird.org/profile/MTR2MTR3MO</a></p>
+            <p><strong>Instagram:</strong></p>
+            <p><a href="https://www.instagram.com/birdblog.majsujan/">@birdblog.majsujan</a></p>
+        </div>
+    </div>
+    
     <div id="map"></div>
+    
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-ajax"></script>
     <script>
         var map = L.map('map').setView([20, 0], 2);
 
@@ -33,14 +158,18 @@
 
         var speciesData = {"Aruba": 72, "Bangladesh": 188, "Belgium": 3, "Cura\u00e7ao": 60, "Czechia": 3, "Denmark": 115, "Estonia": 56, "Finland": 35, "Germany": 18, "Greece": 22, "Italy": 62, "Latvia": 13, "Netherlands": 117, "Norway": 205, "Poland": 4, "Sweden": 61, "Thailand": 127, "United Kingdom": 44};
 
+        // Updated color gradient: white for 0, yellow to red for 1-250
         function getColor(d) {
-            return d > 150 ? '#800026' :
-                   d > 100 ? '#BD0026' :
-                   d > 50  ? '#E31A1C' :
-                   d > 20  ? '#FC4E2A' :
-                   d > 10  ? '#FD8D3C' :
-                   d > 0   ? '#FEB24C' :
-                            '#FFEDA0';
+            if (d === 0) return '#FFFFFF';  // White for no species
+            
+            // Normalize value between 0 and 1 (for 1-250 range)
+            var normalized = Math.min(d / 250, 1);
+            
+            // Create RGB color (yellow to red gradient)
+            var r = 255;
+            var g = Math.floor(255 * (1 - normalized));
+            var b = 0;
+            return `rgb(${r}, ${g}, ${b})`;
         }
 
         function style(feature) {
@@ -62,6 +191,29 @@
             layer.bindTooltip(country + ": " + count + " species");
         }
 
+        // Add legend
+        var legend = L.control({position: 'bottomright'});
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create('div', 'info legend');
+            
+            div.innerHTML = '<h4>Species Count</h4>';
+            
+            // Create gradient scale
+            var gradient = document.createElement('div');
+            gradient.style.height = '20px';
+            gradient.style.background = 'linear-gradient(to right, #FFFFFF, #FFFF00, #FF0000)';
+            gradient.style.marginBottom = '10px';
+            gradient.style.border = '1px solid #ccc';
+            div.appendChild(gradient);
+            
+            // Add scale labels
+            div.innerHTML += '<div style="display: flex; justify-content: space-between;">' +
+                             '<span>0</span><span>125</span><span>250+</span></div>';
+            
+            return div;
+        };
+        legend.addTo(map);
+
         fetch("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json")
             .then(res => res.json())
             .then(data => {
@@ -70,6 +222,16 @@
                     onEachFeature: onEachFeature
                 }).addTo(map);
             });
+
+        // Tab functionality
+        function openTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show selected tab
+            document.getElementById(tabId).classList.add('active');
+        }
     </script>
 </body>
 </html>
