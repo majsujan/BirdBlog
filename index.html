@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bird Species by Country</title>
+    <title>Bird Species Choropleth Map</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -27,29 +27,28 @@
         var map = L.map('map').setView([20, 0], 2);
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 6,
+            maxZoom: 18,
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        var speciesData = {"AW": 72, "BD": 188, "BE": 3, "CW": 60, "CZ": 3, "DE": 18, "DK": 115, "EE": 56, "FI": 35, "GB": 44, "GR": 22, "IT": 62, "LV": 13, "NL": 117, "NO": 205, "PL": 4, "SE": 61, "TH": 127};
+        var speciesData = {"Aruba": 72, "Bangladesh": 188, "Belgium": 3, "Cura\u00e7ao": 60, "Czechia": 3, "Denmark": 115, "Estonia": 56, "Finland": 35, "Germany": 18, "Greece": 22, "Italy": 62, "Latvia": 13, "Netherlands": 117, "Norway": 205, "Poland": 4, "Sweden": 61, "Thailand": 127, "United Kingdom": 44};
 
         function getColor(d) {
-            return d > 300 ? '#800026' :
-                   d > 200 ? '#BD0026' :
-                   d > 100 ? '#E31A1C' :
-                   d > 50  ? '#FC4E2A' :
-                   d > 20  ? '#FD8D3C' :
-                   d > 10  ? '#FEB24C' :
-                   d > 0   ? '#FED976' :
-                             '#FFEDA0';
+            return d > 150 ? '#800026' :
+                   d > 100 ? '#BD0026' :
+                   d > 50  ? '#E31A1C' :
+                   d > 20  ? '#FC4E2A' :
+                   d > 10  ? '#FD8D3C' :
+                   d > 0   ? '#FEB24C' :
+                            '#FFEDA0';
         }
 
         function style(feature) {
-            var code = feature.id;
-            var count = speciesData[code] || 0;
+            var country = feature.properties.name;
+            var count = speciesData[country] || 0;
             return {
                 fillColor: getColor(count),
-                weight: 1,
+                weight: 2,
                 opacity: 1,
                 color: 'white',
                 dashArray: '3',
@@ -58,9 +57,9 @@
         }
 
         function onEachFeature(feature, layer) {
-            var code = feature.id;
-            var count = speciesData[code] || 0;
-            layer.bindTooltip(code + ": " + count + " species");
+            var country = feature.properties.name;
+            var count = speciesData[country] || 0;
+            layer.bindTooltip(country + ": " + count + " species");
         }
 
         fetch("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json")
