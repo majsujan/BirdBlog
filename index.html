@@ -2,80 +2,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bird Sightings by Country</title>
+    <title>Bird Species by Country</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         #map {
             height: 100vh;
+        }
+        .info {
+            padding: 6px 8px;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div id="map"></div>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-ajax"></script>
     <script>
         var map = L.map('map').setView([20, 0], 2);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '© OpenStreetMap contributors'
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 6,
+            attribution: '© OpenStreetMap'
         }).addTo(map);
 
-        L.marker([12.1586187, -68.9191246]).addTo(map)
-            .bindPopup("Black-bellied Whistling-Duck<br>Count: 3<br>Date: 2023-12-20");
-    
-        L.marker([23.8812858, 90.2674377]).addTo(map)
-            .bindPopup("Lesser Whistling-Duck<br>Count: 5000<br>Date: 2022-12-21");
-    
-        L.marker([63.5718996, 10.6115339]).addTo(map)
-            .bindPopup("Bar-headed Goose<br>Count: 1<br>Date: 2023-08-26");
-    
-        L.marker([51.5541807, 0.1944065]).addTo(map)
-            .bindPopup("Graylag Goose<br>Count: 60<br>Date: 2024-09-16");
-    
-        L.marker([56.2120461, 10.1811963]).addTo(map)
-            .bindPopup("Graylag Goose<br>Count: 7<br>Date: 2023-05-26");
-    
-        L.marker([52.0351284, 5.5844304]).addTo(map)
-            .bindPopup("Graylag Goose<br>Count: 32<br>Date: 2024-01-01");
-    
-        L.marker([55.3938832, 12.8655696]).addTo(map)
-            .bindPopup("Graylag Goose<br>Count: 2<br>Date: 2023-10-28");
-    
-        L.marker([60.1799679, 24.9402963]).addTo(map)
-            .bindPopup("Barnacle Goose<br>Count: 75<br>Date: 2025-04-02");
-    
-        L.marker([46.1519996, 9.3815074]).addTo(map)
-            .bindPopup("Mute Swan<br>Count: 9<br>Date: 2023-04-16");
-    
-        L.marker([54.3410971, 18.6677887]).addTo(map)
-            .bindPopup("Mute Swan<br>Count: 4<br>Date: 2019-11-04");
-    
-        L.marker([59.4763021, 24.7075653]).addTo(map)
-            .bindPopup("Mute Swan<br>Count: 15<br>Date: 2022-06-04");
-    
-        L.marker([12.5614542, -70.0483453]).addTo(map)
-            .bindPopup("Muscovy Duck (Domestic type)<br>Count: 12<br>Date: 2023-12-15");
-    
-        L.marker([56.9516565, 24.1110528]).addTo(map)
-            .bindPopup("Mallard<br>Count: 14<br>Date: 2022-06-05");
-    
-        L.marker([13.1275801, 101.3583512]).addTo(map)
-            .bindPopup("Red Junglefowl<br>Count: 1<br>Date: 2025-04-10");
-    
-        L.marker([37.9751125, 23.7213993]).addTo(map)
-            .bindPopup("Rock Pigeon (Feral Pigeon)<br>Count: 20<br>Date: 2024-04-25");
-    
-        L.marker([51.0710208, 6.0016283]).addTo(map)
-            .bindPopup("Common Wood-Pigeon<br>Count: 1<br>Date: 2023-07-19");
-    
-        L.marker([50.0873981, 14.4057742]).addTo(map)
-            .bindPopup("Common Swift<br>Count: X<br>Date: 2020-07-22");
-    
-        L.marker([50.7541232, 6.0209316]).addTo(map)
-            .bindPopup("Great Spotted Woodpecker<br>Count: 1<br>Date: 2023-07-19");
-    
+        var speciesData = {"AW": 72, "BD": 188, "BE": 3, "CW": 60, "CZ": 3, "DE": 18, "DK": 115, "EE": 56, "FI": 35, "GB": 44, "GR": 22, "IT": 62, "LV": 13, "NL": 117, "NO": 205, "PL": 4, "SE": 61, "TH": 127};
+
+        function getColor(d) {
+            return d > 300 ? '#800026' :
+                   d > 200 ? '#BD0026' :
+                   d > 100 ? '#E31A1C' :
+                   d > 50  ? '#FC4E2A' :
+                   d > 20  ? '#FD8D3C' :
+                   d > 10  ? '#FEB24C' :
+                   d > 0   ? '#FED976' :
+                             '#FFEDA0';
+        }
+
+        function style(feature) {
+            var code = feature.id;
+            var count = speciesData[code] || 0;
+            return {
+                fillColor: getColor(count),
+                weight: 1,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+        function onEachFeature(feature, layer) {
+            var code = feature.id;
+            var count = speciesData[code] || 0;
+            layer.bindTooltip(code + ": " + count + " species");
+        }
+
+        fetch("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json")
+            .then(res => res.json())
+            .then(data => {
+                L.geoJson(data, {
+                    style: style,
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+            });
     </script>
 </body>
 </html>
