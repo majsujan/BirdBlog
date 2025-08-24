@@ -1,52 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Metadata and external resources -->
   <meta charset="UTF-8" />
   <title>BirdBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Leaflet CSS for interactive maps -->
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-  <!-- Google Fonts for custom typography -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Leaflet JS for map functionality -->
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <!-- Custom styles for the page -->
+  <!-- Custom Styles -->
   <style>
-    /* General body styling */
+    /* ========== Global Styles ========== */
     body {
       margin: 0;
       font-family: 'Lato', sans-serif;
-      background: #fefee3;
+      background-color: #aad3df;
       color: #333;
     }
 
-    /* Header section styling */
+    /* ========== Header ========== */
     header {
       background: #264653;
       color: white;
-      padding: 15px 20px;
+      padding: 10px 20px;
       text-align: center;
     }
 
-    /* Header title and subtitle */
     header h1 {
-      font-family: 'Reith typeface', sans-serif;
-      font-size: 38px;
-      margin: 6px 0;
+      font-size: 36px;
+      margin: 8px 0;
     }
 
     header h2 {
-      font-family: 'Lato', sans-serif;
-      font-size: 18px;
-      margin: 4px 0;
+      font-size: 24px;
+      margin: 8px 0;
     }
 
-    /* Navigation bar styling */
+    /* ========== Navigation ========== */
     nav {
       background: #2c6e49;
       display: flex;
@@ -67,7 +63,7 @@
       font-weight: 600;
     }
 
-    /* Info banner below navigation */
+    /* ========== Info Banner ========== */
     #info {
       text-align: center;
       padding: 10px;
@@ -77,36 +73,37 @@
       border-bottom: 1px solid #e6e6e6;
     }
 
-    /* Map container styling */
+    /* ========== Map ========== */
     #map {
       height: 500px;
       width: 100%;
-      max-width: 1000px;
-      margin: 20px auto;
-      border: 2px solid #d1d1d1;
+      max-width: 1050px;
+      margin: 0px;
+      border: 0px solid #d1d1d1;
       border-radius: 10px;
     }
 
-    /* Species filter panel styling */
+    /* ========== Species Filter Panel ========== */
     #species-filter {
       max-width: 95%;
-      margin: 28px auto 40px;
-      padding: 20px;
+      margin: 20px auto 30px;
+      padding: 16px;
       background: white;
       border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
-    /* Species list styling */
     #speciesList h4 {
       margin: 10px 0;
+font-size:16px;
     }
 
     #speciesList ul {
       margin: 8px 0 0;
+font-size:14px;
     }
 
-    /* Footer styling */
+    /* ========== Footer ========== */
     footer {
       background: #1d3557;
       color: white;
@@ -115,7 +112,7 @@
       margin-top: 20px;
     }
 
-    /* Legend box styling */
+    /* ========== Legend ========== */
     .legend {
       background: white;
       padding: 10px 12px;
@@ -126,7 +123,6 @@
       border: 1px solid #ddd;
     }
 
-    /* Gradient scale bar inside legend */
     .legend .scale {
       background: linear-gradient(90deg,
         rgb(255,255,0) 0%,
@@ -142,7 +138,6 @@
       margin: 6px 0 4px;
     }
 
-    /* Labels for gradient scale */
     .legend .labels {
       display: flex;
       justify-content: space-between;
@@ -150,29 +145,12 @@
       color: #444;
     }
 
-    /* Panel box styling for content sections */
-    .panel-box {
-      background-color: #ffffff;
-      border-radius: 10px;
-      padding: 16px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Override Leaflet control box styling */
-    .leaflet-control {
-      background: none !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-
-    /* Custom legend layout */
     .legend-container {
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    /* Alternative gradient scale bar */
     .scale {
       width: 100px;
       height: 10px;
@@ -180,21 +158,213 @@
       border-radius: 5px;
     }
 
-    /* Labels for legend */
     .legend-label {
       font-size: 12px;
       color: #333;
     }
 
-    /* Background override for body */
-    body {
-      background-color: #aad3df; /* Light blue */
-      margin: 0;
-      font-family: sans-serif;
+    /* ========== Layout Panels ========== */
+    #mainPanel {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 16px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  align-items: flex-start;
+}
+
+#mapContainer {
+  flex: 1;
+  padding: 0px;
+  background: #aad3df;
+  border-radius: 5px;
+  height: 500px; /* Fixed map height */
+  box-sizing: border-box;
+}
+
+/* Info Panel Layout */
+#infoPanel {
+  flex: 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 12px;
+  height: 500px; /* Match map height */
+}
+
+/* Fixed-height panels for World and Country */
+.panel-box.fixed-height {
+background: white;  
+border-radius: 10px;
+padding-left: 14px;
+  padding-top: 0;
+  padding-right: 4px;
+  padding-bottom: 0;
+  flex: 0 0 auto;
+  height: auto;
+  line-height: 1.4;
+}
+
+/* Species List Panel */
+.panel-box.species-list {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+background: white;
+border-radius: 10px;   
+padding-left: 14px;
+  padding-right: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+/* Scrollable species list */
+#speciesList {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 8px;
+  text-align: left;
+}
+.species-ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.species-li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.species-li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+  font-size: 0.75rem;
+  color: black;
+}
+
+.species-btn {
+  background: none;
+  border: none;
+  color: black;
+  font-weight: regular;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  font-size: inherit;
+  width: 100%;
+  display: inline-block;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+
+    /* ========== Thumbnail Gallery ========== */
+    #thumbnailGallery {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    #thumbnailGallery img {
+      width: 100px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    /* ========== Leaflet Overrides ========== */
+    .leaflet-control {
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* ========== Responsive Layout ========== */
+    @media (max-width: 768px) {
+      header h1 { font-size: 28px; }
+      header h2 { font-size: 16px; }
+      header { padding: 8px 12px; }
+
+      #mainPanel {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 6px;
+      }
+
+      #mapContainer {
+        order: 1;
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+      }
+
+      #infoPanel {
+        order: 2;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 6px;
+        margin-bottom: 16px;
+      }
+
+      .panel-box {
+        flex: 1 1 40%;
+        min-width: 120px;
+        max-width: 160px;
+        padding: 6px;
+        font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+      }
+.panel-box.species-list {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.panel-box {
+  height: auto;
+  flex: 1 1 40%;
+}
+
+#speciesList {
+  max-height: 100%;
+  overflow-y: auto;
+  padding-right: 6px; /* Prevent content from hiding behind scrollbar */
+}
+
+      #thumbnailGallery {
+        max-height: 220px;
+        overflow-y: auto;
+        gap: 6px;
+        padding: 8px;
+        margin-top: 6px;
+      }
+
+      #thumbnailGallery img {
+        width: 80px;
+        max-height: 80px;
+        border-radius: 4px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 22px; }
+      header h2 { font-size: 14px; }
+      header { padding: 6px 10px; }
     }
   </style>
 </head>
-
 <body>
   <!-- Page header with title and author -->
   <header>
@@ -202,38 +372,96 @@
     <h2>Sujan Abu Jafar</h2>
   </header>
 
-<!-- MAIN PANEL -->
-<div id="mainPanel" style="display:flex; max-width:1200px; margin:20px auto; gap:20px;">
-  <!-- LEFT PANEL -->
-  <div id="infoPanel" style="width:50%; background:#aad3df; padding:25px; border-radius:10px; display:flex; flex-direction:column; gap:50px;">
-    
-    <div class="panel-box">
-      <h2 style="color:#2c6e49; margin:10;">World</h2>
-      <p style="font-size:16px; color:#333; margin-top:6px;">539 species observed</p>
-    </div>
+<!-- === Bird Photo of the Day Layout === -->
+<div style="display:flex; flex-wrap:wrap; background:#f5f5f5; font-family:sans-serif; justify-content:flex-start; padding:5px;">
 
-    <div class="panel-box">
-      <h2 id="countryName" style="color:#2c6e49; margin:0;">Country</h2>
-<p id="countryCount" style="font-size:16px; color:#333; margin-top:6px;">Hover over a country</p>
-    </div>
+  <!-- LEFT: Main Bird Image -->
+  <div style="flex:0 1 auto; width:100%; max-width:1024px; background:#444; position:relative;">
 
-    <div class="panel-box">
-      <h3 style="color:#2c6e49;">List of species</h3>
-      <div style="margin: 10px 0;">
-        <select id="countrySelect" onchange="filterSpecies()" style="padding: 8px; width: 100%; font-size: 16px; border-radius:6px;">
-          <option value="">Select a country</option>
-        </select>
+    <div style="position:relative; width:100%; aspect-ratio:16/9; max-height:570px; overflow:hidden; box-sizing:border-box;">
+      <img id="dailyBirdImage" src="" alt="Featured Bird"
+           style="width:100%; height:100%; object-fit:cover; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
+
+<!-- Left Arrow -->
+<div onclick="navigateBird(-1)"
+     style="position:absolute; top:50%; left:12px; transform:translateY(-50%);
+            padding:0px; border-radius:50%;
+            cursor:pointer; font-size:24px; color:#333; z-index:2;">
+  <
+</div>
+
+<!-- Right Arrow -->
+<div onclick="navigateBird(1)"
+     style="position:absolute; top:50%; right:12px; transform:translateY(-50%);
+            padding:0px; border-radius:50%;
+            cursor:pointer; font-size:24px; color:#333; z-index:2;">
+  >
+</div>
+
+      <!-- Caption Bar -->
+      <div id="birdNameBar"
+           style="position:absolute; bottom:0; left:0; width:100%; background:black; color:white; 
+                  font-size:clamp(16px, 1.5vw, 16px); padding:5px 12px; text-align:right; font-weight:normal; 
+                  box-sizing:border-box; white-space:nowrap;">
+        <span id="dailyBirdCaption">Loading...</span>
       </div>
-      <div id="speciesList" style="padding: 16px; background:white; border-radius:10px; ">
-        </div>
+
+      <!-- Copyright -->
+      <div style="position:absolute; bottom:5px; left:12px; font-size:clamp(10px, 1vw, 12px); color:#888;">
+        &copy; Sujan Abu Jafar
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Thumbnails -->
+  <div style="flex:1 1 300px; max-height:570px; overflow-y:auto;">
+    <div id="thumbnailGallery"
+         style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;padding: 12px 24px 12px 	24px; box-sizing: border-box;">
+      <!-- Thumbnails will be injected here -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- EXPLORE PANEL -->
+<div style="max-width:1600px; margin:0 auto 20px auto;">
+  <div style="background:#264653; padding:10px; border-radius:0px;">
+    <h2 style="color:white; text-align:center; margin:0;">Explore</h2>
+  </div>
+</div>
+
+<!-- MAIN PANEL -->
+<div id="mainPanel">
+  <!-- LEFT PANEL -->
+  <div id="infoPanel">
+    <div class="panel-box fixed-height">
+      <h2>World</h2>
+      <p>539 species observed</p>
+    </div>
+
+    <div class="panel-box fixed-height">
+      <h2 id="countryName">Country</h2>
+      <p id="countryCount">Hover over a country</p>
+    </div>
+
+    <div class="panel-box species-list">
+      <h3>List of species</h3>
+      <select id="countrySelect" onchange="filterSpecies()">
+        <option value="">Select a country</option>
+      </select>
+      <div id="speciesList"></div>
     </div>
   </div>
 
   <!-- RIGHT PANEL -->
-  <div id="mapContainer" style="width:125%; background:#aad3df; padding:5px; border-radius:5px;">
-    <div id="map" style="height:580px; border:0px solid #d1d1d1; border-radius:10px;"></div>
+  <div id="mapContainer">
+    <div id="map"></div>
   </div>
 </div>
+
 
 
 <!-- OUTSIDE MAIN PANEL -->
@@ -252,11 +480,11 @@
   center: [20, 0],
   zoom: 2,
   minZoom: 2,           // prevents zooming out beyond original level
-  maxZoom: 6,           // keeps zooming in available
+  maxZoom: 4,           // keeps zooming in available
   zoomControl: true     // keeps zoom buttons visible
 });
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 6,
+      maxZoom: 4,
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
@@ -277,31 +505,31 @@
   "American Wigeon": "https://i.imgur.com/placeholder.jpeg",
   "Arctic Loon": "https://i.imgur.com/placeholder.jpeg",
   "Arctic Tern": "https://i.imgur.com/placeholder.jpeg",
-  "Ashy Drongo": "https://i.imgur.com/placeholder.jpeg",
+  "Ashy Drongo": "https://i.imgur.com/RprE64J.jpeg",
   "Ashy Minivet": "https://i.imgur.com/placeholder.jpeg",
   "Ashy Woodswallow": "https://i.imgur.com/placeholder.jpeg",
   "Asian Barred Owlet": "https://i.imgur.com/placeholder.jpeg",
   "Asian Brown Flycatcher": "https://i.imgur.com/placeholder.jpeg",
   "Asian Fairy-bluebird": "https://i.imgur.com/placeholder.jpeg",
-  "Asian Golden Weaver": "https://i.imgur.com/placeholder.jpeg",
+  "Asian Golden Weaver": "https://i.imgur.com/o3hGuWj.jpeg",
   "Asian Green Bee-eater": "https://i.imgur.com/rinr6Zc.jpeg",
   "Asian Koel": "https://i.imgur.com/placeholder.jpeg",
-  "Asian Openbill": "https://i.imgur.com/placeholder.jpeg",
+  "Asian Openbill": "https://i.imgur.com/IUM8Eg0.jpeg",
   "Asian Palm Swift": "https://i.imgur.com/placeholder.jpeg",
   "Asian Tit": "https://i.imgur.com/placeholder.jpeg",
   "Atlantic Puffin": "https://i.imgur.com/placeholder.jpeg",
-  "Baillon's Crake": "https://i.imgur.com/placeholder.jpeg",
+  "Baillon's Crake": "https://i.imgur.com/lEVQmlw.jpeg",
   "Bananaquit": "https://i.imgur.com/placeholder.jpeg",
   "Bank Swallow": "https://i.imgur.com/placeholder.jpeg",
-  "Bar-headed Goose": "https://i.imgur.com/placeholder.jpeg",
+  "Bar-headed Goose": "https://i.imgur.com/qny7Yjj.jpeg",
   "Bar-tailed Godwit": "https://i.imgur.com/placeholder.jpeg",
   "Bare-eyed Pigeon": "https://i.imgur.com/placeholder.jpeg",
-  "Barn Swallow": "https://i.imgur.com/placeholder.jpeg",
-  "Barnacle Goose": "https://i.imgur.com/placeholder.jpeg",
-  "Baya Weaver": "https://i.imgur.com/placeholder.jpeg",
+  "Barn Swallow": "https://i.imgur.com/K5TqgSB.jpeg",
+  "Barnacle Goose": "https://i.imgur.com/rYMIq4b.jpeg",
+  "Baya Weaver": "https://i.imgur.com/yyVS2vE.jpeg",
   "Bearded Reedling": "https://i.imgur.com/placeholder.jpeg",
-  "Belted Kingfisher": "https://i.imgur.com/placeholder.jpeg",
-  "Bengal Bushlark": "https://i.imgur.com/placeholder.jpeg",
+  "Belted Kingfisher": "https://i.imgur.com/NzHlFN3.jpeg",
+  "Bengal Bushlark": "https://i.imgur.com/1C5KFLg.jpeg",
   "Black Baza": "https://i.imgur.com/placeholder.jpeg",
   "Black Drongo": "https://i.imgur.com/placeholder.jpeg",
   "Black Grouse": "https://i.imgur.com/placeholder.jpeg",
@@ -311,110 +539,110 @@
   "Black Woodpecker": "https://i.imgur.com/placeholder.jpeg",
   "Black-bellied Plover": "https://i.imgur.com/placeholder.jpeg",
   "Black-bellied Whistling-Duck": "https://i.imgur.com/placeholder.jpeg",
-  "Black-collared Starling": "https://i.imgur.com/placeholder.jpeg",
+  "Black-collared Starling": "https://i.imgur.com/cEVIrjo.jpeg",
   "Black-crested Bulbul": "https://i.imgur.com/placeholder.jpeg",
   "Black-crowned Night Heron": "https://i.imgur.com/placeholder.jpeg",
   "Black-faced Grassquit": "https://i.imgur.com/placeholder.jpeg",
-  "Black-headed Bulbul": "https://i.imgur.com/placeholder.jpeg",
-  "Black-headed Cuckooshrike": "https://i.imgur.com/placeholder.jpeg",
+  "Black-headed Bulbul": "https://i.imgur.com/EcgautQ.jpeg",
+  "Black-headed Cuckooshrike": "https://i.imgur.com/oQBr3O8.jpeg",
   "Black-headed Gull": "https://i.imgur.com/placeholder.jpeg",
   "Black-headed Ibis": "https://i.imgur.com/placeholder.jpeg",
   "Black-hooded Oriole": "https://i.imgur.com/placeholder.jpeg",
   "Black-legged Kittiwake": "https://i.imgur.com/placeholder.jpeg",
   "Black-naped Monarch": "https://i.imgur.com/placeholder.jpeg",
-  "Black-naped Oriole": "https://i.imgur.com/placeholder.jpeg",
+  "Black-naped Oriole": "https://i.imgur.com/PNiqQSP.jpeg",
   "Black-necked Stilt": "https://i.imgur.com/placeholder.jpeg",
   "Black-rumped Flameback": "https://i.imgur.com/placeholder.jpeg",
-  "Black-tailed Godwit": "https://i.imgur.com/placeholder.jpeg",
-  "Black-winged Cuckooshrike": "https://i.imgur.com/placeholder.jpeg",
+  "Black-tailed Godwit": "https://i.imgur.com/Xt2jcb9.jpeg",
+  "Black-winged Cuckooshrike": "https://i.imgur.com/eHiwT0k.jpeg",
   "Black-winged Stilt": "https://i.imgur.com/placeholder.jpeg",
   "Blossom-headed Parakeet": "https://i.imgur.com/placeholder.jpeg",
   "Blue Whistling-Thrush": "https://i.imgur.com/placeholder.jpeg",
   "Blue-bearded Bee-eater": "https://i.imgur.com/placeholder.jpeg",
   "Blue-crowned Parakeet": "https://i.imgur.com/placeholder.jpeg",
-  "Blue-tailed Bee-eater": "https://i.imgur.com/placeholder.jpeg",
-  "Blue-tailed Emerald": "https://i.imgur.com/lvFKl81.jpeg",
+  "Blue-tailed Bee-eater": "https://i.imgur.com/Ro6A0T8.jpeg",
+  "Blue-tailed Emerald": "https://i.imgur.com/L5ZwvBB.jpeg",
   "Blue-throated Barbet": "https://i.imgur.com/placeholder.jpeg",
   "Blue-throated Flycatcher": "https://i.imgur.com/placeholder.jpeg",
-  "Blue-winged Teal": "https://i.imgur.com/placeholder.jpeg",
+  "Blue-winged Teal": "https://i.imgur.com/mvMfji6.jpeg",
   "Bluethroat": "https://i.imgur.com/placeholder.jpeg",
   "Blyth's Paradise-Flycatcher": "https://i.imgur.com/placeholder.jpeg",
   "Blyth's Pipit": "https://i.imgur.com/placeholder.jpeg",
   "Blyth's Reed Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Bohemian Waxwing": "https://i.imgur.com/placeholder.jpeg",
-  "Booted Eagle": "https://i.imgur.com/placeholder.jpeg",
+  "Bohemian Waxwing": "https://i.imgur.com/ysIPv2W.jpeg",
+  "Booted Eagle": "https://i.imgur.com/rsRgLgW.jpeg",
   "Brahminy Kite": "https://i.imgur.com/placeholder.jpeg",
   "Brambling": "https://i.imgur.com/placeholder.jpeg",
   "Brant": "https://i.imgur.com/placeholder.jpeg",
-  "Bronze-winged Jacana": "https://i.imgur.com/placeholder.jpeg",
-  "Bronzed Drongo": "https://i.imgur.com/placeholder.jpeg",
+  "Bronze-winged Jacana": "https://i.imgur.com/p0H48UH.jpeg",
+  "Bronzed Drongo": "https://i.imgur.com/0ofpSZq.jpeg",
   "Brown Boobook": "https://i.imgur.com/placeholder.jpeg",
   "Brown Pelican": "https://i.imgur.com/placeholder.jpeg",
   "Brown Shrike": "https://i.imgur.com/placeholder.jpeg",
   "Brown-crested Flycatcher": "https://i.imgur.com/placeholder.jpeg",
   "Brown-throated Parakeet": "https://i.imgur.com/placeholder.jpeg",
-  "Brown-throated Sunbird": "https://i.imgur.com/placeholder.jpeg",
+  "Brown-throated Sunbird": "https://i.imgur.com/C1CEajj.jpeg",
   "Burrowing Owl": "https://i.imgur.com/placeholder.jpeg",
   "Cachar Bulbul": "https://i.imgur.com/placeholder.jpeg",
-  "Canada Goose": "https://i.imgur.com/placeholder.jpeg",
+  "Canada Goose": "https://i.imgur.com/MrK4ILT.jpeg",
   "Carib Grackle": "https://i.imgur.com/placeholder.jpeg",
   "Caribbean Elaenia": "https://i.imgur.com/placeholder.jpeg",
   "Caribbean Martin": "https://i.imgur.com/placeholder.jpeg",
-  "Carrion Crow": "https://i.imgur.com/placeholder.jpeg",
+  "Carrion Crow": "https://i.imgur.com/R7Slxrb.jpeg",
   "Caspian Tern": "https://i.imgur.com/placeholder.jpeg",
   "Cetti's Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Changeable Hawk-Eagle": "https://i.imgur.com/placeholder.jpeg",
+  "Changeable Hawk-Eagle": "https://i.imgur.com/om93tS9.jpeg",
   "Chestnut Munia": "https://i.imgur.com/placeholder.jpeg",
   "Chestnut-headed Bee-eater": "https://i.imgur.com/placeholder.jpeg",
   "Chestnut-tailed Starling": "https://i.imgur.com/placeholder.jpeg",
-  "Chinese Pond-Heron": "https://i.imgur.com/placeholder.jpeg",
-  "Cinnamon Bittern": "https://i.imgur.com/placeholder.jpeg",
+  "Chinese Pond-Heron": "https://i.imgur.com/pdVyT7M.jpeg",
+  "Cinnamon Bittern": "https://i.imgur.com/qNwtdio.jpeg",
   "Citrine Wagtail": "https://i.imgur.com/placeholder.jpeg",
   "Clamorous Reed Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Coal Tit": "https://i.imgur.com/placeholder.jpeg",
-  "Collared Flycatcher": "https://i.imgur.com/placeholder.jpeg",
-  "Collared Kingfisher": "https://i.imgur.com/placeholder.jpeg",
+  "Collared Flycatcher": "https://i.imgur.com/uBd1BcT.jpeg",
+  "Collared Kingfisher": "https://i.imgur.com/XcqRlRw.jpeg",
   "Collared Scops-Owl": "https://i.imgur.com/placeholder.jpeg",
-  "Common Buzzard": "https://i.imgur.com/placeholder.jpeg",
-  "Common Chaffinch": "https://i.imgur.com/placeholder.jpeg",
-  "Common Chiffchaff": "https://i.imgur.com/placeholder.jpeg",
+  "Common Buzzard": "https://i.imgur.com/Q9VhFT7.jpeg",
+  "Common Chaffinch": "https://i.imgur.com/LuShc8S.jpeg",
+  "Common Chiffchaff": "https://i.imgur.com/8MttBRs.jpeg",
   "Common Crane": "https://i.imgur.com/placeholder.jpeg",
-  "Common Cuckoo": "https://i.imgur.com/placeholder.jpeg",
+  "Common Cuckoo": "https://i.imgur.com/ZCxDgST.jpeg",
   "Common Eider": "https://i.imgur.com/placeholder.jpeg",
-  "Common Flameback": "https://i.imgur.com/placeholder.jpeg",
+  "Common Flameback": "https://i.imgur.com/wf8234S.jpeg",
   "Common Gallinule": "https://i.imgur.com/placeholder.jpeg",
   "Common Goldeneye": "https://i.imgur.com/placeholder.jpeg",
   "Common Grasshopper Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Common Green-Magpie": "https://i.imgur.com/placeholder.jpeg",
   "Common Greenshank": "https://i.imgur.com/placeholder.jpeg",
-  "Common Ground Dove": "https://i.imgur.com/placeholder.jpeg",
-  "Common Gull": "https://i.imgur.com/placeholder.jpeg",
+  "Common Ground Dove": "https://i.imgur.com/5jKZ2uR.jpeg",
+  "Common Gull": "https://i.imgur.com/frAwvD9.jpeg",
   "Common Hawk-Cuckoo": "https://i.imgur.com/placeholder.jpeg",
-  "Common Hill Myna": "https://i.imgur.com/placeholder.jpeg",
+  "Common Hill Myna": "https://i.imgur.com/sdncWvP.jpeg",
   "Common Iora": "https://i.imgur.com/zveXYvL.jpeg",
-  "Common Kingfisher": "https://i.imgur.com/placeholder.jpeg",
+  "Common Kingfisher": "https://i.imgur.com/2TuV6BB.jpeg",
   "Common Loon": "https://i.imgur.com/placeholder.jpeg",
   "Common Merganser": "https://i.imgur.com/placeholder.jpeg",
   "Common Murre": "https://i.imgur.com/placeholder.jpeg",
   "Common Myna": "https://i.imgur.com/placeholder.jpeg",
   "Common Pochard": "https://i.imgur.com/placeholder.jpeg",
   "Common Quail": "https://i.imgur.com/placeholder.jpeg",
-  "Common Raven": "https://i.imgur.com/placeholder.jpeg",
+  "Common Raven": "https://i.imgur.com/HmgOqez.jpeg",
   "Common Redshank": "https://i.imgur.com/placeholder.jpeg",
   "Common Redstart": "https://i.imgur.com/placeholder.jpeg",
-  "Common Reed Warbler": "https://i.imgur.com/placeholder.jpeg",
+  "Common Reed Warbler": "https://i.imgur.com/yGC3XWE.jpeg",
   "Common Ringed Plover": "https://i.imgur.com/placeholder.jpeg",
   "Common Rosefinch": "https://i.imgur.com/placeholder.jpeg",
-  "Common Sandpiper": "https://i.imgur.com/placeholder.jpeg",
+  "Common Sandpiper": "https://i.imgur.com/YzzxHUy.jpeg",
   "Common Scoter": "https://i.imgur.com/placeholder.jpeg",
   "Common Shelduck": "https://i.imgur.com/placeholder.jpeg",
   "Common Snipe": "https://i.imgur.com/placeholder.jpeg",
   "Common Swift": "https://i.imgur.com/placeholder.jpeg",
   "Common Tailorbird": "https://i.imgur.com/placeholder.jpeg",
-  "Common Tern": "https://i.imgur.com/placeholder.jpeg",
-  "Common Wood-Pigeon": "https://i.imgur.com/placeholder.jpeg",
+  "Common Tern": "https://i.imgur.com/f9MWWbt.jpeg",
+  "Common Wood-Pigeon": "https://i.imgur.com/Qk0vfQb.jpeg",
   "Copper-throated Sunbird": "https://i.imgur.com/placeholder.jpeg",
-  "Coppersmith Barbet": "https://i.imgur.com/placeholder.jpeg",
+  "Coppersmith Barbet": "https://i.imgur.com/Jh5qcc9.jpeg",
   "Corn Bunting": "https://i.imgur.com/placeholder.jpeg",
   "Cotton Pygmy-Goose": "https://i.imgur.com/placeholder.jpeg",
   "Crested Bobwhite": "https://i.imgur.com/placeholder.jpeg",
@@ -424,35 +652,35 @@
   "Crested Tit": "https://i.imgur.com/placeholder.jpeg",
   "Curlew Sandpiper": "https://i.imgur.com/placeholder.jpeg",
   "Dark-necked Tailorbird": "https://i.imgur.com/placeholder.jpeg",
-  "Dark-sided Flycatcher": "https://i.imgur.com/placeholder.jpeg",
+  "Dark-sided Flycatcher": "https://i.imgur.com/OKgUDMi.jpeg",
   "Delicate Prinia": "https://i.imgur.com/placeholder.jpeg",
-  "Dollarbird": "https://i.imgur.com/placeholder.jpeg",
+  "Dollarbird": "https://i.imgur.com/LCi8ntX.jpeg",
   "Dunlin": "https://i.imgur.com/placeholder.jpeg",
   "Dunnock": "https://i.imgur.com/placeholder.jpeg",
   "Dusky Broadbill": "https://i.imgur.com/placeholder.jpeg",
-  "Dusky Warbler": "https://i.imgur.com/placeholder.jpeg",
+  "Dusky Warbler": "https://i.imgur.com/NFJvufk.jpeg",
   "Eared Dove": "https://i.imgur.com/placeholder.jpeg",
   "Eared Grebe": "https://i.imgur.com/placeholder.jpeg",
   "Eastern Cattle-Egret": "https://i.imgur.com/placeholder.jpeg",
   "Eastern Red-rumped Swallow": "https://i.imgur.com/placeholder.jpeg",
-  "Egyptian Goose": "https://i.imgur.com/placeholder.jpeg",
+  "Egyptian Goose": "https://i.imgur.com/XY0n42F.jpeg",
   "Eurasian Bittern": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Blackbird": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Blackcap": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Blue Tit": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Bullfinch": "https://i.imgur.com/tbCRpLK.jpeg",
-  "Eurasian Collared-Dove": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Collared-Dove": "https://i.imgur.com/eijaApd.jpeg",
   "Eurasian Coot": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Crag-Martin": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Curlew": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Curlew": "https://i.imgur.com/Ua5Xwff.jpeg",
   "Eurasian Goshawk": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Green Woodpecker": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Hobby": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Hobby": "https://i.imgur.com/lg662Kg.jpeg",
   "Eurasian Hoopoe": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Jackdaw": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Jay": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Kestrel": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Linnet": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Jackdaw": "https://i.imgur.com/7HtKHPI.jpeg",
+  "Eurasian Jay": "https://i.imgur.com/27p8RMg.jpeg",
+  "Eurasian Kestrel": "https://i.imgur.com/Sbqd4Vt.jpeg",
+  "Eurasian Linnet": "https://i.imgur.com/Vy3TNjm.jpeg",
   "Eurasian Magpie": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Moorhen": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Nuthatch": "https://i.imgur.com/placeholder.jpeg",
@@ -461,20 +689,20 @@
   "Eurasian Siskin": "https://i.imgur.com/PoaSOvQ.jpeg",
   "Eurasian Skylark": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Sparrowhawk": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Spoonbill": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Spoonbill": "https://i.imgur.com/xku6EbU.jpeg",
   "Eurasian Three-toed Woodpecker": "https://i.imgur.com/VPkNKaO.jpeg",
-  "Eurasian Tree Sparrow": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Tree Sparrow": "https://i.imgur.com/noUpQQd.jpeg",
   "Eurasian Treecreeper": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Wigeon": "https://i.imgur.com/GR6YKVA.jpeg",
   "Eurasian Woodcock": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Wren": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Wren": "https://i.imgur.com/4RSHo1d.jpeg",
   "Eurasian Wryneck": "https://i.imgur.com/placeholder.jpeg",
   "European Golden-Plover": "https://i.imgur.com/placeholder.jpeg",
-  "European Goldfinch": "https://i.imgur.com/placeholder.jpeg",
+  "European Goldfinch": "https://i.imgur.com/9MPGmdQ.jpeg",
   "European Greenfinch": "https://i.imgur.com/placeholder.jpeg",
   "European Herring Gull": "https://i.imgur.com/placeholder.jpeg",
   "European Honey-buzzard": "https://i.imgur.com/placeholder.jpeg",
-  "European Pied Flycatcher": "https://i.imgur.com/placeholder.jpeg",
+  "European Pied Flycatcher": "https://i.imgur.com/FgAba5d.jpeg",
   "European Robin": "https://i.imgur.com/placeholder.jpeg",
   "European Serin": "https://i.imgur.com/placeholder.jpeg",
   "European Shag": "https://i.imgur.com/placeholder.jpeg",
@@ -483,66 +711,66 @@
   "European Turtle-Dove": "https://i.imgur.com/placeholder.jpeg",
   "Ferruginous Duck": "https://i.imgur.com/placeholder.jpeg",
   "Fieldfare": "https://i.imgur.com/placeholder.jpeg",
-  "Forest Wagtail": "https://i.imgur.com/placeholder.jpeg",
-  "Fulvous-breasted Woodpecker": "https://i.imgur.com/lO3qwPl.jpeg",
+  "Forest Wagtail": "https://i.imgur.com/3hxmV69.jpeg",
+  "Fulvous-breasted Woodpecker": "https://i.imgur.com/4utcEXZ.jpeg",
   "Gadwall": "https://i.imgur.com/placeholder.jpeg",
   "Garden Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Garganey": "https://i.imgur.com/placeholder.jpeg",
   "Glaucous Gull": "https://i.imgur.com/placeholder.jpeg",
   "Glossy Ibis": "https://i.imgur.com/placeholder.jpeg",
-  "Goldcrest": "https://i.imgur.com/placeholder.jpeg",
+  "Goldcrest": "https://i.imgur.com/e10n1iD.jpeg",
   "Golden Eagle": "https://i.imgur.com/placeholder.jpeg",
-  "Golden-crested Myna": "https://i.imgur.com/placeholder.jpeg",
+  "Golden-crested Myna": "https://i.imgur.com/rorX8We.jpeg",
   "Golden-fronted Leafbird": "https://i.imgur.com/placeholder.jpeg",
-  "Golden-headed Cisticola": "https://i.imgur.com/placeholder.jpeg",
-  "Gray Heron": "https://i.imgur.com/placeholder.jpeg",
+  "Golden-headed Cisticola": "https://i.imgur.com/IHD3xsU.jpeg",
+  "Gray Heron": "https://i.imgur.com/xSalhOs.jpeg",
   "Gray Kingbird": "https://i.imgur.com/placeholder.jpeg",
   "Gray Partridge": "https://i.imgur.com/placeholder.jpeg",
   "Gray Wagtail": "https://i.imgur.com/placeholder.jpeg",
   "Gray-backed Shrike": "https://i.imgur.com/placeholder.jpeg",
   "Gray-eyed Bulbul": "https://i.imgur.com/placeholder.jpeg",
   "Gray-headed Canary-Flycatcher": "https://i.imgur.com/placeholder.jpeg",
-  "Gray-headed Fish-Eagle": "https://i.imgur.com/placeholder.jpeg",
+  "Gray-headed Fish-Eagle": "https://i.imgur.com/2k9gltJ.jpeg",
   "Gray-headed Lapwing": "https://i.imgur.com/placeholder.jpeg",
   "Gray-headed Swamphen": "https://i.imgur.com/placeholder.jpeg",
   "Gray-throated Martin": "https://i.imgur.com/placeholder.jpeg",
   "Graylag Goose": "https://i.imgur.com/placeholder.jpeg",
   "Great Black-backed Gull": "https://i.imgur.com/placeholder.jpeg",
-  "Great Blue Heron": "https://i.imgur.com/placeholder.jpeg",
+  "Great Blue Heron": "https://i.imgur.com/zbgvVMW.jpeg",
   "Great Cormorant": "https://i.imgur.com/placeholder.jpeg",
-  "Great Crested Grebe": "https://i.imgur.com/placeholder.jpeg",
+  "Great Crested Grebe": "https://i.imgur.com/bDmgPgX.jpeg",
   "Great Egret": "https://i.imgur.com/placeholder.jpeg",
   "Great Gray Shrike": "https://i.imgur.com/placeholder.jpeg",
-  "Great Hornbill": "https://i.imgur.com/placeholder.jpeg",
-  "Great Myna": "https://i.imgur.com/placeholder.jpeg",
+  "Great Hornbill": "https://i.imgur.com/bcHBa1T.jpeg",
+  "Great Myna": "https://i.imgur.com/Oyfw1Np.jpeg",
   "Great Skua": "https://i.imgur.com/placeholder.jpeg",
   "Great Snipe": "https://i.imgur.com/placeholder.jpeg",
-  "Great Spotted Woodpecker": "https://i.imgur.com/placeholder.jpeg",
+  "Great Spotted Woodpecker": "https://i.imgur.com/Y0nMkHV.jpeg",
   "Great Tit": "https://i.imgur.com/placeholder.jpeg",
   "Great-tailed Grackle": "https://i.imgur.com/placeholder.jpeg",
-  "Greater Coucal": "https://i.imgur.com/placeholder.jpeg",
+  "Greater Coucal": "https://i.imgur.com/91US29x.jpeg",
   "Greater Flameback": "https://i.imgur.com/placeholder.jpeg",
   "Greater Painted-Snipe": "https://i.imgur.com/placeholder.jpeg",
-  "Greater Racket-tailed Drongo": "https://i.imgur.com/placeholder.jpeg",
-  "Greater Scaup": "https://i.imgur.com/placeholder.jpeg",
+  "Greater Racket-tailed Drongo": "https://i.imgur.com/s1R8MTk.jpeg",
+  "Greater Scaup": "https://i.imgur.com/OqeLAR9.jpeg",
   "Greater Spotted Eagle": "https://i.imgur.com/9DpXgtq.jpeg",
-  "Greater White-fronted Goose": "https://i.imgur.com/placeholder.jpeg",
+  "Greater White-fronted Goose": "https://i.imgur.com/odQvC6g.jpeg",
   "Greater Whitethroat": "https://i.imgur.com/placeholder.jpeg",
   "Greater Yellowlegs": "https://i.imgur.com/placeholder.jpeg",
   "Greater Yellownape": "https://i.imgur.com/placeholder.jpeg",
   "Green Heron": "https://i.imgur.com/placeholder.jpeg",
   "Green Sandpiper": "https://i.imgur.com/placeholder.jpeg",
-  "Green-billed Malkoha": "https://i.imgur.com/placeholder.jpeg",
-  "Green-eared Barbet": "https://i.imgur.com/placeholder.jpeg",
+  "Green-billed Malkoha": "https://i.imgur.com/iEENr69.jpeg",
+  "Green-eared Barbet": "https://i.imgur.com/YZ1SLAd.jpeg",
   "Green-winged Teal": "https://i.imgur.com/placeholder.jpeg",
-  "Greenish Warbler": "https://i.imgur.com/placeholder.jpeg",
+  "Greenish Warbler": "https://i.imgur.com/dh7VL6o.jpeg",
   "Groove-billed Ani": "https://i.imgur.com/placeholder.jpeg",
   "Hair-crested Drongo": "https://i.imgur.com/placeholder.jpeg",
   "Hawfinch": "https://i.imgur.com/placeholder.jpeg",
   "Hazel Grouse": "https://i.imgur.com/placeholder.jpeg",
   "Heart-spotted Woodpecker": "https://i.imgur.com/placeholder.jpeg",
   "Hen Harrier": "https://i.imgur.com/placeholder.jpeg",
-  "Hodgson's Hawk-Cuckoo": "https://i.imgur.com/placeholder.jpeg",
+  "Hodgson's Hawk-Cuckoo": "https://i.imgur.com/GL3J8VP.jpeg",
   "Hooded Crow": "https://i.imgur.com/placeholder.jpeg",
   "Horned Grebe": "https://i.imgur.com/placeholder.jpeg",
   "Horned Lark": "https://i.imgur.com/placeholder.jpeg",
@@ -551,15 +779,15 @@
   "House Swift": "https://i.imgur.com/placeholder.jpeg",
   "Hudsonian Godwit": "https://i.imgur.com/placeholder.jpeg",
   "Iceland Gull": "https://i.imgur.com/BqJWwmO.jpeg",
-  "Icterine Warbler": "https://i.imgur.com/placeholder.jpeg",
+  "Icterine Warbler": "https://i.imgur.com/2VecVXX.jpeg",
   "Indian Cormorant": "https://i.imgur.com/placeholder.jpeg",
   "Indian Cuckoo": "https://i.imgur.com/placeholder.jpeg",
-  "Indian Pied Starling": "https://i.imgur.com/placeholder.jpeg",
+  "Indian Pied Starling": "https://i.imgur.com/o4ENZYa.jpeg",
   "Indian Pond-Heron": "https://i.imgur.com/aDRgOM8.jpeg",
-  "Indian Silverbill": "https://i.imgur.com/placeholder.jpeg",
+  "Indian Silverbill": "https://i.imgur.com/WkKplxY.jpeg",
   "Indochinese Roller": "https://i.imgur.com/placeholder.jpeg",
   "Italian Sparrow": "https://i.imgur.com/placeholder.jpeg",
-  "Japanese Sparrowhawk": "https://i.imgur.com/placeholder.jpeg",
+  "Japanese Sparrowhawk": "https://i.imgur.com/X87aI7a.jpeg",
   "Javan Pond-Heron": "https://i.imgur.com/placeholder.jpeg",
   "Jerdon's Baza": "https://i.imgur.com/placeholder.jpeg",
   "Jungle Babbler": "https://i.imgur.com/placeholder.jpeg",
@@ -568,7 +796,7 @@
   "King Eider": "https://i.imgur.com/placeholder.jpeg",
   "Lapland Longspur": "https://i.imgur.com/placeholder.jpeg",
   "Large Scimitar-Babbler": "https://i.imgur.com/placeholder.jpeg",
-  "Large-billed Crow": "https://i.imgur.com/placeholder.jpeg",
+  "Large-billed Crow": "https://i.imgur.com/IBKOPJO.jpeg",
   "Laughing Gull": "https://i.imgur.com/placeholder.jpeg",
   "Least Sandpiper": "https://i.imgur.com/placeholder.jpeg",
   "Lesser Black-backed Gull": "https://i.imgur.com/placeholder.jpeg",
@@ -580,35 +808,35 @@
   "Lesser Yellowlegs": "https://i.imgur.com/placeholder.jpeg",
   "Lineated Barbet": "https://i.imgur.com/PtKHjH2.jpeg",
   "Little Blue Heron": "https://i.imgur.com/placeholder.jpeg",
-  "Little Cormorant": "https://i.imgur.com/placeholder.jpeg",
+  "Little Cormorant": "https://i.imgur.com/jQPlxuq.jpeg",
   "Little Egret": "https://i.imgur.com/placeholder.jpeg",
   "Little Grebe": "https://i.imgur.com/placeholder.jpeg",
   "Little Owl": "https://i.imgur.com/placeholder.jpeg",
   "Little Ringed Plover": "https://i.imgur.com/jVKTBc.jpeg",
-  "Little Spiderhunter": "https://i.imgur.com/placeholder.jpeg",
+  "Little Spiderhunter": "https://i.imgur.com/qTl4p2M.jpeg",
    "Little Stint": "https://i.imgur.com/placeholder.jpeg",
   "Little Tern": "https://i.imgur.com/placeholder.jpeg",
   "Long-eared Owl": "https://i.imgur.com/placeholder.jpeg",
   "Long-tailed Duck": "https://i.imgur.com/placeholder.jpeg",
-  "Long-tailed Jaeger": "https://i.imgur.com/placeholder.jpeg",
+  "Long-tailed Jaeger": "https://i.imgur.com/MJDXapw.jpeg",
   "Long-tailed Shrike": "https://i.imgur.com/B4ybD0y.jpeg",
   "Long-tailed Tit": "https://i.imgur.com/placeholder.jpeg",
   "Magnificent Frigatebird": "https://i.imgur.com/VeOqTvD.jpeg",
   "Malaysian Pied-Fantail": "https://i.imgur.com/placeholder.jpeg",
   "Mallard": "https://i.imgur.com/placeholder.jpeg",
   "Marsh Tit": "https://i.imgur.com/placeholder.jpeg",
-  "Marsh Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Meadow Pipit": "https://i.imgur.com/placeholder.jpeg",
+  "Marsh Warbler": "https://i.imgur.com/B2OtsNH.jpeg",
+  "Meadow Pipit": "https://i.imgur.com/iY1xh9G.jpeg",
   "Medium Egret": "https://i.imgur.com/placeholder.jpeg",
   "Merlin": "https://i.imgur.com/placeholder.jpeg",
   "Middle Spotted Woodpecker": "https://i.imgur.com/placeholder.jpeg",
   "Mistle Thrush": "https://i.imgur.com/placeholder.jpeg",
-  "Monk Parakeet": "https://i.imgur.com/placeholder.jpeg",
-  "Mountain Hawk-Eagle": "https://i.imgur.com/placeholder.jpeg",
-  "Mountain Imperial-Pigeon": "https://i.imgur.com/placeholder.jpeg",
-  "Moustached Barbet": "https://i.imgur.com/placeholder.jpeg",
+  "Monk Parakeet": "https://i.imgur.com/Eugx69Z.jpeg",
+  "Mountain Hawk-Eagle": "https://i.imgur.com/JCqK9ND.jpeg",
+  "Mountain Imperial-Pigeon": "https://i.imgur.com/ZUy44hD.jpeg",
+  "Moustached Barbet": "https://i.imgur.com/vtsz9Fz.jpeg",
   "Mute Swan": "https://i.imgur.com/placeholder.jpeg",
-  "Neotropic Cormorant": "https://i.imgur.com/placeholder.jpeg",
+  "Neotropic Cormorant": "https://i.imgur.com/XG4wFv7.jpeg",
   "Northern Gannet": "https://i.imgur.com/placeholder.jpeg",
   "Northern Lapwing": "https://i.imgur.com/placeholder.jpeg",
   "Northern Nutcracker": "https://i.imgur.com/yCdlMXF.jpeg",
@@ -618,15 +846,15 @@
   "Northern Shoveler": "https://i.imgur.com/placeholder.jpeg",
   "Northern Waterthrush": "https://i.imgur.com/placeholder.jpeg",
   "Northern Wheatear": "https://i.imgur.com/placeholder.jpeg",
-  "Ochraceous Bulbul": "https://i.imgur.com/placeholder.jpeg",
-  "Olive-backed Pipit": "https://i.imgur.com/placeholder.jpeg",
-  "Oriental Darter": "https://i.imgur.com/placeholder.jpeg",
+  "Ochraceous Bulbul": "https://i.imgur.com/hIxGEi6.jpeg",
+  "Olive-backed Pipit": "https://i.imgur.com/ULp545C.jpeg",
+  "Oriental Darter": "https://i.imgur.com/uOMgaLj.jpeg",
   "Oriental Honey-buzzard": "https://i.imgur.com/placeholder.jpeg",
-  "Oriental Magpie-Robin": "https://i.imgur.com/placeholder.jpeg",
+  "Oriental Magpie-Robin": "https://i.imgur.com/IgVB6tH.jpeg",
   "Oriental Pied-Hornbill": "https://i.imgur.com/placeholder.jpeg",
   "Ornate Sunbird": "https://i.imgur.com/placeholder.jpeg",
   "Osprey": "https://i.imgur.com/placeholder.jpeg",
-  "Pacific Reef-Heron": "https://i.imgur.com/placeholder.jpeg",
+  "Pacific Reef-Heron": "https://i.imgur.com/SSzFllT.jpeg",
   "Pacific Swallow": "https://i.imgur.com/placeholder.jpeg",
   "Paddyfield Pipit": "https://i.imgur.com/placeholder.jpeg",
   "Pale-billed Flowerpecker": "https://i.imgur.com/placeholder.jpeg",
@@ -636,30 +864,30 @@
   "Parasitic Jaeger": "https://i.imgur.com/placeholder.jpeg",
   "Parrot Crossbill": "https://i.imgur.com/placeholder.jpeg",
   "Peregrine Falcon": "https://i.imgur.com/placeholder.jpeg",
-  "Pied Avocet": "https://i.imgur.com/placeholder.jpeg",
-  "Pied Kingfisher": "https://i.imgur.com/placeholder.jpeg",
-  "Pied-billed Grebe": "https://i.imgur.com/placeholder.jpeg",
-  "Pin-striped Tit-Babbler": "https://i.imgur.com/placeholder.jpeg",
+  "Pied Avocet": "https://i.imgur.com/qA21cnc.jpeg",
+  "Pied Kingfisher": "https://i.imgur.com/yfP8wVs.jpeg",
+  "Pied-billed Grebe": "https://i.imgur.com/4mauvwV.jpeg",
+  "Pin-striped Tit-Babbler": "https://i.imgur.com/ZWo8BiY.jpeg",
   "Pine Grosbeak": "https://i.imgur.com/placeholder.jpeg",
   "Pink-footed Goose": "https://i.imgur.com/placeholder.jpeg",
   "Pink-necked Green-Pigeon": "https://i.imgur.com/placeholder.jpeg",
-  "Plain Prinia": "https://i.imgur.com/placeholder.jpeg",
+  "Plain Prinia": "https://i.imgur.com/N6xuSQI.jpeg",
   "Plain-backed Sparrow": "https://i.imgur.com/placeholder.jpeg",
   "Plaintive Cuckoo": "https://i.imgur.com/placeholder.jpeg",
   "Prairie Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Puff-throated Babbler": "https://i.imgur.com/placeholder.jpeg",
   "Puff-throated Bulbul": "https://i.imgur.com/placeholder.jpeg",
-  "Purple Sandpiper": "https://i.imgur.com/placeholder.jpeg",
+  "Purple Sandpiper": "https://i.imgur.com/bX7uX3u.jpeg",
   "Purple-rumped Sunbird": "https://i.imgur.com/placeholder.jpeg",
   "Rain Quail": "https://i.imgur.com/placeholder.jpeg",
   "Razorbill": "https://i.imgur.com/placeholder.jpeg",
-  "Red Collared-Dove": "https://i.imgur.com/placeholder.jpeg",
-  "Red Crossbill": "https://i.imgur.com/placeholder.jpeg",
+  "Red Collared-Dove": "https://i.imgur.com/LNcdxq6.jpeg",
+  "Red Crossbill": "https://i.imgur.com/0vb5rw4.jpeg",
   "Red Junglefowl": "https://i.imgur.com/placeholder.jpeg",
   "Red Kite": "https://i.imgur.com/placeholder.jpeg",
   "Red Knot": "https://i.imgur.com/placeholder.jpeg",
-  "Red-backed Shrike": "https://i.imgur.com/placeholder.jpeg",
-  "Red-breasted Merganser": "https://i.imgur.com/placeholder.jpeg",
+  "Red-backed Shrike": "https://i.imgur.com/aldXvkU.jpeg",
+  "Red-breasted Merganser": "https://i.imgur.com/0oqqxTF.jpeg",
   "Red-breasted Parakeet": "https://i.imgur.com/placeholder.jpeg",
   "Red-eyed Vireo": "https://i.imgur.com/placeholder.jpeg",
   "Red-necked Grebe": "https://i.imgur.com/placeholder.jpeg",
@@ -668,38 +896,38 @@
   "Red-vented Bulbul": "https://i.imgur.com/HPJ1XcL.jpeg",
   "Red-wattled Lapwing": "https://i.imgur.com/VAEBLaG.jpeg",
   "Red-whiskered Bulbul": "https://i.imgur.com/placeholder.jpeg",
-  "Redpoll": "https://i.imgur.com/placeholder.jpeg",
-  "Redwing": "https://i.imgur.com/placeholder.jpeg",
+  "Redpoll": "https://i.imgur.com/KO6tIVa.jpeg",
+  "Redwing": "https://i.imgur.com/MI1Jq4I.jpeg",
   "Reed Bunting": "https://i.imgur.com/placeholder.jpeg",
   "Richard's Pipit": "https://i.imgur.com/placeholder.jpeg",
   "Ring Ouzel": "https://i.imgur.com/placeholder.jpeg",
-  "Ring-necked Pheasant": "https://i.imgur.com/placeholder.jpeg",
+  "Ring-necked Pheasant": "https://i.imgur.com/RQTVaxy.jpeg",
   "River Lapwing": "https://i.imgur.com/placeholder.jpeg",
   "Rock Pigeon": "https://i.imgur.com/placeholder.jpeg",
   "Rock Pipit": "https://i.imgur.com/placeholder.jpeg",
   "Rook": "https://i.imgur.com/placeholder.jpeg",
   "Rose-ringed Parakeet": "https://i.imgur.com/placeholder.jpeg",
-  "Roseate Spoonbill": "https://i.imgur.com/placeholder.jpeg",
+  "Roseate Spoonbill": "https://i.imgur.com/84261Jo.jpeg",
   "Ross's Goose": "https://i.imgur.com/placeholder.jpeg",
   "Rosy Minivet": "https://i.imgur.com/placeholder.jpeg",
-  "Rosy Pipit": "https://i.imgur.com/placeholder.jpeg",
-  "Rough-legged Hawk": "https://i.imgur.com/placeholder.jpeg",
+  "Rosy Pipit": "https://i.imgur.com/u9mwpuO.jpeg",
+  "Rough-legged Hawk": "https://i.imgur.com/0iVqw0C.jpeg",
   "Royal Tern": "https://i.imgur.com/placeholder.jpeg",
   "Ruby-cheeked Sunbird": "https://i.imgur.com/placeholder.jpeg",
   "Ruby-topaz Hummingbird": "https://i.imgur.com/placeholder.jpeg",
   "Ruddy Turnstone": "https://i.imgur.com/placeholder.jpeg",
-  "Ruddy-breasted Crake": "https://i.imgur.com/placeholder.jpeg",
+  "Ruddy-breasted Crake": "https://i.imgur.com/MNYm5Bj.jpeg",
   "Ruff": "https://i.imgur.com/placeholder.jpeg",
   "Rufous Treepie": "https://i.imgur.com/placeholder.jpeg",
   "Rufous Woodpecker": "https://i.imgur.com/placeholder.jpeg",
   "Rufous-bellied Niltava": "https://i.imgur.com/placeholder.jpeg",
   "Rufous-collared Sparrow": "https://i.imgur.com/placeholder.jpeg",
   "Rufous-gorgeted Flycatcher": "https://i.imgur.com/placeholder.jpeg",
-  "Rufous-necked Laughingthrush": "https://i.imgur.com/placeholder.jpeg",
+  "Rufous-necked Laughingthrush": "https://i.imgur.com/eMD8cU9.jpeg",
   "Saffron Finch": "https://i.imgur.com/placeholder.jpeg",
   "Sanderling": "https://i.imgur.com/3gZzYcV.jpeg",
   "Sandwich Tern": "https://i.imgur.com/placeholder.jpeg",
-  "Sardinian Warbler": "https://i.imgur.com/placeholder.jpeg",
+  "Sardinian Warbler": "https://i.imgur.com/kcJcZTz.jpeg",
   "Savi's Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Scaly-breasted Munia": "https://i.imgur.com/JGIQHNF.jpeg",
   "Scaly-naped Pigeon": "https://i.imgur.com/placeholder.jpeg",
@@ -715,38 +943,38 @@
   "Siamese Pied Starling": "https://i.imgur.com/placeholder.jpeg",
   "Siberian Blue Robin": "https://i.imgur.com/placeholder.jpeg",
   "Siberian Jay": "https://i.imgur.com/placeholder.jpeg",
-  "Siberian Rubythroat": "https://i.imgur.com/placeholder.jpeg",
+  "Siberian Rubythroat": "https://i.imgur.com/ldgPpqc.jpeg",
   "Siberian Stonechat": "https://i.imgur.com/placeholder.jpeg",
   "Silver-backed Needletail": "https://i.imgur.com/placeholder.jpeg",
-  "Small Minivet": "https://i.imgur.com/placeholder.jpeg",
+  "Small Minivet": "https://i.imgur.com/EAPfesi.jpeg",
   "Smew": "https://i.imgur.com/placeholder.jpeg",
   "Snowy Egret": "https://i.imgur.com/placeholder.jpeg",
   "Solitary Sandpiper": "https://i.imgur.com/placeholder.jpeg",
-  "Song Thrush": "https://i.imgur.com/placeholder.jpeg",
+  "Song Thrush": "https://i.imgur.com/f7fKGgX.jpeg",
   "Southern Lapwing": "https://i.imgur.com/placeholder.jpeg",
   "Spotted Crake": "https://i.imgur.com/placeholder.jpeg",
   "Spotted Dove": "https://i.imgur.com/placeholder.jpeg",
-  "Spotted Flycatcher": "https://i.imgur.com/placeholder.jpeg",
+  "Spotted Flycatcher": "https://i.imgur.com/uHgOjAj.jpeg",
   "Spotted Owlet": "https://i.imgur.com/ysZPfut.jpeg",
   "Spotted Redshank": "https://i.imgur.com/placeholder.jpeg",
   "Spotted Sandpiper": "https://i.imgur.com/placeholder.jpeg",
   "Stejneger's Scoter": "https://i.imgur.com/placeholder.jpeg",
-  "Stock Dove": "https://i.imgur.com/placeholder.jpeg",
-  "Stork-billed Kingfisher": "https://i.imgur.com/placeholder.jpeg",
-  "Streak-eared Bulbul": "https://i.imgur.com/placeholder.jpeg",
+  "Stock Dove": "https://i.imgur.com/eRY392m.jpeg",
+  "Stork-billed Kingfisher": "https://i.imgur.com/xobgeRH.jpeg",
+  "Streak-eared Bulbul": "https://i.imgur.com/sX8r5sN.jpeg",
   "Striated Babbler": "https://i.imgur.com/placeholder.jpeg",
   "Striated Grassbird": "https://i.imgur.com/placeholder.jpeg",
   "Striated Heron": "https://i.imgur.com/placeholder.jpeg",
-    "Taiga Bean-Goose": "https://i.imgur.com/placeholder.jpeg",
+  "Taiga Bean-Goose": "https://i.imgur.com/placeholder.jpeg",
   "Taiga Flycatcher": "https://i.imgur.com/kSmJHtL.jpeg",
   "Tawny Owl": "https://i.imgur.com/placeholder.jpeg",
-  "Temminck's Stint": "https://i.imgur.com/placeholder.jpeg",
+  "Temminck's Stint": "https://i.imgur.com/BBSCo7F.jpeg",
   "Thick-billed Green-Pigeon": "https://i.imgur.com/placeholder.jpeg",
   "Thick-billed Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Thrush Nightingale": "https://i.imgur.com/placeholder.jpeg",
-  "Tree Pipit": "https://i.imgur.com/placeholder.jpeg",
+  "Tree Pipit": "https://i.imgur.com/KH22l2g.jpeg",
   "Tricolored Heron": "https://i.imgur.com/placeholder.jpeg",
-  "Tricolored Munia": "https://i.imgur.com/placeholder.jpeg",
+  "Tricolored Munia": "https://i.imgur.com/ToS53cZ.jpeg",
   "Tropical Mockingbird": "https://i.imgur.com/placeholder.jpeg",
   "Tufted Duck": "https://i.imgur.com/placeholder.jpeg",
   "Twite": "https://i.imgur.com/placeholder.jpeg",
@@ -756,7 +984,7 @@
   "Venezuelan Troupial": "https://i.imgur.com/placeholder.jpeg",
   "Verditer Flycatcher": "https://i.imgur.com/placeholder.jpeg",
   "Vernal Hanging-Parrot": "https://i.imgur.com/placeholder.jpeg",
-  "Vinous-breasted Myna": "https://i.imgur.com/placeholder.jpeg",
+  "Vinous-breasted Myna": "https://i.imgur.com/2uApOOU.jpeg",
   "Water Rail": "https://i.imgur.com/placeholder.jpeg",
   "Western Cattle-Egret": "https://i.imgur.com/placeholder.jpeg",
   "Western House-Martin": "https://i.imgur.com/placeholder.jpeg",
@@ -765,12 +993,12 @@
   "Whimbrel": "https://i.imgur.com/placeholder.jpeg",
   "Whinchat": "https://i.imgur.com/placeholder.jpeg",
   "Whiskered Tern": "https://i.imgur.com/placeholder.jpeg",
-  "White Stork": "https://i.imgur.com/8zOPtS6.jpeg",
-  "White Wagtail": "https://i.imgur.com/placeholder.jpeg",
-  "White-bellied Sea-Eagle": "https://i.imgur.com/placeholder.jpeg",
+  "White Stork": "https://i.imgur.com/RkbxLPj.jpeg",
+  "White Wagtail": "https://i.imgur.com/ODNEduu.jpeg",
+  "White-bellied Sea-Eagle": "https://i.imgur.com/WQeIR0I.jpeg",
   "White-breasted Waterhen": "https://i.imgur.com/placeholder.jpeg",
   "White-cheeked Pintail": "https://i.imgur.com/placeholder.jpeg",
-  "White-crested Laughingthrush": "https://i.imgur.com/placeholder.jpeg",
+  "White-crested Laughingthrush": "https://i.imgur.com/9AqJvec.jpeg",
   "White-eyed Parakeet": "https://i.imgur.com/placeholder.jpeg",
   "White-nest Swiftlet": "https://i.imgur.com/placeholder.jpeg",
   "White-rumped Munia": "https://i.imgur.com/placeholder.jpeg",
@@ -780,37 +1008,99 @@
   "White-tailed Robin": "https://i.imgur.com/placeholder.jpeg",
   "White-throated Bulbul": "https://i.imgur.com/placeholder.jpeg",
   "White-throated Dipper": "https://i.imgur.com/placeholder.jpeg",
-  "White-throated Fantail": "https://i.imgur.com/placeholder.jpeg",
+  "White-throated Fantail": "https://i.imgur.com/mBwLzqT.jpeg",
   "White-throated Kingfisher": "https://i.imgur.com/placeholder.jpeg",
   "White-tipped Dove": "https://i.imgur.com/placeholder.jpeg",
   "White-winged Crossbill": "https://i.imgur.com/placeholder.jpeg",
   "Whooper Swan": "https://i.imgur.com/mTsJZBf.jpeg",
   "Willet": "https://i.imgur.com/placeholder.jpeg",
   "Willow Ptarmigan": "https://i.imgur.com/placeholder.jpeg",
-  "Willow Tit": "https://i.imgur.com/placeholder.jpeg",
+  "Willow Tit": "https://i.imgur.com/K4iTHSK.jpeg",
   "Willow Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Wood Lark": "https://i.imgur.com/placeholder.jpeg",
+  "Wood Lark": "https://i.imgur.com/5ZoohcN.jpeg",
   "Wood Sandpiper": "https://i.imgur.com/placeholder.jpeg",
-  "Wood Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Wreathed Hornbill": "https://i.imgur.com/placeholder.jpeg",
+  "Wood Warbler": "https://i.imgur.com/WbXaDYH.jpeg",
+  "Wreathed Hornbill": "https://i.imgur.com/j9Kkvjj.jpeg",
   "Yellow Oriole": "https://i.imgur.com/placeholder.jpeg",
   "Yellow Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Yellow-billed Loon": "https://i.imgur.com/placeholder.jpeg",
-  "Yellow-breasted Bunting": "https://i.imgur.com/placeholder.jpeg",
+  "Yellow-breasted Bunting": "https://i.imgur.com/QO3Mupk.jpeg",
   "Yellow-browed Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Yellow-crowned Night Heron": "https://i.imgur.com/placeholder.jpeg",
   "Yellow-footed Green-Pigeon": "https://i.imgur.com/placeholder.jpeg",
   "Yellow-legged Gull": "https://i.imgur.com/placeholder.jpeg",
-  "Yellow-vented Bulbul": "https://i.imgur.com/placeholder.jpeg",
+  "Yellow-vented Bulbul": "https://i.imgur.com/rfARI6K.jpeg",
   "Yellow-vented Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Yellow-wattled Lapwing": "https://i.imgur.com/placeholder.jpeg",
   "Yellowhammer": "https://i.imgur.com/placeholder.jpeg",
-  "Zebra Dove": "https://i.imgur.com/placeholder.jpeg",
-  "Zitting Cisticola": "https://i.imgur.com/placeholder.jpeg",
+  "Zebra Dove": "https://i.imgur.com/dvkUler.jpeg",
+  "Zitting Cisticola": "https://i.imgur.com/qcg1o7W.jpeg",
   "Muscovy Duck": "https://i.imgur.com/placeholder.jpeg",
   "Barnacle x Canada Goose (hybrid)": "https://i.imgur.com/placeholder.jpeg",
   "European Herring x Glaucous Gull (hybrid)": "https://i.imgur.com/placeholder.jpeg"
     };
+
+// === Bird Photo of the Day ===
+function showRandomBird() {
+  currentBirdIndex = Math.floor(Math.random() * birdKeys.length);
+  const randomBird = birdKeys[currentBirdIndex];
+  const photoUrl = birdPhotos[randomBird];
+
+  document.getElementById("dailyBirdImage").src = photoUrl;
+  document.getElementById("dailyBirdImage").alt = randomBird;
+  document.getElementById("dailyBirdCaption").textContent = randomBird;
+}
+
+const birdKeys = Object.keys(birdPhotos);
+let currentBirdIndex = 0;
+
+showRandomBird();
+
+function navigateBird(direction) {
+  currentBirdIndex += direction;
+  if (currentBirdIndex < 0) currentBirdIndex = birdKeys.length - 1;
+  if (currentBirdIndex >= birdKeys.length) currentBirdIndex = 0;
+
+  const name = birdKeys[currentBirdIndex];
+  const url = birdPhotos[name];
+
+  document.getElementById("dailyBirdImage").src = url;
+  document.getElementById("dailyBirdImage").alt = name;
+  document.getElementById("dailyBirdCaption").textContent = name;
+}
+
+
+// === Inject Thumbnails ===
+function loadThumbnails() {
+  const gallery = document.getElementById("thumbnailGallery");
+
+  Object.entries(birdPhotos).forEach(([name, url]) => {
+    const thumb = document.createElement("img");
+    thumb.src = url;
+    thumb.alt = name;
+    thumb.title = name;
+    thumb.style = `
+  	width:100%; height:100px; object-fit:cover;
+ 	 border-radius:6px; cursor:pointer;
+  	box-shadow:0 2px 6px rgba(0,0,0,0.2);
+ 	transition:transform 0.2s ease;
+	`;
+
+    thumb.onmouseover = () => thumb.style.transform = "scale(1.05)";
+    thumb.onmouseout = () => thumb.style.transform = "scale(1)";
+    thumb.onclick = () => {
+ 	const index = birdKeys.indexOf(name);
+  	currentBirdIndex = index;
+
+  	document.getElementById("dailyBirdImage").src = url;
+  	document.getElementById("dailyBirdImage").alt = name;
+  	document.getElementById("dailyBirdCaption").textContent = name;
+	};
+
+    gallery.appendChild(thumb);
+  });
+}
+window.onload = loadThumbnails;
 
     const speciesData = {
       "Curaçao": ["American Coot", "American Flamingo", "American Kestrel", "Bananaquit", "Bank Swallow", "Bare-eyed Pigeon", "Black-bellied Plover", "Black-bellied Whistling-Duck", "Black-faced Grassquit", "Black-necked Stilt", "Blue-crowned Parakeet", "Blue-tailed Emerald", "Blue-winged Teal", "Brown-crested Flycatcher", "Brown-throated Parakeet", "Carib Grackle", "Caribbean Elaenia", "Crested Bobwhite", "Crested Caracara", "Eared Dove", "Greater Yellowlegs", "Great Blue Heron", "Great Egret", "Green Heron", "Groove-billed Ani", "House Sparrow", "Least Sandpiper", "Lesser Yellowlegs", "Little Blue Heron", "Magnificent Frigatebird", "Osprey", "Peregrine Falcon", "Pied-billed Grebe", "Red-eyed Vireo", "Rock Pigeon", "Royal Tern", "Ruby-topaz Hummingbird", "Ruddy Turnstone", "Rufous-collared Sparrow", "Saffron Finch", "Scaly-naped Pigeon", "Short-billed Dowitcher", "Snowy Egret", "Southern Lapwing", "Spotted Sandpiper", "Tropical Mockingbird", "Tricolored Heron", "Venezuelan Troupial", "Western Cattle-Egret", "White-cheeked Pintail", "White-eyed Parakeet", "White-tailed Hawk", "White-tipped Dove", "Willet", "Yellow-crowned Night Heron", "Yellow Oriole", "Yellow Warbler"],
@@ -845,17 +1135,18 @@
       }
       const birds = speciesData[c];
       listDiv.innerHTML = `
-        <h4 style="text-align:center; color:#2c6e49;">Bird species in ${c}</h4>
-        <ul style="list-style:none; padding-left:0; margin:0;">
-          ${birds.map(b => `
-            <li style="padding:4px 0;">
-            <button onclick="showSpecies('${b}')" style="background:none; border:none; color:#2c6e49; font-weight:bold; cursor:pointer;">
-                • ${b}
-              </button>
-            </li>
-          `).join('')}
-        </ul>
-      `;
+  <h4 style="text-align:center; color:#2c6e49;">Bird species in ${c}</h4>
+  <ul class="species-ul">
+    ${birds.map(b => `
+      <li class="species-li">
+        <button onclick="showSpecies('${b}')" class="species-btn">
+          ${b}
+        </button>
+      </li>
+    `).join('')}
+  </ul>
+`;
+
     }
     window.filterSpecies = filterSpecies;
 
@@ -871,6 +1162,7 @@
   if (photoUrl) {
     document.getElementById('lightboxImage').src = photoUrl;
     document.getElementById('lightboxImage').alt = name;
+document.getElementById('lightboxCaption').textContent = name;
     document.getElementById('lightbox').style.display = 'flex';
   } else {
     alert("No photo available for this species.");
@@ -1033,14 +1325,14 @@ window.addEventListener('DOMContentLoaded', () => {
           marker.bindTooltip(`${name}: ${count} species`, { permanent: false, direction: 'top' });
 
           marker.on('mouseover', () => {
-            document.getElementById('country-tab').textContent = `${name}: ${count} species`;
-            document.getElementById('info').textContent = `${name}: ${count} species`;
-          });
+  document.getElementById('countryName').textContent = name;
+  document.getElementById('countryCount').textContent = `${count} species observed`;
+});
 
-          marker.on('mouseout', () => {
-            document.getElementById('country-tab').textContent = 'Hover over a country';
-            document.getElementById('info').textContent = '🗺️ Hover over a country to see bird species count';
-          });
+marker.on('mouseout', () => {
+  document.getElementById('countryName').textContent = 'Country';
+  document.getElementById('countryCount').textContent = 'Hover over a country';
+});
         });
       })
       .catch(err => {
@@ -1069,15 +1361,21 @@ window.addEventListener('DOMContentLoaded', () => {
 <!-- Lightbox popup -->
 <div id="lightbox" style="display:none; position:fixed; top:0; left:0; 
     width:100%; height:100%; background:rgba(0,0,0,0.8); 
-    justify-content:center; align-items:center; z-index:9999;">
+    justify-content:center; align-items:center; z-index:9999; flex-direction: column;">
   
   <span id="closeLightbox" 
         style="position:absolute; top:20px; right:40px; 
         font-size:40px; color:white; cursor:pointer;">&times;</span>
   
   <img id="lightboxImage" src="" alt="" 
-       style="max-width:90%; max-height:90%; border-radius:8px;"/>
+       style="max-width:90%; max-height:80%; border-radius:8px; margin-bottom: 12px;"/>
+<div id="lightboxCaption" 
+       style="margin-top:10px; padding:8px 16px; background:rgba(0,0,0,0.5); 
+              color:white; font-size:18px; border-radius:6px; text-align:center;max-width: 90%;">
+    Species name here
+  </div>
 </div>
+
 </script>
 </body>
 </html>
