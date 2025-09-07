@@ -38,7 +38,7 @@
     }
 
     header h2 {
-      font-size: 24px;
+      font-size: 20px;
       margin: 8px 0;
     }
 
@@ -327,21 +327,21 @@ padding-left: 14px;
         padding: 6px;
         font-size: clamp(0.75rem, 1.5vw, 0.95rem);
       }
-.panel-box.species-list {
-  max-height: 220px;
-  overflow-y: auto;
-}
+	.panel-box.species-list {
+  	max-height: 220px;
+  	overflow-y: auto;
+	}
 
-.panel-box {
-  height: auto;
-  flex: 1 1 40%;
-}
+	.panel-box {
+	height: auto;
+  	flex: 1 1 40%;
+	}
 
-#speciesList {
-  max-height: 100%;
-  overflow-y: auto;
-  padding-right: 6px; /* Prevent content from hiding behind scrollbar */
-}
+	#speciesList {
+  	max-height: 100%;
+  	overflow-y: auto;
+  	padding-right: 6px; /* Prevent content from hiding behind scrollbar */
+	}
 
       #thumbnailGallery {
         max-height: 220px;
@@ -356,13 +356,151 @@ padding-left: 14px;
         max-height: 80px;
         border-radius: 4px;
       }
-    }
 
+.panel-box.hamburger-photo img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .panel-box.hamburger-social {
+    height: 80px;
+  }
+
+  .panel-box.hamburger-social a {
+    width: 32px;
+    height: 32px;
+  }
+  }
     @media (max-width: 480px) {
       header h1 { font-size: 22px; }
       header h2 { font-size: 14px; }
       header { padding: 6px 10px; }
     }
+
+/* --- Header needs to position the button on the right --- */
+header { position: relative; }
+
+/* --- Hamburger button --- */
+.hamburger-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28px;       /* size of ☰ */
+  color: white;           /* white icon */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.hamburger-btn:focus-visible {
+  outline: 2px solid #ffd166;
+  outline-offset: 2px;
+}
+
+.hamburger-btn.open .bar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+.hamburger-btn.open .bar:nth-child(2) { opacity: 0; }
+.hamburger-btn.open .bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+
+/* --- The panel that overlays the thumbnail column --- */
+.hamburger-panel[hidden] { display: none !important; }
+.hamburger-panel {
+  position: absolute; /* ← changed from fixed */
+overflow-y: auto;
+  background: rgba(38, 70, 83, 0.98);
+  color: #fff;
+  border-radius: 0px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  box-sizing: border-box;
+  z-index: 9990;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+width: 95%;
+}
+
+/* Panel content */
+.hamburger-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.panel-box.hamburger-photo {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0
+}
+
+.panel-box.hamburger-photo img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 6px;
+
+}
+
+.panel-box.hamburger-social {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 90px; /* Match photo height */
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 10;
+}
+
+.panel-box.hamburger-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  background: none; color: none; text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.hamburger-social a:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+
+}
+.hamburger-title {
+  font-size: 1.25rem; /* or try 1.3rem for more impact */
+  font-weight: bold;
+  text-align: justify;
+  margin-top: 12px;
+}
+.hamburger-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  margin-top: 8px;
+}
+
+
   </style>
 </head>
 <body>
@@ -370,6 +508,10 @@ padding-left: 14px;
   <header>
     <h1>BirdBlog</h1>
     <h2>Sujan Abu Jafar</h2>
+	<button id="hamburgerToggle" class="hamburger-btn" aria-label="Open menu" aria-	controls="hamburgerPanel" aria-expanded="false">
+	  ☰
+	</button>
+
   </header>
 
 <!-- === Bird Photo of the Day Layout === -->
@@ -534,8 +676,8 @@ padding-left: 14px;
   "Black Drongo": "https://i.imgur.com/placeholder.jpeg",
   "Black Grouse": "https://i.imgur.com/placeholder.jpeg",
   "Black Guillemot": "https://i.imgur.com/placeholder.jpeg",
-  "Black Kite": "https://i.imgur.com/placeholder.jpeg",
-  "Black Redstart": "https://i.imgur.com/placeholder.jpeg",
+  "Black Kite": "https://i.imgur.com/dczSzME.jpeg",
+  "Black Redstart": "https://i.imgur.com/EGk0bhA.jpeg",
   "Black Woodpecker": "https://i.imgur.com/placeholder.jpeg",
   "Black-bellied Plover": "https://i.imgur.com/placeholder.jpeg",
   "Black-bellied Whistling-Duck": "https://i.imgur.com/placeholder.jpeg",
@@ -558,7 +700,7 @@ padding-left: 14px;
   "Black-winged Stilt": "https://i.imgur.com/placeholder.jpeg",
   "Blossom-headed Parakeet": "https://i.imgur.com/placeholder.jpeg",
   "Blue Whistling-Thrush": "https://i.imgur.com/placeholder.jpeg",
-  "Blue-bearded Bee-eater": "https://i.imgur.com/placeholder.jpeg",
+  "Blue-bearded Bee-eater": "https://i.imgur.com/m7MqE9Q.jpeg",
   "Blue-crowned Parakeet": "https://i.imgur.com/placeholder.jpeg",
   "Blue-tailed Bee-eater": "https://i.imgur.com/Ro6A0T8.jpeg",
   "Blue-tailed Emerald": "https://i.imgur.com/L5ZwvBB.jpeg",
@@ -592,14 +734,14 @@ padding-left: 14px;
   "Caspian Tern": "https://i.imgur.com/placeholder.jpeg",
   "Cetti's Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Changeable Hawk-Eagle": "https://i.imgur.com/om93tS9.jpeg",
-  "Chestnut Munia": "https://i.imgur.com/placeholder.jpeg",
+  "Chestnut Munia": "https://i.imgur.com/sNY73Qp.jpeg",
   "Chestnut-headed Bee-eater": "https://i.imgur.com/placeholder.jpeg",
   "Chestnut-tailed Starling": "https://i.imgur.com/placeholder.jpeg",
   "Chinese Pond-Heron": "https://i.imgur.com/pdVyT7M.jpeg",
   "Cinnamon Bittern": "https://i.imgur.com/qNwtdio.jpeg",
-  "Citrine Wagtail": "https://i.imgur.com/placeholder.jpeg",
+  "Citrine Wagtail": "https://i.imgur.com/VxOtL4I.jpeg",
   "Clamorous Reed Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Coal Tit": "https://i.imgur.com/placeholder.jpeg",
+  "Coal Tit": "https://i.imgur.com/GDxzktG.jpeg",
   "Collared Flycatcher": "https://i.imgur.com/uBd1BcT.jpeg",
   "Collared Kingfisher": "https://i.imgur.com/XcqRlRw.jpeg",
   "Collared Scops-Owl": "https://i.imgur.com/placeholder.jpeg",
@@ -608,7 +750,7 @@ padding-left: 14px;
   "Common Chiffchaff": "https://i.imgur.com/8MttBRs.jpeg",
   "Common Crane": "https://i.imgur.com/placeholder.jpeg",
   "Common Cuckoo": "https://i.imgur.com/ZCxDgST.jpeg",
-  "Common Eider": "https://i.imgur.com/placeholder.jpeg",
+  "Common Eider": "https://i.imgur.com/LTaUxDH.jpeg",
   "Common Flameback": "https://i.imgur.com/wf8234S.jpeg",
   "Common Gallinule": "https://i.imgur.com/placeholder.jpeg",
   "Common Goldeneye": "https://i.imgur.com/placeholder.jpeg",
@@ -649,7 +791,7 @@ padding-left: 14px;
   "Crested Caracara": "https://i.imgur.com/placeholder.jpeg",
   "Crested Goshawk": "https://i.imgur.com/placeholder.jpeg",
   "Crested Serpent-Eagle": "https://i.imgur.com/placeholder.jpeg",
-  "Crested Tit": "https://i.imgur.com/placeholder.jpeg",
+  "Crested Tit": "https://i.imgur.com/zz9SaXx.jpeg",
   "Curlew Sandpiper": "https://i.imgur.com/placeholder.jpeg",
   "Dark-necked Tailorbird": "https://i.imgur.com/placeholder.jpeg",
   "Dark-sided Flycatcher": "https://i.imgur.com/OKgUDMi.jpeg",
@@ -665,7 +807,7 @@ padding-left: 14px;
   "Eastern Red-rumped Swallow": "https://i.imgur.com/placeholder.jpeg",
   "Egyptian Goose": "https://i.imgur.com/XY0n42F.jpeg",
   "Eurasian Bittern": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Blackbird": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Blackbird": "https://i.imgur.com/31XuJQD.jpeg",
   "Eurasian Blackcap": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Blue Tit": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Bullfinch": "https://i.imgur.com/tbCRpLK.jpeg",
@@ -688,15 +830,15 @@ padding-left: 14px;
   "Eurasian Penduline-Tit": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Siskin": "https://i.imgur.com/PoaSOvQ.jpeg",
   "Eurasian Skylark": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Sparrowhawk": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Sparrowhawk": "https://i.imgur.com/rHbw2mu.jpeg",
   "Eurasian Spoonbill": "https://i.imgur.com/xku6EbU.jpeg",
   "Eurasian Three-toed Woodpecker": "https://i.imgur.com/VPkNKaO.jpeg",
   "Eurasian Tree Sparrow": "https://i.imgur.com/noUpQQd.jpeg",
-  "Eurasian Treecreeper": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Treecreeper": "https://i.imgur.com/o970ykl.jpeg",
   "Eurasian Wigeon": "https://i.imgur.com/GR6YKVA.jpeg",
   "Eurasian Woodcock": "https://i.imgur.com/placeholder.jpeg",
   "Eurasian Wren": "https://i.imgur.com/4RSHo1d.jpeg",
-  "Eurasian Wryneck": "https://i.imgur.com/placeholder.jpeg",
+  "Eurasian Wryneck": "https://i.imgur.com/5tsos7A.jpeg",
   "European Golden-Plover": "https://i.imgur.com/placeholder.jpeg",
   "European Goldfinch": "https://i.imgur.com/9MPGmdQ.jpeg",
   "European Greenfinch": "https://i.imgur.com/placeholder.jpeg",
@@ -707,7 +849,7 @@ padding-left: 14px;
   "European Serin": "https://i.imgur.com/placeholder.jpeg",
   "European Shag": "https://i.imgur.com/placeholder.jpeg",
   "European Starling": "https://i.imgur.com/placeholder.jpeg",
-  "European Stonechat": "https://i.imgur.com/placeholder.jpeg",
+  "European Stonechat": "https://i.imgur.com/kRUUR36.jpeg",
   "European Turtle-Dove": "https://i.imgur.com/placeholder.jpeg",
   "Ferruginous Duck": "https://i.imgur.com/placeholder.jpeg",
   "Fieldfare": "https://i.imgur.com/placeholder.jpeg",
@@ -752,7 +894,7 @@ padding-left: 14px;
   "Greater Flameback": "https://i.imgur.com/placeholder.jpeg",
   "Greater Painted-Snipe": "https://i.imgur.com/placeholder.jpeg",
   "Greater Racket-tailed Drongo": "https://i.imgur.com/s1R8MTk.jpeg",
-  "Greater Scaup": "https://i.imgur.com/OqeLAR9.jpeg",
+  "Greater Scaup": "https://i.imgur.com/hvU13st.jpeg",
   "Greater Spotted Eagle": "https://i.imgur.com/9DpXgtq.jpeg",
   "Greater White-fronted Goose": "https://i.imgur.com/odQvC6g.jpeg",
   "Greater Whitethroat": "https://i.imgur.com/placeholder.jpeg",
@@ -769,12 +911,12 @@ padding-left: 14px;
   "Hawfinch": "https://i.imgur.com/placeholder.jpeg",
   "Hazel Grouse": "https://i.imgur.com/placeholder.jpeg",
   "Heart-spotted Woodpecker": "https://i.imgur.com/placeholder.jpeg",
-  "Hen Harrier": "https://i.imgur.com/placeholder.jpeg",
+  "Hen Harrier": "https://i.imgur.com/GPzI5g1.jpeg",
   "Hodgson's Hawk-Cuckoo": "https://i.imgur.com/GL3J8VP.jpeg",
   "Hooded Crow": "https://i.imgur.com/placeholder.jpeg",
   "Horned Grebe": "https://i.imgur.com/placeholder.jpeg",
   "Horned Lark": "https://i.imgur.com/placeholder.jpeg",
-  "House Crow": "https://i.imgur.com/placeholder.jpeg",
+  "House Crow": "https://i.imgur.com/uMRjE3U.jpeg",
   "House Sparrow": "https://i.imgur.com/placeholder.jpeg",
   "House Swift": "https://i.imgur.com/placeholder.jpeg",
   "Hudsonian Godwit": "https://i.imgur.com/placeholder.jpeg",
@@ -793,7 +935,7 @@ padding-left: 14px;
   "Jungle Babbler": "https://i.imgur.com/placeholder.jpeg",
   "Jungle Myna": "https://i.imgur.com/placeholder.jpeg",
   "Killdeer": "https://i.imgur.com/placeholder.jpeg",
-  "King Eider": "https://i.imgur.com/placeholder.jpeg",
+  "King Eider": "https://i.imgur.com/0eTZGD3.jpeg",
   "Lapland Longspur": "https://i.imgur.com/placeholder.jpeg",
   "Large Scimitar-Babbler": "https://i.imgur.com/placeholder.jpeg",
   "Large-billed Crow": "https://i.imgur.com/IBKOPJO.jpeg",
@@ -830,12 +972,12 @@ padding-left: 14px;
   "Medium Egret": "https://i.imgur.com/placeholder.jpeg",
   "Merlin": "https://i.imgur.com/placeholder.jpeg",
   "Middle Spotted Woodpecker": "https://i.imgur.com/placeholder.jpeg",
-  "Mistle Thrush": "https://i.imgur.com/placeholder.jpeg",
+  "Mistle Thrush": "https://i.imgur.com/1j4iL2B.jpeg",
   "Monk Parakeet": "https://i.imgur.com/Eugx69Z.jpeg",
   "Mountain Hawk-Eagle": "https://i.imgur.com/JCqK9ND.jpeg",
   "Mountain Imperial-Pigeon": "https://i.imgur.com/ZUy44hD.jpeg",
   "Moustached Barbet": "https://i.imgur.com/vtsz9Fz.jpeg",
-  "Mute Swan": "https://i.imgur.com/placeholder.jpeg",
+  "Mute Swan": "https://i.imgur.com/0BYkM0I.jpeg",
   "Neotropic Cormorant": "https://i.imgur.com/XG4wFv7.jpeg",
   "Northern Gannet": "https://i.imgur.com/placeholder.jpeg",
   "Northern Lapwing": "https://i.imgur.com/placeholder.jpeg",
@@ -891,7 +1033,7 @@ padding-left: 14px;
   "Red-breasted Parakeet": "https://i.imgur.com/placeholder.jpeg",
   "Red-eyed Vireo": "https://i.imgur.com/placeholder.jpeg",
   "Red-necked Grebe": "https://i.imgur.com/placeholder.jpeg",
-  "Red-necked Phalarope": "https://i.imgur.com/placeholder.jpeg",
+  "Red-necked Phalarope": "https://i.imgur.com/0BYkM0I.jpeg",
   "Red-throated Loon": "https://i.imgur.com/placeholder.jpeg",
   "Red-vented Bulbul": "https://i.imgur.com/HPJ1XcL.jpeg",
   "Red-wattled Lapwing": "https://i.imgur.com/VAEBLaG.jpeg",
@@ -903,7 +1045,7 @@ padding-left: 14px;
   "Ring Ouzel": "https://i.imgur.com/placeholder.jpeg",
   "Ring-necked Pheasant": "https://i.imgur.com/RQTVaxy.jpeg",
   "River Lapwing": "https://i.imgur.com/placeholder.jpeg",
-  "Rock Pigeon": "https://i.imgur.com/placeholder.jpeg",
+  "Rock Pigeon": "https://i.imgur.com/Yvbsxzv.jpeg",
   "Rock Pipit": "https://i.imgur.com/placeholder.jpeg",
   "Rook": "https://i.imgur.com/placeholder.jpeg",
   "Rose-ringed Parakeet": "https://i.imgur.com/placeholder.jpeg",
@@ -942,7 +1084,7 @@ padding-left: 14px;
   "Short-toed Treecreeper": "https://i.imgur.com/placeholder.jpeg",
   "Siamese Pied Starling": "https://i.imgur.com/placeholder.jpeg",
   "Siberian Blue Robin": "https://i.imgur.com/placeholder.jpeg",
-  "Siberian Jay": "https://i.imgur.com/placeholder.jpeg",
+  "Siberian Jay": "https://i.imgur.com/ercmpRj.jpeg",
   "Siberian Rubythroat": "https://i.imgur.com/ldgPpqc.jpeg",
   "Siberian Stonechat": "https://i.imgur.com/placeholder.jpeg",
   "Silver-backed Needletail": "https://i.imgur.com/placeholder.jpeg",
@@ -963,14 +1105,14 @@ padding-left: 14px;
   "Stork-billed Kingfisher": "https://i.imgur.com/xobgeRH.jpeg",
   "Streak-eared Bulbul": "https://i.imgur.com/sX8r5sN.jpeg",
   "Striated Babbler": "https://i.imgur.com/placeholder.jpeg",
-  "Striated Grassbird": "https://i.imgur.com/placeholder.jpeg",
+  "Striated Grassbird": "https://i.imgur.com/ADxP0HH.jpeg",
   "Striated Heron": "https://i.imgur.com/placeholder.jpeg",
   "Taiga Bean-Goose": "https://i.imgur.com/placeholder.jpeg",
   "Taiga Flycatcher": "https://i.imgur.com/kSmJHtL.jpeg",
   "Tawny Owl": "https://i.imgur.com/placeholder.jpeg",
   "Temminck's Stint": "https://i.imgur.com/BBSCo7F.jpeg",
   "Thick-billed Green-Pigeon": "https://i.imgur.com/placeholder.jpeg",
-  "Thick-billed Warbler": "https://i.imgur.com/placeholder.jpeg",
+  "Thick-billed Warbler": "https://i.imgur.com/iGVG8fh.jpeg",
   "Thrush Nightingale": "https://i.imgur.com/placeholder.jpeg",
   "Tree Pipit": "https://i.imgur.com/KH22l2g.jpeg",
   "Tricolored Heron": "https://i.imgur.com/placeholder.jpeg",
@@ -987,8 +1129,8 @@ padding-left: 14px;
   "Vinous-breasted Myna": "https://i.imgur.com/2uApOOU.jpeg",
   "Water Rail": "https://i.imgur.com/placeholder.jpeg",
   "Western Cattle-Egret": "https://i.imgur.com/placeholder.jpeg",
-  "Western House-Martin": "https://i.imgur.com/placeholder.jpeg",
-  "Western Marsh Harrier": "https://i.imgur.com/placeholder.jpeg",
+  "Western House-Martin": "https://i.imgur.com/S4jcT4K.jpeg",
+  "Western Marsh Harrier": "https://i.imgur.com/2uj92Qc.jpeg",
   "Western Yellow Wagtail": "https://i.imgur.com/placeholder.jpeg",
   "Whimbrel": "https://i.imgur.com/placeholder.jpeg",
   "Whinchat": "https://i.imgur.com/placeholder.jpeg",
@@ -1007,14 +1149,14 @@ padding-left: 14px;
   "White-tailed Hawk": "https://i.imgur.com/placeholder.jpeg",
   "White-tailed Robin": "https://i.imgur.com/placeholder.jpeg",
   "White-throated Bulbul": "https://i.imgur.com/placeholder.jpeg",
-  "White-throated Dipper": "https://i.imgur.com/placeholder.jpeg",
+  "White-throated Dipper": "https://i.imgur.com/I2lZfZM.jpeg",
   "White-throated Fantail": "https://i.imgur.com/mBwLzqT.jpeg",
   "White-throated Kingfisher": "https://i.imgur.com/placeholder.jpeg",
   "White-tipped Dove": "https://i.imgur.com/placeholder.jpeg",
   "White-winged Crossbill": "https://i.imgur.com/placeholder.jpeg",
   "Whooper Swan": "https://i.imgur.com/mTsJZBf.jpeg",
   "Willet": "https://i.imgur.com/placeholder.jpeg",
-  "Willow Ptarmigan": "https://i.imgur.com/placeholder.jpeg",
+  "Willow Ptarmigan": "https://i.imgur.com/NgXWxvg.jpeg",
   "Willow Tit": "https://i.imgur.com/K4iTHSK.jpeg",
   "Willow Warbler": "https://i.imgur.com/placeholder.jpeg",
   "Wood Lark": "https://i.imgur.com/5ZoohcN.jpeg",
@@ -1376,6 +1518,126 @@ marker.on('mouseout', () => {
   </div>
 </div>
 
+
+<!-- About/Links hamburger panel (overlays the thumbnail column) -->
+<div id="hamburgerPanel" class="hamburger-panel" role="dialog" aria-modal="true" aria-labelledby="hamburgerPanelTitle" hidden>
+ 
+<div class="hamburger-panel">
+  <div class="hamburger-top">
+    <div class="panel-box hamburger-photo">
+    <img src="https://i.imgur.com/rinr6Zc.jpeg">
+</div>
+<div class="panel-box hamburger-social">
+ <a href="https://www.instagram.com/birdblog.majsujan/" target="_blank" relw3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7z"/>
+        <path d="M12 7a5 5 0 110 10 5 5 0 010-10zm0 2.2A2.8 2.8 0 1014.8 12 2.8 2.8 0 0012 9.2z"/>
+        <circle cx="17.4" cy="6.6" r="1.1"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" aria-hidden="true">
+  <path fill="#ffffff" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7z"/>
+  <path fill="#ffffff" d="M12 7a5 5 0 110 10 5 5 0 010-10z"/>
+  <circle cx="17.4" cy="6.6" r="1.1" fill="#ffffff"/>
+</svg>
+    </a>
+
+    <!-- Flickr -->
+    <a href="https://www.flickr.com/photos/birdblog-suzonabuzafor/" target="_blank" rel="noopener" aria-label="Flickr" title8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="7.5" cy="12" r="4.5"></circle>
+        <circle cx="16.5" cy="12" r="4.5"></circle>
+     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 22 14" aria-hidden="true">
+  <circle cx="6" cy="7" r="5" fill="#0063dc"></circle>
+  <circle cx="16" cy="7" r="5" fill="#ff0084"></circle>
+</svg>
+    </a>
+  </div>
+ </div>
+  <div class="hamburger-title">BirdBlog by Sujan Abu Jafar</div>
+  <div class="hamburger-text">Bird enthusiast and photographer, medical doctor, and life science researcher from Bangladesh — currently based in Trondheim, Norway. This website is a personal showcase of my birdwatching journey, which began in 2020. It will be regularly updated with new sightings and photographs.</div>
+</div>
+<script>
+
+// === Hamburger panel logic ===
+(function () {
+  const btn   = document.getElementById('hamburgerToggle');
+  const panel = document.getElementById('hamburgerPanel');
+
+  // Find the thumbnail panel (the parent element that wraps #thumbnailGallery)
+  function getThumbContainer() {
+    const grid = document.getElementById('thumbnailGallery');
+    return grid ? grid.parentElement : null;
+  }
+
+  // Position the panel so it overlays the thumbnail column
+  function positionPanelToThumb() {
+    const container = getThumbContainer();
+    const headerEl  = document.querySelector('header');
+
+    // Fallbacks if container is missing
+    if (!container) {
+      // Default to right side, below header, with a sane size
+      const top  = (headerEl?.getBoundingClientRect().bottom || 0) + window.scrollY + 8;
+      const w    = Math.min(420, Math.max(300, window.innerWidth * 0.28));
+      const h    = 560;
+      const left = window.scrollX + window.innerWidth - w - 12;
+
+      panel.style.left   = `${left}px`;
+      panel.style.top    = `${top}px`;
+      panel.style.width  = `${w}px`;
+      panel.style.height = `${h}px`;
+      return;
+    }
+
+    const r = container.getBoundingClientRect();
+    panel.style.left   = `${r.left + window.scrollX}px`;
+    panel.style.top    = `${r.top + window.scrollY}px`;
+    panel.style.width  = `${r.width}px`;
+    panel.style.height = `${r.height}px`;
+  }
+
+  function openPanel() {
+    positionPanelToThumb();
+    panel.hidden = false;
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+
+    // Keep it aligned on scroll/resize while open
+    window.addEventListener('resize', positionPanelToThumb);
+
+    // Close on Escape
+    document.addEventListener('keydown', onEsc);
+    // Close when clicking outside
+    setTimeout(() => document.addEventListener('click', outsideClick, { capture: true }), 0);
+  }
+
+  function closePanel() {
+    panel.hidden = true;
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    window.removeEventListener('resize', positionPanelToThumb);
+    document.removeEventListener('keydown', onEsc);
+    document.removeEventListener('click', outsideClick, { capture: true });
+  }
+
+  function togglePanel() {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    if (expanded) closePanel();
+    else openPanel();
+  }
+
+  function onEsc(e) {
+    if (e.key === 'Escape') closePanel();
+  }
+
+  function outsideClick(e) {
+    if (panel.contains(e.target) || btn.contains(e.target)) return;
+    closePanel();
+  }
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    togglePanel();
+  });
+})();
 </script>
+
 </body>
 </html>
