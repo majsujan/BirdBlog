@@ -1287,7 +1287,7 @@ function loadThumbnails() {
 
   Object.entries(birdPhotos).forEach(([name, url]) => {
     const thumb = document.createElement("img");
-    thumb.src = url;
+    thumb.src = url.replace(".jpeg", "m.jpeg");
     thumb.alt = name;
     thumb.title = name;
     thumb.style = `
