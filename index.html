@@ -601,6 +601,29 @@ width: 95%;
       transition: none;
     }
   }
+
+	.mobile-gallery-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+
+  .mobile-gallery-toggle {
+    display: block;
+    width: calc(100% - 20px);
+    margin: 10px;
+    padding: 10px;
+
+    background: #5F8F5E;
+    color: white;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 16px;
+    cursor: pointer;
+  }
+}
+
 </style>
 
 
@@ -619,13 +642,18 @@ width: 95%;
     </div>
   </div>
 
-  <!-- RIGHT: Thumbnails -->
-  <div style="flex:1 1 300px; max-height:570px; overflow-y:auto;">
-    <div id="thumbnailGallery"
-         style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;padding: 12px 24px 12px 	24px; box-sizing: border-box;">
-      <!-- Thumbnails will be injected here -->
-    </div>
+<!-- RIGHT: Thumbnails -->
+<button id="toggleGalleryBtn" class="mobile-gallery-toggle">
+📷 Hide Photos
+</button>
+
+<div id="thumbnailPanel"
+     style="flex:1 1 300px; max-height:570px; overflow-y:auto;">
+  <div id="thumbnailGallery"
+       style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;padding:12px 24px; box-sizing:border-box;">
+    <!-- Thumbnails will be injected here -->
   </div>
+</div>
 </div>
 
 
@@ -1986,7 +2014,32 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
     });
   }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+  const btn = document.getElementById("toggleGalleryBtn");
+  const panel = document.getElementById("thumbnailPanel");
+
+  if (!btn || !panel) return;
+
+  btn.addEventListener("click", () => {
+
+    if (panel.style.display === "none") {
+
+      panel.style.display = "block";
+      btn.textContent = "📷 Hide Photos";
+
+    } else {
+
+      panel.style.display = "none";
+      btn.textContent = "📷 Show Photos";
+
+    }
+
+  });
+
+});
+</script>
 
 </body>
 </html>
