@@ -1,0 +1,2741 @@
+{
+  "Abbott's Babbler": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417329/bIofIYR_uy6k8y.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Alpine Swift": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417518/v4KcU17_hfwkyp.jpg",
+    "countries": ["Greece", "Italy"]
+  },
+
+  "American Coot": {
+    "photo": "https://i.imgur.com/vVgalJj.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "American Flamingo": {
+    "photo": "https://i.imgur.com/We9xT7F.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "American Kestrel": {
+    "photo": "https://i.imgur.com/5SSc9bh.jpeg",
+    "countries": ["Aruba", "Curaçao"]
+  },
+
+  "American Oystercatcher": {
+    "photo": "https://i.imgur.com/oKzv79m.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "American Wigeon": {
+    "photo": "https://i.imgur.com/tnXyoht.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Arctic Loon": {
+    "photo": "https://i.imgur.com/jpgrZVm.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Arctic Tern": {
+    "photo": "https://i.imgur.com/xhIrClt.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Ashy Drongo": {
+    "photo": "https://i.imgur.com/RprE64J.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Ashy Minivet": {
+    "photo": "https://i.imgur.com/hXEGfMq.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Ashy Woodswallow": {
+    "photo": "https://i.imgur.com/Yfle011.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Asian Barred Owlet": {
+    "photo": "https://i.imgur.com/YVah7aZ.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Asian Brown Flycatcher": {
+    "photo": "https://i.imgur.com/TLpSuKF.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Asian Fairy-bluebird": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Asian Golden Weaver": {
+    "photo": "https://i.imgur.com/o3hGuWj.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Asian Green Bee-eater": {
+    "photo": "https://i.imgur.com/rinr6Zc.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Asian Koel": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417734/DSC_4770-Edit_jmbla9.jpg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Asian Openbill": {
+    "photo": "https://i.imgur.com/IUM8Eg0.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Asian Palm Swift": {
+    "photo": "https://i.imgur.com/MrKuYfZ.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Asian Tit": {
+    "photo": "https://i.imgur.com/QF0vFsy.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Atlantic Puffin": {
+    "photo": "https://i.imgur.com/WGxlFbr.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Baillon's Crake": {
+    "photo": "https://i.imgur.com/lEVQmlw.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Bananaquit": {
+    "photo": "https://i.imgur.com/j7RJnTD.jpeg",
+    "countries": ["Aruba", "Curaçao"]
+  },
+
+  "Bank Swallow": {
+    "photo": "https://i.imgur.com/KJNy9Jm.jpeg",
+    "countries": ["Bangladesh", "Curaçao", "Estonia", "Netherlands", "Norway"]
+  },
+
+  "Bar-headed Goose": {
+    "photo": "https://i.imgur.com/qny7Yjj.jpeg",
+    "countries": ["Netherlands", "Norway"]
+  },
+
+  "Bar-tailed Godwit": {
+    "photo": "https://i.imgur.com/3j3pCbR.jpeg",
+    "countries": ["Norway", "Sweden"]
+  },
+
+  "Bare-eyed Pigeon": {
+    "photo": "https://i.imgur.com/8IxkDn7.jpeg",
+    "countries": ["Aruba", "Curaçao"]
+  },
+
+  "Barn Swallow": {
+    "photo": "https://i.imgur.com/K5TqgSB.jpeg",
+    "countries": ["Aruba","Belgium","Czech Republic","Denmark","Estonia","Germany","Greece","Netherlands","Norway","Thailand","United Kingdom"]
+  },
+
+  "Barnacle Goose": {
+    "photo": "https://i.imgur.com/rYMIq4b.jpeg",
+    "countries": ["Belgium","Denmark","Finland","Netherlands","Norway","Sweden"]
+  },
+
+  "Baya Weaver": {
+    "photo": "https://i.imgur.com/yyVS2vE.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Bearded Reedling": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Denmark"]
+  },
+
+  "Belted Kingfisher": {
+    "photo": "https://i.imgur.com/NzHlFN3.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Bengal Bushlark": {
+    "photo": "https://i.imgur.com/1C5KFLg.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Black Baza": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Black Drongo": {
+    "photo": "https://i.imgur.com/d4Tituf.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Black Grouse": {
+    "photo": "https://i.imgur.com/vixDqZW.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Black Guillemot": {
+    "photo": "https://i.imgur.com/QZN8uDE.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Black Kite": {
+    "photo": "https://i.imgur.com/dczSzME.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Black Redstart": {
+    "photo": "https://i.imgur.com/EGk0bhA.jpeg",
+    "countries": [ "Netherlands"]
+  },
+
+  "Black Woodpecker": {
+    "photo": "https://i.imgur.com/D4ciu6l.jpeg",
+    "countries": ["Norway", "Sweden"]
+  },
+
+  "Black-bellied Plover": {
+    "photo": "https://i.imgur.com/rAXBOar.jpeg",
+    "countries": ["Aruba","Curaçao","Norway", "Sweden"]
+  },
+
+  "Black-bellied Whistling-Duck": {
+    "photo": "https://i.imgur.com/rOBjw3u.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "Black-collared Starling": {
+    "photo": "https://i.imgur.com/cEVIrjo.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Black-crested Bulbul": {
+    "photo": "https://i.imgur.com/rgEplW5.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Black-crowned Night Heron": {
+    "photo": "https://i.imgur.com/tLxyEGu.jpeg",
+    "countries": ["Aruba", "Bangladesh"]
+  },
+
+  "Black-faced Grassquit": {
+    "photo": "https://i.imgur.com/A7Rts2B.jpeg",
+    "countries": ["Aruba", "Curaçao"]
+  },
+
+  "Black-headed Bulbul": {
+    "photo": "https://i.imgur.com/EcgautQ.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Black-headed Cuckooshrike": {
+    "photo": "https://i.imgur.com/oQBr3O8.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Black-headed Gull": {
+    "photo": "https://i.imgur.com/mQH8kVR.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Latvia","Norway","Netherlands","Sweden","Finland","United Kingdom"]
+  },
+
+  "Black-headed Ibis": {
+    "photo": "https://i.imgur.com/npFZmw7.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Black-hooded Oriole": {
+    "photo": "https://i.imgur.com/geXQV4M.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Black-legged Kittiwake": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Black-naped Monarch": {
+    "photo": "https://i.imgur.com/mb8LAEj.jpeg",
+    "countries": ["Bangladesh", "Thailand"]
+  },
+
+  "Black-naped Oriole": {
+    "photo": "https://i.imgur.com/PNiqQSP.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Black-necked Stilt": {
+    "photo": "https://i.imgur.com/owtNJrU.jpeg",
+    "countries": ["Aruba", "Curaçao"]
+  },
+
+  "Black-rumped Flameback": {
+    "photo": "https://i.imgur.com/tDMGmi9.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Black-tailed Godwit": {
+    "photo": "https://i.imgur.com/Xt2jcb9.jpeg",
+    "countries": ["Bangladesh","Netherlands","Sweden"]
+  },
+
+  "Black-winged Cuckooshrike": {
+    "photo": "https://i.imgur.com/eHiwT0k.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Black-winged Stilt": {
+    "photo": "https://i.imgur.com/WsBsYzl.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Blossom-headed Parakeet": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Blue Whistling-Thrush": {
+    "photo": "https://i.imgur.com/QTNCXvs.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Blue-bearded Bee-eater": {
+    "photo": "https://i.imgur.com/m7MqE9Q.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Blue-crowned Parakeet": {
+    "photo": "https://i.imgur.com/n4dFbCy.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "Blue-tailed Bee-eater": {
+    "photo": "https://i.imgur.com/Ro6A0T8.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Blue-tailed Emerald": {
+    "photo": "https://i.imgur.com/L5ZwvBB.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Blue-throated Barbet": {
+    "photo": "https://i.imgur.com/dNJCmzv.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Blue-throated Flycatcher": {
+    "photo": "https://i.imgur.com/l9fhuFt.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Blue-winged Teal": {
+    "photo": "https://i.imgur.com/mvMfji6.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Bluethroat": {
+    "photo": "https://i.imgur.com/ScarzHR.jpeg",
+    "countries": ["Bangladesh","Denmark","Estonia","Norway"]
+  },
+
+  "Blyth's Paradise-Flycatcher": {
+    "photo": "https://i.imgur.com/P6wY759.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Blyth's Pipit": {
+    "photo": "https://i.imgur.com/ecgunjW.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Blyth's Reed Warbler": {
+    "photo": "https://i.imgur.com/NuVg2AP.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Bohemian Waxwing": {
+    "photo": "https://i.imgur.com/ysIPv2W.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Booted Eagle": {
+    "photo": "https://i.imgur.com/rsRgLgW.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Brahminy Kite": {
+    "photo": "https://i.imgur.com/WSZij6G.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Brambling": {
+    "photo": "https://i.imgur.com/yWFZQ3O.jpeg",
+    "countries": ["Denmark","Netherlands","Norway","Sweden"]
+  },
+
+  "Brant": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Denmark"]
+  },
+
+  "Bronze-winged Jacana": {
+    "photo": "https://i.imgur.com/p0H48UH.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Bronzed Drongo": {
+    "photo": "https://i.imgur.com/0ofpSZq.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Brown Boobook": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Brown Pelican": {
+    "photo": "https://i.imgur.com/aonbYA3.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Brown Shrike": {
+    "photo": "https://i.imgur.com/J6evOqQ.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Brown-crested Flycatcher": {
+    "photo": "https://i.imgur.com/R6r8NBm.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Brown-throated Parakeet": {
+    "photo": "https://i.imgur.com/Pum5PVZ.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Brown-throated Sunbird": {
+    "photo": "https://i.imgur.com/C1CEajj.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Burrowing Owl": {
+    "photo": "https://i.imgur.com/ieBAWxJ.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Cachar Bulbul": {
+    "photo": "https://i.imgur.com/xT6qGWB.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Canada Goose": {
+    "photo": "https://i.imgur.com/MrK4ILT.jpeg",
+    "countries": ["Belgium","Finland","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Carib Grackle": {
+    "photo": "https://i.imgur.com/U0vCvUk.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Caribbean Elaenia": {
+    "photo": "https://i.imgur.com/Q2jfMML.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "Caribbean Martin": {
+    "photo": "https://i.imgur.com/VtvcbSs.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Carrion Crow": {
+    "photo": "https://i.imgur.com/R7Slxrb.jpeg",
+    "countries": ["Denmark","Germany","Netherlands","United Kingdom"]
+  },
+
+  "Caspian Tern": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Netherlands"]
+  },
+
+  "Cetti's Warbler": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Netherlands"]
+  },
+
+  "Changeable Hawk-Eagle": {
+    "photo": "https://i.imgur.com/om93tS9.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Chestnut Munia": {
+    "photo": "https://i.imgur.com/sNY73Qp.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Chestnut-headed Bee-eater": {
+    "photo": "https://i.imgur.com/XLmo4pR.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Chestnut-tailed Starling": {
+    "photo": "https://i.imgur.com/T2xs8py.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Chinese Pond-Heron": {
+    "photo": "https://i.imgur.com/pdVyT7M.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Cinnamon Bittern": {
+    "photo": "https://i.imgur.com/qNwtdio.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Citrine Wagtail": {
+    "photo": "https://i.imgur.com/6XTU9vR.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Clamorous Reed Warbler": {
+    "photo": "https://i.imgur.com/wGRXuAW.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Coal Tit": {
+    "photo": "https://i.imgur.com/GDxzktG.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Collared Flycatcher": {
+    "photo": "https://i.imgur.com/uBd1BcT.jpeg",
+    "countries": ["Greece"]
+  },
+
+  "Collared Kingfisher": {
+    "photo": "https://i.imgur.com/XcqRlRw.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Collared Scops-Owl": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Common Buzzard": {
+    "photo": "https://i.imgur.com/Q9VhFT7.jpeg",
+    "countries": ["Denmark","Estonia","Germany","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Common Chaffinch": {
+    "photo": "https://i.imgur.com/LuShc8S.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Finland","Germany","Latvia","Netherlands","Norway"]
+  },
+
+  "Common Chiffchaff": {
+    "photo": "https://i.imgur.com/8MttBRs.jpeg",
+    "countries": ["Belgium","Denmark","Germany","Netherlands","Norway", "Sweden","United Kingdom"]
+  },
+
+  "Common Crane": {
+    "photo": "https://i.imgur.com/7qRYtGL.jpeg",
+    "countries": ["Denmark","Estonia","Norway"]
+  },
+
+  "Common Cuckoo": {
+    "photo": "https://i.imgur.com/ZCxDgST.jpeg",
+    "countries": ["Denmark","Netherlands","Norway","United Kingdom"]
+  },
+
+  "Common Eider": {
+    "photo": "https://i.imgur.com/LTaUxDH.jpeg",
+    "countries": ["Denmark","Estonia","Norway"]
+  },
+
+  "Common Firecrest": {
+    "photo": "https://i.imgur.com/6h7UIZ9.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Common Flameback": {
+    "photo": "https://i.imgur.com/wf8234S.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Common Gallinule": {
+    "photo": "https://i.imgur.com/XdEALLH.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Common Goldeneye": {
+    "photo": "https://i.imgur.com/0FsAfwJ.jpeg",
+    "countries": ["Denmark","Finland","Norway","Sweden"]
+  },
+
+  "Common Grasshopper Warbler": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Denmark"]
+  },
+
+  "Common Green-Magpie": {
+    "photo": "https://i.imgur.com/kfgRv7j.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Common Greenshank": {
+    "photo": "https://i.imgur.com/0CntOgQ.jpeg",
+    "countries": ["Belgium","Norway"]
+  },
+
+  "Common Ground Dove": {
+    "photo": "https://i.imgur.com/5jKZ2uR.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Common Gull": {
+    "photo": "https://i.imgur.com/frAwvD9.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Latvia","Netherlands","Norway","Sweden"]
+  },
+
+  "Common Hawk-Cuckoo": {
+    "photo": "https://i.imgur.com/YnU9acx.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Common Hill Myna": {
+    "photo": "https://i.imgur.com/sdncWvP.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Common Hoopoe": {
+    "photo": "https://i.imgur.com/TspRD3I.jpeg",
+    "countries": ["Bangladesh","Greece","Italy","Thailand"]
+  },
+
+  "Common Iora": {
+    "photo": "https://i.imgur.com/zveXYvL.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Common Kingfisher": {
+    "photo": "https://i.imgur.com/2TuV6BB.jpeg",
+    "countries": ["Bangladesh","Netherlands"]
+  },
+
+  "Common Loon": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Common Merganser": {
+    "photo": "https://i.imgur.com/8y6e1sL.jpeg",
+    "countries": ["Estonia","Italy","Netherlands","Norway"]
+  },
+
+  "Common Murre": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Common Myna": {
+    "photo": "https://i.imgur.com/WDQtnl8.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Common Pochard": {
+    "photo": "https://i.imgur.com/YQD32tQ.jpeg",
+    "countries": ["Denmark","Finland","Netherlands","Sweden"]
+  },
+
+  "Common Quail": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Common Raven": {
+    "photo": "https://i.imgur.com/HmgOqez.jpeg",
+    "countries": ["Finland","Italy","Norway","Sweden"]
+  },
+
+  "Common Redshank": {
+    "photo": "https://i.imgur.com/tKUvAYN.jpeg",
+    "countries": ["Bangladesh","Belgium","Denmark","Netherlands","Norway"]
+  },
+
+  "Common Redstart": {
+    "photo": "https://i.imgur.com/YDXb9Qc.jpeg",
+    "countries": ["Denmark","Italy","Netherlands","Norway"]
+  },
+
+  "Common Reed Warbler": {
+    "photo": "https://i.imgur.com/T1CGuSV.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Netherlands"]
+  },
+
+  "Common Ringed Plover": {
+    "photo": "https://i.imgur.com/dIvUCK4.jpeg",
+    "countries": ["Denmark","Netherlands","Norway"]
+  },
+
+  "Common Rosefinch": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Denmark"]
+  },
+
+  "Common Sandpiper": {
+    "photo": "https://i.imgur.com/YzzxHUy.jpeg",
+    "countries": ["Bangladesh","Belgium","Denmark","Netherlands","Norway","United Kingdom"]
+  },
+
+  "Common Scoter": {
+    "photo": "https://i.imgur.com/1cNzS5y.jpeg",
+    "countries": ["Denmark","Norway"]
+  },
+
+  "Common Shelduck": {
+    "photo": "https://i.imgur.com/PnyAbMc.jpeg",
+    "countries": ["Denmark","Estonia","Netherlands","Norway"]
+  },
+
+  "Common Snipe": {
+    "photo": "https://i.imgur.com/7zHVvz6.jpeg",
+    "countries": ["Bangladesh","Denmark","Estonia","Netherlands","Norway","Sweden"]
+  },
+
+  "Common Swift": {
+    "photo": "https://i.imgur.com/PyKx8gB.jpeg",
+    "countries": ["Czech Republic","Denmark","Estonia","Germany","Greece","Italy","Norway","Netherlands"]
+  },
+
+  "Common Tailorbird": {
+    "photo": "https://i.imgur.com/Apzavt8.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Common Tern": {
+    "photo": "https://i.imgur.com/f9MWWbt.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Netherlands","Norway","United Kingdom"]
+  },
+
+  "Common Wood-Pigeon": {
+    "photo": "https://i.imgur.com/Qk0vfQb.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Finland","Germany","Italy","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Copper-throated Sunbird": {
+    "photo": "https://i.imgur.com/qTl4p2M.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Coppersmith Barbet": {
+    "photo": "https://i.imgur.com/Jh5qcc9.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Corn Bunting": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Denmark"]
+  },
+
+  "Cotton Pygmy-Goose": {
+    "photo": "https://i.imgur.com/gRbFoth.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Crested Bobwhite": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Curaçao"]
+  },
+
+  "Crested Caracara": {
+    "photo": "https://i.imgur.com/954V6BF.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Crested Goshawk": {
+    "photo": "https://i.imgur.com/wBcduU0.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Crested Serpent-Eagle": {
+    "photo": "https://i.imgur.com/LI7uYOP.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Crested Tit": {
+    "photo": "https://i.imgur.com/zz9SaXx.jpeg",
+    "countries": ["Norway","Sweden"]
+  },
+
+  "Curlew Sandpiper": {
+    "photo": "https://i.imgur.com/5wdud6Z.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Dark-necked Tailorbird": {
+    "photo": "https://i.imgur.com/I1O4wMJ.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Dark-sided Flycatcher": {
+    "photo": "https://i.imgur.com/OKgUDMi.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Delicate Prinia": {
+    "photo": "https://i.imgur.com/TIUVRtB.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Dollarbird": {
+    "photo": "https://i.imgur.com/LCi8ntX.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Dunlin": {
+    "photo": "https://i.imgur.com/sFbaM7M.jpeg",
+    "countries": ["Netherlands","Norway","Sweden"]
+  },
+
+  "Dunnock": {
+    "photo": "https://i.imgur.com/8Vea1ou.jpeg",
+    "countries": ["Denmark","Norway","United Kingdom"]
+  },
+
+  "Dusky Broadbill": {
+    "photo": "https://i.imgur.com/YmAg7dY.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Dusky Warbler": {
+    "photo": "https://i.imgur.com/NFJvufk.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Eared Dove": {
+    "photo": "https://i.imgur.com/jVnZaEa.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Eared Grebe": {
+    "photo": "https://i.imgur.com/1w8j12P.jpeg",
+    "countries": ["Italy"]
+  },
+
+  "Eastern Cattle-Egret": {
+    "photo": "https://i.imgur.com/Y3HF9oU.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Eastern Red-rumped Swallow": {
+    "photo": "https://i.imgur.com/bNDBWHA.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Egyptian Goose": {
+    "photo": "https://i.imgur.com/XY0n42F.jpeg",
+    "countries": ["Netherlands","United Kingdom"]
+  },
+
+  "Eurasian Bittern": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Estonia"]
+  },
+
+  "Eurasian Blackbird": {
+    "photo": "https://i.imgur.com/31XuJQD.jpeg",
+    "countries": ["Belgium","Denmark","Germany","Greece","Italy","Latvia","Netherlands","Norway","Sweden","Estonia","Finland"]
+  },
+
+  "Eurasian Blackcap": {
+    "photo": "https://i.imgur.com/h76plcI.jpeg",
+    "countries": ["Denmark","Germany","Italy","Netherlands","Norway","Estonia"]
+  },
+
+  "Eurasian Blue Tit": {
+    "photo": "https://i.imgur.com/Mn7nw7l.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Finland","Greece","Italy","Latvia","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Eurasian Bullfinch": {
+    "photo": "https://i.imgur.com/tbCRpLK.jpeg",
+    "countries": ["Denmark","Norway","Sweden"]
+  },
+
+  "Eurasian Collared-Dove": {
+    "photo": "https://i.imgur.com/eijaApd.jpeg",
+    "countries": ["Bangladesh","Denmark","Germany","Greece","Italy","Netherlands","United Kingdom"]
+  },
+
+  "Eurasian Coot": {
+    "photo": "https://i.imgur.com/k451t8H.jpeg",
+    "countries": ["Bangladesh","Belgium","Denmark","Finland","Italy","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Eurasian Crag-Martin": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Italy"]
+  },
+
+  "Eurasian Curlew": {
+    "photo": "https://i.imgur.com/Ua5Xwff.jpeg",
+    "countries": ["Belgium","Denmark","Netherlands","Norway"]
+  },
+
+  "Eurasian Goshawk": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Netherlands","Norway","Sweden"]
+  },
+
+  "Eurasian Green Woodpecker": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Germany","Italy","Netherlands"]
+  },
+
+  "Eurasian Hobby": {
+    "photo": "https://i.imgur.com/lg662Kg.jpeg",
+    "countries": ["Netherlands"]
+  },
+
+  "Eurasian Jackdaw": {
+    "photo": "https://i.imgur.com/7HtKHPI.jpeg",
+    "countries": ["Denmark","Finland","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Eurasian Jay": {
+    "photo": "https://i.imgur.com/27p8RMg.jpeg",
+    "countries": ["Belgium","Denmark","Greece","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Eurasian Kestrel": {
+    "photo": "https://i.imgur.com/Sbqd4Vt.jpeg",
+    "countries": ["Bangladesh","Denmark","Germany","Greece","Italy","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Eurasian Linnet": {
+    "photo": "https://i.imgur.com/Vy3TNjm.jpeg",
+    "countries": ["Denmark","Netherlands","Norway"]
+  },
+
+  "Eurasian Magpie": {
+    "photo": "https://i.imgur.com/E7DVmR9.jpeg",
+    "countries": ["Belgium","Denmark","Greece","Italy","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Eurasian Moorhen": {
+    "photo": "https://i.imgur.com/49wJnkO.jpeg",
+    "countries": ["Bangladesh","Denmark","Italy","Netherlands","Norway","United Kingdom"]
+  },
+
+  "Eurasian Nuthatch": {
+    "photo": "https://i.imgur.com/XQy5P1V.jpeg",
+    "countries": ["Denmark","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Eurasian Oystercatcher": {
+    "photo": "https://i.imgur.com/Yesj4c3.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Netherlands","Norway"]
+  },
+
+  "Eurasian Penduline-Tit": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Estonia"]
+  },
+
+  "Eurasian Siskin": {
+    "photo": "https://i.imgur.com/PoaSOvQ.jpeg",
+    "countries": ["Denmark","Estonia","Netherlands","Norway","Sweden"]
+  },
+
+  "Eurasian Skylark": {
+    "photo": "https://i.imgur.com/9z1rIoz.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Norway"]
+  },
+
+  "Eurasian Sparrowhawk": {
+    "photo": "https://i.imgur.com/rHbw2mu.jpeg",
+    "countries": ["Belgium","Denmark","Netherlands","Norway","United Kingdom"]
+  },
+
+  "Eurasian Spoonbill": {
+    "photo": "https://i.imgur.com/xku6EbU.jpeg",
+    "countries": ["Belgium","Denmark","Netherlands"]
+  },
+
+  "Eurasian Three-toed Woodpecker": {
+    "photo": "https://i.imgur.com/VPkNKaO.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Eurasian Tree Sparrow": {
+    "photo": "https://i.imgur.com/noUpQQd.jpeg",
+    "countries": ["Denmark","Estonia","Italy","Netherlands","Norway","Thailand"]
+  },
+
+  "Eurasian Treecreeper": {
+    "photo": "https://i.imgur.com/o970ykl.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Eurasian Whimbrel": {
+    "photo": "https://i.imgur.com/WXpoAux.jpeg",
+    "countries": ["Netherlands","Norway"]
+  },
+
+  "Eurasian Wigeon": {
+    "photo": "https://i.imgur.com/GR6YKVA.jpeg",
+    "countries": ["Denmark","Finland","Netherlands","Norway","Sweden"]
+  },
+
+  "Eurasian Woodcock": {
+    "photo": "https://i.imgur.com/pK3Dy8E.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Eurasian Wren": {
+    "photo": "https://i.imgur.com/4RSHo1d.jpeg",
+    "countries": ["Denmark","Italy","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Eurasian Wryneck": {
+    "photo": "https://i.imgur.com/5tsos7A.jpeg",
+    "countries": ["Bangladesh","Italy"]
+  },
+
+  "European Golden-Plover": {
+    "photo": "https://i.imgur.com/X9or1DC.jpeg",
+    "countries": ["Denmark","Norway"]
+  },
+
+  "European Goldfinch": {
+    "photo": "https://i.imgur.com/9MPGmdQ.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Italy","Netherlands","Norway"]
+  },
+
+  "European Greenfinch": {
+    "photo": "https://i.imgur.com/Zmz4I7f.jpeg",
+    "countries": ["Denmark","Finland","Estonia","Netherlands","Norway","Sweden"]
+  },
+
+  "European Herring Gull": {
+    "photo": "https://i.imgur.com/c5U09LZ.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Finland","Latvia","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "European Honey-buzzard": {
+    "photo": "https://i.imgur.com/QG6B0Om.jpeg",
+    "countries": ["Netherlands"]
+  },
+
+  "European Pied Flycatcher": {
+    "photo": "https://i.imgur.com/FgAba5d.jpeg",
+    "countries": ["Italy","Norway"]
+  },
+
+  "European Robin": {
+    "photo": "https://i.imgur.com/41TNCro.jpeg",
+    "countries": ["Denmark","Finland","Italy","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "European Serin": {
+    "photo": "https://i.imgur.com/tn9Wc0X.jpeg",
+    "countries": ["Italy"]
+  },
+
+  "European Shag": {
+    "photo": "https://i.imgur.com/0Pdr9ZA.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "European Starling": {
+    "photo": "https://i.imgur.com/HfB3Ppc.jpeg",
+    "countries": ["Denmark","Estonia","Latvia","Netherlands","Norway","United Kingdom"]
+  },
+
+  "European Stonechat": {
+    "photo": "https://i.imgur.com/kRUUR36.jpeg",
+    "countries": ["Italy","Netherlands"]
+  },
+
+  "European Turtle-Dove": {
+    "photo": "https://i.imgur.com/FMsWzB1.jpeg",
+    "countries": ["Netherlands","Norway"]
+  },
+
+  "Ferruginous Duck": {
+    "photo": "https://i.imgur.com/UgTRNOw.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Fieldfare": {
+    "photo": "https://i.imgur.com/y7Y9eCx.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Latvia","Netherlands","Norway","Sweden"]
+  },
+
+  "Forest Wagtail": {
+    "photo": "https://i.imgur.com/3hxmV69.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Fulvous-breasted Woodpecker": {
+    "photo": "https://i.imgur.com/4utcEXZ.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Gadwall": {
+    "photo": "https://i.imgur.com/sGscrL8.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Garden Warbler": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Denmark","Estonia","Netherlands","Norway"]
+  },
+
+  "Garganey": {
+    "photo": "https://i.imgur.com/ZXVy47u.jpeg",
+    "countries": ["Bangladesh","Denmark","Italy","Norway"]
+  },
+
+  "Glaucous Gull": {
+    "photo": "https://i.imgur.com/LPRUdVL.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Glossy Ibis": {
+    "photo": "https://i.imgur.com/zFrEsSx.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Goldcrest": {
+    "photo": "https://i.imgur.com/e10n1iD.jpeg",
+    "countries": ["Denmark","Italy","Netherlands","Norway","Sweden"]
+  },
+
+  "Golden Eagle": {
+    "photo": "https://i.imgur.com/Kgjl1B1.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Golden-crested Myna": {
+    "photo": "https://i.imgur.com/rorX8We.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Golden-fronted Leafbird": {
+    "photo": "https://i.imgur.com/6amOLd5.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Golden-headed Cisticola": {
+    "photo": "https://i.imgur.com/IHD3xsU.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Gray Heron": {
+    "photo": "https://i.imgur.com/xSalhOs.jpeg",
+    "countries": ["Bangladesh","Denmark","Estonia","Italy","Netherlands","Norway","Sweden","Thailand","United Kingdom"]
+  },
+
+  "Gray Kingbird": {
+    "photo": "https://i.imgur.com/OiR877S.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Gray Partridge": {
+    "photo": "https://i.imgur.com/iTKqImZ.jpeg",
+    "countries": ["Denmark","Netherlands"]
+  },
+
+  "Gray Wagtail": {
+    "photo": "https://i.imgur.com/gD6hn1L.jpeg",
+    "countries": ["Bangladesh","Italy","Norway"]
+  },
+
+  "Gray-backed Shrike": {
+    "photo": "https://i.imgur.com/590Lo0V.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Gray-eyed Bulbul": {
+    "photo": "https://i.imgur.com/dKZ1OxQ.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Gray-headed Canary-Flycatcher": {
+    "photo": "https://i.imgur.com/UPxNMfj.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Gray-headed Fish-Eagle": {
+    "photo": "https://i.imgur.com/2k9gltJ.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Gray-headed Lapwing": {
+    "photo": "https://i.imgur.com/gbSMCfS.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Gray-headed Swamphen": {
+    "photo": "https://i.imgur.com/T1LSI3p.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Gray-throated Martin": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Graylag Goose": {
+    "photo": "https://i.imgur.com/UesYIXB.jpeg",
+    "countries": ["Belgium","Denmark","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Great Black-backed Gull": {
+    "photo": "https://i.imgur.com/ttHZ4K4.jpeg",
+    "countries": ["Finland","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Great Blue Heron": {
+    "photo": "https://i.imgur.com/zbgvVMW.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Great Cormorant": {
+    "photo": "https://i.imgur.com/Gn8zMBd.jpeg",
+    "countries": ["Bangladesh","Denmark","Estonia","Finland","Italy","Netherlands","Norway","Sweden","Poland","United Kingdom"]
+  },
+
+  "Great Crested Grebe": {
+    "photo": "https://i.imgur.com/bDmgPgX.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Italy","Netherlands","Norway"]
+  },
+
+  "Great Egret": {
+    "photo": "https://i.imgur.com/UesYIXB.jpeg",
+    "countries": ["Aruba","Bangladesh","Curaçao","Netherlands","Sweden","Thailand"]
+  },
+
+  "Great Gray Shrike": {
+    "photo": "https://i.imgur.com/HZBVybx.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Great Hornbill": {
+    "photo": "https://i.imgur.com/bcHBa1T.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Great Myna": {
+    "photo": "https://i.imgur.com/Oyfw1Np.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Great Skua": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Great Snipe": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Great Spotted Woodpecker": {
+    "photo": "https://i.imgur.com/Y0nMkHV.jpeg",
+    "countries": ["Belgium","Denmark","Finland","Netherlands","Norway","Sweden"]
+  },
+
+  "Great Tit": {
+    "photo": "https://i.imgur.com/fG3197p.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Finland","Greece","Italy","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Great-tailed Grackle": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Aruba"]
+  },
+
+  "Greater Coucal": {
+    "photo": "https://i.imgur.com/91US29x.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Greater Flameback": {
+    "photo": "https://i.imgur.com/uLH1oFM.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Greater Painted-Snipe": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Greater Racket-tailed Drongo": {
+    "photo": "https://i.imgur.com/s1R8MTk.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Greater Scaup": {
+    "photo": "https://i.imgur.com/hvU13st.jpeg",
+    "countries": ["Netherlands","Norway","Sweden"]
+  },
+
+  "Greater Spotted Eagle": {
+    "photo": "https://i.imgur.com/9DpXgtq.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Greater White-fronted Goose": {
+    "photo": "https://i.imgur.com/odQvC6g.jpeg",
+    "countries": ["Netherlands"]
+  },
+
+  "Greater Whitethroat": {
+    "photo": "https://i.imgur.com/ejkJXLY.jpeg",
+    "countries": ["Denmark","Estonia","Netherlands","Norway"]
+  },
+
+  "Greater Yellowlegs": {
+    "photo": "https://i.imgur.com/4Cb8o3H.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Greater Yellownape": {
+    "photo": "https://i.imgur.com/5HfdoTd.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Green Heron": {
+    "photo": "https://i.imgur.com/oHoa1KT.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Green Sandpiper": {
+    "photo": "https://i.imgur.com/Gj5xxSP.jpeg",
+    "countries": ["Bangladesh","Belgium","Netherlands","United Kingdom"]
+  },
+
+  "Green-billed Malkoha": {
+    "photo": "https://i.imgur.com/iEENr69.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Green-eared Barbet": {
+    "photo": "https://i.imgur.com/YZ1SLAd.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Green-winged Teal": {
+    "photo": "https://i.imgur.com/CXOimi6.jpeg",
+    "countries": ["Denmark","Netherlands","Norway","Sweden"]
+  },
+
+  "Greenish Warbler": {
+    "photo": "https://i.imgur.com/dh7VL6o.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Groove-billed Ani": {
+    "photo": "https://i.imgur.com/5Vdw6JY.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Hair-crested Drongo": {
+    "photo": "https://i.imgur.com/ygXHI2B.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Hawfinch": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Hazel Grouse": {
+    "photo": "https://i.imgur.com/HLcVeCf.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Heart-spotted Woodpecker": {
+    "photo": "https://i.imgur.com/hX2gF8s.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Hen Harrier": {
+    "photo": "https://i.imgur.com/GPzI5g1.jpeg",
+    "countries": ["Denmark","Norway"]
+  },
+
+  "Hodgson's Hawk-Cuckoo": {
+    "photo": "https://i.imgur.com/GL3J8VP.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Hooded Crow": {
+    "photo": "https://i.imgur.com/kXLcrXo.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Greece","Italy","Latvia","Norway","Sweden"]
+  },
+
+  "Horned Grebe": {
+    "photo": "https://i.imgur.com/2IhuD41.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Horned Lark": {
+    "photo": "https://i.imgur.com/hIJDFTg.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "House Crow": {
+    "photo": "https://i.imgur.com/uMRjE3U.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "House Sparrow": {
+    "photo": "https://i.imgur.com/0MFxrVW.jpeg",
+    "countries": ["Aruba","Curaçao","Bangladesh","Denmark","Estonia","Finland","Germany","Greece","Latvia","Netherlands","Norway","Thailand"]
+  },
+
+  "House Swift": {
+    "photo": "https://i.imgur.com/wns269j.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Hudsonian Godwit": {
+    "photo": "https://i.imgur.com/nJDLq18.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Hudsonian Whimbrel": {
+    "photo": "https://i.imgur.com/WXpoAux.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Iceland Gull": {
+    "photo": "https://i.imgur.com/BqJWwmO.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Icterine Warbler": {
+    "photo": "https://i.imgur.com/2VecVXX.jpeg",
+    "countries": ["Denmark","Estonia","Norway"]
+  },
+
+  "Indian Cormorant": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Indian Cuckoo": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Indian Pied Starling": {
+    "photo": "https://i.imgur.com/o4ENZYa.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Indian Pond-Heron": {
+    "photo": "https://i.imgur.com/aDRgOM8.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Indian Silverbill": {
+    "photo": "https://i.imgur.com/WkKplxY.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Indochinese Roller": {
+    "photo": "https://i.imgur.com/7DvZAmE.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Italian Sparrow": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Italy"]
+  },
+
+  "Japanese Sparrowhawk": {
+    "photo": "https://i.imgur.com/X87aI7a.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Javan Pond-Heron": {
+    "photo": "https://i.imgur.com/AcG1hx7.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Jerdon's Baza": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Jungle Babbler": {
+    "photo": "https://i.imgur.com/gZBDKJa.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Jungle Myna": {
+    "photo": "https://i.imgur.com/YZrFAOj.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Killdeer": {
+    "photo": "https://i.imgur.com/2YR7Suh.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "King Eider": {
+    "photo": "https://i.imgur.com/0eTZGD3.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Lapland Longspur": {
+    "photo": "https://i.imgur.com/hlJIRgh.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Large Scimitar-Babbler": {
+    "photo": "https://i.imgur.com/1mxo6dl.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Large-billed Crow": {
+    "photo": "https://i.imgur.com/IBKOPJO.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Laughing Gull": {
+    "photo": "https://i.imgur.com/ROB09Dx.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Least Sandpiper": {
+    "photo": "https://i.imgur.com/L3VgKVo.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Lesser Black-backed Gull": {
+    "photo": "https://i.imgur.com/ZS5FuOX.jpeg",
+    "countries": ["Aruba","Belgium","Denmark","Netherlands","Norway"]
+  },
+
+  "Lesser Necklaced Laughingthrush": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Lesser Racket-tailed Drongo": {
+    "photo": "https://i.imgur.com/XbfeFnH.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Lesser Scaup": {
+    "photo": "https://i.imgur.com/B0kyO7m.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Lesser Spotted Woodpecker": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Lesser Whistling-Duck": {
+    "photo": "https://i.imgur.com/4rHcBR6.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Lesser Whitethroat": {
+    "photo": "https://i.imgur.com/MUSkXAP.jpeg",
+    "countries": ["Denmark","Italy","Norway"]
+  },
+
+  "Lesser Yellowlegs": {
+    "photo": "https://i.imgur.com/6aRgx9H.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Lineated Barbet": {
+    "photo": "https://i.imgur.com/PtKHjH2.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Little Blue Heron": {
+    "photo": "https://i.imgur.com/WLGDju5.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Little Cormorant": {
+    "photo": "https://i.imgur.com/jQPlxuq.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Little Egret": {
+    "photo": "https://i.imgur.com/f4cFhDP.jpeg",
+    "countries": ["Bangladesh","Belgium","Italy","Netherlands","Thailand"]
+  },
+
+  "Little Grebe": {
+    "photo": "https://i.imgur.com/dE8KZMk.jpeg",
+    "countries": ["Italy","Netherlands","Sweden"]
+  },
+
+  "Little Owl": {
+    "photo": "https://i.imgur.com/84nBdUb.jpeg",
+    "countries": ["Netherlands"]
+  },
+
+  "Little Ringed Plover": {
+    "photo": "https://i.imgur.com/kr9Vfo0.jpeg",
+    "countries": ["Bangladesh","Netherlands","Norway"]
+  },
+
+  "Little Spiderhunter": {
+    "photo": "https://i.imgur.com/p2tEVlr.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Little Stint": {
+    "photo": "https://i.imgur.com/tJqb2Gh.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Little Tern": {
+    "photo": "https://i.imgur.com/s8hehgL.jpeg",
+    "countries": ["Netherlands"]
+  },
+
+  "Long-eared Owl": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Long-tailed Duck": {
+    "photo": "https://i.imgur.com/G0ShAeV.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Long-tailed Jaeger": {
+    "photo": "https://i.imgur.com/MJDXapw.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Long-tailed Shrike": {
+    "photo": "https://i.imgur.com/B4ybD0y.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Long-tailed Tit": {
+    "photo": "https://i.imgur.com/ImoqwK2.jpeg",
+    "countries": ["Denmark","Italy","Netherlands","Norway","United Kingdom"]
+  },
+
+  "Magnificent Frigatebird": {
+    "photo": "https://i.imgur.com/VeOqTvD.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Malaysian Pied-Fantail": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Mallard": {
+    "photo": "https://i.imgur.com/t8yVlmD.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Italy","Latvia","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Mangrove Yellow Warbler": {
+    "photo": "https://i.imgur.com/8cxMcWU.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Marsh Tit": {
+    "photo": "https://i.imgur.com/vNBzi66.jpeg",
+    "countries": ["Netherlands","Norway"]
+  },
+
+  "Marsh Warbler": {
+    "photo": "https://i.imgur.com/B2OtsNH.jpeg",
+    "countries": ["Denmark"]
+  },
+
+  "Meadow Pipit": {
+    "photo": "https://i.imgur.com/iY1xh9G.jpeg",
+    "countries": ["Denmark","Netherlands","Norway","Sweden"]
+  },
+
+  "Medium Egret": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Merlin": {
+    "photo": "https://i.imgur.com/oWUboZf.jpeg",
+    "countries": ["Aruba","Norway"]
+  },
+
+  "Middle Spotted Woodpecker": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Netherlands"]
+  },
+
+  "Mistle Thrush": {
+    "photo": "https://i.imgur.com/1j4iL2B.jpeg",
+    "countries": ["Denmark","Netherlands"]
+  },
+
+  "Monk Parakeet": {
+    "photo": "https://i.imgur.com/Eugx69Z.jpeg",
+    "countries": ["Greece"]
+  },
+
+  "Mountain Hawk-Eagle": {
+    "photo": "https://i.imgur.com/JCqK9ND.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Mountain Imperial-Pigeon": {
+    "photo": "https://i.imgur.com/ZUy44hD.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Moustached Barbet": {
+    "photo": "https://i.imgur.com/vtsz9Fz.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Mute Swan": {
+    "photo": "https://i.imgur.com/0BYkM0I.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Italy","Netherlands","Norway","Sweden","United Kingdom","Poland"]
+  },
+
+  "Neotropic Cormorant": {
+    "photo": "https://i.imgur.com/XG4wFv7.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Northern Gannet": {
+    "photo": "https://i.imgur.com/WIU7RiA.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Northern Lapwing": {
+    "photo": "https://i.imgur.com/e4WIpj5.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Netherlands","Norway","United Kingdom"]
+  },
+
+  "Northern Nutcracker": {
+    "photo": "https://i.imgur.com/yCdlMXF.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Northern Parula": {
+    "photo": "https://i.imgur.com/3IQnSZX.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Northern Pintail": {
+    "photo": "https://i.imgur.com/DyNdlPz.jpeg",
+    "countries": ["Denmark","Norway","Sweden"]
+  },
+
+  "Northern Scrub-Flycatcher": {
+    "photo": "https://i.imgur.com/bAceyjm.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Northern Shoveler": {
+    "photo": "https://i.imgur.com/1375bK7.jpeg",
+    "countries": ["Denmark","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Northern Waterthrush": {
+    "photo": "https://i.imgur.com/DjxXnJt.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Northern Wheatear": {
+    "photo": "https://i.imgur.com/NyyNYWk.jpeg",
+    "countries": ["Denmark","Netherlands","Norway"]
+  },
+
+  "Northern Yellow Warbler": {
+    "photo": "https://i.imgur.com/MW6Dvba.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Ochraceous Bulbul": {
+    "photo": "https://i.imgur.com/hIxGEi6.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Olive-backed Pipit": {
+    "photo": "https://i.imgur.com/ULp545C.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Oriental Darter": {
+    "photo": "https://i.imgur.com/uOMgaLj.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Oriental Honey-buzzard": {
+    "photo": "https://i.imgur.com/eOGnBC6.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Oriental Magpie-Robin": {
+    "photo": "https://i.imgur.com/IgVB6tH.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Oriental Pied-Hornbill": {
+    "photo": "https://i.imgur.com/4wvjYJu.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Ornate Sunbird": {
+    "photo": "https://i.imgur.com/ltWimTO.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Osprey": {
+    "photo": "https://i.imgur.com/1vYsTnl.jpeg",
+    "countries": ["Aruba","Curaçao","Bangladesh","Denmark"]
+  },
+
+  "Pacific Reef-Heron": {
+    "photo": "https://i.imgur.com/SSzFllT.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Pacific Swallow": {
+    "photo": "https://i.imgur.com/lfVdK7f.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Paddyfield Pipit": {
+    "photo": "https://i.imgur.com/9oanoCy.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Pale-billed Flowerpecker": {
+    "photo": "https://i.imgur.com/9oanoCy.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Pale-chinned Flycatcher": {
+    "photo": "https://i.imgur.com/DEHgEix.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Pallas's Fish-Eagle": {
+    "photo": "https://i.imgur.com/w4zisea.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Pallid Swift": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Greece"]
+  },
+
+  "Parasitic Jaeger": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Parrot Crossbill": {
+    "photo": "https://i.imgur.com/TerQilM.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Peregrine Falcon": {
+    "photo": "https://i.imgur.com/gROYhhY.jpeg",
+    "countries": ["Aruba","Curaçao","Bangladesh","Netherlands","Norway"]
+  },
+
+  "Pied Avocet": {
+    "photo": "https://i.imgur.com/qA21cnc.jpeg",
+    "countries": ["Denmark","Netherlands"]
+  },
+
+  "Pied Kingfisher": {
+    "photo": "https://i.imgur.com/yfP8wVs.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Pied-billed Grebe": {
+    "photo": "https://i.imgur.com/4mauvwV.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Pin-striped Tit-Babbler": {
+    "photo": "https://i.imgur.com/ZWo8BiY.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Pine Grosbeak": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Pink-footed Goose": {
+    "photo": "https://i.imgur.com/gJEkzJy.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Pink-necked Green-Pigeon": {
+    "photo": "https://i.imgur.com/vjDtuGQ.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Plain Prinia": {
+    "photo": "https://i.imgur.com/N6xuSQI.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Plain-backed Sparrow": {
+    "photo": "https://i.imgur.com/REJmuoL.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Plaintive Cuckoo": {
+    "photo": "https://i.imgur.com/00WFmCe.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Prairie Warbler": {
+    "photo": "https://i.imgur.com/ia5EK9v.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Puff-throated Babbler": {
+    "photo": "https://i.imgur.com/DJZJkDP.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Puff-throated Bulbul": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Purple Sandpiper": {
+    "photo": "https://i.imgur.com/bX7uX3u.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Purple-rumped Sunbird": {
+    "photo": "https://i.imgur.com/T4orKEp.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Rain Quail": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Razorbill": {
+    "photo": "https://i.imgur.com/T32uGmf.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Red Collared-Dove": {
+    "photo": "https://i.imgur.com/LNcdxq6.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Red Crossbill": {
+    "photo": "https://i.imgur.com/0vb5rw4.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Red Junglefowl": {
+    "photo": "https://i.imgur.com/0A91pEf.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Red Kite": {
+    "photo": "https://i.imgur.com/oT80GM4.jpeg",
+    "countries": ["Germany","Sweden","United Kingdom"]
+  },
+
+  "Red Knot": {
+    "photo": "https://i.imgur.com/F7FLTxs.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Red-backed Shrike": {
+    "photo": "https://i.imgur.com/aldXvkU.jpeg",
+    "countries": ["Netherlands"]
+  },
+
+  "Red-breasted Merganser": {
+    "photo": "https://i.imgur.com/0oqqxTF.jpeg",
+    "countries": ["Denmark","Estonia","Norway"]
+  },
+
+  "Red-breasted Parakeet": {
+    "photo": "https://i.imgur.com/ZSvnujy.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Red-eyed Vireo": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Curaçao"]
+  },
+
+  "Red-necked Grebe": {
+    "photo": "https://i.imgur.com/GgjDfVW.jpeg",
+    "countries": ["Denmark","Netherlands"]
+  },
+
+  "Red-necked Phalarope": {
+    "photo": "https://i.imgur.com/0BYkM0I.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Red-throated Loon": {
+    "photo": "https://i.imgur.com/LDSSuXg.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Red-vented Bulbul": {
+    "photo": "https://i.imgur.com/HPJ1XcL.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Red-wattled Lapwing": {
+    "photo": "https://i.imgur.com/VAEBLaG.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Red-whiskered Bulbul": {
+    "photo": "https://i.imgur.com/uVqBNTf.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Redpoll": {
+    "photo": "https://i.imgur.com/KO6tIVa.jpeg",
+    "countries": ["Denmark","Estonia","Norway"]
+  },
+
+  "Redwing": {
+    "photo": "https://i.imgur.com/MI1Jq4I.jpeg",
+    "countries": ["Denmark","Norway","Netherlands","Sweden"]
+  },
+
+  "Reed Bunting": {
+    "photo": "https://i.imgur.com/fEW0ZzM.jpeg",
+    "countries": ["Denmark","Estonia","Netherlands","Norway"]
+  },
+
+  "Richard's Pipit": {
+    "photo": "https://i.imgur.com/bgf6ddC.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Ring Ouzel": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Ring-necked Pheasant": {
+    "photo": "https://i.imgur.com/RQTVaxy.jpeg",
+    "countries": ["Denmark","Italy","Netherlands"]
+  },
+
+  "River Lapwing": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Rock Pigeon": {
+    "photo": "https://i.imgur.com/Yvbsxzv.jpeg",
+    "countries": ["Aruba","Curaçao","Bangladesh","Denmark","Estonia","Finland","Greece","Italy","Latvia","Netherlands","Norway","Poland","Sweden","Thailand","United Kingdom"]
+  },
+
+  "Rock Pipit": {
+    "photo": "https://i.imgur.com/Udc26cB.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Rook": {
+    "photo": "https://i.imgur.com/RevHlUn.jpeg",
+    "countries": ["Denmark","Norway"]
+  },
+
+  "Rose-ringed Parakeet": {
+    "photo": "https://i.imgur.com/dMTZBJr.jpeg",
+    "countries": ["Bangladesh","Greece","Italy","Netherlands","United Kingdom"]
+  },
+
+  "Roseate Spoonbill": {
+    "photo": "https://i.imgur.com/84261Jo.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Ross's Goose": {
+    "photo": "https://i.imgur.com/ZuXDqBA.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Rosy Minivet": {
+    "photo": "https://i.imgur.com/gVnMrD9.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Rosy Pipit": {
+    "photo": "https://i.imgur.com/u9mwpuO.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Rough-legged Hawk": {
+    "photo": "https://i.imgur.com/0iVqw0C.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Royal Tern": {
+    "photo": "https://i.imgur.com/aeX5V0e.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Ruby-cheeked Sunbird": {
+    "photo": "https://i.imgur.com/XypYDuu.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Ruby-topaz Hummingbird": {
+    "photo": "https://i.imgur.com/rcQUBL8.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Ruddy Turnstone": {
+    "photo": "https://i.imgur.com/0jDqBCb.jpeg",
+    "countries": ["Aruba","Curaçao","Norway"]
+  },
+
+  "Ruddy-breasted Crake": {
+    "photo": "https://i.imgur.com/MNYm5Bj.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Ruff": {
+    "photo": "https://i.imgur.com/b1W1XyG.jpeg",
+    "countries": ["Netherlands","Norway"]
+  },
+
+  "Rufous Treepie": {
+    "photo": "https://i.imgur.com/IARypXo.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Rufous Woodpecker": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Rufous-bellied Niltava": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Rufous-collared Sparrow": {
+    "photo": "https://i.imgur.com/Y25MydX.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "Rufous-gorgeted Flycatcher": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Rufous-necked Laughingthrush": {
+    "photo": "https://i.imgur.com/eMD8cU9.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Saffron Finch": {
+    "photo": "https://i.imgur.com/cchTb90.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "Sanderling": {
+    "photo": "https://i.imgur.com/6VzuY2O.jpeg",
+    "countries": ["Aruba","Norway"]
+  },
+
+  "Sandwich Tern": {
+    "photo": "https://i.imgur.com/TRlrMPm.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Sardinian Warbler": {
+    "photo": "https://i.imgur.com/kcJcZTz.jpeg",
+    "countries": ["Greece"]
+  },
+
+  "Savi's Warbler": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Netherlands"]
+  },
+
+  "Scaly-breasted Munia": {
+    "photo": "https://i.imgur.com/JGIQHNF.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Scaly-naped Pigeon": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Curaçao"]
+  },
+
+  "Scarlet Minivet": {
+    "photo": "https://i.imgur.com/6r4BiKB.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Scarlet-backed Flowerpecker": {
+    "photo": "https://i.imgur.com/bKQ3mKJ.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Sedge Warbler": {
+    "photo": "https://i.imgur.com/pZwplXb.jpeg",
+    "countries": ["Denmark","Estonia","Netherlands","Norway"]
+  },
+
+  "Shikra": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Shiny Cowbird": {
+    "photo": "https://i.imgur.com/6r4BiKB.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Short-billed Dowitcher": {
+    "photo": "https://i.imgur.com/nQmtuCm.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "Short-eared Owl": {
+    "photo": "https://i.imgur.com/Is3hmOx.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Short-toed Snake-Eagle": {
+    "photo": "https://i.imgur.com/zAu7Y4i.jpeg",
+    "countries": ["Italy"]
+  },
+
+  "Short-toed Treecreeper": {
+    "photo": "https://i.imgur.com/eRzlQ53.jpeg",
+    "countries": ["Denmark","Germany","Netherlands"]
+  },
+
+  "Siamese Pied Starling": {
+    "photo": "https://i.imgur.com/1cZSpnv.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Siberian Blue Robin": {
+    "photo": "https://i.imgur.com/pHpf1Z4.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Siberian Jay": {
+    "photo": "https://i.imgur.com/ercmpRj.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Siberian Rubythroat": {
+    "photo": "https://i.imgur.com/ldgPpqc.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Siberian Stonechat": {
+    "photo": "https://i.imgur.com/j1KK2fW.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Silver-backed Needletail": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Small Minivet": {
+    "photo": "https://i.imgur.com/EAPfesi.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Smew": {
+    "photo": "https://i.imgur.com/uipT0a0.jpeg",
+    "countries": ["Denmark","Norway"]
+  },
+
+  "Snowy Egret": {
+    "photo": "https://i.imgur.com/nZuJFGk.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Solitary Sandpiper": {
+    "photo": "https://i.imgur.com/6riR7Rs.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Song Thrush": {
+    "photo": "https://i.imgur.com/f7fKGgX.jpeg",
+    "countries": ["Denmark","Finland","Netherlands","Norway"]
+  },
+
+  "Southern Lapwing": {
+    "photo": "https://i.imgur.com/1R260X2.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "Spotted Crake": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Spotted Dove": {
+    "photo": "https://i.imgur.com/f3pYP3g.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Spotted Flycatcher": {
+    "photo": "https://i.imgur.com/uHgOjAj.jpeg",
+    "countries": ["Denmark","Estonia","Netherlands","Norway"]
+  },
+
+  "Spotted Owlet": {
+    "photo": "https://i.imgur.com/ysZPfut.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Spotted Redshank": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Spotted Sandpiper": {
+    "photo": "https://i.imgur.com/COnDvZi.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Stejneger's Scoter": {
+    "photo": "https://i.imgur.com/JVvqXhc.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Stock Dove": {
+    "photo": "https://i.imgur.com/eRY392m.jpeg",
+    "countries": ["Belgium","Netherlands","United Kingdom"]
+  },
+
+  "Stork-billed Kingfisher": {
+    "photo": "https://i.imgur.com/xobgeRH.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Streak-eared Bulbul": {
+    "photo": "https://i.imgur.com/sX8r5sN.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Striated Babbler": {
+    "photo": "https://i.imgur.com/53MStxr.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Striated Grassbird": {
+    "photo": "https://i.imgur.com/ybIpvNo.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Little Heron": {
+    "photo": "https://i.imgur.com/TdRzOB7.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Taiga Bean-Goose": {
+    "photo": "https://i.imgur.com/A6zjIYY.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Taiga Flycatcher": {
+    "photo": "https://i.imgur.com/kSmJHtL.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "Tawny Owl": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Temminck's Stint": {
+    "photo": "https://i.imgur.com/BBSCo7F.jpeg",
+    "countries": ["Bangladesh","Norway"]
+  },
+
+  "Thick-billed Green-Pigeon": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "Thick-billed Warbler": {
+    "photo": "https://i.imgur.com/iGVG8fh.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Thrush Nightingale": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Denmark"]
+  },
+
+  "Tree Pipit": {
+    "photo": "https://i.imgur.com/KH22l2g.jpeg",
+    "countries": ["Greece","Netherlands","Norway"]
+  },
+
+  "Tricolored Heron": {
+    "photo": "https://i.imgur.com/dS4UVnO.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Tricolored Munia": {
+    "photo": "https://i.imgur.com/ToS53cZ.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Tropical Mockingbird": {
+    "photo": "https://i.imgur.com/ZWPC4fa.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Tufted Duck": {
+    "photo": "https://i.imgur.com/bpjQllO.jpeg",
+    "countries": ["Denmark","Estonia","Finland","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "Tundra Bean-Goose": {
+    "photo": "https://i.imgur.com/oT6Vb7j.jpeg",
+    "countries": ["Netherlands"]
+  },
+
+  "Twite": {
+    "photo": "https://i.imgur.com/VztQFDy.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Two-barred Warbler": {
+    "photo": "https://i.imgur.com/RVPYXUL.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Van Hasselt's Sunbird": {
+    "photo": "https://i.imgur.com/u9WYZBX.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Velvet Scoter": {
+    "photo": "https://i.imgur.com/82bQdPH.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Venezuelan Troupial": {
+    "photo": "https://i.imgur.com/boIRjlT.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Verditer Flycatcher": {
+    "photo": "https://i.imgur.com/LbaLpbH.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Vernal Hanging-Parrot": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Vinous-breasted Myna": {
+    "photo": "https://i.imgur.com/2uApOOU.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Water Rail": {
+    "photo": "https://i.imgur.com/y6bF3mr.jpeg",
+    "countries": ["Denmark","Netherlands","Norway"]
+  },
+
+  "Western Cattle-Egret": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Curaçao"]
+  },
+
+  "Western House-Martin": {
+    "photo": "https://i.imgur.com/S4jcT4K.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Germany","Italy","Netherlands","Norway"]
+  },
+
+  "Western Marsh Harrier": {
+    "photo": "https://i.imgur.com/2uj92Qc.jpeg",
+    "countries": ["Denmark","Italy","Netherlands","Norway"]
+  },
+
+  "Western Yellow Wagtail": {
+    "photo": "https://i.imgur.com/3UxgiLE.jpeg",
+    "countries": ["Estonia","Italy","Netherlands","Norway"]
+  },
+
+  "Whinchat": {
+    "photo": "https://i.imgur.com/mpZQ8hj.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Whiskered Tern": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "White Stork": {
+    "photo": "https://i.imgur.com/RkbxLPj.jpeg",
+    "countries": ["Belgium","Estonia","Italy","Netherlands"]
+  },
+
+  "White Wagtail": {
+    "photo": "https://i.imgur.com/ODNEduu.jpeg",
+    "countries": ["Belgium","Denmark","Estonia","Finland","Italy","Latvia","Netherlands","Norway","Sweden","United Kingdom"]
+  },
+
+  "White-bellied Sea-Eagle": {
+    "photo": "https://i.imgur.com/WQeIR0I.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "White-breasted Waterhen": {
+    "photo": "https://i.imgur.com/6gNmmcS.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "White-cheeked Pintail": {
+    "photo": "https://i.imgur.com/JcPh6Y8.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "White-crested Laughingthrush": {
+    "photo": "https://i.imgur.com/9AqJvec.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "White-eyed Parakeet": {
+    "photo": "https://i.imgur.com/2H9x4kh.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "White-nest Swiftlet": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Thailand"]
+  },
+
+  "White-rumped Munia": {
+    "photo": "https://i.imgur.com/poRd96m.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "White-rumped Shama": {
+    "photo": "https://i.imgur.com/xvVKa2d.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "White-tailed Eagle": {
+    "photo": "https://i.imgur.com/WNcEz5M.jpeg",
+    "countries": ["Denmark","Netherlands","Norway"]
+  },
+
+  "White-tailed Hawk": {
+    "photo": "https://i.imgur.com/nTrwpl0.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "White-tailed Robin": {
+    "photo": "https://i.imgur.com/KBIHAsm.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "White-throated Bulbul": {
+    "photo": "https://i.imgur.com/oi7NKeD.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "White-throated Dipper": {
+    "photo": "https://i.imgur.com/I2lZfZM.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "White-throated Fantail": {
+    "photo": "https://i.imgur.com/mBwLzqT.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "White-throated Kingfisher": {
+    "photo": "https://i.imgur.com/scoTOTI.jpeg",
+    "countries": ["Bangladesh","Thailand"]
+  },
+
+  "White-tipped Dove": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "White-winged Crossbill": {
+    "photo": "https://i.imgur.com/4evdTCh.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Whooper Swan": {
+    "photo": "https://i.imgur.com/mTsJZBf.jpeg",
+    "countries": ["Finland","Norway"]
+  },
+
+  "Willet": {
+    "photo": "https://i.imgur.com/Gz3RD9Y.jpeg",
+    "countries": ["Curaçao"]
+  },
+
+  "Willow Ptarmigan": {
+    "photo": "https://i.imgur.com/NgXWxvg.jpeg",
+    "countries": ["Norway"]
+  },
+
+  "Willow Tit": {
+    "photo": "https://i.imgur.com/K4iTHSK.jpeg",
+    "countries": ["Norway","Sweden"]
+  },
+
+  "Willow Warbler": {
+    "photo": "https://i.imgur.com/u3TBZHM.jpeg",
+    "countries": ["Denmark","Estonia","Italy","Netherlands","Norway","Sweden"]
+  },
+
+  "Wood Lark": {
+    "photo": "https://i.imgur.com/5ZoohcN.jpeg",
+    "countries": ["Netherlands"]
+  },
+
+  "Wood Sandpiper": {
+    "photo": "https://i.imgur.com/bK2Caf7.jpeg",
+    "countries": ["Bangladesh","Norway"]
+  },
+
+  "Wood Warbler": {
+    "photo": "https://i.imgur.com/WbXaDYH.jpeg",
+    "countries": ["Greece","Norway"]
+  },
+
+  "Wreathed Hornbill": {
+    "photo": "https://i.imgur.com/j9Kkvjj.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Yellow Oriole": {
+    "photo": "https://i.imgur.com/GUM22N8.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Yellow-billed Loon": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Norway"]
+  },
+
+  "Yellow-breasted Bunting": {
+    "photo": "https://i.imgur.com/QO3Mupk.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Yellow-browed Warbler": {
+    "photo": "https://i.imgur.com/n5GDlXr.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Yellow-crowned Night Heron": {
+    "photo": "https://i.imgur.com/RWWDPfu.jpeg",
+    "countries": ["Aruba","Curaçao"]
+  },
+
+  "Yellow-footed Green-Pigeon": {
+    "photo": "https://i.imgur.com/eX6XMyc.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Yellow-legged Gull": {
+    "photo": "https://i.imgur.com/vL7r5dR.jpeg",
+    "countries": ["Greece","Italy"]
+  },
+
+  "Yellow-vented Bulbul": {
+    "photo": "https://i.imgur.com/rfARI6K.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Yellow-vented Warbler": {
+    "photo": "https://i.imgur.com/Y34neLA.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Yellow-wattled Lapwing": {
+    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Yellowhammer": {
+    "photo": "https://i.imgur.com/5Ehw5B0.jpeg",
+    "countries": ["Denmark","Finland","Germany","Norway"]
+  },
+
+  "Zebra Dove": {
+    "photo": "https://i.imgur.com/dvkUler.jpeg",
+    "countries": ["Thailand"]
+  },
+
+  "Zitting Cisticola": {
+    "photo": "https://i.imgur.com/qcg1o7W.jpeg",
+    "countries": ["Bangladesh"]
+  },
+
+  "Muscovy Duck": {
+    "photo": "https://i.imgur.com/JcPh6Y8.jpeg",
+    "countries": ["Aruba"]
+  },
+
+  "Barnacle x Canada Goose (hybrid)": {
+    "photo": "https://i.imgur.com/hByJPlZ.jpeg",
+    "countries": ["Netherlands"]
+  },
+  
+"Graylag x Canada Goose (hybrid)": {
+  "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788521251/Designer_qslnqv.jpg",
+   "countries": ["Netherlands"]
+    },
+  
+  "European Herring x Glaucous Gull (hybrid)": {
+    "photo": "https://i.imgur.com/rP9W1JZ.jpeg",
+    "countries": ["Norway"]
+  }
+}
