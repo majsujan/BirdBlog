@@ -16,526 +16,396 @@
 
   <!-- Custom Styles -->
   <style>
-    /* ========== Global Styles ========== */
-    body {
-      margin: 0;
-      font-family: 'Lato', sans-serif;
-      background-color: #aad3df;
-      color: #333;
-    }
+	  
+/* ========== Global Styles ========== */
 
+:root { --page-max-width: 1632px; --ebird-blue: #385b75; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { min-height: 100%; margin: 0; background-color: #ffffff; }
+
+body { min-height: 100vh; font-family: 'Lato', sans-serif; color: #333; }
+
+.site-page { width: 100%; max-width: var(--page-max-width); min-height: 100vh; margin: 0 auto; background-color: #ffffff; box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.23); }
+	  
     /* ========== Header ========== */
-    header {
-      background: #5F8F5E;
-      color: white;
-      padding: 10px 20px;
-      text-align: center;
-    }
+    header { background: #5F8F5E; color: white; padding: 10px 20px; text-align: center; position: relative; }
+	
+	header h1 { font-size: 36px; margin: 8px 0; }
+	  
+    header h2 { font-size: 20px; margin: 8px 0; }
+	  
+    nav { background: #2c6e49; display: flex; justify-content: center; padding: 10px 0; }
+	  
+    nav ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+	  
+    nav li { color: white; font-weight: 600; }
 
-    header h1 {
-      font-size: 36px;
-      margin: 8px 0;
-    }
-
-    header h2 {
-      font-size: 20px;
-      margin: 8px 0;
-    }
-
-    /* ========== Navigation ========== */
-    nav {
-      background: #2c6e49;
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
-    }
-
-    nav ul {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav li {
-      color: white;
-      font-weight: 600;
-    }
-
-    /* ========== Info Banner ========== */
-    #info {
-      text-align: center;
-      padding: 10px;
-      font-size: 16px;
-      background: #f6f6f6;
-      border-top: 1px solid #e6e6e6;
-      border-bottom: 1px solid #e6e6e6;
-    }
-
-    
-/* ========== Map ========== */
-#map {
-  height: 60vh;          /* Use viewport height for responsiveness; adjust if you prefer fixed px */
-  min-height: 500px;     /* Ensures a minimum size on large screens */
-  width: 100%;
-  /* IMPORTANT: remove max-width to avoid squeezing */
-  /* max-width: none; */  /* (Ensure you do NOT have max-width:1050px elsewhere) */
-  margin: 0;
-border: 0;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-
-    /* ========== Species Filter Panel ========== */
-    #species-filter {
-      max-width: 95%;
-      margin: 20px auto 30px;
-      padding: 16px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
-
-    #speciesList h4 {
-      margin: 10px 0;
-font-size:16px;
-    }
-
-    #speciesList ul {
-      margin: 8px 0 0;
-font-size:14px;
-    }
-
+	  
     /* ========== Footer ========== */
-    footer {
-      background: #1d3557;
-      color: white;
-      text-align: center;
-      padding: 16px;
-      margin-top: 20px;
-    }
+  footer { width: 100%; margin: 0; padding: 16px; background: var(--ebird-blue); color: #ffffff; text-align: center; }
+  footer p { margin: 0;}
+	  
+    /* ========== Info Banner ========== */
+    #info { text-align: center; padding: 10px; font-size: 16px; background: #f6f6f6; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
 
-    /* ========== Legend ========== */
-    .legend {
-      background: white;
-      padding: 10px 12px;
-      line-height: 1.2;
-      color: #333;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      border: 1px solid #ddd;
-    }
+	  
+    /* ========== Species Filter Panel ========== */
+    #species-filter { max-width: 95%; margin: 20px auto 30px; padding: 16px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
 
-    .legend .scale {
-      background: linear-gradient(90deg,
-        rgb(255,255,0) 0%,
-        rgb(255,220,0) 15%,
-        rgb(255,180,0) 30%,
-        rgb(255,140,0) 50%,
-        rgb(255,100,0) 70%,
-        rgb(255,60,0) 85%,
-        rgb(255,0,0) 100%);
-      width: 100px;
-      height: 12px;
-      border-radius: 8px;
-      margin: 6px 0 4px;
-    }
+    #speciesList h4 { margin: 10px 0; font-size:16px; }
 
-    .legend .labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #444;
-    }
+    #speciesList ul { margin: 8px 0 0; font-size:14px; }
 
-    .legend-container {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+	  
+    /* ========== World Map Explorer ========== */
+#mainPanel { position: relative; width: 100%; margin: 0; padding: 0; overflow: hidden; }
 
-    .scale {
-      width: 100px;
-      height: 10px;
-      background: linear-gradient(to right, #fef0d9, #fd8d3c, #d7301f);
-      border-radius: 5px;
-    }
+#infoPanel { position: absolute; left: 0; top: 0; width: 320px; height: 60vh; min-height: 500px; z-index: 1000; padding: 0; box-sizing: border-box; overflow: hidden; transform: translateX(calc(-100% - 20px)); opacity: 0; visibility: hidden; pointer-events: none; transition: transform 0.3s ease, opacity 0.2s ease, visibility 0s linear 0.3s; }
 
-    .legend-label {
-      font-size: 12px;
-      color: #333;
-    }
+#infoPanel.open { transform: translateX(0); opacity: 1; visibility: visible; pointer-events: auto; transition: transform 0.3s ease, opacity 0.2s ease, visibility 0s; }
 
-    /* ========== Layout Panels ========== */
+#mapContainer { position: relative; width: 100%; margin: 0; padding: 0; }
 
 
+/* ========== Explore Section ========== */
 
-#mainPanel {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
+.explore-banner { width: 100%; margin: 0; padding: 0; background: #5F8F5E; }
+
+.explore-inner { max-width: 1600px; margin: 0 auto; padding: 10px; }
+
+.explore-title { color: white; text-align: center; margin: 0; font-size: 1.2rem; font-weight: 700; }
+
+.explore-ticker { overflow: hidden; white-space: nowrap; margin-top: 6px; color: white; font-size: 1.05rem; }
+
+.explore-ticker-content { display: inline-block; padding-left: 20%; animation: exploreTicker 80s linear infinite; font-size: 1rem; font-weight: 400; white-space: nowrap; line-height: 1.4; }
+.ticker-flag { width: 20px; height: 15px; vertical-align: middle; margin-left: 12px; margin-right: 4px; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+	  
+@keyframes exploreTicker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
 
-
-#infoPanel {
-  flex: 0 0 320px; /* fixed width */
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-left: 12px;
-  box-sizing: border-box;
-}
-
-
-#mapContainer {
-  display: flex;
-  flex: 1;
-  min-width: 0;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-
-
-#map {
-  width: 100%;
-  height: 60vh;           /* Responsive height */
-  min-height: 500px;      /* Ensures usability on large screens */
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-
-
-/* World panel*/
-
-
-/* Make both panels use the same inner padding */
-.panel-box.fixed-height,
-.panel-box.merged-panel {
-  /* unified padding */
-  padding: 12px 14px;         
-  background: white;
-  border-radius: 10px;
-}
-
-/* Remove differing padding set previously */
-.panel-box.fixed-height {
-  /* override earlier paddings to match merged panel */
-  padding-top: 12px;
-  padding-right: 14px;       
-  padding-left: 14px;
-  padding-bottom: 12px;
-}
-
-/* Ensure the merged panel keeps flex behavior */
-
-.panel-box.merged-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex: 1 1 auto;
-  max-height: 375px;        /* Limit panel height */
-  min-height: 0;
-  overflow: hidden;         /* Prevent overflow outside panel */
-  padding: 12px;
-  background: white;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-
-
-/* Normalize heading margins so first text sits the same distance from top */
-.panel-box.fixed-height h2,
-.panel-box.merged-panel h2 {
-  margin: 0 0 4px 0;            
-  line-height: 1.25;
-}
-
-/* Tighten helper text spacing under the heading equally */
-#countryCount {
-  margin-top: 0;
-  margin-bottom: 2px;
-  font-size: 0.95rem;          
-  color: #333;
-}
-
-/* Species list fills remaining space in merged panel */
-
-
-#speciesList {
-  flex: 1 1 auto;           /* Take remaining space */
-  min-height: 0;            /* Critical for scroll in flex */
-  overflow-y: auto;         /* Scroll inside panel */
-  padding: 6px 8px;
-  margin-top: 2px;
-  box-sizing: border-box;
-}
-
-
-
-#speciesList::-webkit-scrollbar {
-  width: 8px;
-}
-#speciesList::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 4px;
-}
-#speciesList::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
-
-
-.species-ul { list-style: none; padding-left: 0; margin: 0; margin-top: 0;}
-
-.species-li { position: relative; padding-left: 16px; margin-bottom: 4px; text-align: left;}
-
-.species-li::before { content: "•"; position: absolute; left: 0; top: 0.4em; font-size: 0.75rem; color: black;}
-
-.species-btn { background: none; border: none; color: black; font-weight: regular; cursor: pointer; text-align: left; padding: 0; font-size: inherit; width: 100%; display: inline-block; line-height: 1.4; white-space: normal;}
-
-
-    /* ========== Thumbnail Gallery ========== */
-    #thumbnailGallery {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      padding: 10px;
-    }
-
-    #thumbnailGallery img {
-      width: 100px;
-      height: auto;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    /* ========== Leaflet Overrides ========== */
-    .leaflet-control {
-      background: none !important;
-      border: none !important;
-      box-shadow: none !important;
-    }
-
-    /* ========== Responsive Layout ========== */
-  @media (max-width: 900px) {
-  #mainPanel {
-  flex-direction: column;
-  }
-  
-
-  #infoPanel,
-  #mapContainer {
-    width: 100%;
-    min-width: 0;
-    padding-left: 0;
-  }
+  /* ========== Map ========== */
+#map { display: block; width: 100%; height: 60vh; min-height: 500px; margin: 0; padding: 0; border: 0; border-radius: 0; }
 
   
-  #map {
-    height: 50vh;
-    min-height: 380px;
-  }
-}
-    
+  /* ========== Map Legend ========== */
+.legend { background: white; padding: 10px 12px; line-height: 1.2; color: #333; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); border: 1px solid #ddd; }
 
+.legend .scale { background: linear-gradient(90deg, rgb(255,255,0) 0%, rgb(255,220,0) 15%, rgb(255,180,0) 30%, rgb(255,140,0) 50%, rgb(255,100,0) 70%, rgb(255,60,0) 85%, rgb(255,0,0) 100%); width: 100px; height: 12px; border-radius: 8px; margin: 6px 0 4px; }
 
-@media (max-width: 768px) {
-      header h1 { font-size: 28px; }
-      header h2 { font-size: 16px; }
-      header { padding: 8px 12px; }
+.legend .labels { display: flex;  justify-content: space-between; font-size: 12px; color: #444; }
 
-     
-#thumbnailGallery {
-    max-height: 220px;
-    overflow-y: auto;
-    gap: 6px;
-    padding: 8px;
-    margin-top: 6px;
-  }
+.legend-container { display: flex; align-items: center; gap: 8px; }
 
+.scale { width: 100px; height: 10px; background: linear-gradient(to right, #fef0d9, #fd8d3c, #d7301f); border-radius: 5px; }
 
+.legend-label { font-size: 12px; color: #333; }
 
-  width: 80px;
-    max-height: 80px;
-    border-radius: 4px;
-  }
+	  
+/* --- About Panel/ Hamburger Menu --- */ 
+.hamburger-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 28px; color: white; background: transparent; border: none; cursor: pointer; }
 
-.panel-box.hamburger-photo img {
-    width: 80px;
-    height: 80px;
-  }
-
-  .panel-box.hamburger-social {
-    height: 80px;
-  }
-
-  .panel-box.hamburger-social a {
-    width: 32px;
-    height: 32px;
-  }
-  }
-
-@media (max-width: 480px) {
-  header h1 { font-size: 22px; }
-  header h2 { font-size: 14px; }
-  header { padding: 6px 10px; }
-}
-
-
-/* --- Header needs to position the button on the right --- */
-header { position: relative; }
-
-/* --- Hamburger button --- */
-.hamburger-btn {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 28px;       /* size of ☰ */
-  color: white;           /* white icon */
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-.hamburger-btn:focus-visible {
-  outline: 2px solid #ffd166;
-  outline-offset: 2px;
-}
+.hamburger-btn:focus-visible { outline: 2px solid #ffd166; outline-offset: 2px;}
 
 .hamburger-btn.open .bar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+
 .hamburger-btn.open .bar:nth-child(2) { opacity: 0; }
+
 .hamburger-btn.open .bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 
-/* --- The panel that overlays the thumbnail column --- */
 .hamburger-panel[hidden] { display: none !important; }
-.hamburger-panel {
-  position: absolute; /* ← changed from fixed */
-overflow-y: auto;
-  background: rgba(38, 70, 83, 0.98);
-  color: #fff;
-  border-radius: 0px;
-  padding: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.25);
-  box-sizing: border-box;
-  z-index: 9990;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-width: 95%;
-}
+	  
+.hamburger-panel { position: absolute; overflow-y: auto; background: rgba(38, 70, 83, 0.98); color: #fff; border-radius: 0px; padding: 16px; box-shadow: 0 8px 20px rgba(0,0,0,.25); box-sizing: border-box; z-index: 9990; display: flex; flex-direction: column; gap: 12px; width: 95%; }
 
-/* Panel content */
-.hamburger-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  gap: 12px;
-}
+.hamburger-top { display: flex; justify-content: space-between; align-items: stretch; gap: 12px; }
 
-.panel-box.hamburger-photo {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
-  border-radius: 0
-}
+.panel-box.hamburger-photo { flex: 0 0 auto; display: flex; align-items: center; justify-content: flex-start; background: none; border: none; box-shadow: none; padding: 0; margin: 0;  border-radius: 0; }
 
-.panel-box.hamburger-photo img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
-  border-radius: 6px;
+.panel-box.hamburger-photo img { width: 90px; height: 90px; object-fit: cover; background: none; border: none; box-shadow: none; padding: 0; margin: 0; border-radius: 6px; }
 
-}
+.panel-box.hamburger-social { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; height: 90px; background: none; border: none; box-shadow: none; padding: 0; margin: 0; border-radius: 10px; }
 
-.panel-box.hamburger-social {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-between;
-  height: 90px; /* Match photo height */
-  background: none;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
-  border-radius: 10;
-}
-
-.panel-box.hamburger-social a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: none;
-  color: inherit;
-  text-decoration: none;
-  position: relative;
-  z-index: 1;
-  background: none; color: none; text-decoration: none;
-  transition: transform .15s ease, box-shadow .15s ease;
-}
+.panel-box.hamburger-social a { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: none; color: inherit; text-decoration: none; position: relative; z-index: 1; transition: transform .15s ease, box-shadow .15s ease; }
 
 .hamburger-social a:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.25); }
 
-}
-.hamburger-title {
-  font-size: 1.25rem; /* or try 1.3rem for more impact */
-  font-weight: bold;
-  text-align: justify;
-  margin-top: 12px;
-}
-.hamburger-text {
-  font-size: 1rem;
-  line-height: 1.6;
-  text-align: justify;
-  margin-top: 8px;
-}
+.hamburger-title { font-size: 1.25rem; font-weight: bold; text-align: justify; margin-top: 12px; }
+
+.hamburger-text { font-size: 1rem; line-height: 1.6; text-align: justify; margin-top: 8px; }
+
+.profile-image { width: 90px; height: 90px; object-fit: cover; background: none; border: none; box-shadow: none; padding: 0; margin: 0; border-radius: 6px; }
+
+.about-title { font-size: 1.25rem; font-weight: bold; text-align: justify; margin-top: 12px; }
+
+.about-text { font-size: 1rem; line-height: 1.6; text-align: justify; margin-top: 8px; }
+
+  /* ========== World Panel========== */
+.panel-box.fixed-height, 
+.panel-box.merged-panel { padding: 12px 14px; background: white; border-radius: 10px; }
+	  
+.panel-box.fixed-height { flex: 0 0 auto; margin-bottom: 12px; padding-top: 12px; padding-right: 14px; padding-left: 14px; padding-bottom: 12px; }
 
 
-  </style>
+  /* ========== Country Panel and Species List========== */
+.panel-box.merged-panel { display: flex; flex-direction: column; gap: 6px; flex: 1 1 auto; min-height: 0; height: 100%; overflow: hidden; padding: 12px; position: relative; background: white; border-radius: 10px; box-sizing: border-box; margin-left: 0; }
+
+.panel-close { position: absolute; top: 10px; right: 10px; border: none; background: none; font-size: 26px; font-weight: bold; cursor: pointer; color: #555; }
+.panel-close:hover { color: black; }
+	  
+.panel-box.fixed-height h2, 
+.panel-box.merged-panel h2 { margin: 0 0 4px 0; line-height: 1.25; font-size: 1.5rem; }
+
+#countryCount { margin-top: 0; margin-bottom: 2px; font-size: 1rem; color: #333; }
+
+#speciesList { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 6px 8px; margin-top: 2px; box-sizing: border-box; }
+
+#speciesList::-webkit-scrollbar { width: 8px; }
+	  
+#speciesList::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+#speciesList::-webkit-scrollbar-thumb:hover { background: #999; }
+
+.species-ul { list-style: none; padding-left: 0; margin: 0; margin-top: 0; }
+
+.species-li { position: relative; padding-left: 20px; margin-bottom: 4px; text-align: left; }
+
+.species-li::before { content: "📷"; position: absolute; left: 0; top: 0.7em; transform: translateY(-50%); font-size: 0.7rem; line-height: 1; }
+
+.species-btn { background: none; border: none; color: black; font-weight: normal; cursor: pointer; text-align: left; padding: 0; font-size: 1rem; width: 100%; display: inline-block; line-height: 1.4; white-space: normal; word-break: break-word; }
+
+/* ========== Thumbnail Gallery ========== */
+
+#birdSearch,
+#birdSort,
+#countryFilter,
+.gallery-toggle { height: 42px; box-sizing: border-box; color: #333333; background-color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
+
+.thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; max-width: 432px; height: 100%; max-height: 675px; margin: 0; padding: 0; background: var(--ebird-blue); overflow: hidden; }
+
+.thumbnail-controls { flex: 0 0 auto; width: 100%; margin: 0; padding: 8px; display: flex; gap: 8px; align-items: center; flex-wrap: nowrap; background: var(--ebird-blue); border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
+
+#thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto; background: var(--ebird-blue); }
+
+#thumbnailGallery { width: 100%; margin: 0; background: var(--ebird-blue); }
+
+.thumbnail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; width: 100%; gap: 6px; padding: 6px; margin: 0; }
+
+#thumbnailGallery img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
+	  
+.thumbnail-search { flex: 1 1 auto; width: 100%; min-width: 0; height: 42px; padding: 6px 10px; font: inherit; color: #333; background: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
+
+.thumbnail-select { flex: 0 0 auto; min-width: 82px; height: 42px; padding: 6px 10px;  font: inherit; color: #333; background: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
+
+.country-select { display: none; flex: 0 1 150px; min-width: 0; height: 42px; padding: 6px 10px; font: inherit; color: #333; background: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
+
+.thumbnail-search:focus, .thumbnail-select:focus, .country-select:focus { outline: 2px solid rgba(95, 143, 94, 0.35); outline-offset: 1px; border-color: #5f8f5e; }
+
+#thumbnailPanel { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.55) var(--ebird-blue); scrollbar-width: thin; }
+
+#thumbnailPanel::-webkit-scrollbar { width: 8px; }
+
+#thumbnailPanel::-webkit-scrollbar-track { background: var(--ebird-blue); }
+
+#thumbnailPanel::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.5); border: 2px solid var(--ebird-blue); border-radius: 10px; }
+
+#thumbnailPanel::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.72); }
+
+/* ========== Leaflet Overrides ========== */
+ .leaflet-control { background: none !important; border: none !important; box-shadow: none !important; }
+
+
+
+/* ========== Bird Of The Day ========== */
+
+  /* Theme variables (adjust to match your header mint) */
+  :root { --mint-dark: 46, 111, 100; --mint-base: 168, 230, 207; }
+
+.nav-arrow,
+.swipe-hand { -webkit-tap-highlight-color: transparent; }	  
+	  
+.nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 42px; color: rgba(255,255,255,0.95); text-shadow: 0 0 8px rgba(40,40,40,.9), 0 0 18px rgba(40,40,40,.7), 2px 2px 8px rgba(0,0,0,.5); cursor: pointer; user-select: none; z-index: 4; transition: transform 0.15s ease, opacity 0.15s ease; outline: none ;}
+	  
+.left-arrow { left: 12px; }
+.right-arrow { right: 12px; }
+
+.nav-arrow:focus,
+.nav-arrow:active { outline: none; background: transparent; }	  
+	  
+.nav-arrow:hover { transform: translateY(-50%) scale(1.08); }
+
+.bird-day-layout { display: grid; grid-template-columns: minmax(0, 25fr) minmax(320px, 9fr); width: 100%; margin: 0; padding: 0; gap: 0; align-items: stretch; background: white; font-family: 'Lato', sans-serif; }
+.bird-day-main { width: 100%; max-width: 1200px; min-width: 0; margin: 0; padding: 0; position: relative; background: #444; }
+.bird-day-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 0; padding: 0; overflow: hidden; touch-action: pan-y; }
+.bird-day-image { display: block; width: 100%; height: 100%; margin: 0; padding: 0; object-fit: contain; background: white; box-shadow: none; transition: opacity 0.25s ease, transform 0.25s ease; }
+.bird-caption-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #333333; color: white; font-size: 16px; padding: 5px 12px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; }
+.bird-copyright { position: static; justify-self: end; bottom: 5px; left: 12px; font-size: 12px; color: #888; }
+#dailyBirdCaption { justify-self: start; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 10px; }
+.swipe-indicator { position: absolute; left: 50%; bottom: 45px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
+
+.dot { border-radius: 50%; background: rgba(255,255,255,.35); border: 1px solid rgba(0,0,0,.35); box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s ease, opacity .25s ease, background .25s ease; }
+.center-dot { width: 8px; height: 8px; background: white; border-color: rgba(0,0,0,.55); }
+.left-dot,
+.right-dot { width: 6px; height: 6px; }
+
+.left-dot.swipe-active, 
+.right-dot.swipe-active { transform: scale(1.8); background: white; border-color: rgba(0,0,0,.55); }
+	  
+/* ========== Lightbox ========== */
+.lightbox { display: none; position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; flex-direction: column; z-index: 9999; }
+
+.lightbox-close { position: absolute; top: 20px; right: 40px; font-size: 40px; color: white; cursor: pointer; }
+
+.lightbox-image { max-width: 90%; max-height: 80%; border-radius: 8px; margin-bottom: 12px; }
+
+.lightbox-caption { margin-top: 10px; padding: 8px 16px; background: rgba(0,0,0,0.5); color: white; font-size: 18px; border-radius: 6px; text-align: center; max-width: 90%; }
+
+	  
+/* ========== Responsive Layout ========== */
+
+
+/* Hidden on desktop */
+.gallery-toggle { display: none; }
+
+@media (max-width: 1024px) {
+
+  /* Place thumbnails and controls below the featured photo */
+  .bird-day-layout { grid-template-columns: 1fr; width: 100%; margin: 0; padding: 0; gap: 0; }
+
+  .bird-day-main { width: 100%; max-width: none; }
+
+  .thumbnail-column { width: 100%; max-width: none; height: auto; max-height: none; }
+
+  #thumbnailPanel { width: 100%; max-height: 320px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; transition: max-height 0.35s ease, opacity 0.25s ease; }
+
+
+  #thumbnailPanel.collapsed { max-height: 0 !important; opacity: 0; overflow: hidden; }
+
+  /* Four thumbnails per row on tablets */
+  .thumbnail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 8px; }
+
+  /* Show gallery collapse button */
+  .gallery-toggle { display: flex; align-items: center; justify-content: center; flex: 0 0 42px; width: 42px; height: 42px; margin-left: auto; border: 1px solid #ccc; border-radius: 4px; background: white; color: #555; font-size: 18px;cursor: pointer; transition: background 0.2s ease; }
+
+  .gallery-toggle:hover { background: #f3f3f3; }
+
+  /* Map responsive layout */
+  #mainPanel { display: flex; flex-direction: row; gap: 0; align-items: stretch; margin: 0; padding: 0; }
+	
+  #infoPanel { position: absolute; top: 10px; left: 0; width: 65vw; max-width: 260px; height: 60vh; padding-left: 12px; z-index: 2000; background: transparent; border-radius: 10px; }
+
+  #map { height: 65vh; min-height: 450px; }
+
+  #speciesList { max-height: calc(65vh - 110px); }
+
+  .panel-box.fixed-height { margin-bottom: 10px; }
+
+  .panel-box.merged-panel { flex: 1 1 auto; height: 100%; border-radius: 10px; margin-left: 0; }
+}
+
+@media (max-width: 768px) {
+	header h1 { font-size: 28px; }
+    
+	header h2 { font-size: 16px; }
+   
+	header { padding: 8px 12px; }
+
+	#thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; margin: 0; overflow: visible; }
+	
+	#thumbnailPanel { max-height: 260px; }
+	
+	.panel-box.hamburger-photo img { width: 80px; height: 80px; }
+	
+	.panel-box.hamburger-social { height: 80px; }
+
+	.panel-box.hamburger-social a { width: 32px; height: 32px; }
+  
+	.panel-box p { font-size: 17px; line-height: 1.5; }
+
+	.explore-title { font-size: 1rem; font-weight: 600; white-space: nowrap; }
+	
+	#countryName { font-size: 24px; }
+	
+    #countryCount { font-size: 17px; line-height: 1.5; }
+	
+    .species-btn { font-size: 17px; line-height: 1.3; }
+	
+    .species-li { margin-bottom: 6px; }
+
+   #birdSearch,
+   #birdSort,
+   #countryFilter,
+   .gallery-toggle { height: 42px; box-sizing: border-box; }
+   
+  .about-text { line-height: 1.45; margin-top: 6px; } 
+	
+  .swipe-indicator { bottom: 30px; }
+
+  .bird-copyright { font-size: 11px; }
+}
+	  
+  @media (max-width: 600px) { 
+	.nav-arrow { font-size: 36px; }
+    .left-arrow { left: 8px; }
+    .right-arrow { right: 8px; }
+  }
+
+@media (max-width: 480px) {
+
+  header h1 { font-size: 22px; }
+
+  header h2 { font-size: 14px; }
+
+  header { padding: 6px 10px; }
+
+  #thumbnailGallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding: 6px; }
+
+  #thumbnailPanel { max-height: 240px; }
+
+  .thumbnail-controls { gap: 6px; padding: 6px; }
+
+  .thumbnail-search { min-width: 0; padding-inline: 8px; }
+
+  .thumbnail-select { padding-inline: 7px; }
+}
+
+</style>
+	  
+	<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y9xn5xuu6l");
+</script>
+	
 </head>
 <body>
+<div class="site-page">
   <!-- Page header with title and author -->
   <header>
     <h1>BirdBlog</h1>
     <h2>Sujan Abu Jafar</h2>
-	<button id="hamburgerToggle" class="hamburger-btn" aria-label="Open menu" aria-	controls="hamburgerPanel" aria-expanded="false">
+	<button id="hamburgerToggle" class="hamburger-btn" aria-label="Open menu" aria-controls="hamburgerPanel" aria-expanded="false">
 	  ☰
 	</button>
 
   </header>
 
 <!-- === Bird Photo of the Day Layout === -->
-<div style="display:flex; flex-wrap:wrap; background:#f5f5f5; font-family:sans-serif; justify-content:flex-start; padding:5px;">
+<div class="bird-day-layout">
 
   <!-- LEFT: Main Bird Image -->
-  <div style="flex:0 1 auto; width:100%; max-width:1024px; background:#444; position:relative;">
+<div class="bird-day-main">
 
-    <div style="position:relative; width:100%; aspect-ratio:16/9; max-height:570px; overflow:hidden; box-sizing:border-box;">
-      <img id="dailyBirdImage" src="" alt="Featured Bird"
-           style="width:100%; height:100%; object-fit:cover; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
-
-
+<div class="bird-day-frame">
+	
+<img id="dailyBirdImage"
+     class="bird-day-image"
+     src=""
+     alt="Featured Bird">
 
 <!-- Arrows -->
 <div onclick="navigateBird(-1)" class="nav-arrow left-arrow" aria-label="Previous">
@@ -546,139 +416,108 @@ width: 95%;
   &#10095; <!-- Unicode right chevron -->
 </div>
 
-<style>
-  /* Theme variables (adjust to match your header mint) */
-  :root {
-    --mint-dark: 46, 111, 100;       /* RGB for dark mint accent */
-    --mint-base: 168, 230, 207;      /* Optional lighter mint if needed elsewhere */
-  }
-
-  .nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 48px;                       /* Large enough to be visible but elegant */
-    color: rgba(var(--mint-dark), 0.65);   /* Mint tint with transparency */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.45); /* Soft shadow to stand out on mixed backgrounds */
-    cursor: pointer;
-    z-index: 2;
-    user-select: none;
-    line-height: 1;
-    padding: 4px 8px;                      /* Slight hit area without a visible shape */
-    transition: color 160ms ease, text-shadow 160ms ease, transform 160ms ease;
-  }
-
-  .left-arrow { left: 12px; }
-  .right-arrow { right: 12px; }
-
-  /* Hover/Focus: stronger mint + subtle lift */
-  .nav-arrow:hover,
-  .nav-arrow:focus-visible {
-    color: rgba(var(--mint-dark), 0.92);
-    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.55);
-    transform: translateY(-50%) scale(1.06);
-    outline: none;
-  }
-
-  /* Active/click feedback */
-  .nav-arrow:active {
-    transform: translateY(-50%) scale(0.98);
-    color: rgba(var(--mint-dark), 1);
-  }
-
-  /* Mobile: slightly smaller arrows & spacing */
-  @media (max-width: 600px) {
-    .nav-arrow {
-      font-size: 36px;
-    }
-    .left-arrow { left: 8px; }
-    .right-arrow { right: 8px; }
-  }
-
-  /* Respect reduced motion preferences */
-  @media (prefers-reduced-motion: reduce) {
-    .nav-arrow {
-      transition: none;
-    }
-  }
-
-	.mobile-gallery-toggle {
-  display: none;
-}
-
-@media (max-width: 900px) {
-
-  .mobile-gallery-toggle {
-    display: block;
-    width: calc(100% - 20px);
-    margin: 10px;
-    padding: 10px;
-
-    background: #5F8F5E;
-    color: white;
-    border: none;
-    border-radius: 8px;
-
-    font-size: 16px;
-    cursor: pointer;
-  }
-}
-
-</style>
-
-
       <!-- Caption Bar -->
-      <div id="birdNameBar"
-           style="position:absolute; bottom:0; left:0; width:100%; background:#333333; color:white; 
-                  font-size:clamp(16px, 1.5vw, 16px); padding:5px 12px; text-align:right; font-weight:normal; 
-                  box-sizing:border-box; white-space:nowrap;">
-        <span id="dailyBirdCaption">Loading...</span>
-      </div>
+<!-- Swipe dots -->
+<div class="swipe-indicator">
 
-      <!-- Copyright -->
-      <div style="position:absolute; bottom:5px; left:12px; font-size:clamp(10px, 1vw, 12px); color:#888;">
-        &copy; Sujan Abu Jafar
-      </div>
+  <span class="dot left-dot"></span>
+  <span class="dot center-dot"></span>
+  <span class="dot right-dot"></span>
+
+</div>
+
+<!-- Caption bar -->
+<div id="birdNameBar"
+     class="bird-caption-bar">
+
+  <span id="dailyBirdCaption">
+    Loading...
+  </span>
+
+  <div class="bird-copyright">
+    © Sujan Abu Jafar
+  </div>
+</div>
+	
     </div>
   </div>
 
 <!-- RIGHT: Thumbnails -->
-<button id="toggleGalleryBtn" class="mobile-gallery-toggle">
-📷 Hide Gallery
+<div class="thumbnail-column">
+
+  <!-- Search / Sort Bar -->
+<div id="thumbnailControls"
+     class="thumbnail-controls">
+
+<input
+  type="text"
+  id="birdSearch"
+  class="thumbnail-search"
+  placeholder="Search species...">
+
+<select id="birdSort"
+        class="thumbnail-select">
+	
+      <option value="alpha">A-Z</option>
+      <option value="random">Random</option>     
+      <option value="country">Country</option>
+    </select>
+
+<select id="countryFilter"
+        class="country-select">
+
+    </select>
+<button id="toggleGalleryBtn"
+        class="gallery-toggle"
+        aria-label="Collapse gallery">
+−
 </button>
-
-<div id="thumbnailPanel"
-     style="flex:1 1 300px; max-height:570px; overflow-y:auto;">
-  <div id="thumbnailGallery"
-       style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;padding:12px 24px; box-sizing:border-box;">
-    <!-- Thumbnails will be injected here -->
   </div>
-</div>
-</div>
 
+<div id="thumbnailPanel">
+
+<div id="thumbnailGallery"
+     class="thumbnail-grid">
+
+      <!-- Thumbnails will be injected here -->
+
+    </div>
+	  
+  </div>
+	
+</div>
+</div>
 
 <!-- EXPLORE PANEL -->
-<div style="background:#5F8F5E; margin-bottom:20px;">
-  <div style="max-width:1600px; margin:0 auto; padding:10px;">
-    <h2 style="color:white; text-align:center; margin:0;">Explore</h2>
+<div class="explore-banner">
+  <div class="explore-inner">
+
+    <h2 class="explore-title">🌍 Select a country to explore species & photos</h2>
+
+    <div class="explore-ticker">
+      <div id="exploreTicker"
+           class="explore-ticker-content">
+      </div>
+    </div>
+
   </div>
 </div>
 
 <!-- MAIN PANEL -->
 
 <div id="mainPanel">
+
   <div id="infoPanel">
-
-
-<!-- Sidebar panels -->
-<div class="panel-box fixed-height">
-  <h2>World</h2>
-  <p>545 species observed</p>
-</div>
 
 <!-- Merged Country & Species panel -->
 <div class="panel-box merged-panel">
+	<button id="closeCountryPanel"
+        class="panel-close">
+  ✕
+</button>
+	
   <h2 id="countryName">Country</h2>
+	
   <!-- tighter gap, smaller count text -->
   <p id="countryCount">Click a country to view species list</p>
 
@@ -692,10 +531,12 @@ width: 95%;
   </div>
 
   <div id="mapContainer">
-    <div id="map"></div>
-  </div>
+    <div id="map">
+	</div>
 </div>
 
+
+</div>
 
 
 <!-- OUTSIDE MAIN PANEL -->
@@ -708,686 +549,336 @@ width: 95%;
   <p>© 2026 Sujan Abu Jafar | Powered by eBird Data</p>
 </footer>
 
+</div><!-- End .site-page -->
+
 
   <script>
-    const map = L.map('map', {
-  center: [20, 0],
-  zoom: 2,
-  minZoom: 2,           // prevents zooming out beyond original level
-  maxZoom: 4,           // keeps zooming in available
-  zoomControl: true     // keeps zoom buttons visible
-});
+    const map = L.map('map', { center: [20, 0], zoom: 1.5, minZoom: 1.5, maxZoom: 4, zoomControl: false, scrollWheelZoom: false });
+L.control.zoom({
+  position: 'topright'
+}).addTo(map);
+	  
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 4,
       attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
-    const birdData = {
-     "Norway": 191, "Sweden": 61, "Finland": 35, "Denmark": 115, "Italy": 60,
-      "United Kingdom": 44, "Netherlands": 127, "Germany": 18, "Poland": 3,
-      "Czech Republic": 2, "Latvia": 13, "Greece": 22, "Estonia": 55,
-      "Bangladesh": 185, "Thailand": 126, "Aruba": 71, "Curaçao": 60, "Belgium": 33
-    };
+ const birdData = { "Norway": 192, "Sweden": 61, "Finland": 35, "Denmark": 115, "Italy": 60, "United Kingdom": 44, "Netherlands": 127, "Germany": 18, "Poland": 3, "Czech Republic": 2, "Latvia": 13, "Greece": 22, "Estonia": 55, "Bangladesh": 185, "Thailand": 126, "Aruba": 72, "Curaçao": 60, "Belgium": 33 };
+ 
+ const flags = { "Norway": "no", "Sweden": "se", "Finland": "fi", "Denmark": "dk", "Italy": "it", "United Kingdom": "gb", "Netherlands": "nl", "Germany": "de", "Poland": "pl", "Czech Republic": "cz", "Latvia": "lv", "Greece": "gr", "Estonia": "ee", "Bangladesh": "bd", "Thailand": "th", "Aruba": "aw", "Curaçao": "cw", "Belgium": "be" };
+	  
+// ✅ GLOBAL VARIABLES
+let birds = {};
+let birdKeys = [];
+let currentBirdIndex = 0;
+let shuffledBirds = [];
 
-    const birdPhotos = {
-  "Abbott's Babbler": "https://i.imgur.com/bIofIYR.jpeg",
-  "Alpine Swift": "https://i.imgur.com/v4KcU17.jpeg",
-  "American Coot": "https://i.imgur.com/vVgalJj.jpeg",
-  "American Flamingo": "https://i.imgur.com/We9xT7F.jpeg",
-  "American Kestrel": "https://i.imgur.com/5SSc9bh.jpeg",
-  "American Oystercatcher": "https://i.imgur.com/oKzv79m.jpeg",
-  "American Wigeon": "https://i.imgur.com/tnXyoht.jpeg",
-  "Arctic Loon": "https://i.imgur.com/jpgrZVm.jpeg",
-  "Arctic Tern": "https://i.imgur.com/xhIrClt.jpeg",
-  "Ashy Drongo": "https://i.imgur.com/RprE64J.jpeg",
-  "Ashy Minivet": "https://i.imgur.com/hXEGfMq.jpeg",
-  "Ashy Woodswallow": "https://i.imgur.com/Yfle011.jpeg",
-  "Asian Barred Owlet": "https://i.imgur.com/YVah7aZ.jpeg",
-  "Asian Brown Flycatcher": "https://i.imgur.com/TLpSuKF.jpeg",
-  "Asian Fairy-bluebird": "https://i.imgur.com/placeholder.jpeg",
-  "Asian Golden Weaver": "https://i.imgur.com/o3hGuWj.jpeg",
-  "Asian Green Bee-eater": "https://i.imgur.com/rinr6Zc.jpeg",
-  "Asian Koel": "https://i.imgur.com/187XIav.jpeg",
-  "Asian Openbill": "https://i.imgur.com/IUM8Eg0.jpeg",
-  "Asian Palm Swift": "https://i.imgur.com/MrKuYfZ.jpeg",
-  "Asian Tit": "https://i.imgur.com/QF0vFsy.jpeg",
-  "Atlantic Puffin": "https://i.imgur.com/WGxlFbr.jpeg",
-  "Baillon's Crake": "https://i.imgur.com/lEVQmlw.jpeg",
-  "Bananaquit": "https://i.imgur.com/j7RJnTD.jpeg",
-  "Bank Swallow": "https://i.imgur.com/KJNy9Jm.jpeg",
-  "Bar-headed Goose": "https://i.imgur.com/qny7Yjj.jpeg",
-  "Bar-tailed Godwit": "https://i.imgur.com/3j3pCbR.jpeg",
-  "Bare-eyed Pigeon": "https://i.imgur.com/8IxkDn7.jpeg",
-  "Barn Swallow": "https://i.imgur.com/K5TqgSB.jpeg",
-  "Barnacle Goose": "https://i.imgur.com/rYMIq4b.jpeg",
-  "Baya Weaver": "https://i.imgur.com/yyVS2vE.jpeg",
-  "Bearded Reedling": "https://i.imgur.com/placeholder.jpeg",
-  "Belted Kingfisher": "https://i.imgur.com/NzHlFN3.jpeg",
-  "Bengal Bushlark": "https://i.imgur.com/1C5KFLg.jpeg",
-  "Black Baza": "https://i.imgur.com/placeholder.jpeg",
-  "Black Drongo": "https://i.imgur.com/d4Tituf.jpeg",
-  "Black Grouse": "https://i.imgur.com/vixDqZW.jpeg",
-  "Black Guillemot": "https://i.imgur.com/QZN8uDE.jpeg",
-  "Black Kite": "https://i.imgur.com/dczSzME.jpeg",
-  "Black Redstart": "https://i.imgur.com/EGk0bhA.jpeg",
-  "Black Woodpecker": "https://i.imgur.com/D4ciu6l.jpeg",
-  "Black-bellied Plover": "https://i.imgur.com/rAXBOar.jpeg",
-  "Black-bellied Whistling-Duck": "https://i.imgur.com/rOBjw3u.jpeg",
-  "Black-collared Starling": "https://i.imgur.com/cEVIrjo.jpeg",
-  "Black-crested Bulbul": "https://i.imgur.com/rgEplW5.jpeg",
-  "Black-crowned Night Heron": "https://i.imgur.com/tLxyEGu.jpeg",
-  "Black-faced Grassquit": "https://i.imgur.com/A7Rts2B.jpeg",
-  "Black-headed Bulbul": "https://i.imgur.com/EcgautQ.jpeg",
-  "Black-headed Cuckooshrike": "https://i.imgur.com/oQBr3O8.jpeg",
-  "Black-headed Gull": "https://i.imgur.com/mQH8kVR.jpeg",
-  "Black-headed Ibis": "https://i.imgur.com/npFZmw7.jpeg",
-  "Black-hooded Oriole": "https://i.imgur.com/geXQV4M.jpeg",
-  "Black-legged Kittiwake": "https://i.imgur.com/placeholder.jpeg",
-  "Black-naped Monarch": "https://i.imgur.com/mb8LAEj.jpeg",
-  "Black-naped Oriole": "https://i.imgur.com/PNiqQSP.jpeg",
-  "Black-necked Stilt": "https://i.imgur.com/owtNJrU.jpeg",
-  "Black-rumped Flameback": "https://i.imgur.com/tDMGmi9.jpeg",
-  "Black-tailed Godwit": "https://i.imgur.com/Xt2jcb9.jpeg",
-  "Black-winged Cuckooshrike": "https://i.imgur.com/eHiwT0k.jpeg",
-  "Black-winged Stilt": "https://i.imgur.com/WsBsYzl.jpeg",
-  "Blossom-headed Parakeet": "https://i.imgur.com/placeholder.jpeg",
-  "Blue Whistling-Thrush": "https://i.imgur.com/QTNCXvs.jpeg",
-  "Blue-bearded Bee-eater": "https://i.imgur.com/m7MqE9Q.jpeg",
-  "Blue-crowned Parakeet": "https://i.imgur.com/n4dFbCy.jpeg",
-  "Blue-tailed Bee-eater": "https://i.imgur.com/Ro6A0T8.jpeg",
-  "Blue-tailed Emerald": "https://i.imgur.com/L5ZwvBB.jpeg",
-  "Blue-throated Barbet": "https://i.imgur.com/dNJCmzv.jpeg",
-  "Blue-throated Flycatcher": "https://i.imgur.com/l9fhuFt.jpeg",
-  "Blue-winged Teal": "https://i.imgur.com/mvMfji6.jpeg",
-  "Bluethroat": "https://i.imgur.com/ScarzHR.jpeg",
-  "Blyth's Paradise-Flycatcher": "https://i.imgur.com/P6wY759.jpeg",
-  "Blyth's Pipit": "https://i.imgur.com/ecgunjW.jpeg",
-  "Blyth's Reed Warbler": "https://i.imgur.com/NuVg2AP.jpeg",
-  "Bohemian Waxwing": "https://i.imgur.com/ysIPv2W.jpeg",
-  "Booted Eagle": "https://i.imgur.com/rsRgLgW.jpeg",
-  "Brahminy Kite": "https://i.imgur.com/WSZij6G.jpeg",
-  "Brambling": "https://i.imgur.com/yWFZQ3O.jpeg",
-  "Brant": "https://i.imgur.com/placeholder.jpeg",
-  "Bronze-winged Jacana": "https://i.imgur.com/p0H48UH.jpeg",
-  "Bronzed Drongo": "https://i.imgur.com/0ofpSZq.jpeg",
-  "Brown Boobook": "https://i.imgur.com/placeholder.jpeg",
-  "Brown Pelican": "https://i.imgur.com/aonbYA3.jpeg",
-  "Brown Shrike": "https://i.imgur.com/J6evOqQ.jpeg",
-  "Brown-crested Flycatcher": "https://i.imgur.com/R6r8NBm.jpeg",
-  "Brown-throated Parakeet": "https://i.imgur.com/Pum5PVZ.jpeg",
-  "Brown-throated Sunbird": "https://i.imgur.com/C1CEajj.jpeg",
-  "Burrowing Owl": "https://i.imgur.com/ieBAWxJ.jpeg",
-  "Cachar Bulbul": "https://i.imgur.com/xT6qGWB.jpeg",
-  "Canada Goose": "https://i.imgur.com/MrK4ILT.jpeg",
-  "Carib Grackle": "https://i.imgur.com/U0vCvUk.jpeg",
-  "Caribbean Elaenia": "https://i.imgur.com/Q2jfMML.jpeg",
-  "Caribbean Martin": "https://i.imgur.com/VtvcbSs.jpeg",
-  "Carrion Crow": "https://i.imgur.com/R7Slxrb.jpeg",
-  "Caspian Tern": "https://i.imgur.com/placeholder.jpeg",
-  "Cetti's Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Changeable Hawk-Eagle": "https://i.imgur.com/om93tS9.jpeg",
-  "Chestnut Munia": "https://i.imgur.com/sNY73Qp.jpeg",
-  "Chestnut-headed Bee-eater": "https://i.imgur.com/XLmo4pR.jpeg",
-  "Chestnut-tailed Starling": "https://i.imgur.com/T2xs8py.jpeg",
-  "Chinese Pond-Heron": "https://i.imgur.com/pdVyT7M.jpeg",
-  "Cinnamon Bittern": "https://i.imgur.com/qNwtdio.jpeg",
-  "Citrine Wagtail": "https://i.imgur.com/6XTU9vR.jpeg",
-  "Clamorous Reed Warbler": "https://i.imgur.com/wGRXuAW.jpeg",
-  "Coal Tit": "https://i.imgur.com/GDxzktG.jpeg",
-  "Collared Flycatcher": "https://i.imgur.com/uBd1BcT.jpeg",
-  "Collared Kingfisher": "https://i.imgur.com/XcqRlRw.jpeg",
-  "Collared Scops-Owl": "https://i.imgur.com/placeholder.jpeg",
-  "Common Buzzard": "https://i.imgur.com/Q9VhFT7.jpeg",
-  "Common Chaffinch": "https://i.imgur.com/LuShc8S.jpeg",
-  "Common Chiffchaff": "https://i.imgur.com/8MttBRs.jpeg",
-  "Common Crane": "https://i.imgur.com/7qRYtGL.jpeg",
-  "Common Cuckoo": "https://i.imgur.com/ZCxDgST.jpeg",
-  "Common Eider": "https://i.imgur.com/LTaUxDH.jpeg",
-  "Common Firecrest": "https://i.imgur.com/6h7UIZ9.jpeg",
-  "Common Flameback": "https://i.imgur.com/wf8234S.jpeg",
-  "Common Gallinule": "https://i.imgur.com/XdEALLH.jpeg",
-  "Common Goldeneye": "https://i.imgur.com/0FsAfwJ.jpeg",
-  "Common Grasshopper Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Common Green-Magpie": "https://i.imgur.com/kfgRv7j.jpeg",
-  "Common Greenshank": "https://i.imgur.com/0CntOgQ.jpeg",
-  "Common Ground Dove": "https://i.imgur.com/5jKZ2uR.jpeg",
-  "Common Gull": "https://i.imgur.com/frAwvD9.jpeg",
-  "Common Hawk-Cuckoo": "https://i.imgur.com/YnU9acx.jpeg",
-  "Common Hill Myna": "https://i.imgur.com/sdncWvP.jpeg",
-  "Common Iora": "https://i.imgur.com/zveXYvL.jpeg",
-  "Common Kingfisher": "https://i.imgur.com/2TuV6BB.jpeg",
-  "Common Loon": "https://i.imgur.com/placeholder.jpeg",
-  "Common Merganser": "https://i.imgur.com/8y6e1sL.jpeg",
-  "Common Murre": "https://i.imgur.com/placeholder.jpeg",
-  "Common Myna": "https://i.imgur.com/WDQtnl8.jpeg",
-  "Common Pochard": "https://i.imgur.com/YQD32tQ.jpeg",
-  "Common Quail": "https://i.imgur.com/placeholder.jpeg",
-  "Common Raven": "https://i.imgur.com/HmgOqez.jpeg",
-  "Common Redshank": "https://i.imgur.com/tKUvAYN.jpeg",
-  "Common Redstart": "https://i.imgur.com/YDXb9Qc.jpeg",
-  "Common Reed Warbler": "https://i.imgur.com/T1CGuSV.jpeg",
-  "Common Ringed Plover": "https://i.imgur.com/dIvUCK4.jpeg",
-  "Common Rosefinch": "https://i.imgur.com/placeholder.jpeg",
-  "Common Sandpiper": "https://i.imgur.com/YzzxHUy.jpeg",
-  "Common Scoter": "https://i.imgur.com/1cNzS5y.jpeg",
-  "Common Shelduck": "https://i.imgur.com/PnyAbMc.jpeg",
-  "Common Snipe": "https://i.imgur.com/7zHVvz6.jpeg",
-  "Common Swift": "https://i.imgur.com/PyKx8gB.jpeg",
-  "Common Tailorbird": "https://i.imgur.com/Apzavt8.jpeg",
-  "Common Tern": "https://i.imgur.com/f9MWWbt.jpeg",
-  "Common Wood-Pigeon": "https://i.imgur.com/Qk0vfQb.jpeg",
-  "Copper-throated Sunbird": "https://i.imgur.com/qTl4p2M.jpeg",
-  "Coppersmith Barbet": "https://i.imgur.com/Jh5qcc9.jpeg",
-  "Corn Bunting": "https://i.imgur.com/placeholder.jpeg",
-  "Cotton Pygmy-Goose": "https://i.imgur.com/gRbFoth.jpeg",
-  "Crested Bobwhite": "https://i.imgur.com/placeholder.jpeg",
-  "Crested Caracara": "https://i.imgur.com/954V6BF.jpeg",
-  "Crested Goshawk": "https://i.imgur.com/wBcduU0.jpeg",
-  "Crested Serpent-Eagle": "https://i.imgur.com/LI7uYOP.jpeg",
-  "Crested Tit": "https://i.imgur.com/zz9SaXx.jpeg",
-  "Curlew Sandpiper": "https://i.imgur.com/5wdud6Z.jpeg",
-  "Dark-necked Tailorbird": "https://i.imgur.com/I1O4wMJ.jpeg",
-  "Dark-sided Flycatcher": "https://i.imgur.com/OKgUDMi.jpeg",
-  "Delicate Prinia": "https://i.imgur.com/TIUVRtB.jpeg",
-  "Dollarbird": "https://i.imgur.com/LCi8ntX.jpeg",
-  "Dunlin": "https://i.imgur.com/sFbaM7M.jpeg",
-  "Dunnock": "https://i.imgur.com/8Vea1ou.jpeg",
-  "Dusky Broadbill": "https://i.imgur.com/YmAg7dY.jpeg",
-  "Dusky Warbler": "https://i.imgur.com/NFJvufk.jpeg",
-  "Eared Dove": "https://i.imgur.com/jVnZaEa.jpeg",
-  "Eared Grebe": "https://i.imgur.com/1w8j12P.jpeg",
-  "Eastern Cattle-Egret": "https://i.imgur.com/Y3HF9oU.jpeg",
-  "Eastern Red-rumped Swallow": "https://i.imgur.com/bNDBWHA.jpeg",
-  "Egyptian Goose": "https://i.imgur.com/XY0n42F.jpeg",
-  "Eurasian Bittern": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Blackbird": "https://i.imgur.com/31XuJQD.jpeg",
-  "Eurasian Blackcap": "https://i.imgur.com/h76plcI.jpeg",
-  "Eurasian Blue Tit": "https://i.imgur.com/Mn7nw7l.jpeg",
-  "Eurasian Bullfinch": "https://i.imgur.com/tbCRpLK.jpeg",
-  "Eurasian Collared-Dove": "https://i.imgur.com/eijaApd.jpeg",
-  "Eurasian Coot": "https://i.imgur.com/k451t8H.jpeg",
-  "Eurasian Crag-Martin": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Curlew": "https://i.imgur.com/Ua5Xwff.jpeg",
-  "Eurasian Goshawk": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Green Woodpecker": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Hobby": "https://i.imgur.com/lg662Kg.jpeg",
-  "Eurasian Hoopoe": "https://i.imgur.com/TspRD3I.jpeg",
-  "Eurasian Jackdaw": "https://i.imgur.com/7HtKHPI.jpeg",
-  "Eurasian Jay": "https://i.imgur.com/27p8RMg.jpeg",
-  "Eurasian Kestrel": "https://i.imgur.com/Sbqd4Vt.jpeg",
-  "Eurasian Linnet": "https://i.imgur.com/Vy3TNjm.jpeg",
-  "Eurasian Magpie": "https://i.imgur.com/E7DVmR9.jpeg",
-  "Eurasian Moorhen": "https://i.imgur.com/49wJnkO.jpeg",
-  "Eurasian Nuthatch": "https://i.imgur.com/XQy5P1V.jpeg",
-  "Eurasian Oystercatcher": "https://i.imgur.com/Yesj4c3.jpeg",
-  "Eurasian Penduline-Tit": "https://i.imgur.com/placeholder.jpeg",
-  "Eurasian Siskin": "https://i.imgur.com/PoaSOvQ.jpeg",
-  "Eurasian Skylark": "https://i.imgur.com/9z1rIoz.jpeg",
-  "Eurasian Sparrowhawk": "https://i.imgur.com/rHbw2mu.jpeg",
-  "Eurasian Spoonbill": "https://i.imgur.com/xku6EbU.jpeg",
-  "Eurasian Three-toed Woodpecker": "https://i.imgur.com/VPkNKaO.jpeg",
-  "Eurasian Tree Sparrow": "https://i.imgur.com/noUpQQd.jpeg",
-  "Eurasian Treecreeper": "https://i.imgur.com/o970ykl.jpeg",
-  "Eurasian Whimbrel": "https://i.imgur.com/WXpoAux.jpeg",
-  "Eurasian Wigeon": "https://i.imgur.com/GR6YKVA.jpeg",
-  "Eurasian Woodcock": "https://i.imgur.com/pK3Dy8E.jpeg",
-  "Eurasian Wren": "https://i.imgur.com/4RSHo1d.jpeg",
-  "Eurasian Wryneck": "https://i.imgur.com/5tsos7A.jpeg",
-  "European Golden-Plover": "https://i.imgur.com/X9or1DC.jpeg",
-  "European Goldfinch": "https://i.imgur.com/9MPGmdQ.jpeg",
-  "European Greenfinch": "https://i.imgur.com/Zmz4I7f.jpeg",
-  "European Herring Gull": "https://i.imgur.com/c5U09LZ.jpeg",
-  "European Honey-buzzard": "https://i.imgur.com/QG6B0Om.jpeg",
-  "European Pied Flycatcher": "https://i.imgur.com/FgAba5d.jpeg",
-  "European Robin": "https://i.imgur.com/41TNCro.jpeg",
-  "European Serin": "https://i.imgur.com/tn9Wc0X.jpeg",
-  "European Shag": "https://i.imgur.com/0Pdr9ZA.jpeg",
-  "European Starling": "https://i.imgur.com/HfB3Ppc.jpeg",
-  "European Stonechat": "https://i.imgur.com/kRUUR36.jpeg",
-  "European Turtle-Dove": "https://i.imgur.com/FMsWzB1.jpeg",
-  "Ferruginous Duck": "https://i.imgur.com/UgTRNOw.jpeg",
-  "Fieldfare": "https://i.imgur.com/y7Y9eCx.jpeg",
-  "Forest Wagtail": "https://i.imgur.com/3hxmV69.jpeg",
-  "Fulvous-breasted Woodpecker": "https://i.imgur.com/4utcEXZ.jpeg",
-  "Gadwall": "https://i.imgur.com/sGscrL8.jpeg",
-  "Garden Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Garganey": "https://i.imgur.com/ZXVy47u.jpeg",
-  "Glaucous Gull": "https://i.imgur.com/LPRUdVL.jpeg",
-  "Glossy Ibis": "https://i.imgur.com/zFrEsSx.jpeg",
-  "Goldcrest": "https://i.imgur.com/e10n1iD.jpeg",
-  "Golden Eagle": "https://i.imgur.com/Kgjl1B1.jpeg",
-  "Golden-crested Myna": "https://i.imgur.com/rorX8We.jpeg",
-  "Golden-fronted Leafbird": "https://i.imgur.com/6amOLd5.jpeg",
-  "Golden-headed Cisticola": "https://i.imgur.com/IHD3xsU.jpeg",
-  "Gray Heron": "https://i.imgur.com/xSalhOs.jpeg",
-  "Gray Kingbird": "https://i.imgur.com/OiR877S.jpeg",
-  "Gray partidge": "https://i.imgur.com/iTKqImZ.jpeg",
-  "Gray Wagtail": "https://i.imgur.com/gD6hn1L.jpeg",
-  "Gray-backed Shrike": "https://i.imgur.com/590Lo0V.jpeg",
-  "Gray-eyed Bulbul": "https://i.imgur.com/dKZ1OxQ.jpeg",
-  "Gray-headed Canary-Flycatcher": "https://i.imgur.com/UPxNMfj.jpeg",
-  "Gray-headed Fish-Eagle": "https://i.imgur.com/2k9gltJ.jpeg",
-  "Gray-headed Lapwing": "https://i.imgur.com/gbSMCfS.jpeg",
-  "Gray-headed Swamphen": "https://i.imgur.com/T1LSI3p.jpeg",
-  "Gray-throated Martin": "https://i.imgur.com/placeholder.jpeg",
-  "Graylag Goose": "https://i.imgur.com/UesYIXB.jpeg",
-  "Great Black-backed Gull": "https://i.imgur.com/ttHZ4K4.jpeg",
-  "Great Blue Heron": "https://i.imgur.com/zbgvVMW.jpeg",
-  "Great Cormorant": "https://i.imgur.com/Gn8zMBd.jpeg",
-  "Great Crested Grebe": "https://i.imgur.com/bDmgPgX.jpeg",
-  "Great Egret": "https://i.imgur.com/UesYIXB.jpeg",
-  "Great Gray Shrike": "https://i.imgur.com/HZBVybx.jpeg",
-  "Great Hornbill": "https://i.imgur.com/bcHBa1T.jpeg",
-  "Great Myna": "https://i.imgur.com/Oyfw1Np.jpeg",
-  "Great Skua": "https://i.imgur.com/placeholder.jpeg",
-  "Great Snipe": "https://i.imgur.com/placeholder.jpeg",
-  "Great Spotted Woodpecker": "https://i.imgur.com/Y0nMkHV.jpeg",
-  "Great Tit": "https://i.imgur.com/fG3197p.jpeg",
-  "Great-tailed Grackle": "https://i.imgur.com/placeholder.jpeg",
-  "Greater Coucal": "https://i.imgur.com/91US29x.jpeg",
-  "Greater Flameback": "https://i.imgur.com/uLH1oFM.jpeg",
-  "Greater Painted-Snipe": "https://i.imgur.com/placeholder.jpeg",
-  "Greater Racket-tailed Drongo": "https://i.imgur.com/s1R8MTk.jpeg",
-  "Greater Scaup": "https://i.imgur.com/hvU13st.jpeg",
-  "Greater Spotted Eagle": "https://i.imgur.com/9DpXgtq.jpeg",
-  "Greater White-fronted Goose": "https://i.imgur.com/odQvC6g.jpeg",
-  "Greater Whitethroat": "https://i.imgur.com/ejkJXLY.jpeg",
-  "Greater Yellowlegs": "https://i.imgur.com/4Cb8o3H.jpeg",
-  "Greater Yellownape": "https://i.imgur.com/5HfdoTd.jpeg",
-  "Green Heron": "https://i.imgur.com/oHoa1KT.jpeg",
-  "Green Sandpiper": "https://i.imgur.com/Gj5xxSP.jpeg",
-  "Green-billed Malkoha": "https://i.imgur.com/iEENr69.jpeg",
-  "Green-eared Barbet": "https://i.imgur.com/YZ1SLAd.jpeg",
-  "Green-winged Teal": "https://i.imgur.com/CXOimi6.jpeg",
-  "Greenish Warbler": "https://i.imgur.com/dh7VL6o.jpeg",
-  "Groove-billed Ani": "https://i.imgur.com/5Vdw6JY.jpeg",
-  "Hair-crested Drongo": "https://i.imgur.com/ygXHI2B.jpeg",
-  "Hawfinch": "https://i.imgur.com/placeholder.jpeg",
-  "Hazel Grouse": "https://i.imgur.com/HLcVeCf.jpeg",
-  "Heart-spotted Woodpecker": "https://i.imgur.com/hX2gF8s.jpeg",
-  "Hen Harrier": "https://i.imgur.com/GPzI5g1.jpeg",
-  "Hodgson's Hawk-Cuckoo": "https://i.imgur.com/GL3J8VP.jpeg",
-  "Hooded Crow": "https://i.imgur.com/kXLcrXo.jpeg",
-  "Horned Grebe": "https://i.imgur.com/2IhuD41.jpeg",
-  "Horned Lark": "https://i.imgur.com/hIJDFTg.jpeg",
-  "House Crow": "https://i.imgur.com/uMRjE3U.jpeg",
-  "House Sparrow": "https://i.imgur.com/0MFxrVW.jpeg",
-  "House Swift": "https://i.imgur.com/wns269j.jpeg",
-  "Hudsonian Godwit": "https://i.imgur.com/nJDLq18.jpeg",
-  "Hudsonian Whimbrel": "https://i.imgur.com/WXpoAux.jpeg",
-  "Iceland Gull": "https://i.imgur.com/BqJWwmO.jpeg",
-  "Icterine Warbler": "https://i.imgur.com/2VecVXX.jpeg",
-  "Indian Cormorant": "https://i.imgur.com/placeholder.jpeg",
-  "Indian Cuckoo": "https://i.imgur.com/placeholder.jpeg",
-  "Indian Pied Starling": "https://i.imgur.com/o4ENZYa.jpeg",
-  "Indian Pond-Heron": "https://i.imgur.com/aDRgOM8.jpeg",
-  "Indian Silverbill": "https://i.imgur.com/WkKplxY.jpeg",
-  "Indochinese Roller": "https://i.imgur.com/7DvZAmE.jpeg",
-  "Italian Sparrow": "https://i.imgur.com/placeholder.jpeg",
-  "Japanese Sparrowhawk": "https://i.imgur.com/X87aI7a.jpeg",
-  "Javan Pond-Heron": "https://i.imgur.com/AcG1hx7.jpeg",
-  "Jerdon's Baza": "https://i.imgur.com/placeholder.jpeg",
-  "Jungle Babbler": "https://i.imgur.com/gZBDKJa.jpeg",
-  "Jungle Myna": "https://i.imgur.com/YZrFAOj.jpeg",
-  "Killdeer": "https://i.imgur.com/2YR7Suh.jpeg",
-  "King Eider": "https://i.imgur.com/0eTZGD3.jpeg",
-  "Lapland Longspur": "https://i.imgur.com/hlJIRgh.jpeg",
-  "Large Scimitar-Babbler": "https://i.imgur.com/1mxo6dl.jpeg",
-  "Large-billed Crow": "https://i.imgur.com/IBKOPJO.jpeg",
-  "Laughing Gull": "https://i.imgur.com/ROB09Dx.jpeg",
-  "Least Sandpiper": "https://i.imgur.com/L3VgKVo.jpeg",
-  "Lesser Black-backed Gull": "https://i.imgur.com/ZS5FuOX.jpeg",
-  "Lesser Necklaced Laughingthrush": "https://i.imgur.com/placeholder.jpeg",
-  "Lesser Racket-tailed Drongo": "https://i.imgur.com/XbfeFnH.jpeg",
-  "Lesser Scaup": "https://i.imgur.com/B0kyO7m.jpeg",
-  "Lesser Spotted Woodpecker": "https://i.imgur.com/placeholder.jpeg",
-  "Lesser Whistling-Duck": "https://i.imgur.com/4rHcBR6.jpeg",
-  "Lesser Whitethroat": "https://i.imgur.com/MUSkXAP.jpeg",
-  "Lesser Yellowlegs": "https://i.imgur.com/6aRgx9H.jpeg",
-  "Lineated Barbet": "https://i.imgur.com/PtKHjH2.jpeg",
-  "Little Blue Heron": "https://i.imgur.com/WLGDju5.jpeg",
-  "Little Cormorant": "https://i.imgur.com/jQPlxuq.jpeg",
-  "Little Egret": "https://i.imgur.com/f4cFhDP.jpeg",
-  "Little Grebe": "https://i.imgur.com/dE8KZMk.jpeg",
-  "Little Owl": "https://i.imgur.com/84nBdUb.jpeg",
-  "Little Ringed Plover": "https://i.imgur.com/kr9Vfo0.jpeg",
-  "Little Spiderhunter": "https://i.imgur.com/p2tEVlr.jpeg",
-  "Little Stint": "https://i.imgur.com/tJqb2Gh.jpeg",
-  "Little Tern": "https://i.imgur.com/s8hehgL.jpeg",
-  "Long-eared Owl": "https://i.imgur.com/placeholder.jpeg",
-  "Long-tailed Duck": "https://i.imgur.com/G0ShAeV.jpeg",
-  "Long-tailed Jaeger": "https://i.imgur.com/MJDXapw.jpeg",
-  "Long-tailed Shrike": "https://i.imgur.com/B4ybD0y.jpeg",
-  "Long-tailed Tit": "https://i.imgur.com/ImoqwK2.jpeg",
-  "Magnificent Frigatebird": "https://i.imgur.com/VeOqTvD.jpeg",
-  "Malaysian Pied-Fantail": "https://i.imgur.com/placeholder.jpeg",
-  "Mallard": "https://i.imgur.com/t8yVlmD.jpeg",
-  "Mangrove Yellow Warbler": "https://i.imgur.com/8cxMcWU.jpeg",
-  "Marsh Tit": "https://i.imgur.com/vNBzi66.jpeg",
-  "Marsh Warbler": "https://i.imgur.com/B2OtsNH.jpeg",
-  "Meadow Pipit": "https://i.imgur.com/iY1xh9G.jpeg",
-  "Medium Egret": "https://i.imgur.com/placeholder.jpeg",
-  "Merlin": "https://i.imgur.com/oWUboZf.jpeg",
-  "Middle Spotted Woodpecker": "https://i.imgur.com/placeholder.jpeg",
-  "Mistle Thrush": "https://i.imgur.com/1j4iL2B.jpeg",
-  "Monk Parakeet": "https://i.imgur.com/Eugx69Z.jpeg",
-  "Mountain Hawk-Eagle": "https://i.imgur.com/JCqK9ND.jpeg",
-  "Mountain Imperial-Pigeon": "https://i.imgur.com/ZUy44hD.jpeg",
-  "Moustached Barbet": "https://i.imgur.com/vtsz9Fz.jpeg",
-  "Mute Swan": "https://i.imgur.com/0BYkM0I.jpeg",
-  "Neotropic Cormorant": "https://i.imgur.com/XG4wFv7.jpeg",
-  "Northern Gannet": "https://i.imgur.com/WIU7RiA.jpeg",
-  "Northern Lapwing": "https://i.imgur.com/e4WIpj5.jpeg",
-  "Northern Nutcracker": "https://i.imgur.com/yCdlMXF.jpeg",
-  "Northern Parula": "https://i.imgur.com/3IQnSZX.jpeg",
-  "Northern Pintail": "https://i.imgur.com/DyNdlPz.jpeg",
-  "Northern Scrub-Flycatcher": "https://i.imgur.com/bAceyjm.jpeg",
-  "Northern Shoveler": "https://i.imgur.com/1375bK7.jpeg",
-  "Northern Waterthrush": "https://i.imgur.com/DjxXnJt.jpeg",
-  "Northern Wheatear": "https://i.imgur.com/NyyNYWk.jpeg",
-  "Northern Yellow Warbler": "https://i.imgur.com/MW6Dvba.jpeg",
-  "Ochraceous Bulbul": "https://i.imgur.com/hIxGEi6.jpeg",
-  "Olive-backed Pipit": "https://i.imgur.com/ULp545C.jpeg",
-  "Oriental Darter": "https://i.imgur.com/uOMgaLj.jpeg",
-  "Oriental Honey-buzzard": "https://i.imgur.com/eOGnBC6.jpeg",
-  "Oriental Magpie-Robin": "https://i.imgur.com/IgVB6tH.jpeg",
-  "Oriental Pied-Hornbill": "https://i.imgur.com/4wvjYJu.jpeg",
-  "Ornate Sunbird": "https://i.imgur.com/ltWimTO.jpeg",
-  "Osprey": "https://i.imgur.com/1vYsTnl.jpeg",
-  "Pacific Reef-Heron": "https://i.imgur.com/SSzFllT.jpeg",
-  "Pacific Swallow": "https://i.imgur.com/lfVdK7f.jpeg",
-  "Paddyfield Pipit": "https://i.imgur.com/9oanoCy.jpeg",
-  "Pale-billed Flowerpecker": "https://i.imgur.com/9oanoCy.jpeg",
-  "Pale-chinned Flycatcher": "https://i.imgur.com/DEHgEix.jpeg",
-  "Pallas's Fish-Eagle": "https://i.imgur.com/w4zisea.jpeg",
-  "Pallid Swift": "https://i.imgur.com/placeholder.jpeg",
-  "Parasitic Jaeger": "https://i.imgur.com/placeholder.jpeg",
-  "Parrot Crossbill": "https://i.imgur.com/TerQilM.jpeg",
-  "Peregrine Falcon": "https://i.imgur.com/gROYhhY.jpeg",
-  "Pied Avocet": "https://i.imgur.com/qA21cnc.jpeg",
-  "Pied Kingfisher": "https://i.imgur.com/yfP8wVs.jpeg",
-  "Pied-billed Grebe": "https://i.imgur.com/4mauvwV.jpeg",
-  "Pin-striped Tit-Babbler": "https://i.imgur.com/ZWo8BiY.jpeg",
-  "Pine Grosbeak": "https://i.imgur.com/placeholder.jpeg",
-  "Pink-footed Goose": "https://i.imgur.com/gJEkzJy.jpeg",
-  "Pink-necked Green-Pigeon": "https://i.imgur.com/vjDtuGQ.jpeg",
-  "Plain Prinia": "https://i.imgur.com/N6xuSQI.jpeg",
-  "Plain-backed Sparrow": "https://i.imgur.com/REJmuoL.jpeg",
-  "Plaintive Cuckoo": "https://i.imgur.com/00WFmCe.jpeg",
-  "Prairie Warbler": "https://i.imgur.com/ia5EK9v.jpeg",
-  "Puff-throated Babbler": "https://i.imgur.com/DJZJkDP.jpeg",
-  "Puff-throated Bulbul": "https://i.imgur.com/placeholder.jpeg",
-  "Purple Sandpiper": "https://i.imgur.com/bX7uX3u.jpeg",
-  "Purple-rumped Sunbird": "https://i.imgur.com/T4orKEp.jpeg",
-  "Rain Quail": "https://i.imgur.com/placeholder.jpeg",
-  "Razorbill": "https://i.imgur.com/T32uGmf.jpeg",
-  "Red Collared-Dove": "https://i.imgur.com/LNcdxq6.jpeg",
-  "Red Crossbill": "https://i.imgur.com/0vb5rw4.jpeg",
-  "Red Junglefowl": "https://i.imgur.com/0A91pEf.jpeg",
-  "Red Kite": "https://i.imgur.com/oT80GM4.jpeg",
-  "Red Knot": "https://i.imgur.com/F7FLTxs.jpeg",
-  "Red-backed Shrike": "https://i.imgur.com/aldXvkU.jpeg",
-  "Red-breasted Merganser": "https://i.imgur.com/0oqqxTF.jpeg",
-  "Red-breasted Parakeet": "https://i.imgur.com/ZSvnujy.jpeg",
-  "Red-eyed Vireo": "https://i.imgur.com/placeholder.jpeg",
-  "Red-necked Grebe": "https://i.imgur.com/GgjDfVW.jpeg",
-  "Red-necked Phalarope": "https://i.imgur.com/0BYkM0I.jpeg",
-  "Red-throated Loon": "https://i.imgur.com/LDSSuXg.jpeg",
-  "Red-vented Bulbul": "https://i.imgur.com/HPJ1XcL.jpeg",
-  "Red-wattled Lapwing": "https://i.imgur.com/VAEBLaG.jpeg",
-  "Red-whiskered Bulbul": "https://i.imgur.com/uVqBNTf.jpeg",
-  "Redpoll": "https://i.imgur.com/KO6tIVa.jpeg",
-  "Redwing": "https://i.imgur.com/MI1Jq4I.jpeg",
-  "Reed Bunting": "https://i.imgur.com/fEW0ZzM.jpeg",
-  "Richard's Pipit": "https://i.imgur.com/bgf6ddC.jpeg",
-  "Ring Ouzel": "https://i.imgur.com/placeholder.jpeg",
-  "Ring-necked Pheasant": "https://i.imgur.com/RQTVaxy.jpeg",
-  "River Lapwing": "https://i.imgur.com/placeholder.jpeg",
-  "Rock Pigeon": "https://i.imgur.com/Yvbsxzv.jpeg",
-  "Rock Pipit": "https://i.imgur.com/Udc26cB.jpeg",
-  "Rook": "https://i.imgur.com/RevHlUn.jpeg",
-  "Rose-ringed Parakeet": "https://i.imgur.com/dMTZBJr.jpeg",
-  "Roseate Spoonbill": "https://i.imgur.com/84261Jo.jpeg",
-  "Ross's Goose": "https://i.imgur.com/ZuXDqBA.jpeg",
-  "Rosy Minivet": "https://i.imgur.com/gVnMrD9.jpeg",
-  "Rosy Pipit": "https://i.imgur.com/u9mwpuO.jpeg",
-  "Rough-legged Hawk": "https://i.imgur.com/0iVqw0C.jpeg",
-  "Royal Tern": "https://i.imgur.com/aeX5V0e.jpeg",
-  "Ruby-cheeked Sunbird": "https://i.imgur.com/XypYDuu.jpeg",
-  "Ruby-topaz Hummingbird": "https://i.imgur.com/rcQUBL8.jpeg",
-  "Ruddy Turnstone": "https://i.imgur.com/0jDqBCb.jpeg",
-  "Ruddy-breasted Crake": "https://i.imgur.com/MNYm5Bj.jpeg",
-  "Ruff": "https://i.imgur.com/b1W1XyG.jpeg",
-  "Rufous Treepie": "https://i.imgur.com/IARypXo.jpeg",
-  "Rufous Woodpecker": "https://i.imgur.com/placeholder.jpeg",
-  "Rufous-bellied Niltava": "https://i.imgur.com/placeholder.jpeg",
-  "Rufous-collared Sparrow": "https://i.imgur.com/Y25MydX.jpeg",
-  "Rufous-gorgeted Flycatcher": "https://i.imgur.com/placeholder.jpeg",
-  "Rufous-necked Laughingthrush": "https://i.imgur.com/eMD8cU9.jpeg",
-  "Saffron Finch": "https://i.imgur.com/cchTb90.jpeg",
-  "Sanderling": "https://i.imgur.com/6VzuY2O.jpeg",
-  "Sandwich Tern": "https://i.imgur.com/TRlrMPm.jpeg",
-  "Sardinian Warbler": "https://i.imgur.com/kcJcZTz.jpeg",
-  "Savi's Warbler": "https://i.imgur.com/placeholder.jpeg",
-  "Scaly-breasted Munia": "https://i.imgur.com/JGIQHNF.jpeg",
-  "Scaly-naped Pigeon": "https://i.imgur.com/placeholder.jpeg",
-  "Scarlet Minivet": "https://i.imgur.com/6r4BiKB.jpeg",
-  "Scarlet-backed Flowerpecker": "https://i.imgur.com/bKQ3mKJ.jpeg",
-  "Sedge Warbler": "https://i.imgur.com/pZwplXb.jpeg",
-  "Shikra": "https://i.imgur.com/placeholder.jpeg",
-  "Shiny Cowbird": "https://i.imgur.com/6r4BiKB.jpeg",
-  "Short-billed Dowitcher": "https://i.imgur.com/nQmtuCm.jpeg",
-  "Short-eared Owl": "https://i.imgur.com/Is3hmOx.jpeg",
-  "Short-toed Snake-Eagle": "https://i.imgur.com/zAu7Y4i.jpeg",
-  "Short-toed Treecreeper": "https://i.imgur.com/eRzlQ53.jpeg",
-  "Siamese Pied Starling": "https://i.imgur.com/1cZSpnv.jpeg",
-  "Siberian Blue Robin": "https://i.imgur.com/pHpf1Z4.jpeg",
-  "Siberian Jay": "https://i.imgur.com/ercmpRj.jpeg",
-  "Siberian Rubythroat": "https://i.imgur.com/ldgPpqc.jpeg",
-  "Siberian Stonechat": "https://i.imgur.com/j1KK2fW.jpeg",
-  "Silver-backed Needletail": "https://i.imgur.com/placeholder.jpeg",
-  "Small Minivet": "https://i.imgur.com/EAPfesi.jpeg",
-  "Smew": "https://i.imgur.com/uipT0a0.jpeg",
-  "Snowy Egret": "https://i.imgur.com/nZuJFGk.jpeg",
-  "Solitary Sandpiper": "https://i.imgur.com/6riR7Rs.jpeg",
-  "Song Thrush": "https://i.imgur.com/f7fKGgX.jpeg",
-  "Southern Lapwing": "https://i.imgur.com/1R260X2.jpeg",
-  "Spotted Crake": "https://i.imgur.com/placeholder.jpeg",
-  "Spotted Dove": "https://i.imgur.com/f3pYP3g.jpeg",
-  "Spotted Flycatcher": "https://i.imgur.com/uHgOjAj.jpeg",
-  "Spotted Owlet": "https://i.imgur.com/ysZPfut.jpeg",
-  "Spotted Redshank": "https://i.imgur.com/placeholder.jpeg",
-  "Spotted Sandpiper": "https://i.imgur.com/COnDvZi.jpeg",
-  "Stejneger's Scoter": "https://i.imgur.com/JVvqXhc.jpeg",
-  "Stock Dove": "https://i.imgur.com/eRY392m.jpeg",
-  "Stork-billed Kingfisher": "https://i.imgur.com/xobgeRH.jpeg",
-  "Streak-eared Bulbul": "https://i.imgur.com/sX8r5sN.jpeg",
-  "Striated Babbler": "https://i.imgur.com/53MStxr.jpeg",
-  "Striated Grassbird": "https://i.imgur.com/ybIpvNo.jpeg",
-  "Striated Heron": "https://i.imgur.com/TdRzOB7.jpeg",
-  "Taiga Bean-Goose": "https://i.imgur.com/A6zjIYY.jpeg",
-  "Taiga Flycatcher": "https://i.imgur.com/kSmJHtL.jpeg",
-  "Tawny Owl": "https://i.imgur.com/placeholder.jpeg",
-  "Temminck's Stint": "https://i.imgur.com/BBSCo7F.jpeg",
-  "Thick-billed Green-Pigeon": "https://i.imgur.com/placeholder.jpeg",
-  "Thick-billed Warbler": "https://i.imgur.com/iGVG8fh.jpeg",
-  "Thrush Nightingale": "https://i.imgur.com/placeholder.jpeg",
-  "Tree Pipit": "https://i.imgur.com/KH22l2g.jpeg",
-  "Tricolored Heron": "https://i.imgur.com/dS4UVnO.jpeg",
-  "Tricolored Munia": "https://i.imgur.com/ToS53cZ.jpeg",
-  "Tropical Mockingbird": "https://i.imgur.com/ZWPC4fa.jpeg",
-  "Tufted Duck": "https://i.imgur.com/bpjQllO.jpeg",
-  "Tundra Bean-Goose": "https://i.imgur.com/oT6Vb7j.jpeg",
-  "Twite": "https://i.imgur.com/VztQFDy.jpeg",
-  "Two-barred Warbler": "https://i.imgur.com/RVPYXUL.jpeg",
-  "Van Hasselt's Sunbird": "https://i.imgur.com/u9WYZBX.jpeg",
-  "Velvet Scoter": "https://i.imgur.com/82bQdPH.jpeg",
-  "Venezuelan Troupial": "https://i.imgur.com/boIRjlT.jpeg",
-  "Verditer Flycatcher": "https://i.imgur.com/LbaLpbH.jpeg",
-  "Vernal Hanging-Parrot": "https://i.imgur.com/placeholder.jpeg",
-  "Vinous-breasted Myna": "https://i.imgur.com/2uApOOU.jpeg",
-  "Water Rail": "https://i.imgur.com/y6bF3mr.jpeg",
-  "Western Cattle-Egret": "https://i.imgur.com/placeholder.jpeg",
-  "Western House-Martin": "https://i.imgur.com/S4jcT4K.jpeg",
-  "Western Marsh Harrier": "https://i.imgur.com/2uj92Qc.jpeg",
-  "Western Yellow Wagtail": "https://i.imgur.com/3UxgiLE.jpeg",
-  "Whinchat": "https://i.imgur.com/mpZQ8hj.jpeg",
-  "Whiskered Tern": "https://i.imgur.com/placeholder.jpeg",
-  "White Stork": "https://i.imgur.com/RkbxLPj.jpeg",
-  "White Wagtail": "https://i.imgur.com/ODNEduu.jpeg",
-  "White-bellied Sea-Eagle": "https://i.imgur.com/WQeIR0I.jpeg",
-  "White-breasted Waterhen": "https://i.imgur.com/6gNmmcS.jpeg",
-  "White-cheeked Pintail": "https://i.imgur.com/JcPh6Y8.jpeg",
-  "White-crested Laughingthrush": "https://i.imgur.com/9AqJvec.jpeg",
-  "White-eyed Parakeet": "https://i.imgur.com/2H9x4kh.jpeg",
-  "White-nest Swiftlet": "https://i.imgur.com/placeholder.jpeg",
-  "White-rumped Munia": "https://i.imgur.com/poRd96m.jpeg",
-  "White-rumped Shama": "https://i.imgur.com/xvVKa2d.jpeg",
-  "White-tailed Eagle": "https://i.imgur.com/WNcEz5M.jpeg",
-  "White-tailed Hawk": "https://i.imgur.com/nTrwpl0.jpeg",
-  "White-tailed Robin": "https://i.imgur.com/KBIHAsm.jpeg",
-  "White-throated Bulbul": "https://i.imgur.com/oi7NKeD.jpeg",
-  "White-throated Dipper": "https://i.imgur.com/I2lZfZM.jpeg",
-  "White-throated Fantail": "https://i.imgur.com/mBwLzqT.jpeg",
-  "White-throated Kingfisher": "https://i.imgur.com/scoTOTI.jpeg",
-  "White-tipped Dove": "https://i.imgur.com/placeholder.jpeg",
-  "White-winged Crossbill": "https://i.imgur.com/4evdTCh.jpeg",
-  "Whooper Swan": "https://i.imgur.com/mTsJZBf.jpeg",
-  "Willet": "https://i.imgur.com/Gz3RD9Y.jpeg",
-  "Willow Ptarmigan": "https://i.imgur.com/NgXWxvg.jpeg",
-  "Willow Tit": "https://i.imgur.com/K4iTHSK.jpeg",
-  "Willow Warbler": "https://i.imgur.com/u3TBZHM.jpeg",
-  "Wood Lark": "https://i.imgur.com/5ZoohcN.jpeg",
-  "Wood Sandpiper": "https://i.imgur.com/bK2Caf7.jpeg",
-  "Wood Warbler": "https://i.imgur.com/WbXaDYH.jpeg",
-  "Wreathed Hornbill": "https://i.imgur.com/j9Kkvjj.jpeg",
-  "Yellow Oriole": "https://i.imgur.com/GUM22N8.jpeg",
-  "Yellow-billed Loon": "https://i.imgur.com/placeholder.jpeg",
-  "Yellow-breasted Bunting": "https://i.imgur.com/QO3Mupk.jpeg",
-  "Yellow-browed Warbler": "https://i.imgur.com/n5GDlXr.jpeg",
-  "Yellow-crowned Night Heron": "https://i.imgur.com/RWWDPfu.jpeg",
-  "Yellow-footed Green-Pigeon": "https://i.imgur.com/eX6XMyc.jpeg",
-  "Yellow-legged Gull": "https://i.imgur.com/vL7r5dR.jpeg",
-  "Yellow-vented Bulbul": "https://i.imgur.com/rfARI6K.jpeg",
-  "Yellow-vented Warbler": "https://i.imgur.com/Y34neLA.jpeg",
-  "Yellow-wattled Lapwing": "https://i.imgur.com/placeholder.jpeg",
-  "Yellowhammer": "https://i.imgur.com/5Ehw5B0.jpeg",
-  "Zebra Dove": "https://i.imgur.com/dvkUler.jpeg",
-  "Zitting Cisticola": "https://i.imgur.com/qcg1o7W.jpeg",
-  "Muscovy Duck": "https://i.imgur.com/JcPh6Y8.jpeg",
-  "Barnacle x Canada Goose (hybrid)": "https://i.imgur.com/hByJPlZ.jpeg",
-  "European Herring x Glaucous Gull (hybrid)": "https://i.imgur.com/rP9W1JZ.jpeg"
-    };
+// ✅ LOAD bird data from JSON
+fetch('birds.json')
+  .then(response => response.json())
+  .then(data => {
 
-// === Bird Photo of the Day ===
+    birds = data;
+    birdKeys = Object.keys(birds);
+
+    shuffledBirds =
+      shuffleArray(Object.entries(birds));
+
+    initApp();
+
+  })
+  .catch(error => {
+    console.error("Error loading birds.json:", error);
+  });
+	
+function initApp() {
+
+  speciesList = Object.keys(birds);
+
+  updateTicker();
+
+  showRandomBird();
+
+loadThumbnails(
+  [...Object.entries(birds)]
+    .sort((a, b) =>
+      a[0].localeCompare(b[0])
+    )
+);
+
+  const countryFilter =
+    document.getElementById("countryFilter");
+
+  const countries = [
+    ...new Set(
+      Object.values(birds)
+        .flatMap(b => b.countries || [])
+    )
+  ].sort();
+
+  countryFilter.innerHTML =
+    '<option value="">Select country</option>';
+
+  countries.forEach(country => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = country;
+    option.textContent = country;
+
+    countryFilter.appendChild(option);
+  });
+}
+
+function updateTicker() {
+
+  let html =
+    "🌍 World 545 species";
+
+  Object.entries(birdData)
+    .sort((a,b) => b[1] - a[1])
+    .forEach(([country,count]) => {
+
+      const code = flags[country];
+
+      if (!code) return;
+
+      html += `
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img
+          src="https://flagcdn.com/24x18/${code}.png"
+          alt="${country}"
+          class="ticker-flag">
+        ${country} ${count}
+      `;
+
+    });
+
+  document.getElementById("exploreTicker")
+    .innerHTML = html;
+
+}
+
+// ✅ Bird of the day
 function showRandomBird() {
   currentBirdIndex = Math.floor(Math.random() * birdKeys.length);
   const randomBird = birdKeys[currentBirdIndex];
-  const photoUrl = birdPhotos[randomBird];
+  const photoUrl = birds[randomBird].photo;
 
   document.getElementById("dailyBirdImage").src = photoUrl;
   document.getElementById("dailyBirdImage").alt = randomBird;
   document.getElementById("dailyBirdCaption").textContent = randomBird;
 }
 
-const birdKeys = Object.keys(birdPhotos);
-let currentBirdIndex = 0;
+// ✅ Navigation
 
-showRandomBird();
-
+function showBird(name, url) {
+  const img = document.getElementById("dailyBirdImage");
+  img.style.opacity = "0";
+  setTimeout(() => { img.src = url; img.alt = name;
+    document.getElementById( "dailyBirdCaption" ).textContent = name;
+    img.style.opacity = "1"; }, 150);
+}
+	  
 function navigateBird(direction) {
+
   currentBirdIndex += direction;
-  if (currentBirdIndex < 0) currentBirdIndex = birdKeys.length - 1;
-  if (currentBirdIndex >= birdKeys.length) currentBirdIndex = 0;
+
+  if (currentBirdIndex < 0)
+    currentBirdIndex = birdKeys.length - 1;
+
+  if (currentBirdIndex >= birdKeys.length)
+    currentBirdIndex = 0;
 
   const name = birdKeys[currentBirdIndex];
-  const url = birdPhotos[name];
+  const url = birds[name].photo;
 
-  document.getElementById("dailyBirdImage").src = url;
-  document.getElementById("dailyBirdImage").alt = name;
-  document.getElementById("dailyBirdCaption").textContent = name;
+  showBird(name, url);
+
+  animateSwipeDots(direction);
+
 }
 
+function animateSwipeDots(direction) {
 
+  const dot = document.querySelector(
+    direction > 0
+      ? ".right-dot"
+      : ".left-dot"
+  );
+
+  if (!dot) return;
+
+  dot.classList.add("swipe-active");
+
+  setTimeout(() => { dot.classList.remove("swipe-active"); }, 250);
+
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const birdFrame = document.querySelector(".bird-day-frame");
+  if (!birdFrame) return;
+  let startX = 0;
+  let startY = 0;
+  birdFrame.addEventListener("touchstart", e => { 
+    startX = e.changedTouches[0].screenX; 
+	startY = e.changedTouches[0].screenY;
+  });
+
+  birdFrame.addEventListener("touchend", e => { 
+	const endX = e.changedTouches[0].screenX;
+	const endY = e.changedTouches[0].screenY;
+	  const dx = Math.abs(endX - startX);
+	  const dy = Math.abs(endY - startY);
+	if (dx < dy) return;
+    const SWIPE_THRESHOLD = 120;
+    if (endX < startX - SWIPE_THRESHOLD) { navigateBird(1); }
+    else if (endX > startX + SWIPE_THRESHOLD) { navigateBird(-1); }
+  });
+});
+	  
 // === Inject Thumbnails ===
-function loadThumbnails() {
+function shuffleArray(arr) {
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+function loadThumbnails(list = Object.entries(birds)) {
+
   const gallery = document.getElementById("thumbnailGallery");
 
-  Object.entries(birdPhotos).forEach(([name, url]) => {
-    const thumb = document.createElement("img");
-    thumb.src = url.replace(".jpeg", "m.jpeg");
-    thumb.alt = name;
-    thumb.title = name;
-    thumb.style = `
-  	width:100%; height:100px; object-fit:cover;
- 	 border-radius:6px; cursor:pointer;
-  	box-shadow:0 2px 6px rgba(0,0,0,0.2);
- 	transition:transform 0.2s ease;
-	`;
+  gallery.innerHTML = "";
 
-    thumb.onmouseover = () => thumb.style.transform = "scale(1.05)";
-    thumb.onmouseout = () => thumb.style.transform = "scale(1)";
-    thumb.onclick = () => {
- 	const index = birdKeys.indexOf(name);
-  	currentBirdIndex = index;
+list.forEach(([name, data]) => {
 
-  	document.getElementById("dailyBirdImage").src = url;
-  	document.getElementById("dailyBirdImage").alt = name;
-  	document.getElementById("dailyBirdCaption").textContent = name;
-	};
+  const wrapper = document.createElement("div");
+wrapper.style = ` position: relative; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; overflow: hidden; border-radius: 4px; background: #e8e8e8; `;
 
-    gallery.appendChild(thumb);
+  const thumb = document.createElement("img");
+  thumb.src = data.photo;
+  thumb.alt = name;
+  thumb.title = name;
+thumb.style = ` display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.18); transition: transform 0.2s ease; `;
+
+  const label = document.createElement("div");
+  label.textContent = name;
+  label.style = `
+    position:absolute; bottom:0; left:0; width:100%; background:rgba(0,0,0,0.5); color:white; font-size:12px; padding:4px 6px; box-sizing:border-box;
+    text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; opacity:0;
+	transform:translateY(100%); transition:opacity 0.2s ease, transform 0.2s ease;
+  `;
+
+  wrapper.appendChild(thumb);
+  wrapper.appendChild(label);
+
+wrapper.onmouseenter = () => {
+  thumb.style.transform = "scale(1.05)";
+  label.style.opacity = "1";
+  label.style.transform = "translateY(0)";
+};
+
+wrapper.onmouseleave = () => {
+  thumb.style.transform = "scale(1)";
+  label.style.opacity = "0";
+  label.style.transform = "translateY(100%)";
+};
+wrapper.onclick = () => {
+
+  currentBirdIndex =
+    birdKeys.indexOf(name);
+
+  showBird(name, data.photo);
+
+};
+
+gallery.appendChild(wrapper);
   });
 }
-window.onload = loadThumbnails;
+document.addEventListener("DOMContentLoaded", () => {
 
-    const speciesData = {
-	"Aruba": ["American Kestrel", "American Oystercatcher", "American Wigeon", "Bananaquit", "Barn Swallow", "Bare-eyed Pigeon", "Belted Kingfisher", "Black-bellied Plover", "Black-crowned Night Heron", "Black-faced Grassquit", "Black-necked Stilt", "Blue-tailed Emerald", "Blue-winged Teal", "Brown-crested Flycatcher", "Brown Pelican", "Brown-throated Parakeet", "Burrowing Owl", "Carib Grackle", "Caribbean Martin", "Common Gallinule", "Common Ground Dove", "Crested Caracara", "Eared Dove", "Gray Kingbird", "Great Blue Heron", "Great Egret", "Great-tailed Grackle", "Green Heron", "Groove-billed Ani", "House Sparrow", "Hudsonian Godwit", "Hudsonian Whimbrel", "Killdeer", "Laughing Gull", "Least Sandpiper", "Lesser Black-backed Gull", "Lesser Scaup", "Lesser Yellowlegs", "Little Blue Heron", "Magnificent Frigatebird", "Merlin", "Neotropic Cormorant", "Northern Parula", "Northern Scrub-Flycatcher", "Northern Waterthrush",  "Northern Yellow Warbler", "Osprey", "Peregrine Falcon", "Pied-billed Grebe", "Prairie Warbler", "Rock Pigeon", "Roseate Spoonbill", "Royal Tern", "Ruby-topaz Hummingbird", "Ruddy Turnstone", "Sandwich Tern", "Sanderling", "Shiny Cowbird", "Snowy Egret", "Solitary Sandpiper", "Spotted Sandpiper", "Tricolored Heron", "Tropical Mockingbird", "Venezuelan Troupial", "White-cheeked Pintail", "White-tailed Hawk", "White-tipped Dove", "Yellow-crowned Night Heron", "Yellow Oriole"],   
+  const searchBox =
+    document.getElementById("birdSearch");
 
-	"Bangladesh": ["Abbott's Babbler", "Asian Barred Owlet", "Asian Fairy-bluebird", "Asian Green Bee-eater", "Asian Koel", "Asian Openbill", "Asian Palm Swift", "Ashy Drongo", "Ashy Minivet", "Ashy Woodswallow", "Bank Swallow", "Baya Weaver", "Bengal Bushlark", "Black-crested Bulbul", "Black-crowned Night Heron", "Black Drongo", "Black-headed Cuckooshrike", "Black-headed Ibis", "Black Kite", "Black-naped Monarch", "Black-rumped Flameback", "Black-tailed Godwit", "Black-winged Cuckooshrike", "Black-winged Stilt", "Blossom-headed Parakeet", "Bluethroat", "Blue-bearded Bee-eater", "Blue-throated Barbet", "Blue-throated Flycatcher", "Blue Whistling-Thrush", "Blyth's Paradise-Flycatcher", "Blyth's Pipit", "Blyth's Reed Warbler", "Bronze-winged Jacana", "Brown Boobook", "Brown Shrike", "Cachar Bulbul", "Changeable Hawk-Eagle", "Chestnut Munia", "Chestnut-headed Bee-eater", "Chestnut-tailed Starling", "Cinnamon Bittern", "Clamorous Reed Warbler", "Common Green-Magpie", "Common Hawk-Cuckoo", "Common Hill Myna", "Common Iora", "Common Kingfisher", "Common Myna", "Common Redshank", "Common Sandpiper", "Common Snipe", "Common Tailorbird", "Coppersmith Barbet", "Cotton Pygmy-Goose", "Crested Goshawk", "Crested Serpent-Eagle", "Delicate Prinia", "Dusky Warbler", "Eastern Cattle-Egret", "Eastern Red-rumped Swallow", "Eurasian Collared-Dove", "Eurasian Coot", "Eurasian Hoopoe", "Eurasian Kestrel", "Eurasian Moorhen", "Eurasian Wryneck", "Ferruginous Duck", "Fulvous-breasted Woodpecker", "Garganey", "Golden-fronted Leafbird", "Gray Heron", "Gray-headed Canary-Flycatcher", "Gray-headed Fish-Eagle", "Gray-headed Lapwing", "Gray-throated Martin", "Gray Wagtail", "Greater Coucal", "Greater Flameback", "Greater Painted-Snipe", "Greater Racket-tailed Drongo", "Greater Spotted Eagle", "Green-billed Malkoha", "Green Sandpiper", "Greenish Warbler", "Hair-crested Drongo", "House Crow", "House Sparrow", "Indian Pied Starling", "Indian Pond-Heron", "Indian Silverbill", "Indochinese Roller", "Jungle Babbler", "Jungle Myna", "Lineated Barbet", "Little Cormorant", "Little Egret", "Little Ringed Plover", "Long-tailed Shrike", "Medium Egret", "Oriental Darter", "Oriental Honey-buzzard", "Oriental Magpie-Robin", "Oriental Pied-Hornbill", "Osprey", "Paddyfield Pipit", "Pale-billed Flowerpecker", "Pale-chinned Flycatcher", "Pallas's Fish-Eagle", "Pin-striped Tit-Babbler", "Peregrine Falcon", "Pied Kingfisher", "Plain Prinia", "Purple-rumped Sunbird", "Red Collared-Dove", "Red-vented Bulbul", "Red-wattled Lapwing", "Richard's Pipit", "River Lapwing", "Rock Pigeon", "Rosy Minivet", "Rosy Pipit", "Ruddy-breasted Crake", "Rufous-bellied Niltava", "Rufous-gorgeted Flycatcher", "Rufous-necked Laughingthrush", "Rufous Treepie", "Rufous Woodpecker", "Ruby-cheeked Sunbird", "Scarlet-backed Flowerpecker", "Scaly-breasted Munia", "Shikra", "Siberian Blue Robin", "Siberian Rubythroat", "Siberian Stonechat", "Spotted Dove", "Spotted Owlet", "Striated Babbler", "Striated Grassbird", "Striated Heron", "Taiga Flycatcher", "Temminck's Stint", "Thick-billed Warbler", "Tricolored Munia", "Vernal Hanging-Parrot", "Verditer Flycatcher", "White-breasted Waterhen", "White-rumped Munia", "White-rumped Shama", "White-tailed Robin", "White-throated Bulbul", "White-throated Fantail", "White-throated Kingfisher", "Wood Sandpiper", "Yellow-breasted Bunting", "Yellow-browed Warbler", "Yellow-footed Green-Pigeon", "Yellow-vented Warbler", "Yellow-wattled Lapwing", "Zitting Cisticola"],
+  const sortBox =
+    document.getElementById("birdSort");
 
-	"Belgium": ["Barn Swallow", "Barnacle Goose", "Canada Goose", "Common Chaffinch", "Common Chiffchaff", "Common Greenshank", "Common Redshank", "Common Reed Warbler", "Common Sandpiper", "Common Tern", "Common Wood-Pigeon", "Eurasian Blackbird", "Eurasian Blue Tit", "Eurasian Coot", "Eurasian Curlew", "Eurasian Jay", "Eurasian Magpie", "Eurasian Oystercatcher", "Eurasian Sparrowhawk", "Eurasian Spoonbill", "European Goldfinch", "European Herring Gull", "Graylag Goose", "Great Crested Grebe", "Great Spotted Woodpecker", "Great Tit", "Green Sandpiper", "Lesser Black-backed Gull", "Little Egret", "Stock Dove", "Western House-Martin", "White Stork", "White Wagtail"],
+  const countryBox =
+    document.getElementById("countryFilter");
 
-	"Czech Republic": ["Barn Swallow", "Common Swift"],
+  function updateGallery() {
 
-	"Curaçao": ["American Coot", "American Flamingo", "American Kestrel", "Bananaquit", "Bank Swallow", "Bare-eyed Pigeon", "Black-bellied Plover", "Black-bellied Whistling-Duck", "Black-faced Grassquit", "Black-necked Stilt", "Blue-crowned Parakeet", "Blue-tailed Emerald", "Blue-winged Teal", "Brown-crested Flycatcher", "Brown-throated Parakeet", "Carib Grackle", "Caribbean Elaenia", "Crested Bobwhite", "Crested Caracara", "Eared Dove", "Greater Yellowlegs", "Great Blue Heron", "Great Egret", "Green Heron", "Groove-billed Ani", "House Sparrow", "Least Sandpiper", "Lesser Yellowlegs", "Little Blue Heron", "Mangrove Yellow Warbler", "Magnificent Frigatebird", "Osprey", "Peregrine Falcon", "Pied-billed Grebe", "Red-eyed Vireo", "Rock Pigeon", "Royal Tern", "Ruby-topaz Hummingbird", "Ruddy Turnstone", "Rufous-collared Sparrow", "Saffron Finch", "Scaly-naped Pigeon", "Short-billed Dowitcher", "Snowy Egret", "Southern Lapwing", "Spotted Sandpiper", "Tropical Mockingbird", "Tricolored Heron", "Venezuelan Troupial", "Western Cattle-Egret", "White-cheeked Pintail", "White-eyed Parakeet", "White-tailed Hawk", "White-tipped Dove", "Willet", "Yellow-crowned Night Heron", "Yellow Oriole"],	
+    let list = Object.entries(birds);
 
-	"Denmark": ["Barn Swallow", "Barnacle Goose", "Bearded Reedling", "Black-headed Gull", "Bluethroat", "Brambling", "Brant", "Carrion Crow", "Common Buzzard", "Common Chaffinch", "Common Chiffchaff", "Common Crane", "Common Cuckoo", "Common Eider", "Common Goldeneye", "Common Grasshopper Warbler", "Common Gull", "Common Pochard", "Common Redshank", "Common Redstart", "Common Reed Warbler", "Common Ringed Plover", "Common Rosefinch", "Common Sandpiper", "Common Scoter", "Common Shelduck", "Common Snipe", "Common Swift", "Common Tern", "Common Wood-Pigeon", "Corn Bunting", "Dunnock", "Eurasian Blackbird", "Eurasian Blackcap", "Eurasian Blue Tit", "Eurasian Bullfinch", "Eurasian Collared-Dove", "Eurasian Coot", "Eurasian Curlew", "Eurasian Jackdaw", "Eurasian Jay", "Eurasian Kestrel", "Eurasian Linnet", "Eurasian Magpie", "Eurasian Moorhen", "Eurasian Nuthatch", "Eurasian Oystercatcher", "Eurasian Siskin", "Eurasian Skylark", "Eurasian Sparrowhawk", "Eurasian Spoonbill", "Eurasian Tree Sparrow", "Eurasian Wigeon", "Eurasian Wren", "European Golden-Plover", "European Goldfinch", "European Greenfinch", "European Herring Gull", "European Robin", "European Starling", "European Stonechat", "Fieldfare", "Gadwall", "Garden Warbler", "Garganey", "Goldcrest", "Gray Heron", "Gray Partridge", "Graylag Goose", "Great Cormorant", "Great Crested Grebe", "Great Spotted Woodpecker", "Great Tit", "Greater Whitethroat", "Green-winged Teal", "Hen Harrier", "Hooded Crow", "House Sparrow", "Icterine Warbler", "Lesser Black-backed Gull", "Lesser Whitethroat", "Long-tailed Tit", "Mallard", "Marsh Warbler", "Meadow Pipit", "Mistle Thrush", "Mute Swan", "Northern Lapwing", "Northern Pintail", "Northern Shoveler", "Northern Wheatear", "Osprey", "Pied Avocet", "Red-breasted Merganser", "Red-necked Grebe", "Redpoll", "Redwing", "Reed Bunting", "Ring-necked Pheasant", "Rock Pigeon", "Rook", "Sedge Warbler", "Short-toed Treecreeper", "Smew", "Song Thrush", "Spotted Flycatcher", "Thrush Nightingale", "Tufted Duck", "Water Rail", "Western House-Martin", "Western Marsh Harrier", "White Wagtail", "White-tailed Eagle", "Willow Warbler", "Yellowhammer"], 
+    const search =
+      searchBox.value.toLowerCase();
 
-	"Estonia": ["Bank Swallow", "Barn Swallow", "Black-headed Gull", "Bluethroat", "Common Buzzard", "Common Chaffinch", "Common Crane", "Common Gull", "Common Merganser", "Common Reed Warbler", "Common Shelduck", "Common Snipe", "Common Swift", "Common Tern", "Common Wood-Pigeon", "Eurasian Bittern", "Eurasian Blackbird", "Eurasian Blackcap", "Eurasian Blue Tit", "Eurasian Oystercatcher", "Eurasian Penduline-Tit", "Eurasian Siskin", "Eurasian Skylark", "Eurasian Tree Sparrow", "Fieldfare", "Garden Warbler", "Gadwall", "Gray Heron", "Greater Whitethroat", "Great Cormorant", "Great Crested Grebe", "Great Tit", "House Sparrow", "Hooded Crow", "Icterine Warbler", "Mallard", "Mute Swan", "Northern Lapwing", "Red-breasted Merganser", "Redpoll", "Reed Bunting", "Rock Pigeon", "Sedge Warbler", "Spotted Flycatcher", "Tufted Duck", "Western House-Martin", "Western Yellow Wagtail", "White Stork", "White Wagtail"],
+    if (search) {
 
-	"Finland": ["Barnacle Goose", "Black-headed Gull", "Canada Goose", "Common Chaffinch", "Common Goldeneye", "Common Gull", "Common Pochard", "Common Raven", "Common Wood-Pigeon", "Eurasian Blackbird", "Eurasian Blue Tit", "Eurasian Coot", "Eurasian Greenfinch", "Eurasian Jackdaw", "Eurasian Skylark", "Eurasian Wigeon", "European Greenfinch", "European Herring Gull", "European Robin", "Fieldfare", "Gadwall", "Great Black-backed Gull", "Great Cormorant", "Great Spotted Woodpecker", "Great Tit", "Hooded Crow", "House Sparrow", "Mallard", "Mute Swan", "Rock Pigeon", "Song Thrush", "Tufted Duck", "White Wagtail", "Whooper Swan", "Yellowhammer"],	
-	"Germany": ["Barn Swallow", "Carrion Crow", "Common Buzzard", "Common Chaffinch", "Common Chiffchaff", "Common Swift", "Common Wood-Pigeon", "Eurasian Blackbird", "Eurasian Blackcap", "Eurasian Collared-Dove", "Eurasian Green Woodpecker", "Eurasian Kestrel", "European Herring Gull", "House Sparrow", "Red Kite", "Short-toed Treecreeper", "Western House-Martin", "Yellowhammer"],
+      list = list.filter(([name]) =>
+        name.toLowerCase().includes(search)
+      );
+    }
 
-	"Greece": ["Alpine Swift", "Barn Swallow", "Collared Flycatcher", "Common Hoopoe", "Common Swift", "Eurasian Blackbird", "Eurasian Blue Tit", "Eurasian Collared-Dove", "Eurasian Jay", "Eurasian Kestrel", "Eurasian Magpie", "Great Tit", "Hooded Crow", "House Sparrow", "Monk Parakeet", "Pallid Swift", "Rock Pigeon", "Rose-ringed Parakeet", "Sardinian Warbler", "Tree Pipit", "Wood Warbler", "Yellow-legged Gull"],
+if (sortBox.value === "alpha") {
 
-	"Italy": ["Alpine Swift", "Barn Swallow", "Black Kite", "Black Redstart", "Cetti's Warbler", "Common Buzzard", "Common Chaffinch", "Common Chiffchaff", "Common Hoopoe", "Common Merganser", "Common Raven", "Common Redstart", "Common Swift", "Common Wood-Pigeon", "Eared Grebe", "Eurasian Blackbird", "Eurasian Blackcap", "Eurasian Blue Tit", "Eurasian Collared-Dove", "Eurasian Coot", "Eurasian Crag-Martin", "Eurasian Green Woodpecker", "Eurasian Kestrel", "Eurasian Magpie", "Eurasian Moorhen", "Eurasian Tree Sparrow", "Eurasian Wren", "Eurasian Wryneck", "European Goldfinch", "European Pied Flycatcher", "European Robin", "European Serin", "European Starling", "European Stonechat", "Garganey", "Goldcrest", "Gray Heron", "Gray Wagtail", "Great Cormorant", "Great Crested Grebe", "Great Tit", "Hooded Crow", "Italian Sparrow", "Lesser Whitethroat", "Little Egret", "Little Grebe", "Long-tailed Tit", "Mallard", "Mute Swan", "Ring-necked Pheasant", "Rock Pigeon", "Rose-ringed Parakeet", "Short-toed Snake-Eagle", "Western House-Martin", "Western Marsh Harrier", "Western Yellow Wagtail", "White Stork", "White Wagtail", "Willow Warbler", "Yellow-legged Gull"],
+  list.sort((a, b) =>
+    a[0].localeCompare(b[0])
+  );
 
-	"Latvia": ["Black-headed Gull", "Common Chaffinch", "Common Gull", "Eurasian Blackbird", "Eurasian Blue Tit", "European Herring Gull", "European Starling", "Fieldfare", "Hooded Crow", "House Sparrow", "Mallard", "Rock Pigeon", "White Wagtail"],
+} else if (sortBox.value === "random") {
 
-  "Netherlands": ["Bank Swallow", "Bar-headed Goose", "Barn Swallow", "Barnacle Goose", "Black Redstart", "Black-headed Gull", "Black-tailed Godwit", "Brambling", "Canada Goose", "Carrion Crow", "Caspian Tern", "Cetti's Warbler", "Common Buzzard", "Common Chaffinch", "Common Chiffchaff", "Common Cuckoo", "Common Gull", "Common Kingfisher", "Common Merganser", "Common Pochard", "Common Redshank", "Common Redstart", "Common Reed Warbler", "Common Ringed Plover", "Common Sandpiper", "Common Shelduck", "Common Snipe", "Common Swift", "Common Tern", "Common Wood-Pigeon", "Dunlin", "Egyptian Goose", "Eurasian Blackbird", "Eurasian Blackcap", "Eurasian Blue Tit", "Eurasian Collared-Dove", "Eurasian Coot", "Eurasian Curlew", "Eurasian Goshawk", "Eurasian Green Woodpecker", "Eurasian Hobby", "Eurasian Jackdaw", "Eurasian Jay", "Eurasian Kestrel", "Eurasian Linnet", "Eurasian Magpie", "Eurasian Moorhen", "Eurasian Nuthatch", "Eurasian Oystercatcher", "Eurasian Sparrowhawk", "Eurasian Spoonbill", "Eurasian Siskin", "Eurasian Stonechat", "Eurasian Tree Sparrow", "Eurasian Whimbrel", "Eurasian Wigeon", "Eurasian Wren", "European Goldfinch", "European Greenfinch", "European Herring Gull", "European Honey-buzzard", "European Robin", "European Starling", "European Stonechat", "European Turtle-Dove", "Fieldfare", "Gadwall", "Garden Warbler", "Goldcrest", "Gray Heron", "Gray Partridge", "Graylag Goose", "Great Black-backed Gull", "Great Cormorant", "Great Crested Grebe", "Great Egret", "Great Spotted Woodpecker", "Great Tit", "Greater Scaup", "Greater White-fronted Goose", "Greater Whitethroat", "Green Sandpiper", "Green-winged Teal", "House Sparrow", "Lesser Black-backed Gull", "Little Egret", "Little Grebe", "Little Owl", "Little Ringed Plover", "Little Tern", "Long-tailed Tit", "Mallard", "Marsh Tit", "Meadow Pipit", "Middle Spotted Woodpecker", "Mistle Thrush", "Mute Swan", "Northern Lapwing", "Northern Shoveler", "Northern Wheatear", "Peregrine Falcon", "Pied Avocet", "Red-backed Shrike", "Red-necked Grebe", "Redwing", "Reed Bunting", "Ring-necked Pheasant", "Rock Pigeon", "Rose-ringed Parakeet", "Ruff", "Savi's Warbler", "Sedge Warbler", "Short-toed Treecreeper", "Song Thrush", "Spotted Flycatcher", "Stock Dove", "Tree Pipit", "Tufted Duck", "Tundra Bean-Goose", "Water Rail", "Western House-Martin", "Western Marsh Harrier", "Western Yellow Wagtail", "White Stork", "White Wagtail", "White-tailed Eagle", "Willow Warbler", "Wood Lark"],
-	
-	"Norway": ["Arctic Loon", "Arctic Tern", "Atlantic Puffin", "Bank Swallow", "Bar-headed Goose", "Bar-tailed Godwit", "Barn Swallow", "Barnacle Goose", "Black Grouse", "Black Guillemot", "Black Woodpecker", "Black-bellied Plover", "Black-headed Gull", "Black-legged Kittiwake", "Bluethroat", "Bohemian Waxwing", "Brambling", "Canada Goose", "Coal Tit", "Common Buzzard", "Common Chaffinch", "Common Coot", "Common Crane", "Common Cuckoo", "Common Eider", "Common Firecrest", "Common Goldeneye", "Common Greenshank", "Common Gull", "Common Loon", "Common Magpie", "Common Merganser", "Common Murre", "Common Quail", "Common Raven", "Common Redshank", "Common Redstart", "Common Ringed Plover", "Common Sandpiper", "Common Scoter", "Common Shelduck", "Common Snipe", "Common Swift", "Common Tern", "Common Wood-Pigeon", "Curlew Sandpiper", "Dunnock", "Eurasian Blackbird", "Eurasian Blackcap", "Eurasian Blue Tit", "Eurasian Bullfinch", "Eurasian Chiffchaff", "Eurasian Coot", "Eurasian Curlew", "Eurasian Goshawk", "Eurasian Jackdaw", "Eurasian Jay", "Eurasian Kestrel", "Eurasian Linnet", "Eurasian Magpie", "Eurasian Moorhen", "Eurasian Nuthatch", "Eurasian Oystercatcher", "Eurasian Siskin", "Eurasian Skylark", "Eurasian Sparrowhawk", "Eurasian Three-toed Woodpecker", "Eurasian Tree Sparrow", "Eurasian Treecreeper", "Eurasian Whimbrel", "Eurasian Wigeon", "Eurasian Woodcock", "Eurasian Wren", "European Golden-Plover", "European Goldfinch", "European Greenfinch", "European Herring Gull", "European Pied Flycatcher", "European Robin", "European Shag", "European Starling", "Fieldfare", "Gadwall", "Garden Warbler", "Garganey", "Glaucous Gull", "Goldcrest", "Golden Eagle", "Gray Heron", "Gray Wagtail", "Graylag Goose", "Great Black-backed Gull", "Great Cormorant", "Great Crested Grebe", "Great Gray Shrike", "Great Snipe", "Great Spotted Woodpecker", "Great Tit", "Greater Scaup", "Greater Whitethroat", "Green-winged Teal", "Hazel Grouse", "Hen Harrier", "Hooded Crow", "Horned Grebe", "Horned Lark", "House Sparrow", "Iceland Gull", "Icterine Warbler", "King Eider", "Lapland Longspur", "Lesser Black-backed Gull", "Lesser Whitethroat", "Little Grebe", "Little Ringed Plover", "Little Stint", "Long-eared Owl", "Long-tailed Duck", "Long-tailed Jaeger", "Long-tailed Tit", "Mallard", "Marsh Tit", "Meadow Pipit", "Merlin", "Mute Swan", "Northern Gannet", "Northern Lapwing", "Northern Pintail", "Northern Shoveler", "Northern Nutcracker", "Northern Wheatear", "Parasitic Jaeger", "Parrot Crossbill", "Peregrine Falcon", "Pine Grosbeak", "Pink-footed Goose", "Purple Sandpiper", "Razorbill", "Red Crossbill", "Red Knot", "Red-breasted Merganser", "Red-necked Phalarope", "Red-throated Loon", "Redwing", "Reed Bunting", "Ring Ouzel", "Rock Pipit", "Rock Pigeon", "Rook", "Ross's Goose", "Rough-legged Hawk", "Ruddy Turnstone", "Ruff", "Sanderling", "Sedge Warbler", "Short-eared Owl", "Siberian Jay", "Smew", "Song Thrush", "Spotted Crake", "Spotted Flycatcher", "Spotted Redshank", "Stejneger's Scoter", "Taiga Bean-Goose", "Tawny Owl", "Temminck's Stint", "Tree Pipit", "Tufted Duck", "Twite", "Velvet Scoter", "Water Rail", "Western House-Martin", "Western Marsh Harrier", "Western Yellow Wagtail", "White Wagtail", "White-tailed Eagle", "White-throated Dipper", "White-winged Crossbill", "Whooper Swan", "Whinchat", "Willow Ptarmigan", "Willow Tit", "Willow Warbler", "Wood Sandpiper", "Wood Warbler", "Yellow-billed Loon", "Yellowhammer"],
+  list = shuffleArray(
+    Object.entries(birds)
+  );
 
-	"Poland": ["Great Cormorant", "Mute Swan", "Rock Pigeon"],
+} else if (
+  sortBox.value === "country" &&
+  countryBox.value
+) {
 
-	"Sweden": ["Bar-tailed Godwit", "Barnacle Goose", "Black-bellied Plover", "Black-headed Gull", "Black-tailed Godwit", "Black Woodpecker", "Brambling", "Canada Goose", "Common Buzzard", "Common Chiffchaff", "Common Goldeneye", "Common Gull", "Common Pochard", "Common Raven", "Common Snipe", "Common Swift", "Common Wood-Pigeon", "Crested Tit", "Dunlin", "Eurasian Blackbird", "Eurasian Blue Tit", "Eurasian Bullfinch", "Eurasian Coot", "Eurasian Goshawk", "Eurasian Jackdaw", "Eurasian Jay", "Eurasian Kestrel", "Eurasian Magpie", "Eurasian Nuthatch", "Eurasian Siskin", "Eurasian Wigeon", "Eurasian Wren", "European Greenfinch", "European Herring Gull", "European Robin", "Fieldfare", "Gadwall", "Goldcrest", "Gray Heron", "Graylag Goose", "Great Black-backed Gull", "Great Cormorant", "Great Egret", "Great Spotted Woodpecker", "Great Tit", "Green-winged Teal", "Hooded Crow", "Little Grebe", "Mallard", "Meadow Pipit", "Mute Swan", "Northern Pintail", "Northern Shoveler", "Red Kite", "Redwing", "Tufted Duck", "White Wagtail", "Willow Tit", "Willow Warbler"],
-	
-	"Thailand": ["Asian Brown Flycatcher", "Asian Golden Weaver", "Asian Green Bee-eater", "Asian Koel", "Asian Openbill", "Asian Palm Swift", "Ashy Drongo", "Ashy Minivet", "Ashy Woodswallow", "Baya Weaver", "Black Baza", "Black-collared Starling", "Black-crested Bulbul", "Black Drongo", "Black-headed Bulbul", "Black-naped Monarch", "Black-naped Oriole", "Black-winged Cuckooshrike", "Blue-bearded Bee-eater", "Blue-tailed Bee-eater", "Blue Whistling-Thrush", "Brahminy Kite", "Bronzed Drongo", "Chestnut-headed Bee-eater", "Chinese Pond-Heron", "Collared Kingfisher", "Common Flameback", "Common Green-Magpie", "Common Hill Myna", "Common Myna", "Common Tailorbird", "Copper-throated Sunbird", "Coppersmith Barbet", "Crested Serpent-Eagle", "Dark-sided Flycatcher", "Dark-necked Tailorbird", "Dollarbird", "Dusky Broadbill", "Dusky Warbler", "Eastern Cattle-Egret", "Eurasian Hoopoe", "Eurasian Tree Sparrow", "Forest Wagtail", "Golden-crested Myna", "Golden-headed Cisticola", "Great Egret", "Great Hornbill", "Great Myna", "Gray-backed Shrike", "Gray Heron", "Gray-headed Lapwing", "Gray-eyed Bulbul", "Green-billed Malkoha", "Green-eared Barbet", "Greater Coucal", "Greater Racket-tailed Drongo", "Greater Yellownape", "Hair-crested Drongo", "Heart-spotted Woodpecker", "Hodgson's Hawk-Cuckoo", "House Sparrow", "House Swift", "Indian Cormorant", "Indian Cuckoo", "Indochinese Roller", "Japanese Sparrowhawk", "Javan Pond-Heron", "Jerdon's Baza", "Large-billed Crow", "Large Scimitar-Babbler", "Lesser Necklaced Laughingthrush", "Lineated Barbet", "Little Cormorant", "Little Egret", "Little Spiderhunter", "Malaysian Pied-Fantail", "Mountain Hawk-Eagle", "Mountain Imperial-Pigeon", "Moustached Barbet", "Ochraceous Bulbul", "Ornate Sunbird", "Oriental Magpie-Robin", "Oriental Pied-Hornbill", "Pacific Reef-Heron", "Pacific Swallow", "Paddyfield Pipit", "Pin-striped Tit-Babbler", "Pink-necked Green-Pigeon", "Plain-backed Sparrow", "Puff-throated Babbler", "Puff-throated Bulbul", "Rain Quail", "Red-breasted Parakeet", "Red Junglefowl", "Red-wattled Lapwing", "Red-whiskered Bulbul", "Rock Pigeon", "Scarlet-backed Flowerpecker", "Scarlet Minivet", "Shikra", "Siamese Pied Starling", "Silver-backed Needletail", "Small Minivet", "Spotted Dove", "Stork-billed Kingfisher", "Striated Heron", "Taiga Flycatcher", "Thick-billed Green-Pigeon", "Two-barred Warbler", "Van Hasselt's Sunbird", "Vinous-breasted Myna", "White-bellied Sea-Eagle", "White-breasted Waterhen", "White-crested Laughingthrush", "White-nest Swiftlet", "White-rumped Shama", "White-throated Kingfisher", "Yellow-vented Bulbul", "Zebra Dove"],
+  list = list.filter(([name, data]) =>
+    data.countries &&
+    data.countries.includes(countryBox.value)
+  );
 
-	"United Kingdom": ["Barn Swallow", "Black-headed Gull", "Canada Goose", "Carrion Crow", "Common Buzzard", "Common Chiffchaff", "Common Cuckoo", "Common Gull", "Common Sandpiper", "Common Swift", "Common Tern", "Common Wood-Pigeon", "Dunnock", "Egyptian Goose", "Eurasian Blue Tit", "Eurasian Collared-Dove", "Eurasian Coot", "Eurasian Jackdaw", "Eurasian Jay", "Eurasian Kestrel", "Eurasian Magpie", "Eurasian Moorhen", "Eurasian Nuthatch", "Eurasian Sparrowhawk", "Eurasian Tree Sparrow", "Eurasian Wren", "European Herring Gull", "European Robin", "European Starling", "Gadwall", "Gray Heron", "Graylag Goose", "Great Black-backed Gull", "Great Cormorant", "Great Tit", "Green Sandpiper", "House Sparrow", "Long-tailed Tit", "Mallard", "Mute Swan", "Northern Lapwing", "Northern Shoveler", "Red Kite", "Rock Pigeon", "Rose-ringed Parakeet", "Stock Dove", "Tufted Duck", "White Wagtail"]
-    };
+}
 
+
+    loadThumbnails(list);
+  }
+
+  sortBox.addEventListener("change", () => {
+
+    countryBox.style.display =
+      sortBox.value === "country"
+        ? "block"
+        : "none";
+
+    updateGallery();
+  });
+
+  countryBox.addEventListener(
+    "change",
+    updateGallery
+  );
+
+  searchBox.addEventListener(
+    "input",
+    updateGallery
+  );
+
+});
+   
    
     // ======== PHOTO VIEWER LOGIC ========
-    const speciesList = Object.keys(birdPhotos);
+    let speciesList = [];
     let currentIndex = -1;
     const img = document.getElementById("speciesImage");
     const message = document.getElementById("message");
-    const closeBtn = document.getElementById("closeBtn");
+    const closeBtn = document.getElementById("closeLightbox");
 
     function showSpecies(name) {
-  const photoUrl = birdPhotos[name];
+  const photoUrl = birds[name]?.photo;
   if (photoUrl) {
     document.getElementById('lightboxImage').src = photoUrl;
     document.getElementById('lightboxImage').alt = name;
@@ -1491,7 +982,7 @@ window.addEventListener('DOMContentLoaded', () => {
       };
     }
 
-    const legend = L.control({ position: 'bottomleft' });
+    const legend = L.control({ position: 'bottomright' });
     legend.onAdd = function() {
       const div = L.DomUtil.create('div', 'legend');
       div.innerHTML = `
@@ -1532,9 +1023,12 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
         </p>`;
     }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') resetCountryPanel();
-    });
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    resetCountryPanel();
+    document.getElementById("infoPanel").classList.remove("open");
+  }
+});
 
     // ✅ Helper: render species list for the current selection
     function renderSelectedSpeciesList() {
@@ -1548,16 +1042,21 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
         return;
       }
 
-      const birds = speciesData[selectedName];
-      if (!birds || birds.length === 0) {
-        speciesListDiv.innerHTML = `<p style="text-align:center; color:#555;">No species data available for ${selectedName}</p>`;
-        return;
-      }
+const filteredBirds = Object.entries(birds)
+  .filter(([name, data]) => data.countries.includes(selectedName))
+  .map(([name]) => name);
+
+if (filteredBirds.length === 0) {
+  speciesListDiv.innerHTML = `<p style="text-align:center; color:#555;">
+    No species data available for ${selectedName}
+  </p>`;
+  return;
+}
 
       const ul = document.createElement('ul');
       ul.className = 'species-ul';
 
-      birds.forEach(birdName => {
+      filteredBirds.forEach(birdName => {
         const li  = document.createElement('li');
         li.className = 'species-li';
 
@@ -1616,10 +1115,10 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
         layer.on('click', () => {
           selectedName  = name;
           selectedCount = count;
-
+          document.getElementById("infoPanel").classList.add("open");
           document.getElementById('countryName').textContent  = name;
           document.getElementById('countryCount').textContent = `${count} species observed`;
-
+          
           renderSelectedSpeciesList(); // centralized list rendering
         });
 
@@ -1627,26 +1126,28 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
       }
     }).addTo(map);
 
-    const customMarkers = {
-      "Aruba":   { lat: 12.5211, lng: -69.9683 },
-      "Curaçao": { lat: 12.1696, lng: -68.99 }
-      // Add more markers here as needed...
-    };
+ const customMarkers = {
+  "Aruba": { lat: 14.2,  lng: -73.0, realLat: 12.5211, realLng: -69.9683, radius: 10 },
+  "Curaçao": { lat: 9.8, lng: -66.5, realLat: 12.1696, realLng: -68.99, radius: 10 }
+};
 
     // ✅ Markers (normalize names for consistency)
     Object.entries(customMarkers).forEach(([rawName, coords]) => {
       const name  = normalizeName(rawName);
       const count = birdData[name] || 0;
 
-      const marker = L.circleMarker([coords.lat, coords.lng], {
-        radius: 6,
-        fillColor: getColor(count),
-        color: '#333',
-        weight: 1,
-        fillOpacity: 0.9
-      }).addTo(map);
+const marker = L.circleMarker([coords.lat, coords.lng], {
+  radius: coords.radius || 6,
+  fillColor: getColor(count),
+  color: '#333',
+  weight: 1.5,
+  fillOpacity: 0.95
+}).addTo(map);
 
-      marker.bindTooltip(`${name}: ${count} species`, { permanent: false, direction: 'top' });
+marker.bindTooltip(`${name}: ${count} species`, {
+  permanent: false,
+  direction: 'top'
+});
 
       // ✅ HOVER: same temporary reset behavior as countries
       marker.on('mouseover', () => {
@@ -1679,16 +1180,13 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
       marker.on('click', () => {
         selectedName  = name;
         selectedCount = count;
-
+        document.getElementById("infoPanel").classList.add("open");
         document.getElementById('countryName').textContent  = name;
         document.getElementById('countryCount').textContent = `${count} species observed`;
 
         renderSelectedSpeciesList();
       });
 
-      // 🚫 IMPORTANT: Remove the old immediate species list creation block
-      // (It was rebuilding the list regardless of hover/click, causing conflicts)
-      // The centralized renderSelectedSpeciesList() now exclusively controls list rendering.
     });
   })
   .catch(err => {
@@ -1714,21 +1212,24 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
         }
       });
     });
+	  
   </script>
+	
 <!-- Lightbox popup -->
-<div id="lightbox" style="display:none; position:fixed; top:0; left:0; 
-    width:100%; height:100%; background:rgba(0,0,0,0.8); 
-    justify-content:center; align-items:center; z-index:9999; flex-direction: column;">
+<div id="lightbox" class="lightbox">
   
-  <span id="closeLightbox" 
-        style="position:absolute; top:20px; right:40px; 
-        font-size:40px; color:white; cursor:pointer;">&times;</span>
+<span id="closeLightbox"
+      class="lightbox-close">
+	  &times;
+      </span>
   
-  <img id="lightboxImage" src="" alt="" 
-       style="max-width:90%; max-height:80%; border-radius:8px; margin-bottom: 12px;"/>
-<div id="lightboxCaption" 
-       style="margin-top:10px; padding:8px 16px; background:rgba(0,0,0,0.5); 
-              color:white; font-size:18px; border-radius:6px; text-align:center;max-width: 90%;">
+<img id="lightboxImage"
+     class="lightbox-image"
+     src=""
+     alt="">
+	
+<div id="lightboxCaption"
+     class="lightbox-caption">
     Species name here
   </div>
 </div>
@@ -1736,37 +1237,82 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
 
 <!-- About/Links hamburger panel (overlays the thumbnail column) -->
 <div id="hamburgerPanel" class="hamburger-panel" role="dialog" aria-modal="true" aria-labelledby="hamburgerPanelTitle" hidden>
- 
-<div class="hamburger-panel">
-  <div class="hamburger-top">
-    <div class="panel-box hamburger-photo">
-    <img src="https://i.imgur.com/rinr6Zc.jpeg">
+
+<div class="hamburger-top">
+  <div class="panel-box hamburger-photo">
+    <img
+  class="profile-image"
+  src="https://i.imgur.com/rinr6Zc.jpeg"
+  alt="Profile photo">
 </div>
 <div class="panel-box hamburger-social">
- <a href="https://www.instagram.com/birdblog.majsujan/" target="_blank" relw3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7z"/>
-        <path d="M12 7a5 5 0 110 10 5 5 0 010-10zm0 2.2A2.8 2.8 0 1014.8 12 2.8 2.8 0 0012 9.2z"/>
-        <circle cx="17.4" cy="6.6" r="1.1"/>
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" aria-hidden="true">
-  <path fill="#ffffff" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7z"/>
-  <path fill="#ffffff" d="M12 7a5 5 0 110 10 5 5 0 010-10z"/>
-  <circle cx="17.4" cy="6.6" r="1.1" fill="#ffffff"/>
-</svg>
-    </a>
 
-    <!-- Flickr -->
-    <a href="https://www.flickr.com/photos/birdblog-suzonabuzafor/" target="_blank" rel="noopener" aria-label="Flickr" title8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="7.5" cy="12" r="4.5"></circle>
-        <circle cx="16.5" cy="12" r="4.5"></circle>
-     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 22 14" aria-hidden="true">
-  <circle cx="6" cy="7" r="5" fill="#0063dc"></circle>
-  <circle cx="16" cy="7" r="5" fill="#ff0084"></circle>
-</svg>
-    </a>
-  </div>
+  <!-- Instagram -->
+  <a
+    href="https://www.instagram.com/birdblog.majsujan/"
+    target="_blank"
+    rel="noopener"
+    aria-label="Instagram"
+    title="Instagram"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        fill="#ffffff"
+        d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7z"
+      />
+      <path
+        fill="#ffffff"
+        d="M12 7a5 5 0 110 10 5 5 0 010-10z"
+      />
+      <circle
+        cx="17.4"
+        cy="6.6"
+        r="1.1"
+        fill="#ffffff"
+      />
+    </svg>
+  </a>
+
+  <!-- Flickr -->
+  <a
+    href="https://www.flickr.com/photos/birdblog-suzonabuzafor/"
+    target="_blank"
+    rel="noopener"
+    aria-label="Flickr"
+    title="Flickr"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 22 14"
+      aria-hidden="true"
+    >
+      <circle
+        cx="6"
+        cy="7"
+        r="5"
+        fill="#0063dc"
+      />
+      <circle
+        cx="16"
+        cy="7"
+        r="5"
+        fill="#ff0084"
+      />
+    </svg>
+  </a>
+
+</div>
  </div>
-  <div class="hamburger-title">BirdBlog by Sujan Abu Jafar</div>
-  <div class="hamburger-text">Bird enthusiast and photographer, medical doctor, and life science researcher from Bangladesh — currently based in Trondheim, Norway. This website is a personal showcase of my birdwatching journey, which began in 2020. It will be regularly updated with new sightings and photographs.</div>
+  <div class="about-title">BirdBlog by Sujan Abu Jafar</div>
+  <div class="about-text">Bird enthusiast and photographer, medical doctor, and life science researcher from Bangladesh — currently based in Trondheim, Norway. This website is a personal showcase of my birdwatching journey, which began in 2020. It will be regularly updated with new sightings and photographs.</div>
 </div>
 <script>
 
@@ -1776,10 +1322,10 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
   const panel = document.getElementById('hamburgerPanel');
 
   // Find the thumbnail panel (the parent element that wraps #thumbnailGallery)
-  function getThumbContainer() {
-    const grid = document.getElementById('thumbnailGallery');
-    return grid ? grid.parentElement : null;
-  }
+function getThumbContainer() {
+  const controls = document.getElementById('thumbnailControls');
+  return controls ? controls.parentElement : null;
+}
 
   // Position the panel so it overlays the thumbnail column
   function positionPanelToThumb() {
@@ -1853,168 +1399,8 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
   });
 })();
 </script>
-
-
-
 <script>
-  function updateCountryPanel(name, speciesList) {
-    const nameEl = document.getElementById('countryName');
-    const countEl = document.getElementById('countryCount');
-    const listEl = document.getElementById('speciesList');
 
-    // Always update panel when a country is clicked
-    nameEl.textContent = name;
-    countEl.textContent = `${speciesList.length} species found`;
-    listEl.innerHTML = speciesList.map(s => `<li>${s}</li>`).join('');
-  }
-
-  function resetCountryPanel() {
-    document.getElementById('countryName').textContent = 'Country';
-    document.getElementById('countryCount').textContent = 'Click a country to view species details';
-    document.getElementById('speciesList').innerHTML = `
-      <p style="text-align:center; color:#555; margin: 6px 0;">
-      </p>`;
-  }
-
-  // ESC key press resets panel
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      resetCountryPanel();
-    }
-  });
-</script>
-
-<script>
-  // State
-  let selectedCountry = null;     // { key, name, species }
-  let hoveredCountry = null;      // { key, name, count }
-
-  /**
-   * Click handler: updates selected country and species list.
-   * - name: display name
-   * - speciesList: array of species strings
-   * - key: stable identifier (ISO code recommended)
-   */
-  function onCountryClick({ name, speciesList, key }) {
-    const normalizedKey = normalizeKey(key || name);
-
-    // Update selected state
-    selectedCountry = {
-      key: normalizedKey,
-      name: name || 'Unknown Country',
-      species: Array.isArray(speciesList) ? speciesList : []
-    };
-
-    // Render list for the selected country
-    renderSpeciesList(selectedCountry.species);
-
-    // Update header using current display priority (hover > selected)
-    renderHeader();
-  }
-
-  /**
-   * Hover handler: updates header only (name + count).
-   * - name: display name
-   * - count: number of species (or any count metric you have)
-   * - key: stable identifier
-   */
-  function onCountryHover({ name, count, key }) {
-    const normalizedKey = normalizeKey(key || name);
-    hoveredCountry = {
-      key: normalizedKey,
-      name: name || 'Unknown Country',
-      count: Number.isFinite(count) ? count : null
-    };
-    renderHeader(); // show hovered header
-  }
-
-  /** Hover out: revert header to selected country (if any). */
-  function onCountryHoverOut() {
-    hoveredCountry = null;
-    renderHeader();
-  }
-
-  /** ESC resets everything. */
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      resetCountryPanel();
-    }
-  });
-
-  // ---------- Rendering helpers ----------
-
-  function renderHeader() {
-    const nameEl  = document.getElementById('countryName');
-    const countEl = document.getElementById('countryCount');
-
-    // Display priority: hovered > selected > default
-    if (hoveredCountry && hoveredCountry.name) {
-      nameEl.textContent = hoveredCountry.name;
-      // Use hovered count if given; fall back to selected count
-      const count = (hoveredCountry.count != null)
-        ? hoveredCountry.count
-        : (selectedCountry ? selectedCountry.species.length : null);
-      countEl.textContent = count != null
-        ? `${count} species found`
-        : `Click a country to view species list`;
-      return;
-    }
-
-    if (selectedCountry && selectedCountry.name) {
-      nameEl.textContent = selectedCountry.name;
-      countEl.textContent = `${selectedCountry.species.length} species found`;
-      return;
-    }
-
-    // Default (no selection, no hover)
-    nameEl.textContent = 'Country & Species';
-    countEl.textContent = 'Click a country to view species list';
-  }
-
-  function renderSpeciesList(speciesList) {
-    const listEl = document.getElementById('speciesList');
-
-    if (!speciesList || speciesList.length === 0) {
-      listEl.innerHTML = `
-        <p style="text-align:center; color:#555; margin: 6px 0;">
-          No species data found for this country
-        </p>`;
-      return;
-    }
-
-    // Accessible list markup
-    listEl.innerHTML = `
-      <ul>
-        ${speciesList.map(s => `<li>${escapeHtml(s)}</li>`).join('')}
-      </ul>`;
-  }
-
-  function resetCountryPanel() {
-    selectedCountry = null;
-    hoveredCountry = null;
-
-    document.getElementById('countryName').textContent = 'Country';
-    document.getElementById('countryCount').textContent = 'Click a country to view species details';
-
-    document.getElementById('speciesList').innerHTML = `
-      <p style="text-align:center; color:#555; margin: 6px 0;">
-        Click a country to view species details
-      </p>`;
-  }
-
-  // ---------- Utilities ----------
-
-  function normalizeKey(value) {
-    return (value || '').toString().trim().toLowerCase();
-  }
-
-  function escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, function (m) {
-      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m];
-    });
-  }
-</script>
-<script>
 document.addEventListener("DOMContentLoaded", () => {
 
   const btn = document.getElementById("toggleGalleryBtn");
@@ -2024,21 +1410,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btn.addEventListener("click", () => {
 
-    if (panel.style.display === "none") {
+    panel.classList.toggle("collapsed");
 
-      panel.style.display = "block";
-      btn.textContent = "📷 Hide Gallery";
-
-    } else {
-
-      panel.style.display = "none";
-      btn.textContent = "📷 Show Gallery";
-
-    }
+    btn.textContent =
+      panel.classList.contains("collapsed")
+        ? "+"
+        : "−";
 
   });
 
 });
+
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const closeBtn =
+  document.getElementById("closeCountryPanel");
+  if (!closeBtn) return;
+closeBtn.addEventListener("click", () => {
+
+  document.getElementById("infoPanel").classList.remove("open");
+
+  document.getElementById('countryName').textContent = 'Country';
+
+  document.getElementById('countryCount').textContent =
+      'Click a country to view species list';
+
+  document.getElementById('speciesList').innerHTML = '';
+
+});
+});
+
 </script>
 
 </body>
