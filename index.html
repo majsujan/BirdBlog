@@ -193,7 +193,7 @@ footer {
 
 .thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; max-width: 432px; margin: 0; padding: 0; background: var(--ebird-blue); overflow: hidden; }
 
-.thumbnail-controls { flex: 0 0 auto; width: 100%; margin: 0; padding: 8px; display: flex; gap: 8px; align-items: center; flex-wrap: nowrap; background: var(--ebird-blue); border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
+.thumbnail-controls { flex: 0 0 auto; width: 100%; margin: 0; padding: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.15);} 
 
 #thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto; background: var(--ebird-blue); }
 
@@ -202,12 +202,12 @@ footer {
 .thumbnail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; width: 100%; gap: 6px; padding: 6px; margin: 0; }
 
 #thumbnailGallery img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
-	  
-.collapsed-search { max-width: 0; width: 0; padding-left: 0; padding-right: 0; border-width: 0; opacity: 0; overflow: hidden; margin: 0; flex: 0 0 0; }
-.thumbnail-select { flex: 0 0 auto; min-width: 82px; height: 42px; padding: 6px 10px;  font: inherit; color: #333; background: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
+.gallery-toggle { margin-left: auto; }	  
+.thumbnail-search { flex: 1 1 auto; min-width: 0; height: 42px; border: none; border-radius: 8px; padding: 0 12px; background: rgba(255,255,255,.92); color: #333; transition: all .25s ease; }
 
-.country-select { display: none; flex: 1 1 170px; min-width: 150px; height: 42px; padding: 6px 10px; font: inherit; color: #333; background: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
-
+.collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
+	.thumbnail-select { flex: 0 0 90px; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; }
+.country-select { display: none; flex: 0 0 160px; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; }
 .thumbnail-search:focus, .thumbnail-select:focus, .country-select:focus { outline: 2px solid rgba(95, 143, 94, 0.35); outline-offset: 1px; border-color: #5f8f5e; }
 
 #thumbnailPanel { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.55) var(--ebird-blue); scrollbar-width: thin; }
@@ -289,8 +289,8 @@ footer {
 
   #thumbnailPanel { width: 100%; max-height: 320px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; transition: max-height 0.35s ease, opacity 0.25s ease; }
 
-.thumbnail-search-button { flex: 0 0 42px; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.75); background: #ffffff; color: #333; cursor: pointer; font-size: 18px; }
-
+.thumbnail-search-button { width: 42px; height: 42px; flex: 0 0 42px; background: transparent; border: none; box-shadow: none; color: #ffffff; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+.thumbnail-search-button:hover { opacity: .8; } 
 #thumbnailPanel.collapsed { max-height: 0 !important; height: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; opacity: 0; overflow: hidden; }
 
   /* Four thumbnails per row on tablets */
@@ -472,23 +472,23 @@ footer {
   class="thumbnail-search collapsed-search"
   placeholder="Search species...">
 
-<select id="birdSort"
-        class="thumbnail-select">
-	
-      <option value="alpha">A-Z</option>
-      <option value="random">Random</option>     
-      <option value="country">Country</option>
-    </select>
-
 <select id="countryFilter"
         class="country-select">
+</select>
 
-    </select>
+<select id="birdSort"
+        class="thumbnail-select">
+  <option value="alpha">A-Z</option>
+  <option value="random">Random</option>
+  <option value="country">Country</option>
+</select>
+
 <button id="toggleGalleryBtn"
         class="gallery-toggle"
         aria-label="Collapse gallery">
-−
+  −
 </button>
+
   </div>
 
 <div id="thumbnailPanel">
