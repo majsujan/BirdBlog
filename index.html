@@ -1100,7 +1100,17 @@ fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.g
         <p style="text-align:center; color:#555; margin: 6px 0;">
         </p>`;
     }
+document
+  .getElementById("closeCountryPanel")
+  .addEventListener("click", () => {
 
+    resetCountryPanel();
+
+    document
+      .getElementById("infoPanel")
+      .classList.remove("open");
+
+  });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     resetCountryPanel();
