@@ -1456,38 +1456,53 @@ closeBtn.addEventListener("click", () => {
 
 </script>
 <script>
-function syncThumbnailHeight() {
-
-  const photoSide =
-    document.querySelector(".bird-day-main");
-
-  const thumbSide =
-    document.querySelector(".thumbnail-column");
-
-  if (!photoSide || !thumbSide) return;
-
-  thumbSide.style.height =
-    `${photoSide.offsetHeight}px`;
-}
-
-window.addEventListener("load", syncThumbnailHeight);
-window.addEventListener("resize", syncThumbnailHeight);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const featuredImage =
-    document.getElementById("dailyBirdImage");
+  const btn =
+    document.getElementById("toggleGalleryBtn");
 
-  if (featuredImage) {
+  const panel =
+    document.getElementById("thumbnailPanel");
 
-    featuredImage.addEventListener(
-      "load",
-      syncThumbnailHeight
-    );
+  const column =
+    document.querySelector(".thumbnail-column");
 
-  }
+  const controls =
+    document.getElementById("thumbnailControls");
+
+  if (!btn || !panel || !column || !controls) return;
+
+  btn.addEventListener("click", () => {
+
+    panel.classList.toggle("collapsed");
+
+    const collapsed =
+      panel.classList.contains("collapsed");
+
+    btn.textContent =
+      collapsed ? "+" : "−";
+
+    /* Mobile / tablet only */
+    if (window.innerWidth <= 1024) {
+
+      if (collapsed) {
+
+        column.style.height =
+          `${controls.offsetHeight}px`;
+
+      } else {
+
+        column.style.height = "";
+
+      }
+
+    }
+
+  });
 
 });
+
 </script>
 </body>
 </html>
