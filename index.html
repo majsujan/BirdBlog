@@ -195,7 +195,7 @@ footer {
 
 .thumbnail-controls { flex: 0 0 auto; width: 100%; margin: 0; padding: 8px; display: flex; gap: 8px; align-items: center; flex-wrap: nowrap; background: var(--ebird-blue); border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
 
-#thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; max-height: 617px; overflow-x: hidden; overflow-y: auto; background: var(--ebird-blue); }
+#thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto; background: var(--ebird-blue); }
 
 #thumbnailGallery { width: 100%; margin: 0; background: var(--ebird-blue); }
 
@@ -1411,10 +1411,42 @@ function getThumbContainer() {
 </script>
 <script>
 
+function syncThumbnailHeight() {
+
+  if (window.innerWidth <= 1024) return;
+
+  const photoSide =
+    document.querySelector(".bird-day-main");
+
+  const thumbSide =
+    document.querySelector(".thumbnail-column");
+
+  if (!photoSide || !thumbSide) return;
+
+  thumbSide.style.height =
+    `${photoSide.offsetHeight}px`;
+}
+
+window.addEventListener("load", syncThumbnailHeight);
+window.addEventListener("resize", syncThumbnailHeight);
+
+const featuredImage =
+  document.getElementById("dailyBirdImage");
+
+if (featuredImage) {
+  featuredImage.addEventListener(
+    "load",
+    syncThumbnailHeight
+  );
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
-  const btn = document.getElementById("toggleGalleryBtn");
-  const panel = document.getElementById("thumbnailPanel");
+  const btn =
+    document.getElementById("toggleGalleryBtn");
+
+  const panel =
+    document.getElementById("thumbnailPanel");
 
   if (!btn || !panel) return;
 
@@ -1433,76 +1465,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </script>
 
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const closeBtn =
-  document.getElementById("closeCountryPanel");
-  if (!closeBtn) return;
-closeBtn.addEventListener("click", () => {
-
-  document.getElementById("infoPanel").classList.remove("open");
-
-  document.getElementById('countryName').textContent = 'Country';
-
-  document.getElementById('countryCount').textContent =
-      'Click a country to view species list';
-
-  document.getElementById('speciesList').innerHTML = '';
-
-});
-});
-
-</script>
-<script>
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const btn =
-    document.getElementById("toggleGalleryBtn");
-
-  const panel =
-    document.getElementById("thumbnailPanel");
-
-  const column =
-    document.querySelector(".thumbnail-column");
-
-  const controls =
-    document.getElementById("thumbnailControls");
-
-  if (!btn || !panel || !column || !controls) return;
-
-  btn.addEventListener("click", () => {
-
-    panel.classList.toggle("collapsed");
-
-    const collapsed =
-      panel.classList.contains("collapsed");
-
-    btn.textContent =
-      collapsed ? "+" : "−";
-
-    /* Mobile / tablet only */
-    if (window.innerWidth <= 1024) {
-
-      if (collapsed) {
-
-        column.style.height =
-          `${controls.offsetHeight}px`;
-
-      } else {
-
-        column.style.height = "";
-
-      }
-
-    }
-
-  });
-
-});
-
-</script>
 </body>
 </html>
