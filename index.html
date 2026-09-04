@@ -193,8 +193,42 @@ footer {
 
 .thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; max-width: 432px; margin: 0; padding: 0; background: var(--ebird-blue); overflow: hidden; }
 
-.thumbnail-controls { flex: 0 0 auto; width: 100%; margin: 0; padding: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; background: linear-gradient( to bottom, rgba(255,255,255,.14), rgba(255,255,255,.06)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.15); box-shadow: inset 0 1px 0 rgba(255,255,255,.12); } 
+.thumbnail-controls {
 
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    padding: 8px;
+    gap: 8px;
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(255,255,255,.14),
+        rgba(255,255,255,.06)
+      );
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-bottom:
+      1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.12);
+}
+.toolbar-right {
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+}
+	  
 #thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto; background: var(--ebird-blue); }
 
 #thumbnailGallery { width: 100%; margin: 0; background: var(--ebird-blue); }
@@ -202,12 +236,32 @@ footer {
 .thumbnail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; width: 100%; gap: 6px; padding: 6px; margin: 0; }
 
 #thumbnailGallery img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
-.country-select { margin-left: auto; }  
 
 .thumbnail-search-button { width: 42px; height: 42px; flex: 0 0 42px; background: transparent; border: none; box-shadow: none; color: #ffffff; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
 .thumbnail-search-button:hover { opacity: .8; } 
 	  
-.thumbnail-search { flex: 1 1 220px; min-width: 0; height: 42px; border: none; border-radius: 8px; padding: 0 12px; background: rgba(255,255,255,.92); color: #333; transition: opacity .25s ease, max-width .25s ease; }
+.thumbnail-search {
+
+    flex: 1 1 auto;
+
+    min-width: 0;
+
+    height: 42px;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 0 12px;
+
+    background: rgba(255,255,255,.92);
+
+    color: #333;
+
+    transition:
+      max-width .25s ease,
+      opacity .25s ease,
+      padding .25s ease;
+}
 .thumbnail-search-button { order: 1; }
 
 .thumbnail-search { order: 2; }
@@ -220,7 +274,26 @@ footer {
 	  
 .collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
 .thumbnail-select { flex: 0 0 90px; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; }
-.country-select { display: none; flex: 0 0 160px; opacity: 0; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; transition: opacity .25s ease, transform .25s ease; transform: translateX(8px); }
+.country-select {
+
+    flex: 0 0 0;
+
+    width: 0;
+
+    min-width: 0;
+
+    opacity: 0;
+
+    overflow: hidden;
+
+    border: none;
+
+    transition:
+      flex-basis .25s ease,
+      width .25s ease,
+      opacity .25s ease;
+}
+
 .thumbnail-search:focus, .thumbnail-select:focus, .country-select:focus { outline: 2px solid rgba(95, 143, 94, 0.35); outline-offset: 1px; border-color: #5f8f5e; }
 
 #thumbnailPanel { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.55) var(--ebird-blue); scrollbar-width: thin; }
@@ -308,7 +381,7 @@ footer {
   .thumbnail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 8px; }
 
   /* Show gallery collapse button */
-  .gallery-toggle { display: flex; align-items: center; justify-content: center; flex: 0 0 42px; width: 42px; height: 42px; margin-left: auto; border: 1px solid #ccc; border-radius: 4px; background: white; color: #555; font-size: 18px;cursor: pointer; transition: background 0.2s ease; }
+  .gallery-toggle { display: flex; align-items: center; justify-content: center; flex: 0 0 42px; width: 42px; height: 42px; border: 1px solid #ccc; border-radius: 4px; background: white; color: #555; font-size: 18px;cursor: pointer; transition: background 0.2s ease; }
 
   .gallery-toggle:hover { background: #f3f3f3; }
 
@@ -483,22 +556,26 @@ footer {
   class="thumbnail-search collapsed-search"
   placeholder="Search species...">
 
-<select id="countryFilter"
-        class="country-select">
-</select>
+<div class="toolbar-right">
 
-<select id="birdSort"
-        class="thumbnail-select">
-  <option value="alpha">A-Z</option>
-  <option value="random">Random</option>
-  <option value="country">Country</option>
-</select>
+  <select id="countryFilter"
+          class="country-select">
+  </select>
 
-<button id="toggleGalleryBtn"
-        class="gallery-toggle"
-        aria-label="Collapse gallery">
-  −
-</button>
+  <select id="birdSort"
+          class="thumbnail-select">
+    <option value="alpha">A-Z</option>
+    <option value="random">Random</option>
+    <option value="country">Country</option>
+  </select>
+
+  <button id="toggleGalleryBtn"
+          class="gallery-toggle"
+          aria-label="Collapse gallery">
+    −
+  </button>
+
+</div>
 
   </div>
 
@@ -882,18 +959,18 @@ if (sortBox.value === "country") {
   countryBox.style.display = "block";
 
   requestAnimationFrame(() => {
+
+    countryBox.style.flexBasis = "160px";
+    countryBox.style.width = "160px";
     countryBox.style.opacity = "1";
-    countryBox.style.transform = "translateX(0)";
+
   });
 
 } else {
 
+  countryBox.style.flexBasis = "0";
+  countryBox.style.width = "0";
   countryBox.style.opacity = "0";
-  countryBox.style.transform = "translateX(8px)";
-
-  setTimeout(() => {
-    countryBox.style.display = "none";
-  }, 250);
 
 }
 
