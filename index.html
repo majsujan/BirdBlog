@@ -622,11 +622,12 @@ L.control.zoom({
 }).addTo(map);
 	  
 L.tileLayer(
-  'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
+  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
   {
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+    attribution: 'Tiles © Esri'
   }
 ).addTo(map);
+
 
 
  const birdData = { "Norway": 192, "Sweden": 61, "Finland": 35, "Denmark": 115, "Italy": 60, "United Kingdom": 44, "Netherlands": 127, "Germany": 18, "Poland": 3, "Czech Republic": 2, "Latvia": 13, "Greece": 22, "Estonia": 55, "Bangladesh": 185, "Thailand": 126, "Aruba": 72, "Curaçao": 60, "Belgium": 33 };
@@ -1056,7 +1057,7 @@ window.addEventListener('DOMContentLoaded', () => {
         fillColor: getColor(count),
         color: '#333',
         weight: 0.8,
-        fillOpacity: 0.75
+        fillOpacity: 0.85
       };
     }
 
@@ -1229,7 +1230,7 @@ const marker = L.circleMarker([coords.lat, coords.lng], {
   fillColor: getColor(count),
   color: '#333',
   weight: 1.5,
-  fillOpacity: 0.95
+  fillOpacity: 0.75
 }).addTo(map);
 
 marker.bindTooltip(`${name}: ${count} species`, {
