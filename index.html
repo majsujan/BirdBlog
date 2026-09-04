@@ -79,13 +79,13 @@ footer {
 
 /* ========== Explore Section ========== */
 
-.explore-banner { width: 100%; margin: 0; padding: 0; background: #5F8F5E; }
+.explore-banner { width: 100%; margin: 0; padding: 0; background: #ffffff; }
 
 .explore-inner { max-width: 1600px; margin: 0 auto; padding: 10px; }
 
-.explore-title { color: white; text-align: center; margin: 0; font-size: 1.2rem; font-weight: 700; }
+.explore-title { color: #222; text-align: center; margin: 0; font-size: 1.2rem; font-weight: 700; }
 
-.explore-ticker { overflow: hidden; white-space: nowrap; margin-top: 6px; color: white; font-size: 1.05rem; }
+.explore-ticker { overflow: hidden; white-space: nowrap; margin-top: 6px; color: #444; font-size: 1.05rem; }
 
 .explore-ticker-content { display: inline-block; padding-left: 20%; animation: exploreTicker 80s linear infinite; font-size: 1rem; font-weight: 400; white-space: nowrap; line-height: 1.4; }
 .ticker-flag { width: 20px; height: 15px; vertical-align: middle; margin-left: 12px; margin-right: 4px; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
@@ -621,10 +621,13 @@ L.control.zoom({
   position: 'topright'
 }).addTo(map);
 	  
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 4,
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+L.tileLayer(
+  'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+  {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+  }
+).addTo(map);
 
  const birdData = { "Norway": 192, "Sweden": 61, "Finland": 35, "Denmark": 115, "Italy": 60, "United Kingdom": 44, "Netherlands": 127, "Germany": 18, "Poland": 3, "Czech Republic": 2, "Latvia": 13, "Greece": 22, "Estonia": 55, "Bangladesh": 185, "Thailand": 126, "Aruba": 72, "Curaçao": 60, "Belgium": 33 };
  
