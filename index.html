@@ -202,7 +202,7 @@ footer {
 .thumbnail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; width: 100%; gap: 6px; padding: 6px; margin: 0; }
 
 #thumbnailGallery img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
-.thumbnail-select { margin-left: auto; }	  
+.country-select { margin-left: auto; }  
 
 .thumbnail-search-button { width: 42px; height: 42px; flex: 0 0 42px; background: transparent; border: none; box-shadow: none; color: #ffffff; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
 .thumbnail-search-button:hover { opacity: .8; } 
@@ -220,7 +220,7 @@ footer {
 	  
 .collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
 .thumbnail-select { flex: 0 0 90px; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; }
-.country-select { display: none; flex: 0 0 160px; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; }
+.country-select { display: none; flex: 0 0 160px; opacity: 0; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; transition: opacity .25s ease, transform .25s ease; transform: translateX(8px); }
 .thumbnail-search:focus, .thumbnail-select:focus, .country-select:focus { outline: 2px solid rgba(95, 143, 94, 0.35); outline-offset: 1px; border-color: #5f8f5e; }
 
 #thumbnailPanel { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.55) var(--ebird-blue); scrollbar-width: thin; }
@@ -877,10 +877,25 @@ if (sortBox.value === "alpha") {
 
   sortBox.addEventListener("change", () => {
 
-    countryBox.style.display =
-      sortBox.value === "country"
-        ? "block"
-        : "none";
+if (sortBox.value === "country") {
+
+  countryBox.style.display = "block";
+
+  requestAnimationFrame(() => {
+    countryBox.style.opacity = "1";
+    countryBox.style.transform = "translateX(0)";
+  });
+
+} else {
+
+  countryBox.style.opacity = "0";
+  countryBox.style.transform = "translateX(8px)";
+
+  setTimeout(() => {
+    countryBox.style.display = "none";
+  }, 250);
+
+}
 
     updateGallery();
   });
