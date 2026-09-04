@@ -291,7 +291,7 @@ footer {
   #thumbnailPanel { width: 100%; max-height: 320px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; transition: max-height 0.35s ease, opacity 0.25s ease; }
 
 
-  #thumbnailPanel.collapsed { max-height: 0 !important; opacity: 0; overflow: hidden; }
+#thumbnailPanel.collapsed { max-height: 0 !important; height: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; opacity: 0; overflow: hidden; }
 
   /* Four thumbnails per row on tablets */
   .thumbnail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; padding: 8px; }
@@ -1413,15 +1413,21 @@ function getThumbContainer() {
 
 function syncThumbnailHeight() {
 
-  if (window.innerWidth <= 1024) return;
+  const thumbSide =
+    document.querySelector(".thumbnail-column");
+
+  if (!thumbSide) return;
+
+  if (window.innerWidth <= 1024) {
+
+    thumbSide.style.height = "";
+    return;
+  }
 
   const photoSide =
     document.querySelector(".bird-day-main");
 
-  const thumbSide =
-    document.querySelector(".thumbnail-column");
-
-  if (!photoSide || !thumbSide) return;
+  if (!photoSide) return;
 
   thumbSide.style.height =
     `${photoSide.offsetHeight}px`;
