@@ -238,7 +238,7 @@ justify-content: space-between;
 
 #thumbnailGallery img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
 
-.thumbnail-search-button { width: 42px; height: 42px; flex: 0 0 42px; background: transparent; border: none; box-shadow: none; color: #ffffff; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+.thumbnail-search-button { width: 42px; height: 42px; flex: 0 0 42px; background: transparent; border: none; box-shadow: none; color: #fff; text-shadow: 0 0 4px rgba(255,255,255,.35); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
 .thumbnail-search-button:hover { opacity: .8; } 
 	  
 .thumbnail-search {
@@ -263,7 +263,14 @@ justify-content: space-between;
       opacity .25s ease,
       padding .25s ease;
 }
-	  
+.search-hidden {
+    width: 0;
+    flex: 0 0 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}	  
 .collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
 .thumbnail-select { flex: 0 0 90px; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; }
 .country-select {
@@ -1568,25 +1575,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!searchBtn || !searchInput) return;
 
-  searchBtn.addEventListener("click", () => {
+searchBtn.addEventListener("click", () => {
 
-    searchInput.classList.toggle("collapsed-search");
+  const opening =
+    searchInput.classList.contains("collapsed-search");
 
-    if (!searchInput.classList.contains("collapsed-search")) {
+  searchInput.classList.toggle("collapsed-search");
 
-      searchInput.focus();
+  if (opening) {
 
-    } else {
+    searchBtn.classList.add("search-hidden");
 
-      searchInput.value = "";
+    searchInput.focus();
 
-      searchInput.dispatchEvent(
-        new Event("input")
-      );
+  } else {
 
-    }
+    searchBtn.classList.remove("search-hidden");
 
-  });
+    searchInput.value = "";
+
+    searchInput.dispatchEvent(
+      new Event("input")
+    );
+
+  }
+
+});
 
 });
 
