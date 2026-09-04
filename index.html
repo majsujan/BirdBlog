@@ -203,8 +203,7 @@ footer {
 
 #thumbnailGallery img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
 	  
-.thumbnail-search { flex: 1 1 140px; width: auto; min-width: 120px; height: 42px; padding: 6px 10px; font: inherit; }
-
+.collapsed-search { max-width: 0; width: 0; padding-left: 0; padding-right: 0; border-width: 0; opacity: 0; overflow: hidden; margin: 0; flex: 0 0 0; }
 .thumbnail-select { flex: 0 0 auto; min-width: 82px; height: 42px; padding: 6px 10px;  font: inherit; color: #333; background: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
 
 .country-select { display: none; flex: 1 1 170px; min-width: 150px; height: 42px; padding: 6px 10px; font: inherit; color: #333; background: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
@@ -290,6 +289,7 @@ footer {
 
   #thumbnailPanel { width: 100%; max-height: 320px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; transition: max-height 0.35s ease, opacity 0.25s ease; }
 
+.thumbnail-search-button { flex: 0 0 42px; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.75); background: #ffffff; color: #333; cursor: pointer; font-size: 18px; }
 
 #thumbnailPanel.collapsed { max-height: 0 !important; height: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; opacity: 0; overflow: hidden; }
 
@@ -459,10 +459,17 @@ footer {
 <div id="thumbnailControls"
      class="thumbnail-controls">
 
+<button
+  id="searchToggle"
+  class="thumbnail-search-button"
+  aria-label="Search species">
+  🔍
+</button>
+
 <input
   type="text"
   id="birdSearch"
-  class="thumbnail-search"
+  class="thumbnail-search collapsed-search"
   placeholder="Search species...">
 
 <select id="birdSort"
@@ -1470,6 +1477,40 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+<script>
 
+document.addEventListener("DOMContentLoaded", () => {
+
+  const searchBtn =
+    document.getElementById("searchToggle");
+
+  const searchInput =
+    document.getElementById("birdSearch");
+
+  if (!searchBtn || !searchInput) return;
+
+  searchBtn.addEventListener("click", () => {
+
+    searchInput.classList.toggle("collapsed-search");
+
+    if (!searchInput.classList.contains("collapsed-search")) {
+
+      searchInput.focus();
+
+    } else {
+
+      searchInput.value = "";
+
+      searchInput.dispatchEvent(
+        new Event("input")
+      );
+
+    }
+
+  });
+
+});
+
+</script>
 </body>
 </html>
