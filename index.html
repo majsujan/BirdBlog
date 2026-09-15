@@ -71,10 +71,7 @@ body { min-height: 100vh; font-family: 'Lato', sans-serif; color: #333; }
 #mainPanel,
 #mapContainer,
 #map,
-footer {
-    margin-bottom: 0;
-    margin-top: 0;
-}
+footer { margin-bottom: 0; margin-top: 0; }
 
 
 /* ========== Explore Section ========== */
@@ -100,11 +97,21 @@ footer {
 
   
   /* ========== Map Legend ========== */
-.legend { background: white; padding: 10px 12px; line-height: 1.2; color: #333; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); border: 1px solid #ddd; }
+.legend { background: rgba(255,255,255,0.96); padding: 10px 12px; line-height: 1.2; color: #222; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.20); border: 1px solid rgba(0,0,0,0.15); backdrop-filter: blur(2px); }
 
-.legend .scale { background: linear-gradient(90deg, rgb(255,255,0) 0%, rgb(255,220,0) 15%, rgb(255,180,0) 30%, rgb(255,140,0) 50%, rgb(255,100,0) 70%, rgb(255,60,0) 85%, rgb(255,0,0) 100%); width: 100px; height: 12px; border-radius: 8px; margin: 6px 0 4px; }
-
-.legend .labels { display: flex;  justify-content: space-between; font-size: 12px; color: #444; }
+.legend .scale {
+  background: linear-gradient(
+    90deg,
+    rgb(255,245,0) 0%,
+    rgb(255,205,0) 15%,
+    rgb(245,165,0) 30%,
+    rgb(235,125,0) 50%,
+    rgb(220,85,0) 70%,
+    rgb(200,45,0) 85%,
+    rgb(145,0,0) 100%
+  );
+}
+.legend .labels { display: flex;  justify-content: space-between; font-size: 12px; font-weight: 700; color: #222; }
 
 .legend-container { display: flex; align-items: center; gap: 8px; }
 
@@ -191,63 +198,30 @@ footer {
 #countryFilter,
 .gallery-toggle { height: 42px; box-sizing: border-box; color: #333333; background-color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
 
-.thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; max-width: 432px; margin: 0; padding: 0; background: var(--ebird-blue); overflow: hidden; }
+.thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; margin: 0; padding: 0 6px; background: var(--ebird-blue); overflow: hidden; }
 
 .thumbnail-controls { display: flex; align-items: center; width: 100%; padding: 8px; gap: 8px; }
-	  .toolbar-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-		  margin-left: auto;
-    flex-shrink: 0;
-}
+.toolbar-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
 
-.gallery-toggle {
-    margin-left: 0;
-    flex: 0 0 42px;
-}
+.gallery-toggle { margin-left: 0; flex: 0 0 42px; }
 	  
 #thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto; background: var(--ebird-blue); }
 
 #thumbnailGallery { width: 100%; margin: 0; background: var(--ebird-blue); }
 
-.thumbnail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; width: 100%; gap: 6px; padding: 6px; margin: 0; }
+.thumbnail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; width: 100%; gap: 5px; padding: 5px; margin: 0; }
 
 #thumbnailGallery img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
 
-.thumbnail-search-button { width: 42px; height: 42px; flex: 0 0 42px; background: transparent; border: none; box-shadow: none; color: #fff; text-shadow: 0 0 4px rgba(255,255,255,.35); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+.thumbnail-search-button { width: 42px; height: 42px; flex: 0 0 42px; background: transparent; border: none; box-shadow: none; color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.35), 0 0 6px rgba(220,220,220,0.45); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
 .thumbnail-search-button:hover { opacity: .8; } 
+.thumbnail-search-button svg { filter: drop-shadow(0 0 3px rgba(220,220,220,0.7)); pointer-events: none; display: block; transform: translateX(-1px); }
 	  
-.thumbnail-search {
-
-    flex: 1 1 auto;
-
-    min-width: 0;
-
-    height: 42px;
-
-    border: none;
-    border-radius: 8px;
-
-    padding: 0 12px;
-
-    background: rgba(255,255,255,.92);
-
-    color: #333;
-
-    transition:
-      max-width .25s ease,
-      opacity .25s ease,
-      padding .25s ease; } 
+.thumbnail-search { flex: 1 1 auto; min-width: 0; height: 42px; border: none; border-radius: 8px; padding: 0 12px; background: rgba(255,255,255,.92); color: #333; transition: max-width .25s ease, opacity .25s ease, padding .25s ease; } 
 .collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
 .thumbnail-select { flex: 0 0 90px; height: 42px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; }
 .country-select { display: none; flex: 0 0 0; height: 42px; width: 0; min-width: 0; opacity: 0; overflow: hidden; border: none; border-radius: 8px; color: #333;background: rgba(255,255,255,.92); transition: flex-basis .25s ease, width .25s ease, opacity .25s ease; }
-.country-select.visible {
-    display: block;
-    flex: 0 0 auto;
-    width: auto;
-    opacity: 1;
-}
+.country-select.visible { display: block; flex: 0 0 auto; width: auto; opacity: 1; }
 .thumbnail-search:focus, .thumbnail-select:focus, .country-select:focus { outline: 2px solid rgba(95, 143, 94, 0.35); outline-offset: 1px; border-color: #5f8f5e; }
 
 #thumbnailPanel { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.55) var(--ebird-blue); scrollbar-width: thin; }
@@ -285,17 +259,21 @@ footer {
 	  
 .nav-arrow:hover { transform: translateY(-50%) scale(1.08); }
 
-.bird-day-layout { display: grid; grid-template-columns: minmax(0, 25fr) minmax(320px, 9fr); width: 100%; margin: 0; padding: 0; gap: 0; align-items: start; background: white; font-family: 'Lato', sans-serif; }
-.bird-day-main { width: 100%; max-width: 1200px; min-width: 0; margin: 0; padding: 0; position: relative; background: #444; }
-.bird-day-frame { position: relative; width: 100%; aspect-ratio: 3 / 2; margin: 0; padding: 0; overflow: hidden; touch-action: pan-y; }
+.bird-day-layout { display: grid; grid-template-columns: minmax(0, 22fr) minmax(420px, 12fr); width: 100%; margin: 0; align-items: start; background: white; font-family: 'Lato', sans-serif; }
+.bird-day-main { width: 100%; min-width: 0; margin: 0; padding: 0; position: relative; background: #444; }
+.bird-day-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 0; padding: 0; overflow: hidden; touch-action: pan-y; }
 .bird-day-image { display: block; width: 100%; height: 100%; margin: 0; padding: 0; object-fit: cover; background: white; box-shadow: none; transition: opacity 0.25s ease, transform 0.25s ease; }
-.bird-caption-bar { position: absolute; bottom: 0; left: 0; width: 100%; background: #333333; color: white; font-size: 18px; padding: 8px 12px; min-height: 40px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; }
+.bird-caption-bar { width: 100%; background: #333333; color: white; font-size: 18px; padding: 6px 12px; min-height: 36px; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; } 
 .bird-copyright { position: static; justify-self: end; bottom: 5px; left: 12px; font-size: 15px; color: #888; }
 #dailyBirdCaption { justify-self: start; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 10px; }
-.swipe-indicator { position: absolute; left: 50%; bottom: 50px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
+.swipe-indicator { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
 
 .dot { border-radius: 50%; background: rgba(255,255,255,.35); border: 1px solid rgba(0,0,0,.35); box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s ease, opacity .25s ease, background .25s ease; }
-.center-dot { width: 8px; height: 8px; background: white; border-color: rgba(0,0,0,.55); }
+.center-dot { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,.45); background: rgba(255,255,255,.92); color: #222; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; cursor: pointer; padding: 0; line-height: 1; transition: transform .2s ease, background .2s ease; }
+.slideshow-dot { appearance: none; -webkit-appearance: none; outline: none; }
+.center-dot:hover { transform: scale(1.08); }
+
+.center-dot.playing { background: #ffffff; }
 .left-dot,
 .right-dot { width: 6px; height: 6px; }
 
@@ -390,18 +368,16 @@ footer {
 
   .bird-copyright { font-size: 11px; }
 
-  .thumbnail-search {
-      flex: 1 1 100%;
-  }
-.thumbnail-select { flex: 0 0 72px; width: 72px; }
+  .thumbnail-search { flex: 1 1 100%; }
+  .thumbnail-select { flex: 0 0 72px; width: 72px; }
   .country-select { flex: 0 0 auto; width: auto; max-width: 40vw; }
-.toolbar-right { flex-shrink: 1; }
+  .toolbar-right { flex-shrink: 1; }
 }
 	  
   @media (max-width: 600px) { 
 	.nav-arrow { font-size: 30px; }
     .left-arrow { left: 8px; }
-    .right-arrow { right: 8px; }
+    .right-arrow { right: 8px; } 
   }
 
 @media (max-width: 480px) {
@@ -448,37 +424,48 @@ footer {
 
 <!-- === Bird Photo of the Day Layout === -->
 <div class="bird-day-layout">
-
-  <!-- LEFT: Main Bird Image -->
 <div class="bird-day-main">
+  <!-- LEFT: Main Bird Image -->
 
 <div class="bird-day-frame">
-	
+
 <img id="dailyBirdImage"
      class="bird-day-image"
      src=""
      alt="Featured Bird">
 
 <!-- Arrows -->
-<div onclick="navigateBird(-1)" class="nav-arrow left-arrow" aria-label="Previous">
-  &#10094; <!-- Unicode left chevron -->
+<div onclick="navigateBird(-1)"
+     class="nav-arrow left-arrow"
+     aria-label="Previous">
+  &#10094;
 </div>
 
-<div onclick="navigateBird(1)" class="nav-arrow right-arrow" aria-label="Next">
-  &#10095; <!-- Unicode right chevron -->
+<div onclick="navigateBird(1)"
+     class="nav-arrow right-arrow"
+     aria-label="Next">
+  &#10095;
 </div>
 
-      <!-- Caption Bar -->
 <!-- Swipe dots -->
 <div class="swipe-indicator">
 
-  <span class="dot left-dot"></span>
-  <span class="dot center-dot"></span>
-  <span class="dot right-dot"></span>
+<span class="dot left-dot"></span>
+
+<button
+  id="slideshowToggle"
+  class="center-dot slideshow-dot"
+  aria-label="Start slideshow">
+  ▶
+</button>
+
+<span class="dot right-dot"></span>
 
 </div>
 
-<!-- Caption bar -->
+</div>
+
+<!-- Caption now OUTSIDE the 16:9 frame -->
 <div id="birdNameBar"
      class="bird-caption-bar">
 
@@ -489,10 +476,10 @@ footer {
   <div class="bird-copyright">
     © Sujan Abu Jafar
   </div>
+
 </div>
-	
-    </div>
-  </div>
+
+</div> <!-- bird-day-main -->
 
 <!-- RIGHT: Thumbnails -->
 <div class="thumbnail-column">
@@ -505,7 +492,27 @@ footer {
   id="searchToggle"
   class="thumbnail-search-button"
   aria-label="Search species">
-  🔍
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    aria-hidden="true">
+    <circle
+      cx="10"
+      cy="10"
+      r="6"
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="2.2"/>
+    <line
+      x1="14.5"
+      y1="14.5"
+      x2="19"
+      y2="19"
+      stroke="#ffffff"
+      stroke-width="2.2"
+      stroke-linecap="round"/>
+  </svg>
 </button>
 
 <input
@@ -622,7 +629,7 @@ L.control.zoom({
 }).addTo(map);
 	  
 L.tileLayer(
-  'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+  'https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
   {
     attribution: 'Tiles © Esri'
   }
@@ -639,6 +646,9 @@ let birds = {};
 let birdKeys = [];
 let currentBirdIndex = 0;
 let shuffledBirds = [];
+
+let slideshowTimer = null;
+let slideshowRunning = false;
 
 // ✅ LOAD bird data from JSON
 fetch('birds.json')
@@ -749,7 +759,9 @@ function showBird(name, url) {
 }
 	  
 function navigateBird(direction) {
-
+if (slideshowRunning) {
+  stopSlideshow();
+}
   currentBirdIndex += direction;
 
   if (currentBirdIndex < 0)
@@ -766,7 +778,22 @@ function navigateBird(direction) {
   animateSwipeDots(direction);
 
 }
+function advanceSlideshowBird() {
 
+  currentBirdIndex++;
+
+  if (currentBirdIndex >= birdKeys.length) {
+    currentBirdIndex = 0;
+  }
+
+  const name = birdKeys[currentBirdIndex];
+  const url = birds[name].photo;
+
+  showBird(name, url);
+
+  animateSwipeDots(1);
+
+}
 function animateSwipeDots(direction) {
 
   const dot = document.querySelector(
@@ -783,6 +810,76 @@ function animateSwipeDots(direction) {
 
 }
 
+function startSlideshow() {
+
+  if (slideshowRunning) return;
+
+  slideshowRunning = true;
+
+  const btn =
+    document.getElementById("slideshowToggle");
+
+  if (btn) {
+    btn.textContent = "❚❚";
+    btn.classList.add("playing");
+    btn.setAttribute(
+      "aria-label",
+      "Pause slideshow"
+    );
+  }
+
+  slideshowTimer = setInterval(() => {
+
+   advanceSlideshowBird(1);
+
+  }, 5000);
+
+}
+
+function stopSlideshow() {
+
+  slideshowRunning = false;
+
+  clearInterval(slideshowTimer);
+  slideshowTimer = null;
+
+  const btn =
+    document.getElementById("slideshowToggle");
+
+  if (btn) {
+    btn.textContent = "▶";
+    btn.classList.remove("playing");
+    btn.setAttribute(
+      "aria-label",
+      "Start slideshow"
+    );
+  }
+
+}
+
+function toggleSlideshow() {
+
+  if (slideshowRunning) {
+    stopSlideshow();
+  } else {
+    startSlideshow();
+  }
+
+}
+document.addEventListener(
+  "visibilitychange",
+  () => {
+
+    if (
+      document.hidden &&
+      slideshowRunning
+    ) {
+      stopSlideshow();
+    }
+
+  }
+);
+	  
 window.addEventListener("DOMContentLoaded", () => {
   const birdFrame = document.querySelector(".bird-day-frame");
   if (!birdFrame) return;
@@ -803,6 +900,24 @@ window.addEventListener("DOMContentLoaded", () => {
     if (endX < startX - SWIPE_THRESHOLD) { navigateBird(1); }
     else if (endX > startX + SWIPE_THRESHOLD) { navigateBird(-1); }
   });
+const slideshowBtn =
+  document.getElementById("slideshowToggle");
+
+if (slideshowBtn) {
+
+  slideshowBtn.addEventListener(
+    "click",
+    (e) => {
+
+      e.stopPropagation();
+
+      toggleSlideshow();
+
+    }
+  );
+
+}
+	
 });
 	  
 // === Inject Thumbnails ===
@@ -822,10 +937,12 @@ list.forEach(([name, data]) => {
 wrapper.style = ` position: relative; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; overflow: hidden; border-radius: 4px; background: #e8e8e8; `;
 
   const thumb = document.createElement("img");
+  thumb.loading = "lazy";
+  thumb.decoding = "async";
   thumb.src = data.photo;
   thumb.alt = name;
   thumb.title = name;
-thumb.style = ` display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.18); transition: transform 0.2s ease; `;
+  thumb.style = ` display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,0.18); transition: transform 0.2s ease; `;
 
   const label = document.createElement("div");
   label.textContent = name;
@@ -1029,11 +1146,17 @@ window.addEventListener('DOMContentLoaded', () => {
       if (!count || count <= 0) return '#ffffff';
       const max = 200;
       const ratio = Math.min(count / max, 1);
-      const stops = [
-        [255, 255, 0], [255, 220, 0], [255, 180, 0], [255, 140, 0],
-        [255, 100, 0], [255, 60, 0], [255, 30, 0], [255, 0, 0]
-      ];
-      const idx = Math.floor(ratio * (stops.length - 1));
+const stops = [
+  [255, 245, 0],
+  [255, 205, 0],
+  [245, 165, 0],
+  [235, 125, 0],
+  [220, 85, 0],
+  [200, 45, 0],
+  [175, 20, 0],
+  [145, 0, 0]
+];
+	  const idx = Math.floor(ratio * (stops.length - 1));
       const next = Math.min(idx + 1, stops.length - 1);
       const local = (ratio * (stops.length - 1)) % 1;
       const lerp = (a, b) => Math.round(a + (b - a) * local);
@@ -1508,8 +1631,8 @@ function syncThumbnailHeight() {
 
   if (!photoSide) return;
 
-  thumbSide.style.height =
-    `${photoSide.offsetHeight}px`;
+thumbSide.style.height =
+  `${photoSide.getBoundingClientRect().height}px`;
 }
 
 window.addEventListener("load", syncThumbnailHeight);
