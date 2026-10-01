@@ -56,10 +56,6 @@ footer p { margin: 0;}
 
 
 /* ========== Species Filter Panel ========== */
-#species-filter { max-width: 95%; margin: 20px auto 30px; padding: 16px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-
-#speciesList h4 { margin: 10px 0; font-size:16px; }
-
 #speciesList ul { margin: 8px 0 0; font-size:14px; }
 
 
@@ -103,13 +99,7 @@ to { transform: translateX(-100%); }
 /* ========== Map Legend ========== */
 .legend { background: rgba(255,255,255,0.96); padding: 10px 12px; line-height: 1.2; color: #222; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.20); border: 1px solid rgba(0,0,0,0.15); backdrop-filter: blur(2px); }
 
-.legend .scale { background: linear-gradient (90deg, rgb(255,245,0) 0%, rgb(255,205,0) 15%, rgb(245,165,0) 30%, rgb(235,125,0) 50%, rgb(220,85,0) 70%, rgb(200,45,0) 85%,rgb(145,0,0) 100% ); }
-
-.legend .labels { display: flex;  justify-content: space-between; font-size: 12px; font-weight: 700; color: #222; }
-
 .legend-container { display: flex; align-items: center; gap: 8px; }
-
-.scale { width: 100px; height: 10px; background: linear-gradient(to right, #fef0d9, #fd8d3c, #d7301f); border-radius: 5px; }
 
 .legend-label { font-size: 12px; color: #333; }
 
@@ -118,10 +108,6 @@ to { transform: translateX(-100%); }
 .hamburger-panel[hidden] { display: none !important; }
 
 .hamburger-panel { position: absolute; overflow-y: auto; background: rgba(38, 70, 83, 0.98); color: #fff; border-radius: 0px; padding: 16px; box-shadow: 0 8px 20px rgba(0,0,0,.25); box-sizing: border-box; z-index: 9990; display: flex; flex-direction: column; gap: 12px; width: 95%; }
-
-.hamburger-title { font-size: 1.25rem; font-weight: bold; text-align: justify; margin-top: 12px; }
-
-.hamburger-text { font-size: 1rem; line-height: 1.6; text-align: justify; margin-top: 8px; }
 
 .about-title { font-size: 1.25rem; font-weight: bold; text-align: justify; margin-top: 12px; }
 
@@ -229,16 +215,10 @@ to { transform: translateX(-100%); }
 
 #thumbnailPanel::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.72); }
 
-#imageContainer,
-#message { display: none; }	  
-
 /* ========== Leaflet Overrides ========== */
 .leaflet-control { background: none !important; border: none !important; box-shadow: none !important; }
 
 /* ========== Bird Of The Day ========== */
-
-/* Theme variables (adjust to match your header mint) */
-:root { --mint-dark: 46, 111, 100; --mint-base: 168, 230, 207; }
 
 .nav-arrow,
 .swipe-hand { -webkit-tap-highlight-color: transparent; }	  
@@ -363,39 +343,19 @@ to { transform: translateX(-100%); }
 
 @media (max-width: 768px) {
 
-  header {
-    min-height: 90px;
-    padding: 0 12px;
-  }
+ header { min-height: 90px; padding: 0 12px; }
 
-  header h1 {
-    font-size: 28px;
-  }
+ header h1 { font-size: 28px; }
 
-  .header-nav {
-    gap: 14px;
-  }
+.header-nav { gap: 14px; }
 	
-.header-inner {
-  flex-wrap: wrap;
-  gap: 10px;
-}
+.header-inner { flex-wrap: wrap; gap: 10px; }
 
-.nav-tab {
-  font-size: 15px;
-}	
+.nav-tab { font-size: 15px; }	
 
 #thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; margin: 0; overflow: visible; }
 
 #thumbnailPanel { max-height: 180px; }
-
-.panel-box.hamburger-photo img { width: 80px; height: 80px; }
-
-.panel-box.hamburger-social { height: 80px; }
-
-.panel-box.hamburger-social a { width: 32px; height: 32px; }
-
-.panel-box p { font-size: 17px; line-height: 1.5; }
 
 .explore-title { font-size: 1rem; font-weight: 600; white-space: nowrap; }
 
@@ -456,7 +416,7 @@ to { transform: translateX(-100%); }
 /* ===== BirdBlog refresh ===== */
 
 /* Palette: deeper forest green header, warm cream page */
-:root { --forest: #2f5d3a; --cream: #faf8f3; }
+:root { --forest: #6a9f69; --cream: #faf8f3; }
 .site-page { background-color: var(--cream); }
 
 /* Sticky header + serif title */
@@ -496,6 +456,61 @@ button.nav-arrow { background: none; border: none; padding: 8px; font-family: in
 /* Footer links */
 footer a { color: #ffffff; text-decoration: underline; margin: 0 8px; }
 footer a:hover { opacity: .8; }
+
+/* ===== Stats strip ===== */
+.stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 1100px; margin: 20px auto; padding: 0 16px; }
+.stat { background: #ffffff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,.08); padding: 14px 8px; text-align: center; }
+.stat-num { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; font-weight: 700; color: var(--forest); line-height: 1.1; }
+.stat-label { display: block; font-size: .9rem; color: #555; margin-top: 4px; }
+#themeToggle { font-size: 18px; }
+
+/* ===== Dark mode ===== */
+html[data-theme="dark"] { --forest: #3f6b45; --cream: #161d18; color-scheme: dark; }
+html[data-theme="dark"], html[data-theme="dark"] body { background-color: #0e130f; color: #e8ece9; }
+html[data-theme="dark"] .site-page { box-shadow: 0 0 13px 3px rgba(0,0,0,.6); }
+html[data-theme="dark"] .bird-day-layout, html[data-theme="dark"] .explore-banner { background: var(--cream); }
+html[data-theme="dark"] .explore-title { color: #f1f4f2; }
+html[data-theme="dark"] .explore-ticker { color: #c9d1cb; }
+html[data-theme="dark"] #info { background: #1d2620; border-color: #2c372f; color: #ddd; }
+html[data-theme="dark"] .panel-box.merged-panel { background: #1d2620; color: #e8ece9; }
+html[data-theme="dark"] .species-btn, html[data-theme="dark"] #countryCount { color: #e8ece9; }
+html[data-theme="dark"] .panel-close { color: #bbb; }
+html[data-theme="dark"] .stat { background: #1d2620; box-shadow: none; }
+html[data-theme="dark"] .stat-num { color: #8fc08e; }
+html[data-theme="dark"] .stat-label { color: #b8c2bb; }
+html[data-theme="dark"] .legend { background: rgba(29,38,32,.95); }
+html[data-theme="dark"] .legend-label { color: #e8ece9; }
+
+/* ===== Small screens (keep this last) ===== */
+@media (max-width: 1024px) {
+  .bird-copyright { font-size: 13px; }
+}
+@media (max-width: 768px) {
+  .explore-title { font-size: 1.15rem; white-space: normal; padding: 8px 12px 0; }
+  .bird-caption-bar { font-size: 16px; padding: 6px 12px; }
+  .nav-arrow { font-size: 26px; }
+  .stats-strip { grid-template-columns: repeat(2, 1fr); }
+  .stat-num { font-size: 1.6rem; }
+
+  /* Species panel slides up from the bottom of the map */
+  #infoPanel { top: auto; bottom: 0; left: 0; width: 100%; max-width: none; height: 55%; min-height: 0; padding: 0; transform: translateY(100%); }
+  #infoPanel.open { transform: translateY(0); }
+
+  /* About and Contact open full width under the header */
+  .hamburger-panel { position: fixed !important; left: 0 !important; width: 100% !important; top: 90px !important; height: calc(100% - 90px) !important; }
+  .contact-form { min-height: 0; }
+  #mainPanel { scroll-margin-top: 90px; }
+}
+@media (max-width: 480px) {
+  header h1 { font-size: 22px; }
+  .header-inner { flex-wrap: nowrap; gap: 6px; }
+  .header-nav { gap: 10px; }
+  .nav-tab { font-size: 13px; }
+  .explore-title { font-size: 1rem; }
+  .hamburger-panel { top: 75px !important; height: calc(100% - 75px) !important; }
+  #thumbnailGallery div > div { font-size: 10px !important; padding: 2px 4px !important; }
+  .center-dot { width: 36px; height: 36px; }
+}
 	
 </style>
 
@@ -507,6 +522,15 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 })(window, document, "clarity", "script", "y9xn5xuu6l");
 </script>
 
+<script>
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem("theme"); } catch (e) {}
+  var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+})();
+</script>
+	
 </head>
 <body>
 <div class="site-page">
@@ -531,6 +555,8 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               aria-expanded="false">
         About
       </button>
+
+      <button id="themeToggle" class="nav-tab" aria-label="Toggle dark mode">☾</button>		
     </nav>
 
   </div>
@@ -689,7 +715,12 @@ class="thumbnail-grid">
 
 </div>
 </div>
-
+<div class="stats-strip">
+  <div class="stat"><span class="stat-num" id="statObserved">0</span><span class="stat-label">Species observed</span></div>
+  <div class="stat"><span class="stat-num" id="statPhotographed">0</span><span class="stat-label">Species photographed</span></div>
+  <div class="stat"><span class="stat-num" id="statCountries">0</span><span class="stat-label">Countries</span></div>
+  <div class="stat"><span class="stat-num">2020</span><span class="stat-label">Birding since</span></div>
+</div>
 <!-- EXPLORE PANEL -->
 <div class="explore-banner">
 <div class="explore-inner">
@@ -725,8 +756,6 @@ class="panel-close">
 
 <!-- Scrollable species list with compact spacing -->
 <div id="speciesList">
-<p style="text-align:center; color:#555; margin: 6px 0;">
-<!-- species items will be inserted here -->
 </div>
 </div>
 
@@ -739,13 +768,6 @@ class="panel-close">
 
 
 </div>
-
-
-<!-- OUTSIDE MAIN PANEL -->
-<div id="imageContainer">
-<img id="speciesImage" src="" alt="">
-</div>
-<div id="message"></div>
 
 <footer>
 <p>
@@ -775,7 +797,7 @@ attribution: 'Tiles © Esri'
 
 
 const birdData = { "Norway": 192, "Sweden": 61, "Finland": 35, "Denmark": 115, "Italy": 60, "United Kingdom": 44, "Netherlands": 127, "Germany": 18, "Poland": 3, "Czech Republic": 2, "Latvia": 13, "Greece": 22, "Estonia": 55, "Bangladesh": 185, "Thailand": 126, "Aruba": 72, "Curaçao": 60, "Belgium": 33 };
-
+const WORLD_SPECIES = 545;
 const flags = { "Norway": "no", "Sweden": "se", "Finland": "fi", "Denmark": "dk", "Italy": "it", "United Kingdom": "gb", "Netherlands": "nl", "Germany": "de", "Poland": "pl", "Czech Republic": "cz", "Latvia": "lv", "Greece": "gr", "Estonia": "ee", "Bangladesh": "bd", "Thailand": "th", "Aruba": "aw", "Curaçao": "cw", "Belgium": "be" };
 
 // ✅ GLOBAL VARIABLES
@@ -832,9 +854,8 @@ console.error("Error loading birds.json:", error);
 
 function initApp() {
 
-speciesList = Object.keys(birds);
-
 updateTicker();
+updateStats();
 
 showRandomBird();
 
@@ -873,7 +894,7 @@ countryFilter.appendChild(option);
 function updateTicker() {
 
 let html =
-"🌍 World 545 species";
+"🌍 World " + WORLD_SPECIES + " species";
 
 Object.entries(birdData)
 .sort((a,b) => b[1] - a[1])
@@ -898,7 +919,11 @@ document.getElementById("exploreTicker")
 .innerHTML = html;
 
 }
-
+function updateStats() {
+  document.getElementById("statObserved").textContent = WORLD_SPECIES;
+  document.getElementById("statPhotographed").textContent = Object.keys(birds).length;
+  document.getElementById("statCountries").textContent = Object.keys(birdData).length;
+}
 // ✅ Bird of the day
 function showRandomBird() {
 
@@ -1116,7 +1141,7 @@ const endY = e.changedTouches[0].screenY;
 const dx = Math.abs(endX - startX);
 const dy = Math.abs(endY - startY);
 if (dx < dy) return;
-const SWIPE_THRESHOLD = 120;
+const SWIPE_THRESHOLD = 60;
 if (endX < startX - SWIPE_THRESHOLD) { navigateBird(1); }
 else if (endX > startX + SWIPE_THRESHOLD) { navigateBird(-1); }
 });
@@ -1287,11 +1312,6 @@ updateGallery
 
 
 // ======== PHOTO VIEWER LOGIC ========
-let speciesList = [];
-let currentIndex = -1;
-const img = document.getElementById("speciesImage");
-const message = document.getElementById("message");
-const closeBtn = document.getElementById("closeLightbox");
 
 function showSpecies(name) {
 const photoUrl = birds[name]?.photo;
@@ -1319,47 +1339,6 @@ e.currentTarget.style.display = 'none';
 });
 });
 
-window.showSpecies = showSpecies;
-
-img.addEventListener("click", () => {
-if (img.requestFullscreen) {
-img.requestFullscreen();
-} else if (img.webkitRequestFullscreen) {
-img.webkitRequestFullscreen();
-} else if (img.msRequestFullscreen) {
-img.msRequestFullscreen();
-}
-});
-
-document.addEventListener("fullscreenchange", () => {
-if (document.fullscreenElement) {
-closeBtn.classList.add("visible");
-} else {
-closeBtn.classList.remove("visible");
-}
-});
-
-let touchStartX = 0;
-let touchEndX = 0;
-img.addEventListener("touchstart", (e) => {
-touchStartX = e.changedTouches[0].screenX;
-});
-img.addEventListener("touchend", (e) => {
-touchEndX = e.changedTouches[0].screenX;
-handleSwipe();
-});
-
-function handleSwipe() {
-if (touchEndX < touchStartX - 50) {
-currentIndex = (currentIndex + 1) % speciesList.length;
-showSpecies(speciesList[currentIndex]);
-} else if (touchEndX > touchStartX + 50) {
-currentIndex = (currentIndex - 1 + speciesList.length) % speciesList.length;
-showSpecies(speciesList[currentIndex]);
-}
-}
-
-// ======== MAP CHOROPLETH LOGIC ========
 // ======== MAP CHOROPLETH LOGIC ========
 
 function getColor(count) {
@@ -1624,25 +1603,6 @@ renderSelectedSpeciesList();
 .catch(err => {
 console.error('GeoJSON load error:', err);
 document.getElementById('info').textContent = 'Could not load map data. Check your internet connection.';
-});
-
-
-// Attach lightbox close handlers after the DOM is parsed
-window.addEventListener('DOMContentLoaded', () => {
-const lightbox = document.getElementById('lightbox');
-const closeBtn = document.getElementById('closeLightbox');
-
-// Close on ❌
-closeBtn.onclick = () => {
-lightbox.style.display = 'none';
-};
-
-// Close when clicking the dark background
-lightbox.addEventListener('click', (e) => {
-if (e.target === lightbox) {
-lightbox.style.display = 'none';
-}
-});
 });
 
 </script>
@@ -2041,6 +2001,19 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") navigateBird(1);
 });
 </script>
-	
+<script>
+(function () {
+  const root = document.documentElement;
+  const btn = document.getElementById("themeToggle");
+  function sync() { btn.textContent = root.dataset.theme === "dark" ? "☀" : "☾"; }
+  sync();
+  btn.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    sync();
+  });
+})();
+</script>	
 </body>
 </html>
