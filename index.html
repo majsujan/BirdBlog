@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>BirdBlog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BirdBlog | Bird photography by Sujan Abu Jafar</title>
+<meta name="description" content="Bird photography and sightings from 18 countries. Explore species on an interactive map.">
+<meta property="og:title" content="BirdBlog">
+<meta property="og:description" content="Bird photography and sightings from 18 countries.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐦</text></svg>">
 
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -450,6 +453,50 @@ to { transform: translateX(-100%); }
 .thumbnail-select { padding-inline: 7px; }
 }
 
+/* ===== BirdBlog refresh ===== */
+
+/* Palette: deeper forest green header, warm cream page */
+:root { --forest: #2f5d3a; --cream: #faf8f3; }
+.site-page { background-color: var(--cream); }
+
+/* Sticky header + serif title */
+header { background: var(--forest); position: sticky; top: 0; z-index: 3000; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+header h1 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; letter-spacing: .5px; }
+.nav-tab { padding: 6px 4px; border-bottom: 2px solid transparent; }
+.nav-tab:hover { opacity: 1; border-bottom-color: rgba(255,255,255,.8); }
+#mainPanel { scroll-margin-top: 100px; }
+
+/* Explore heading in serif */
+.explore-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; padding-top: 8px; }
+
+/* Legend: fix broken gradient, match map colours */
+.legend .scale, .scale {
+  width: 140px; height: 12px; border-radius: 6px;
+  background: linear-gradient(to right, rgb(255,245,0), rgb(255,205,0), rgb(245,165,0), rgb(235,125,0), rgb(220,85,0), rgb(200,45,0), rgb(175,20,0), rgb(145,0,0));
+}
+
+/* Hide the empty #info banner unless it has a message */
+#info:empty { display: none; }
+
+/* Dark fade at the bottom of the big photo so arrows/dots stay readable */
+.bird-day-frame::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 35%; background: linear-gradient(to top, rgba(0,0,0,.55), transparent); pointer-events: none; z-index: 3; }
+
+/* Arrows are now real buttons: reset button look + keyboard focus ring */
+button.nav-arrow { background: none; border: none; padding: 8px; font-family: inherit; }
+.nav-arrow:focus-visible, .center-dot:focus-visible, .nav-tab:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
+
+/* Bigger, easier-to-tap slideshow button */
+.center-dot { width: 40px; height: 40px; font-size: 16px; }
+
+/* Touch screens have no hover, so always show bird names on thumbnails */
+@media (hover: none) {
+  #thumbnailGallery div > div { opacity: 1 !important; transform: translateY(0) !important; }
+}
+
+/* Footer links */
+footer a { color: #ffffff; text-decoration: underline; margin: 0 8px; }
+footer a:hover { opacity: .8; }
+	
 </style>
 
 <script type="text/javascript">
@@ -502,17 +549,9 @@ src=""
 alt="Featured Bird">
 
 <!-- Arrows -->
-<div onclick="navigateBird(-1)"
-class="nav-arrow left-arrow"
-aria-label="Previous">
-&#10094;
-</div>
+<button type="button" onclick="navigateBird(-1)" class="nav-arrow left-arrow" aria-label="Previous">&#10094;</button>
 
-<div onclick="navigateBird(1)"
-class="nav-arrow right-arrow"
-aria-label="Next">
-&#10095;
-</div>
+<button type="button" onclick="navigateBird(1)" class="nav-arrow right-arrow" aria-label="Next">&#10095;</button>
 
 <!-- Swipe dots -->
 <div class="swipe-indicator">
@@ -667,7 +706,7 @@ class="explore-ticker-content">
 </div>
 
 <!-- MAIN PANEL -->
-
+<div id="info"></div>
 <div id="mainPanel">
 
 <div id="infoPanel">
@@ -709,6 +748,11 @@ class="panel-close">
 <div id="message"></div>
 
 <footer>
+<p>
+  <a href="https://www.instagram.com/birdblog.majsujan/" target="_blank" rel="noopener">Instagram</a> |
+  <a href="https://www.flickr.com/photos/birdblog-suzonabuzafor/" target="_blank" rel="noopener">Flickr</a> |
+  <a href="https://ebird.org/profile/MTk3MTk3MQ" target="_blank" rel="noopener">eBird</a>
+</p>
 <p>© 2026 Sujan Abu Jafar | Powered by eBird Data</p>
 </footer>
 
@@ -716,7 +760,7 @@ class="panel-close">
 
 
 <script>
-const map = L.map('map', { center: [20, 0], zoom: 1.5, minZoom: 1.5, maxZoom: 4, zoomControl: false, scrollWheelZoom: false });
+const map = L.map('map', { center: [20, 0], zoom: 1.5, minZoom: 1.5, maxZoom: 4, zoomControl: false, scrollWheelZoom: false, zoomSnap: 0.5 });
 L.control.zoom({
 position: 'topright'
 }).addTo(map);
@@ -775,14 +819,7 @@ return fetch('birds.json');
 
 birds = data;
 birdKeys = Object.keys(birds);
-birdKeys.forEach(name => {
 
-const preload = new Image();
-
-preload.src =
-birds[name].photo;
-
-});
 shuffledBirds =
 shuffleArray(Object.entries(birds));
 
@@ -865,8 +902,11 @@ document.getElementById("exploreTicker")
 // ✅ Bird of the day
 function showRandomBird() {
 
-currentBirdIndex =
-Math.floor(Math.random() * birdKeys.length);
+const today = new Date();
+const dayNumber = Math.floor(
+new Date(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000
+);
+currentBirdIndex = dayNumber % birdKeys.length;
 
 const randomBird =
 birdKeys[currentBirdIndex];
@@ -906,7 +946,11 @@ function showBird(name, url) {
 const img =
 document.getElementById("dailyBirdImage");
 
-img.style.opacity = "0";
+img.style.opacity = "1";
+
+document.querySelectorAll("#thumbnailGallery img").forEach(t => {
+  t.parentElement.classList.toggle("thumbnail-active", t.alt === name);
+});
 
 setTimeout(() => {
 
@@ -1113,7 +1157,7 @@ const wrapper = document.createElement("div");
 wrapper.style = ` position: relative; width: 100%; aspect-ratio: 16 / 9; cursor: pointer; overflow: hidden; border-radius: 4px; background: #e8e8e8; `;
 
 const thumb = document.createElement("img");
-thumb.loading = "eager";
+thumb.loading = "lazy";
 thumb.decoding = "async";
 thumb.src = data.photo;
 thumb.alt = name;
@@ -1987,6 +2031,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 	
+</script>
+
+<script>
+document.addEventListener("keydown", e => {
+  const tag = e.target.tagName;
+  if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") return;
+  if (e.key === "ArrowLeft") navigateBird(-1);
+  if (e.key === "ArrowRight") navigateBird(1);
+});
 </script>
 	
 </body>
