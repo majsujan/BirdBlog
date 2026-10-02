@@ -284,40 +284,8 @@ html[data-theme="dark"] .map-hint { background: rgba(29,38,32,.95); color: #e8ec
   .bird-copyright { font-size: 11px; }
   .thumbnail-search { flex: 1 1 100%; }
   .thumbnail-select { flex: 0 0 72px; width: 72px; }
- .country-select {
-  flex: 1 1 140px;
-  width: 140px;
-  min-width: 120px;
-  max-width: none;
-}
-.toolbar-right {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex: 1;
-  min-width: 0;
-}
-  .thumbnail-controls {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 6px;
-}
-
-.thumbnail-search {
-  flex: 1;
-  min-width: 0;
-}
-
-.thumbnail-select {
-  width: 80px;
-  flex: 0 0 80px;
-}
-
-.country-select {
-  flex: 1 1 140px;
-  min-width: 120px;
-}
+.country-select { width: auto; max-width: 40vw; }
+.toolbar-right { flex-shrink: 1; }
 
 @media (max-width: 600px) {
   .nav-arrow { font-size: 30px; }
