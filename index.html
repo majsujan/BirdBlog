@@ -88,7 +88,7 @@ footer a:hover { opacity: .8; }
 .legend-label { font-size: 12px; color: #333; }
 
 /* Hint over the map (fades out after the first selection) */
-.map-hint { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 900; max-width: calc(100% - 140px); padding: 8px 18px; background: rgba(255,255,255,.95); color: #222; font-size: 14px; font-weight: 700; text-align: center; border-radius: 999px; box-shadow: 0 3px 8px rgba(0,0,0,.2); pointer-events: none; transition: opacity .4s ease; }
+.map-hint { white-space: nowrap; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 900; max-width: calc(100% - 140px); padding: 8px 18px; background: rgba(255,255,255,.95); color: #222; font-size: 14px; font-weight: 700; text-align: center; border-radius: 999px; box-shadow: 0 3px 8px rgba(0,0,0,.2); pointer-events: none; transition: opacity .4s ease; }
 .map-hint.hidden { opacity: 0; }
 
 /* Country panel and species list */
@@ -241,7 +241,7 @@ html[data-theme="dark"] .map-hint { background: rgba(29,38,32,.95); color: #e8ec
   header { min-height: 90px; padding: 0 12px; }
   header h1 { font-size: 28px; }
   .header-nav { gap: 14px; }
-  .header-inner { flex-wrap: wrap; gap: 10px; }
+  .header-inner { display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: center; width: 100%; }
   .nav-tab { font-size: 15px; }
   #thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; margin: 0; overflow: visible; }
   #thumbnailPanel { max-height: 180px; }
@@ -288,6 +288,8 @@ html[data-theme="dark"] .map-hint { background: rgba(29,38,32,.95); color: #e8ec
   .thumbnail-search { min-width: 0; padding-inline: 8px; }
   .thumbnail-select { padding-inline: 7px; }
   .center-dot { width: 36px; height: 36px; }
+  @media (max-width: 480px) {
+  .map-hint { font-size: 12px; padding: 6px 12px; }
 }
 
 </style>
@@ -875,7 +877,7 @@ legend.addTo(map);
 
 /* Map hint wording: "Tap" on touch screens, "Select" with a mouse */
 document.getElementById('mapHint').textContent =
-  (window.matchMedia('(hover: none)').matches ? 'Tap' : 'Select') + ' a country on the map to see its species and photos';
+  'Select a country on the map to see its species and photos';
 
 fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
   .then(r => r.json())
