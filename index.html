@@ -144,6 +144,7 @@ footer a:hover { opacity: .8; }
 @media (hover: none) { #thumbnailGallery div > div { opacity: 1 !important; transform: translateY(0) !important; } }
 
 /* ========== Leaflet overrides ========== */
+ .leaflet-container { background: var(--paper); }
 .leaflet-control { background: none !important; border: none !important; box-shadow: none !important; }
 
 /* ========== Bird of the day ========== */
@@ -686,10 +687,36 @@ Bird enthusiast and photographer, medical doctor, and life science researcher fr
 
 <script>
 /* ================= MAP ================= */
-const map = L.map('map', { center: [20, 0], zoom: 1.5, minZoom: 1.5, maxZoom: 4, zoomControl: false, scrollWheelZoom: false, zoomSnap: 0.5 });
-L.control.zoom({ position: 'topright' }).addTo(map);
-L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles © Esri' }).addTo(map);
+const map = L.map('map', {
+  center: [20, 0],
+  zoom: 1.5,
+  minZoom: 1.5,
+  maxZoom: 5,
+  zoomControl: false,
 
+  scrollWheelZoom: true,
+  touchZoom: true,
+
+  zoomSnap: 0.5,
+
+  maxBounds: [
+    [-70, -180],
+    [85, 180]
+  ],
+  maxBoundsViscosity: 1.0
+});
+L.control.zoom({ position: 'topright' }).addTo(map);
+map.touchZoom.enable();
+map.doubleClickZoom.enable();
+map.boxZoom.enable();
+map.keyboard.enable();
+  
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles © Esri' }).addTo(map);
+map.setMaxBounds([
+  [-85, -180],
+  [85, 180]
+]);
+  
 /* ================= DATA ================= */
 /* Update these two numbers by hand when your totals change */
 const WORLD_SPECIES = 545;        /* species observed */
