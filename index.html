@@ -293,65 +293,128 @@ html[data-theme="dark"] .map-hint { background: rgba(29,38,32,.95); color: #e8ec
 </style>
 
 <style>
-/* ===== BirdBlog: photobook look. White, black ink, bird-crown orange. Jost + Space Mono ===== */
-:root { --font-main: 'Jost', 'Futura', 'Century Gothic', sans-serif; --font-mono: 'Space Mono', 'Courier New', monospace; --accent: #d0572c; }
+/* ===== BirdBlog v4: photobook look. Paper, ink, bird-crown orange. Jost + Space Mono ===== */
+:root {
+  --font-main: 'Jost', 'Futura', 'Century Gothic', sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --accent: #d0572c;
+  --active: #d0572c;
+  --paper: #faf8f3;
+  --paper-2: #efeadc;
+  --ink: #1b1d1a;
+  --ink-soft: #5b6058;
+  --line: rgba(27,29,26,.14);
+  --field: rgba(255,255,255,.65);
+  --thumb: rgba(27,29,26,.30);
+  --footer-bg: #efeadc;
+  /* subtle paper texture. To switch it off, replace the whole url(...) with: none */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+html[data-theme="dark"] {
+  --accent: #e0794a;
+  --active: #8fc08e;
+  --paper: #161d18;
+  --paper-2: #1c251f;
+  --ink: #e9e6da;
+  --ink-soft: #a9b3ab;
+  --line: rgba(233,230,218,.16);
+  --field: rgba(255,255,255,.06);
+  --thumb: rgba(233,230,218,.35);
+  --footer-bg: #0b100c;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 body, button, input, select, textarea, .leaflet-container { font-family: var(--font-main); }
 body { font-weight: 400; letter-spacing: .01em; }
 
-/* Header: white bar, black lettering, bird inside the O */
-header { background: #ffffff; color: #111111; box-shadow: 0 1px 0 rgba(0,0,0,.10); }
-header .site-title { margin: 0; isolation: isolate; white-space: nowrap; font-family: var(--font-main); font-weight: 300; text-transform: uppercase; letter-spacing: .02em; line-height: 1; font-size: clamp(36px, 4.4vw, 56px); }
-header .site-title .o { position: relative; display: inline-block; --dx: -.05em; --dy: 0em; }
+/* ---------- Header: white bar, black lettering, bird inside the O ---------- */
+header { background: #ffffff; color: #111111; box-shadow: 0 1px 0 rgba(0,0,0,.10); min-height: 108px; padding: 0 24px; }
+#mainPanel { scroll-margin-top: 120px; }
+header .site-title { margin: 0; isolation: isolate; white-space: nowrap; font-family: var(--font-main); font-weight: 300; text-transform: uppercase; letter-spacing: .02em; line-height: 1; font-size: clamp(43px, 5.3vw, 67px); }
+header .site-title .o { position: relative; display: inline-block; --dx: -0.5em; --dy: 0em; }
 header .site-title .o img { position: absolute; z-index: -1; left: calc(50% + var(--dx)); top: calc(50% + var(--dy)); width: .74em; height: auto; aspect-ratio: 1.0426; transform: translate(-50%, -50%); clip-path: ellipse(49% 49% at 50% 50%); }
-.nav-tab { font-family: var(--font-main); color: inherit; font-weight: 500; font-size: 14px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; padding: 8px 2px; }
+.nav-tab { font-family: var(--font-main); color: inherit; font-weight: 500; font-size: 17px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; padding: 10px 3px; }
 .nav-tab:hover { border-bottom-color: var(--accent); }
 .nav-tab:focus-visible { outline-color: #111111; }
-#themeToggle { font-size: 18px; letter-spacing: 0; }
+#themeToggle { font-size: 22px; letter-spacing: 0; }
+@media (min-width: 769px) { .header-nav { gap: 38px; } }
 html[data-theme="dark"] header { background: #161d18; color: #f1f4f2; box-shadow: 0 1px 0 rgba(255,255,255,.10); }
 html[data-theme="dark"] .nav-tab:focus-visible { outline-color: #f1f4f2; }
 html[data-theme="dark"] header .site-title .o img { background: #f1efe4; }
 
-/* Species Explorer: smaller, so the photo and title stay the focus */
-.explore-inner { max-width: 900px; padding: 14px 16px 10px; }
-.explore-title { font-family: var(--font-main); font-weight: 300; font-size: 1rem; letter-spacing: .22em; text-transform: uppercase; }
-.explore-sub { font-weight: 400; font-size: .85rem; letter-spacing: .04em; margin: 2px 0 10px; }
-.stats-strip { margin-bottom: 10px; }
-.stat { padding: 2px 20px; }
-.stat-num { font-family: var(--font-main); font-weight: 200; font-size: 1.5rem; letter-spacing: .02em; }
-.stat-label { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
-.explore-ticker { padding: 4px 0; }
-.explore-ticker-content { font-weight: 400; font-size: .85rem; letter-spacing: .03em; }
-.ticker-flag { width: 16px; height: 12px; margin-left: 10px; }
+/* ---------- Species Explorer: compact but easy to read ---------- */
+.explore-inner { max-width: 960px; padding: 16px 16px 12px; }
+.explore-title { font-family: var(--font-main); font-weight: 300; font-size: 1.2rem; letter-spacing: .2em; text-transform: uppercase; }
+.explore-sub { font-weight: 400; font-size: .95rem; letter-spacing: .03em; margin: 3px 0 12px; }
+.stats-strip { margin-bottom: 12px; }
+.stat { padding: 3px 24px; }
+.stat-num { font-family: var(--font-main); font-weight: 200; font-size: 1.9rem; letter-spacing: .02em; }
+.stat-label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; margin-top: 3px; }
+.explore-ticker { padding: 5px 0; }
+.explore-ticker-content { font-weight: 400; font-size: .95rem; letter-spacing: .03em; }
+.ticker-flag { width: 18px; height: 13px; margin-left: 12px; }
 
-/* Other text */
+/* ---------- Thumbnail column: paper in light mode, deep forest in dark ---------- */
+.thumbnail-column { background: var(--paper-2) var(--grain); border-left: 1px solid var(--line); }
+#thumbnailPanel, #thumbnailGallery { background: transparent; scrollbar-color: var(--thumb) transparent; }
+#thumbnailPanel::-webkit-scrollbar-track { background: transparent; }
+#thumbnailPanel::-webkit-scrollbar-thumb { background: var(--thumb); border: 2px solid transparent; background-clip: padding-box; }
+.thumbnail-active { outline-color: var(--active); }
+#birdSearch, #birdSort, #countryFilter { background-color: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; }
+#birdSearch::placeholder { color: var(--ink-soft); opacity: 1; }
+.thumbnail-search-button { color: var(--ink); text-shadow: none; }
+.thumbnail-search-button svg { filter: none; }
+.thumbnail-search-button svg circle, .thumbnail-search-button svg line { stroke: currentColor; }
+/* Minimise button (small screens): outlined, not filled, follows the theme */
+.gallery-toggle { background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; width: 36px; height: 36px; flex: 0 0 36px; font-size: 20px; font-weight: 300; line-height: 1; }
+.gallery-toggle:hover { background: var(--field); }
+
+/* ---------- Caption bar ---------- */
+.bird-caption-bar { background: var(--paper-2) var(--grain); color: var(--ink); border-top: 1px solid var(--line); font-weight: 500; letter-spacing: .04em; }
+.bird-title-group { align-items: center; gap: 8px; }
+#dailyBirdCaption { font-size: 18px; line-height: 1.2; }
+.bird-info-toggle { top: 0; width: 22px; height: 22px; font-size: 0; color: var(--ink-soft); }
+.bird-info-toggle::before { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(45deg) translate(1px, 1px); }
+.bird-info-toggle.open::before { transform: rotate(225deg) translate(1px, 1px); }
+.bird-info-toggle:hover { color: var(--ink); text-shadow: none; }
+.bird-copyright { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-soft); letter-spacing: .04em; }
+
+/* ---------- Footer, About and Contact panels ---------- */
+footer { background: var(--footer-bg) var(--grain); color: var(--ink-soft); border-top: 1px solid var(--line); font-weight: 300; font-size: 14px; letter-spacing: .06em; }
+footer a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+footer a:hover { color: var(--accent); opacity: 1; }
+.hamburger-panel { background: var(--paper-2) var(--grain); color: var(--ink); border: 1px solid var(--line); }
+.contact-icons { background: var(--paper); border-bottom: 1px solid var(--line); }
+.contact-icons a { color: var(--ink); }
+
+/* ---------- Other text ---------- */
 .panel-box.merged-panel h2 { font-weight: 400; letter-spacing: .02em; }
 .species-btn { font-weight: 400; letter-spacing: .01em; }
 .about-title { font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-align: left; }
 .about-text { font-weight: 300; line-height: 1.7; text-align: left; }
-.bird-caption-bar { font-weight: 400; letter-spacing: .04em; }
-.bird-copyright { font-family: var(--font-mono); font-size: 11.5px; color: #aaa; letter-spacing: .04em; }
 .drawer-scientific, .lightbox-scientific { font-style: italic; font-weight: 300; }
 .lightbox-name { font-family: var(--font-main); font-weight: 300; font-size: 24px; letter-spacing: .04em; }
 .lightbox-counter, .legend-label { font-family: var(--font-mono); }
-footer { font-weight: 300; font-size: 14px; letter-spacing: .06em; }
 
-/* Map hint: the box now wraps with the text */
+/* ---------- Map hint: the box now wraps with the text ---------- */
 .map-hint { white-space: normal; width: max-content; max-width: calc(100% - 120px); text-align: center; line-height: 1.35; border-radius: 22px; font-family: var(--font-main); font-weight: 500; letter-spacing: .02em; }
 
+@media (max-width: 1024px) { .thumbnail-column { border-left: 0; border-top: 1px solid var(--line); } }
 @media (max-width: 600px) {
-  .stat-num { font-size: 1.25rem; }
-  .stats-strip { gap: 6px 0; }
-  .explore-inner { padding: 12px 12px 8px; }
+  .stat-num { font-size: 1.5rem; }
+  .stat-label { font-size: .66rem; }
+  .stats-strip { gap: 8px 0; }
+  .explore-inner { padding: 14px 12px 10px; }
 }
 @media (max-width: 480px) { .map-hint { font-size: 12.5px; padding: 7px 14px; max-width: calc(100% - 110px); } }
 
 /* Small screens: title on top, menu underneath, both centred */
-@media (max-width: 560px) {
-  header { min-height: 0; padding: 8px 10px; }
-  .header-inner { flex-direction: column; gap: 4px; }
-  header .site-title { font-size: 32px; }
-  .header-nav { gap: 18px; }
-  .nav-tab { font-size: 12.5px; letter-spacing: .1em; }
+@media (max-width: 700px) {
+  header { min-height: 0; padding: 10px 12px; }
+  .header-inner { flex-direction: column; gap: 5px; }
+  header .site-title { font-size: 38px; }
+  .header-nav { gap: 14px; }
+  .nav-tab { font-size: 14px; letter-spacing: .06em; }
+  #themeToggle { font-size: 18px; }
 }
 </style>
   
