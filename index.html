@@ -786,11 +786,20 @@ document.getElementById("statCountries").textContent = Object.keys(birdData).len
 
 /* ================= BIRD OF THE DAY + NAVIGATION ================= */
 function showBirdOfTheDay() {
-const today = new Date();
-const dayNumber = Math.floor(new Date(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000);
-currentBirdIndex = dayNumber % birdKeys.length;
-const name = birdKeys[currentBirdIndex];
-showBird(name, birds[name].photo);
+  let newIndex;
+
+  do {
+    newIndex = Math.floor(Math.random() * birdKeys.length);
+  } while (
+    birdKeys.length > 1 &&
+    newIndex === Number(sessionStorage.getItem("lastFeaturedBird"))
+  );
+
+  sessionStorage.setItem("lastFeaturedBird", newIndex);
+
+  currentBirdIndex = newIndex;
+  const name = birdKeys[currentBirdIndex];
+  showBird(name, birds[name].photo);
 }
 
 function showBird(name, url) {
