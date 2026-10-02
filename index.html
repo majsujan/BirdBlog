@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>BirdBlog | Bird photography by Sujan Abu Jafar</title>
+<title>BIRDBLOG by Sujan Abu Jafar</title>
 <meta name="description" content="Bird photography and sightings from 18 countries. Explore species on an interactive map.">
-<meta property="og:title" content="BirdBlog">
+<meta property="og:title" content="BIRDBLOG by Sujan Abu Jafar">
 <meta property="og:description" content="Bird photography and sightings from 18 countries.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐦</text></svg>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <!-- Leaflet CSS -->
@@ -294,26 +293,37 @@ html[data-theme="dark"] .map-hint { background: rgba(29,38,32,.95); color: #e8ec
 </style>
 
 <style>
-/* ===== Photobook typography: Jost (thin, geometric) + Space Mono (small labels) ===== */
-:root { --font-main: 'Jost', 'Futura', 'Century Gothic', sans-serif; --font-mono: 'Space Mono', 'Courier New', monospace; }
+/* ===== BirdBlog: photobook look. White, black ink, bird-crown orange. Jost + Space Mono ===== */
+:root { --font-main: 'Jost', 'Futura', 'Century Gothic', sans-serif; --font-mono: 'Space Mono', 'Courier New', monospace; --accent: #d0572c; }
 body, button, input, select, textarea, .leaflet-container { font-family: var(--font-main); }
 body { font-weight: 400; letter-spacing: .01em; }
 
-/* Header: BIRDBLOG with the bird inside the O */
+/* Header: white bar, black lettering, bird inside the O */
+header { background: #ffffff; color: #111111; box-shadow: 0 1px 0 rgba(0,0,0,.10); }
 header .site-title { margin: 0; isolation: isolate; white-space: nowrap; font-family: var(--font-main); font-weight: 300; text-transform: uppercase; letter-spacing: .02em; line-height: 1; font-size: clamp(36px, 4.4vw, 56px); }
-header .site-title .o { position: relative; display: inline-block; --dx: -0.05em; --dy: 0em; }
+header .site-title .o { position: relative; display: inline-block; --dx: -.05em; --dy: 0em; }
 header .site-title .o img { position: absolute; z-index: -1; left: calc(50% + var(--dx)); top: calc(50% + var(--dy)); width: .74em; height: auto; aspect-ratio: 1.0426; transform: translate(-50%, -50%); clip-path: ellipse(49% 49% at 50% 50%); }
-.nav-tab { font-family: var(--font-main); font-weight: 500; font-size: 14px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; padding: 8px 2px; }
+.nav-tab { font-family: var(--font-main); color: inherit; font-weight: 500; font-size: 14px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; padding: 8px 2px; }
+.nav-tab:hover { border-bottom-color: var(--accent); }
+.nav-tab:focus-visible { outline-color: #111111; }
 #themeToggle { font-size: 18px; letter-spacing: 0; }
+html[data-theme="dark"] header { background: #161d18; color: #f1f4f2; box-shadow: 0 1px 0 rgba(255,255,255,.10); }
+html[data-theme="dark"] .nav-tab:focus-visible { outline-color: #f1f4f2; }
+html[data-theme="dark"] header .site-title .o img { background: #f1efe4; }
 
-/* Section headings, stats, ticker */
-.explore-title { font-family: var(--font-main); font-weight: 300; font-size: 1.7rem; letter-spacing: .16em; text-transform: uppercase; }
-.explore-sub { font-weight: 400; letter-spacing: .04em; }
-.stat-num { font-family: var(--font-main); font-weight: 200; font-size: 2.6rem; letter-spacing: .02em; }
-.stat-label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
-.explore-ticker-content { font-weight: 400; letter-spacing: .03em; }
+/* Species Explorer: smaller, so the photo and title stay the focus */
+.explore-inner { max-width: 900px; padding: 14px 16px 10px; }
+.explore-title { font-family: var(--font-main); font-weight: 300; font-size: 1rem; letter-spacing: .22em; text-transform: uppercase; }
+.explore-sub { font-weight: 400; font-size: .85rem; letter-spacing: .04em; margin: 2px 0 10px; }
+.stats-strip { margin-bottom: 10px; }
+.stat { padding: 2px 20px; }
+.stat-num { font-family: var(--font-main); font-weight: 200; font-size: 1.5rem; letter-spacing: .02em; }
+.stat-label { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .06em; text-transform: uppercase; margin-top: 2px; }
+.explore-ticker { padding: 4px 0; }
+.explore-ticker-content { font-weight: 400; font-size: .85rem; letter-spacing: .03em; }
+.ticker-flag { width: 16px; height: 12px; margin-left: 10px; }
 
-/* Map panels, caption bar, lightbox, footer */
+/* Other text */
 .panel-box.merged-panel h2 { font-weight: 400; letter-spacing: .02em; }
 .species-btn { font-weight: 400; letter-spacing: .01em; }
 .about-title { font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-align: left; }
@@ -325,8 +335,14 @@ header .site-title .o img { position: absolute; z-index: -1; left: calc(50% + va
 .lightbox-counter, .legend-label { font-family: var(--font-mono); }
 footer { font-weight: 300; font-size: 14px; letter-spacing: .06em; }
 
-/* Map hint: the box now wraps with the text instead of staying narrower than it */
+/* Map hint: the box now wraps with the text */
 .map-hint { white-space: normal; width: max-content; max-width: calc(100% - 120px); text-align: center; line-height: 1.35; border-radius: 22px; font-family: var(--font-main); font-weight: 500; letter-spacing: .02em; }
+
+@media (max-width: 600px) {
+  .stat-num { font-size: 1.25rem; }
+  .stats-strip { gap: 6px 0; }
+  .explore-inner { padding: 12px 12px 8px; }
+}
 @media (max-width: 480px) { .map-hint { font-size: 12.5px; padding: 7px 14px; max-width: calc(100% - 110px); } }
 
 /* Small screens: title on top, menu underneath, both centred */
@@ -337,7 +353,7 @@ footer { font-weight: 300; font-size: 14px; letter-spacing: .06em; }
   .header-nav { gap: 18px; }
   .nav-tab { font-size: 12.5px; letter-spacing: .1em; }
 }
-</style>  
+</style>
   
 <script type="text/javascript">
 (function(c,l,a,r,i,t,y){
