@@ -28,73 +28,111 @@ document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
 </script>
 
 <style>
+/* ================= Variables ================= */
+:root {
+  --page-max-width: 1632px;
+  --font-main: 'Jost', 'Futura', 'Century Gothic', sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --forest: #6a9f69;
+  --cream: #faf8f3;
+  --accent: #d0572c;
+  --active: #d0572c;
+  --paper: #faf8f3;
+  --paper-2: #efeadc;
+  --ink: #1b1d1a;
+  --ink-soft: #5b6058;
+  --line: rgba(27,29,26,.14);
+  --field: rgba(255,255,255,.65);
+  --thumb: rgba(27,29,26,.30);
+  --footer-bg: #efeadc;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --accent: #e08a63;
+  --active: #7fb5a6;
+  --paper: #16211f;
+  --paper-2: #1d2b28;
+  --ink: #e4e9e4;
+  --ink-soft: #9fb1ab;
+  --line: rgba(228,233,228,.14);
+  --field: rgba(255,255,255,.06);
+  --thumb: rgba(228,233,228,.32);
+  --footer-bg: #0f1817;
+  --outer: #0f1817;
+  --header-bg: #23453a;
+  --tint: rgba(112,216,154,.18);
+  --num: #70d89a;
+  --cream: #16211f;
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-/* ========== Global ========== */
-:root { --page-max-width: 1632px; --ebird-blue: #385b75; --forest: #6a9f69; --cream: #faf8f3; }
+/* ================= Global ================= */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { min-height: 100%; margin: 0; background-color: #ffffff; }
-body { min-height: 100vh; font-family: 'Lato', sans-serif; color: #333; }
-.site-page { width: 100%; max-width: var(--page-max-width); min-height: 100vh; margin: 0 auto; background-color: var(--cream); box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.23); }
+body { min-height: 100vh; color: #333; font-weight: 400; letter-spacing: .01em; }
+body, button, input, select, textarea, .leaflet-container { font-family: var(--font-main); }
+.site-page { width: 100%; max-width: var(--page-max-width); min-height: 100vh; margin: 0 auto; background-color: var(--cream); box-shadow: 0 0 13px 3px rgba(0,0,0,.23); }
 
-/* ========== Header ========== */
-header { background: var(--forest); color: white; padding: 0 20px; min-height: 90px; display: flex; align-items: center; position: sticky; top: 0; z-index: 3000; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+/* ================= Header ================= */
+header { display: flex; align-items: center; position: sticky; top: 0; z-index: 3000; min-height: 108px; padding: 0 24px; background: #ffffff; color: #111111; box-shadow: 0 1px 0 rgba(0,0,0,.10); }
 .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
-header h1 { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 36px; line-height: 1; letter-spacing: .5px; }
-.header-nav { display: flex; align-items: center; gap: 32px; }
-.nav-tab { background: transparent; border: none; border-bottom: 2px solid transparent; color: white; font-size: 17px; font-weight: 600; cursor: pointer; padding: 6px 4px; transition: border-color 0.2s ease; }
-.nav-tab:hover { border-bottom-color: rgba(255,255,255,.8); }
+header .site-title { margin: 0; isolation: isolate; white-space: nowrap; font-family: var(--font-main); font-weight: 300; text-transform: uppercase; letter-spacing: .02em; line-height: 1; font-size: clamp(43px, 5.3vw, 67px); }
+header .site-title .o { position: relative; display: inline-block; --dx: -.02em; --dy: 0em; }
+header .site-title .o img { position: absolute; z-index: -1; left: calc(50% + var(--dx)); top: calc(50% + var(--dy)); width: .74em; height: auto; aspect-ratio: 1.0426; transform: translate(-50%, -50%); clip-path: ellipse(49% 49% at 50% 50%); }
+.header-nav { display: flex; align-items: center; gap: 38px; }
+.nav-tab { background: transparent; border: none; border-bottom: 2px solid transparent; color: inherit; font-family: var(--font-main); font-weight: 500; font-size: 17px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; padding: 10px 3px; cursor: pointer; transition: border-color .2s ease; }
+.nav-tab:hover { border-bottom-color: var(--accent); }
 .nav-tab:focus-visible, .nav-arrow:focus-visible, .center-dot:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
-#themeToggle { font-size: 18px; }
+.nav-tab:focus-visible { outline-color: #111111; }
+#themeToggle { font-size: 22px; letter-spacing: 0; }
 
-/* ========== Footer ========== */
-footer { width: 100%; margin: 0; padding: 16px; background: var(--ebird-blue); color: #ffffff; text-align: center; display: block; }
+/* ================= Footer ================= */
+footer { width: 100%; margin: 0; padding: 16px; text-align: center; display: block; background: var(--footer-bg) var(--grain); color: var(--ink-soft); border-top: 1px solid var(--line); font-weight: 300; font-size: 14px; letter-spacing: .06em; }
 footer p { margin: 0; }
-footer a { color: #ffffff; text-decoration: underline; margin: 0 8px; }
-footer a:hover { opacity: .8; }
+footer a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; margin: 0 8px; }
+footer a:hover { color: var(--accent); }
 
-/* ========== Info banner (map load errors) ========== */
+/* ================= Info banner ================= */
 #info { text-align: center; padding: 10px; font-size: 16px; background: #f6f6f6; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
 #info:empty { display: none; }
 
-/* ========== Explore group: heading + stats + ribbon ========== */
+/* ================= Explore group ================= */
 .explore-banner { width: 100%; margin: 0; padding: 0; background: var(--cream); border-top: 1px solid rgba(0,0,0,.06); }
-.explore-inner { max-width: 1100px; margin: 0 auto; padding: 24px 16px 16px; text-align: center; }
-.explore-title { color: #222; margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; font-weight: 700; }
-.explore-sub { margin: 4px 0 18px; color: #666; font-size: 1rem; }
-.stats-strip { display: flex; justify-content: center; flex-wrap: wrap; margin: 0 auto 16px; }
-.stat { padding: 4px 28px; border-left: 1px solid rgba(0,0,0,.12); text-align: center; }
+.explore-inner { max-width: 960px; margin: 0 auto; padding: 16px 16px 12px; text-align: center; }
+.explore-title { margin: 0; color: #222; font-family: var(--font-main); font-weight: 300; font-size: 1.2rem; letter-spacing: .2em; text-transform: uppercase; }
+.explore-sub { margin: 3px 0 12px; color: #666; font-size: .95rem; font-weight: 400; letter-spacing: .03em; }
+.stats-strip { display: flex; justify-content: center; flex-wrap: wrap; margin: 0 auto 12px; }
+.stat { padding: 3px 24px; border-left: 1px solid rgba(0,0,0,.12); text-align: center; }
 .stat:first-child { border-left: none; }
-.stat-num { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; font-weight: 700; color: var(--forest); line-height: 1.1; }
-.stat-label { display: block; font-size: .9rem; color: #555; margin-top: 4px; }
-.explore-ticker { overflow: hidden; white-space: nowrap; color: #444; font-size: 1.05rem; background: rgba(106,159,105,.14); border-radius: 999px; padding: 6px 0; }
+.stat-num { display: block; font-family: var(--font-main); font-weight: 200; font-size: 1.9rem; letter-spacing: .02em; color: var(--forest); line-height: 1.1; }
+.stat-label { display: block; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: #555; margin-top: 3px; }
+.explore-ticker { overflow: hidden; white-space: nowrap; color: #444; font-size: 1.05rem; background: rgba(106,159,105,.14); border-radius: 999px; padding: 5px 0; }
 .explore-ticker:hover .explore-ticker-content { animation-play-state: paused; }
-.explore-ticker-content { display: inline-block; padding-left: 20%; animation: exploreTicker 80s linear infinite; font-size: 1rem; font-weight: 400; white-space: nowrap; line-height: 1.4; }
-.ticker-flag { width: 20px; height: 15px; vertical-align: middle; margin-left: 12px; margin-right: 4px; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+.explore-ticker-content { display: inline-block; padding-left: 20%; animation: exploreTicker 80s linear infinite; font-size: .95rem; font-weight: 400; letter-spacing: .03em; white-space: nowrap; line-height: 1.4; }
+.ticker-flag { width: 18px; height: 13px; vertical-align: middle; margin-left: 12px; margin-right: 4px; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
 @keyframes exploreTicker { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
-/* ========== World Map Explorer ========== */
-#mainPanel { position: relative; width: 100%; margin: 0; padding: 0; overflow: hidden; scroll-margin-top: 100px; }
-#infoPanel { position: absolute; left: 0; top: 0; width: 320px; height: 60vh; min-height: 500px; z-index: 1000; padding: 0; box-sizing: border-box; overflow: hidden; transform: translateX(calc(-100% - 20px)); opacity: 0; visibility: hidden; pointer-events: none; transition: transform 0.3s ease, opacity 0.2s ease, visibility 0s linear 0.3s; }
-#infoPanel.open { transform: translateX(0); opacity: 1; visibility: visible; pointer-events: auto; transition: transform 0.3s ease, opacity 0.2s ease, visibility 0s; }
+/* ================= World map ================= */
+#mainPanel { position: relative; width: 100%; margin: 0; padding: 0; overflow: hidden; scroll-margin-top: 120px; }
+#infoPanel { position: absolute; left: 0; top: 0; width: 320px; height: 60vh; min-height: 500px; z-index: 1000; padding: 0; box-sizing: border-box; overflow: hidden; transform: translateX(calc(-100% - 20px)); opacity: 0; visibility: hidden; pointer-events: none; transition: transform .3s ease, opacity .2s ease, visibility 0s linear .3s; }
+#infoPanel.open { transform: translateX(0); opacity: 1; visibility: visible; pointer-events: auto; transition: transform .3s ease, opacity .2s ease, visibility 0s; }
 #mapContainer { position: relative; width: 100%; margin: 0; padding: 0; }
-#mainPanel, #mapContainer, #map, footer { margin-bottom: 0; margin-top: 0; }
 #map { display: block; width: 100%; height: 60vh; min-height: 500px; margin: 0; padding: 0; border: 0; border-radius: 0; }
 
-/* Map legend */
-.legend { background: rgba(255,255,255,0.96); padding: 10px 12px; line-height: 1.2; color: #222; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.20); border: 1px solid rgba(0,0,0,0.15); backdrop-filter: blur(2px); }
+.legend { background: rgba(255,255,255,.96); padding: 10px 12px; line-height: 1.2; color: #222; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,.20); border: 1px solid rgba(0,0,0,.15); backdrop-filter: blur(2px); }
 .legend-container { display: flex; align-items: center; gap: 8px; }
 .scale { width: 140px; height: 12px; border-radius: 6px; background: linear-gradient(to right, rgb(255,245,0), rgb(255,205,0), rgb(245,165,0), rgb(235,125,0), rgb(220,85,0), rgb(200,45,0), rgb(175,20,0), rgb(145,0,0)); }
-.legend-label { font-size: 12px; color: #333; }
+.legend-label { font-family: var(--font-mono); font-size: 12px; color: #333; }
 
-/* Hint over the map (fades out after the first selection) */
-.map-hint { white-space: nowrap; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 900; max-width: calc(100% - 140px); padding: 8px 18px; background: rgba(255,255,255,.95); color: #222; font-size: 14px; font-weight: 700; text-align: center; border-radius: 999px; box-shadow: 0 3px 8px rgba(0,0,0,.2); pointer-events: none; transition: opacity .4s ease; }
+.map-hint { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 900; width: max-content; max-width: calc(100% - 120px); padding: 8px 18px; background: rgba(255,255,255,.95); color: #222; font-size: 14px; font-weight: 500; line-height: 1.35; letter-spacing: .02em; text-align: center; white-space: normal; border-radius: 22px; box-shadow: 0 3px 8px rgba(0,0,0,.2); pointer-events: none; transition: opacity .4s ease; }
 .map-hint.hidden { opacity: 0; }
 
 /* Country panel and species list */
 .panel-box.merged-panel { display: flex; flex-direction: column; gap: 6px; flex: 1 1 auto; min-height: 0; height: 100%; overflow: hidden; padding: 12px 20px; position: relative; background: white; border-radius: 10px; box-sizing: border-box; margin-left: 0; }
 .panel-close { position: absolute; top: 10px; right: 10px; border: none; background: none; font-size: 26px; font-weight: bold; cursor: pointer; color: #555; }
 .panel-close:hover { color: black; }
-.panel-box.merged-panel h2 { margin: 0 0 4px 0; line-height: 1.25; font-size: 1.5rem; }
+.panel-box.merged-panel h2 { margin: 0 0 4px 0; line-height: 1.25; font-size: 1.5rem; font-weight: 400; letter-spacing: .02em; }
 #countryCount { margin-top: 0; margin-bottom: 2px; font-size: 1rem; color: #333; }
 #speciesList { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 6px 0; margin-top: 2px; box-sizing: border-box; }
 #speciesList ul { margin: 8px 0 0; font-size: 14px; }
@@ -103,77 +141,89 @@ footer a:hover { opacity: .8; }
 #speciesList::-webkit-scrollbar-thumb:hover { background: #999; }
 .species-ul { list-style: none; padding-left: 0; margin: 0; }
 .species-li { position: relative; padding-left: 20px; margin-bottom: 4px; text-align: left; }
-.species-li::before { content: "📷"; position: absolute; left: 0; top: 0.7em; transform: translateY(-50%); font-size: 0.7rem; line-height: 1; }
-.species-btn { background: none; border: none; color: black; font-weight: normal; cursor: pointer; text-align: left; padding: 0; font-size: 1rem; width: 100%; display: inline-block; line-height: 1.4; white-space: normal; word-break: break-word; }
+.species-li::before { content: "📷"; position: absolute; left: 0; top: .7em; transform: translateY(-50%); font-size: .7rem; line-height: 1; }
+.species-btn { background: none; border: none; color: black; font-weight: 400; letter-spacing: .01em; cursor: pointer; text-align: left; padding: 0; font-size: 1rem; width: 100%; display: inline-block; line-height: 1.4; white-space: normal; word-break: break-word; }
 
 /* About and Contact panels */
 .hamburger-panel[hidden] { display: none !important; }
-.hamburger-panel { position: absolute; overflow-y: auto; background: rgba(38, 70, 83, 0.98); color: #fff; border-radius: 0; padding: 16px; box-shadow: 0 8px 20px rgba(0,0,0,.25); box-sizing: border-box; z-index: 9990; display: flex; flex-direction: column; gap: 12px; width: 95%; }
-.about-title { font-size: 1.25rem; font-weight: bold; text-align: justify; margin-top: 12px; }
-.about-text { font-size: 1rem; line-height: 1.6; text-align: justify; margin-top: 8px; }
+.hamburger-panel { position: absolute; overflow-y: auto; background: var(--paper-2) var(--grain); color: var(--ink); border: 1px solid var(--line); border-radius: 0; padding: 16px; box-shadow: 0 8px 20px rgba(0,0,0,.25); box-sizing: border-box; z-index: 9990; display: flex; flex-direction: column; gap: 12px; width: 95%; }
+.about-title { margin-top: 12px; font-size: 1.25rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-align: left; }
+.about-text { margin-top: 8px; font-size: 1rem; font-weight: 300; line-height: 1.7; text-align: left; }
 #contactPanel { padding: 0; gap: 0; overflow: hidden; }
-.contact-icons { display: flex; align-items: center; justify-content: center; gap: 18px; min-height: 28px; height: 28px; padding: 4px; background: #ffffff; border-bottom: 1px solid #e5e5e5; }
-.contact-icons a { color: #385b75; text-decoration: none; font-size: 15px; font-weight: 600; line-height: 1; }
+.contact-icons { display: flex; align-items: center; justify-content: center; gap: 18px; min-height: 28px; height: 28px; padding: 4px; background: var(--paper); border-bottom: 1px solid var(--line); }
+.contact-icons a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 600; line-height: 1; }
 .contact-icons a:hover { text-decoration: underline; }
 .contact-form { flex: 1; margin-top: 0; overflow-y: auto; }
 .contact-form iframe { width: 100%; height: 1451px; border: none; border-radius: 0; background: white; }
 
-/* ========== Thumbnail gallery ========== */
-#birdSearch, #birdSort, #countryFilter, .gallery-toggle { height: 36px; box-sizing: border-box; color: #333333; background-color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.75); }
-.thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; margin: 0; padding: 0 6px; background: var(--ebird-blue); overflow: hidden; }
+/* ================= Thumbnail gallery ================= */
+.thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; margin: 0; padding: 0 6px; background: var(--paper-2) var(--grain); border-left: 1px solid var(--line); overflow: hidden; }
 .thumbnail-controls { display: flex; align-items: center; width: 100%; padding: 4px 6px; gap: 6px; }
 .toolbar-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
-.gallery-toggle { margin-left: 0; flex: 0 0 42px; }
-#thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto; background: var(--ebird-blue); scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.55) var(--ebird-blue); }
-#thumbnailGallery { width: 100%; margin: 0; background: var(--ebird-blue); }
+
+#birdSearch, #birdSort, #countryFilter { height: 36px; background-color: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; }
+#birdSearch::placeholder { color: var(--ink-soft); opacity: 1; }
+
+.gallery-toggle { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; flex: 0 0 36px; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; font-size: 20px; font-weight: 300; line-height: 1; cursor: pointer; transition: background .2s ease; }
+.gallery-toggle:hover { background: var(--field); }
+
+#thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto; background: transparent; scrollbar-width: thin; scrollbar-color: var(--thumb) transparent; }
+#thumbnailGallery { width: 100%; margin: 0; background: transparent; }
 .thumbnail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; width: 100%; gap: 5px; padding: 2px 5px 5px 5px; margin: 0; }
-.thumbnail-active { outline: 3px solid #9fd19e; outline-offset: 1px; }
+.thumbnail-active { outline: 3px solid var(--active); outline-offset: 1px; }
 #thumbnailGallery img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 4px; }
-.thumbnail-search-button { width: 36px; height: 36px; flex: 0 0 36px; background: transparent; border: none; box-shadow: none; color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.35), 0 0 6px rgba(220,220,220,0.45); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
-.thumbnail-search-button:hover { opacity: .8; }
-.thumbnail-search-button svg { filter: drop-shadow(0 0 3px rgba(220,220,220,0.7)); pointer-events: none; display: block; transform: translateX(-1px); }
-.thumbnail-search { flex: 1 1 auto; min-width: 0; height: 36px; border: none; border-radius: 8px; padding: 0 12px; background: rgba(255,255,255,.92); color: #333; transition: max-width .25s ease, opacity .25s ease, padding .25s ease; }
-.collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
-.thumbnail-select { flex: 0 0 90px; height: 36px; border: none; border-radius: 8px; background: rgba(255,255,255,.92); color: #333; }
-.country-select { display: none; flex: 0 0 0; height: 36px; width: 0; min-width: 0; opacity: 0; overflow: hidden; border: none; border-radius: 8px; color: #333; background: rgba(255,255,255,.92); transition: flex-basis .25s ease, width .25s ease, opacity .25s ease; }
-.thumbnail-search:focus, .thumbnail-select:focus, .country-select:focus { outline: 2px solid rgba(95, 143, 94, 0.35); outline-offset: 1px; border-color: #5f8f5e; }
 #thumbnailPanel::-webkit-scrollbar { width: 8px; }
-#thumbnailPanel::-webkit-scrollbar-track { background: var(--ebird-blue); }
-#thumbnailPanel::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.5); border: 2px solid var(--ebird-blue); border-radius: 10px; }
-#thumbnailPanel::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.72); }
+#thumbnailPanel::-webkit-scrollbar-track { background: transparent; }
+#thumbnailPanel::-webkit-scrollbar-thumb { background: var(--thumb); border: 2px solid transparent; background-clip: padding-box; border-radius: 10px; }
+#thumbnailPanel::-webkit-scrollbar-thumb:hover { background: var(--ink-soft); background-clip: padding-box; }
 @media (hover: none) { #thumbnailGallery div > div { opacity: 1 !important; transform: translateY(0) !important; } }
 
-/* ========== Leaflet overrides ========== */
- .leaflet-container { background: var(--paper); }
+.thumbnail-search-button { width: 36px; height: 36px; flex: 0 0 36px; background: transparent; border: none; box-shadow: none; color: var(--ink); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+.thumbnail-search-button:hover { opacity: .8; }
+.thumbnail-search-button svg { display: block; pointer-events: none; transform: translateX(-1px); }
+.thumbnail-search-button svg circle, .thumbnail-search-button svg line { stroke: currentColor; }
+.thumbnail-search { flex: 1 1 auto; min-width: 0; height: 36px; padding: 0 12px; transition: max-width .25s ease, opacity .25s ease, padding .25s ease; }
+.collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
+.thumbnail-select { flex: 0 0 90px; }
+.country-select { display: none; flex: 0 0 0; height: 36px; width: 0; min-width: 0; opacity: 0; overflow: hidden; transition: flex-basis .25s ease, width .25s ease, opacity .25s ease; }
+.thumbnail-search:focus, .thumbnail-select:focus, .country-select:focus { outline: 2px solid rgba(95,143,94,.35); outline-offset: 1px; border-color: #5f8f5e; }
+
+/* ================= Leaflet overrides ================= */
+.leaflet-container { background: var(--paper); }
 .leaflet-control { background: none !important; border: none !important; box-shadow: none !important; }
 
-/* ========== Bird of the day ========== */
-.nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 8px; font-family: inherit; font-size: 34px; color: rgba(255,255,255,0.95); text-shadow: 0 0 4px rgba(40,40,40,.7), 0 0 10px rgba(40,40,40,.5), 1px 1px 4px rgba(0,0,0,.35); cursor: pointer; user-select: none; z-index: 4; transition: transform 0.15s ease, opacity 0.15s ease; -webkit-tap-highlight-color: transparent; }
+/* ================= Bird of the day ================= */
+.nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 8px; font-family: inherit; font-size: 34px; color: rgba(255,255,255,.95); text-shadow: 0 0 4px rgba(40,40,40,.7), 0 0 10px rgba(40,40,40,.5), 1px 1px 4px rgba(0,0,0,.35); cursor: pointer; user-select: none; z-index: 4; transition: transform .15s ease, opacity .15s ease; -webkit-tap-highlight-color: transparent; }
 .nav-arrow:focus:not(:focus-visible) { outline: none; }
 .left-arrow { left: 12px; }
 .right-arrow { right: 12px; }
 .nav-arrow:hover { transform: translateY(-50%) scale(1.08); }
 
-.bird-day-layout { display: grid; grid-template-columns: minmax(0, 22fr) minmax(420px, 12fr); width: 100%; margin: 0; align-items: start; background: var(--cream); font-family: 'Lato', sans-serif; }
+.bird-day-layout { display: grid; grid-template-columns: minmax(0, 22fr) minmax(420px, 12fr); width: 100%; margin: 0; align-items: start; background: var(--cream); }
 .bird-day-main { width: 100%; min-width: 0; margin: 0; padding: 0; position: relative; background: #444; }
-.bird-day-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 0; padding: 0; overflow: hidden; touch-action: pan-y; }
+.bird-day-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; touch-action: pan-y; }
 .bird-day-frame::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 35%; background: linear-gradient(to top, rgba(0,0,0,.55), transparent); pointer-events: none; z-index: 3; }
-.bird-day-image { display: block; width: 100%; height: 100%; margin: 0; padding: 0; object-fit: cover; background: white; box-shadow: none; transition: opacity 0.25s ease, transform 0.25s ease; }
+.bird-day-image { display: block; width: 100%; height: 100%; object-fit: cover; background: white; transition: opacity .25s ease, transform .25s ease; }
 
-.bird-caption-bar { position: relative; z-index: 10; width: 100%; background: #333333; color: white; font-size: 18px; padding: 6px 20px; min-height: 36px; box-sizing: border-box; display: flex; align-items: center; }
-.bird-title-group { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 0 1 auto; }
-.bird-info-toggle { background: none; border: none; color: rgba(255,255,255,.92); font-size: 17px; line-height: 1; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; position: relative; top: 2px; transform-origin: center; transition: transform .25s ease, opacity .25s ease, color .25s ease; }
-.bird-info-toggle:hover { color: #ffffff; text-shadow: 0 0 4px rgba(255,255,255,.35), 0 0 8px rgba(255,255,255,.15); }
+/* Caption bar */
+.bird-caption-bar { position: relative; z-index: 10; display: flex; align-items: center; width: 100%; min-height: 36px; padding: 6px 20px; box-sizing: border-box; background: var(--paper-2) var(--grain); color: var(--ink); border-top: 1px solid var(--line); font-size: 18px; font-weight: 500; letter-spacing: .04em; }
+.bird-title-group { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 0 1 auto; }
+#dailyBirdCaption { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 18px; line-height: 1.2; }
+.bird-copyright { position: static; flex-shrink: 0; margin-left: auto; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .04em; color: var(--ink-soft); }
+
+.bird-info-toggle { position: relative; top: 0; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; background: none; border: none; font-size: 0; line-height: 1; color: var(--ink-soft); cursor: pointer; transform-origin: center; transition: transform .25s ease, opacity .25s ease, color .25s ease; }
+.bird-info-toggle::before { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(45deg) translate(1px, 1px); }
+.bird-info-toggle.open::before { transform: rotate(225deg) translate(1px, 1px); }
+.bird-info-toggle:hover { color: var(--ink); }
 .bird-info-toggle:hover:not(.open) { transform: translateY(-2px) scale(1.15); }
 .bird-info-toggle.open { transform: none; }
-.bird-info-toggle:active { transform: scale(0.95); }
+.bird-info-toggle:active { transform: scale(.95); }
+
 .bird-info-drawer { position: absolute; left: 0; right: 0; bottom: 100%; min-height: 105px; height: auto; background: rgba(45,45,45,.72); backdrop-filter: blur(4px); box-shadow: 0 -4px 16px rgba(0,0,0,.15); padding: 10px 20px; border-top: 1px solid rgba(255,255,255,.08); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity .32s ease, transform .32s cubic-bezier(.22,.8,.28,1); z-index: 1; }
 .bird-info-drawer.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.drawer-scientific { font-style: italic; font-size: 18px; color: #ffffff; line-height: 1.5; margin-bottom: 6px; }
+.drawer-scientific { font-style: italic; font-weight: 300; font-size: 18px; color: #ffffff; line-height: 1.5; margin-bottom: 6px; }
 .drawer-observed { font-size: 16px; color: #ececec; line-height: 1.5; margin-bottom: 4px; }
 .drawer-trivia { font-size: 16px; color: #ececec; line-height: 1.5; }
-.bird-copyright { position: static; font-size: 15px; color: #888; flex-shrink: 0; margin-left: auto; }
-#dailyBirdCaption { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .swipe-indicator { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
 .dot { border-radius: 50%; background: rgba(255,255,255,.35); border: 1px solid rgba(0,0,0,.35); box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s ease, opacity .25s ease, background .25s ease; }
@@ -183,9 +233,9 @@ footer a:hover { opacity: .8; }
 .left-dot, .right-dot { width: 6px; height: 6px; }
 .left-dot.swipe-active, .right-dot.swipe-active { transform: scale(1.8); background: white; border-color: rgba(0,0,0,.55); }
 
-/* ========== Lightbox ========== */
-.lightbox { display: none; position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); justify-content: center; align-items: center; flex-direction: column; z-index: 9999; padding: 56px 80px 24px; }
-.lightbox-counter { position: absolute; top: 20px; left: 24px; color: #ffffff; font-size: 15px; }
+/* ================= Lightbox ================= */
+.lightbox { display: none; position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(0,0,0,.88); justify-content: center; align-items: center; flex-direction: column; z-index: 9999; padding: 56px 80px 24px; }
+.lightbox-counter { position: absolute; top: 20px; left: 24px; color: #ffffff; font-family: var(--font-mono); font-size: 15px; }
 .lightbox-close { position: absolute; top: 8px; right: 18px; background: none; border: none; color: #ffffff; font-size: 40px; line-height: 1; padding: 4px 10px; cursor: pointer; }
 .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; padding: 0; border: none; border-radius: 50%; background: rgba(255,255,255,.15); color: #ffffff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s ease; }
 .lightbox-nav[hidden] { display: none; }
@@ -196,230 +246,16 @@ footer a:hover { opacity: .8; }
 .lightbox-close:focus-visible, .lightbox-nav:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
 .lightbox-image { max-width: 100%; max-height: 68vh; object-fit: contain; border-radius: 8px; }
 .lightbox-info { margin-top: 14px; text-align: center; color: #ffffff; max-width: 90%; }
-.lightbox-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; }
-.lightbox-scientific { font-style: italic; font-size: 16px; color: #dcdcdc; margin-top: 2px; }
+.lightbox-name { font-family: var(--font-main); font-weight: 300; font-size: 24px; letter-spacing: .04em; }
+.lightbox-scientific { font-style: italic; font-weight: 300; font-size: 16px; color: #dcdcdc; margin-top: 2px; }
 .lightbox-countries { font-size: 14px; color: #bdbdbd; margin-top: 4px; }
 
-/* ========== Dark mode ========== */
-html[data-theme="dark"] { --forest: #3f6b45; --cream: #161d18; color-scheme: dark; }
-html[data-theme="dark"], html[data-theme="dark"] body { background-color: #0e130f; color: #e8ece9; }
-html[data-theme="dark"] .site-page { box-shadow: 0 0 13px 3px rgba(0,0,0,.6); }
-html[data-theme="dark"] .explore-banner { border-top-color: rgba(255,255,255,.08); }
-html[data-theme="dark"] .explore-title { color: #f1f4f2; }
-html[data-theme="dark"] .explore-sub, html[data-theme="dark"] .stat-label { color: #b8c2bb; }
-html[data-theme="dark"] .explore-ticker { background: rgba(143,192,142,.12); color: #c9d1cb; }
-html[data-theme="dark"] .stat { border-left-color: rgba(255,255,255,.15); }
-html[data-theme="dark"] .stat-num { color: #8fc08e; }
-html[data-theme="dark"] #info { background: #1d2620; border-color: #2c372f; color: #ddd; }
-html[data-theme="dark"] .panel-box.merged-panel { background: #1d2620; color: #e8ece9; }
-html[data-theme="dark"] .species-btn, html[data-theme="dark"] #countryCount { color: #e8ece9; }
-html[data-theme="dark"] .panel-close { color: #bbb; }
-html[data-theme="dark"] .legend { background: rgba(29,38,32,.95); }
-html[data-theme="dark"] .legend-label { color: #e8ece9; }
-html[data-theme="dark"] .map-hint { background: rgba(29,38,32,.95); color: #e8ece9; }
-
-/* ========== Responsive layout ========== */
-.gallery-toggle { display: none; }
-
-@media (max-width: 1024px) {
-.bird-day-layout { grid-template-columns: 1fr; width: 100%; margin: 0; padding: 0; gap: 0; }
-.bird-day-main { width: 100%; max-width: none; }
-.thumbnail-column { width: 100%; max-width: none; height: auto; max-height: none; }
-#thumbnailPanel { width: 100%; max-height: 250px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; transition: max-height 0.35s ease, opacity 0.25s ease; }
-#thumbnailPanel.collapsed { max-height: 0 !important; height: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; opacity: 0; overflow: hidden; }
-.thumbnail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; padding: 0 5px 5px 5px; }
-.gallery-toggle { display: flex; align-items: center; justify-content: center; flex: 0 0 42px; width: 42px; height: 42px; border: 1px solid #ccc; border-radius: 4px; background: white; color: #555; font-size: 18px; cursor: pointer; transition: background 0.2s ease; }
-.gallery-toggle:hover { background: #f3f3f3; }
-#mainPanel { display: flex; flex-direction: row; gap: 0; align-items: stretch; margin: 0; padding: 0; }
-#infoPanel { position: absolute; top: 10px; left: 0; width: 65vw; max-width: 260px; height: 60vh; padding-left: 12px; z-index: 2000; background: transparent; border-radius: 10px; }
-#map { height: 65vh; min-height: 450px; }
-#speciesList { max-height: calc(65vh - 110px); }
-.panel-box.merged-panel { flex: 1 1 auto; height: 100%; border-radius: 10px; margin-left: 0; }
-}
-
-@media (max-width: 768px) {
-header { min-height: 90px; padding: 0 12px; }
-header h1 { font-size: 28px; }
-.header-nav { gap: 14px; }
-.header-inner { display: flex; flex-wrap: nowrap; justify-content: space-between; align-items: center; width: 100%; }
-.nav-tab { font-size: 15px; }
-#thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; margin: 0; overflow: visible; }
-#thumbnailPanel { max-height: 180px; }
-.explore-title { font-size: 1.4rem; }
-.explore-sub { font-size: .95rem; }
-.stat { padding: 4px 18px; }
-#countryName { font-size: 24px; }
-#countryCount { font-size: 17px; line-height: 1.5; }
-.species-btn { font-size: 17px; line-height: 1.3; }
-.species-li { margin-bottom: 6px; }
-.about-text { line-height: 1.45; margin-top: 6px; }
-.bird-copyright { font-size: 11px; }
-.thumbnail-search { flex: 1 1 100%; }
-.thumbnail-select { flex: 0 0 72px; width: 72px; }
-.country-select { flex: 0 0 auto; width: auto; max-width: 40vw; }
-.toolbar-right { flex-shrink: 1; }
-}
-
-@media (max-width: 600px) {
-.nav-arrow { font-size: 30px; }
-.left-arrow { left: 8px; }
-.right-arrow { right: 8px; }
-.stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 0; }
-.stat { border-left: none; padding: 4px; }
-.stat:nth-child(even) { border-left: 1px solid rgba(0,0,0,.12); }
-.stat-num { font-size: 1.6rem; }
-.lightbox { padding: 56px 12px 20px; }
-.lightbox-nav { width: 40px; height: 40px; background: rgba(0,0,0,.45); }
-.lightbox-prev { left: 8px; }
-.lightbox-next { right: 8px; }
-.lightbox-name { font-size: 19px; }
-}
-
-@media (max-width: 480px) {
-header { min-height: 75px; padding: 0 10px; }
-header h1 { font-size: 24px; }
-.nav-tab { font-size: 14px; }
-.explore-title { font-size: 1.2rem; }
-.explore-inner { padding: 18px 12px 12px; }
-#thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; }
-#thumbnailGallery div > div { font-size: 10px !important; padding: 2px 4px !important; }
-#thumbnailPanel { max-height: 160px; }
-.thumbnail-controls { gap: 6px; padding: 4px 6px; }
-.thumbnail-search { min-width: 0; padding-inline: 8px; }
-.thumbnail-select { padding-inline: 7px; }
-.center-dot { width: 36px; height: 36px; }
-.map-hint { font-size: 12px; padding: 6px 12px; }
-}
-
-</style>
-
-<style>
-/* ===== BirdBlog v5: photobook look. Paper, ink, bird-crown orange. Jost + Space Mono ===== */
-:root {
---font-main: 'Jost', 'Futura', 'Century Gothic', sans-serif;
---font-mono: 'Space Mono', 'Courier New', monospace;
---accent: #d0572c;
---active: #d0572c;
---paper: #faf8f3;
---paper-2: #efeadc;
---ink: #1b1d1a;
---ink-soft: #5b6058;
---line: rgba(27,29,26,.14);
---field: rgba(255,255,255,.65);
---thumb: rgba(27,29,26,.30);
---footer-bg: #efeadc;
-/* subtle paper texture. To switch it off, replace the whole url(...) with: none */
---grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-html[data-theme="dark"] {
-  --accent: #e0794a;
-  --active:#62c88a;
-  --paper: #161d18;
-  --paper-2: #1c251f;
-  --ink: #e9e6da;
-  --ink-soft: #a9b3ab;
-  --line: rgba(233,230,218,.16);
-  --accent: #e08a63;
-  --active: #7fb5a6;
-  --paper: #16211f;
-  --paper-2: #1d2b28;
-  --ink: #e4e9e4;
-  --ink-soft: #9fb1ab;
-  --line: rgba(228,233,228,.14);
---field: rgba(255,255,255,.06);
-  --thumb: rgba(233,230,218,.35);
-  --footer-bg: #0b100c;
-  --thumb: rgba(228,233,228,.32);
-  --footer-bg: #0f1817;
-  --outer: #0f1817;
-  --header-bg: #23453a;
-  --tint: rgba(112,216,154,.18);
-  --num: #70d89a;
-  --cream: #16211f;
-  --forest: #3d8b61;
---grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-body, button, input, select, textarea, .leaflet-container { font-family: var(--font-main); }
-body { font-weight: 400; letter-spacing: .01em; }
-
-/* ---------- Header: white bar, black lettering, bird inside the O ---------- */
-header { background: #ffffff; color: #111111; box-shadow: 0 1px 0 rgba(0,0,0,.10); min-height: 108px; padding: 0 24px; }
-#mainPanel { scroll-margin-top: 120px; }
-header .site-title { margin: 0; isolation: isolate; white-space: nowrap; font-family: var(--font-main); font-weight: 300; text-transform: uppercase; letter-spacing: .02em; line-height: 1; font-size: clamp(43px, 5.3vw, 67px); }
-header .site-title .o { position: relative; display: inline-block; --dx: -0.02em; --dy: 0em; }
-header .site-title .o { position: relative; display: inline-block; --dx: -.02em; --dy: 0em; }
-header .site-title .o img { position: absolute; z-index: -1; left: calc(50% + var(--dx)); top: calc(50% + var(--dy)); width: .74em; height: auto; aspect-ratio: 1.0426; transform: translate(-50%, -50%); clip-path: ellipse(49% 49% at 50% 50%); }
-.nav-tab { font-family: var(--font-main); color: inherit; font-weight: 500; font-size: 17px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; padding: 10px 3px; }
-.nav-tab:hover { border-bottom-color: var(--accent); }
-.nav-tab:focus-visible { outline-color: #111111; }
-#themeToggle { font-size: 22px; letter-spacing: 0; }
-@media (min-width: 769px) { .header-nav { gap: 38px; } }
-html[data-theme="dark"] header { background: #161d18; color: #f1f4f2; box-shadow: 0 1px 0 rgba(255,255,255,.10); }
-html[data-theme="dark"] .nav-tab:focus-visible { outline-color: #f1f4f2; }
-html[data-theme="dark"] header .site-title .o img { background: #f1efe4; }
-html[data-theme="dark"] header { background: var(--header-bg); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.10); }
-html[data-theme="dark"] .nav-tab:focus-visible { outline-color: var(--ink); }
-html[data-theme="dark"] header .site-title .o img { background: #e6ebe4; }
-
-/* ---------- Species Explorer: compact but easy to read ---------- */
-.explore-inner { max-width: 960px; padding: 16px 16px 12px; }
-.explore-title { font-family: var(--font-main); font-weight: 300; font-size: 1.2rem; letter-spacing: .2em; text-transform: uppercase; }
-.explore-sub { font-weight: 400; font-size: .95rem; letter-spacing: .03em; margin: 3px 0 12px; }
-.stats-strip { margin-bottom: 12px; }
-.stat { padding: 3px 24px; }
-.stat-num { font-family: var(--font-main); font-weight: 200; font-size: 1.9rem; letter-spacing: .02em; }
-.stat-label { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; margin-top: 3px; }
-.explore-ticker { padding: 5px 0; }
-.explore-ticker-content { font-weight: 400; font-size: .95rem; letter-spacing: .03em; }
-.ticker-flag { width: 18px; height: 13px; margin-left: 12px; }
-
-/* ---------- Thumbnail column: paper in light mode, deep forest in dark ---------- */
-.thumbnail-column { background: var(--paper-2) var(--grain); border-left: 1px solid var(--line); }
-#thumbnailPanel, #thumbnailGallery { background: transparent; scrollbar-color: var(--thumb) transparent; }
-#thumbnailPanel::-webkit-scrollbar-track { background: transparent; }
-#thumbnailPanel::-webkit-scrollbar-thumb { background: var(--thumb); border: 2px solid transparent; background-clip: padding-box; }
-.thumbnail-active {
-  outline: 3px solid var(--active);
-  outline-offset: 1px;
-}
-#birdSearch, #birdSort, #countryFilter { background-color: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; }
-#birdSearch::placeholder { color: var(--ink-soft); opacity: 1; }
-.thumbnail-search-button { color: var(--ink); text-shadow: none; }
-.thumbnail-search-button svg { filter: none; }
-.thumbnail-search-button svg circle, .thumbnail-search-button svg line { stroke: currentColor; }
-/* Minimise button (small screens): outlined, not filled, follows the theme */
-.gallery-toggle { background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; width: 36px; height: 36px; flex: 0 0 36px; font-size: 20px; font-weight: 300; line-height: 1; }
-.gallery-toggle:hover { background: var(--field); }
-
-/* ---------- Caption bar ---------- */
-.bird-caption-bar { background: var(--paper-2) var(--grain); color: var(--ink); border-top: 1px solid var(--line); font-weight: 500; letter-spacing: .04em; }
-.bird-title-group { align-items: center; gap: 8px; }
-#dailyBirdCaption { font-size: 18px; line-height: 1.2; }
-.bird-info-toggle { top: 0; width: 22px; height: 22px; font-size: 0; color: var(--ink-soft); }
-.bird-info-toggle::before { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(45deg) translate(1px, 1px); }
-.bird-info-toggle.open::before { transform: rotate(225deg) translate(1px, 1px); }
-.bird-info-toggle:hover { color: var(--ink); text-shadow: none; }
-.bird-copyright { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-soft); letter-spacing: .04em; }
-
-/* ---------- Footer, About and Contact panels ---------- */
-footer { background: var(--footer-bg) var(--grain); color: var(--ink-soft); border-top: 1px solid var(--line); font-weight: 300; font-size: 14px; letter-spacing: .06em; }
-footer a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
-footer a:hover { color: var(--accent); opacity: 1; }
-.hamburger-panel { background: var(--paper-2) var(--grain); color: var(--ink); border: 1px solid var(--line); }
-.contact-icons { background: var(--paper); border-bottom: 1px solid var(--line); }
-.contact-icons a { color: var(--ink); }
-
-/* ---------- Other text ---------- */
-.panel-box.merged-panel h2 { font-weight: 400; letter-spacing: .02em; }
-.species-btn { font-weight: 400; letter-spacing: .01em; }
-.about-title { font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-align: left; }
-.about-text { font-weight: 300; line-height: 1.7; text-align: left; }
-.drawer-scientific, .lightbox-scientific { font-style: italic; font-weight: 300; }
-.lightbox-name { font-family: var(--font-main); font-weight: 300; font-size: 24px; letter-spacing: .04em; }
-.lightbox-counter, .legend-label { font-family: var(--font-mono); }
-
-/* ---------- Dark mode: pine-teal shades replacing the original dark greens ---------- */
+/* ================= Dark mode ================= */
 html[data-theme="dark"], html[data-theme="dark"] body { background-color: var(--outer); color: var(--ink); }
+html[data-theme="dark"] .site-page { box-shadow: 0 0 13px 3px rgba(0,0,0,.6); }
+html[data-theme="dark"] header { background: var(--header-bg); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.10); }
+html[data-theme="dark"] header .site-title .o img { background: #e6ebe4; }
+html[data-theme="dark"] .nav-tab:focus-visible { outline-color: var(--ink); }
 html[data-theme="dark"] .explore-banner { border-top-color: var(--line); }
 html[data-theme="dark"] .explore-title { color: var(--ink); }
 html[data-theme="dark"] .explore-sub, html[data-theme="dark"] .stat-label { color: var(--ink-soft); }
@@ -435,29 +271,77 @@ html[data-theme="dark"] .legend-label { color: var(--ink); }
 html[data-theme="dark"] .map-hint { background: rgba(29,43,40,.95); color: var(--ink); }
 html[data-theme="dark"] .bird-day-main { background: var(--outer); }
 
-/* ---------- Map hint: the box now wraps with the text ---------- */
-.map-hint { white-space: normal; width: max-content; max-width: calc(100% - 120px); text-align: center; line-height: 1.35; border-radius: 22px; font-family: var(--font-main); font-weight: 500; letter-spacing: .02em; }
-
-@media (max-width: 1024px) { .thumbnail-column { border-left: 0; border-top: 1px solid var(--line); } }
-@media (max-width: 600px) {
-.stat-num { font-size: 1.5rem; }
-.stat-label { font-size: .66rem; }
-.stats-strip { gap: 8px 0; }
-.explore-inner { padding: 14px 12px 10px; }
+/* ================= Responsive ================= */
+@media (max-width: 1024px) {
+  .bird-day-layout { grid-template-columns: 1fr; }
+  .thumbnail-column { border-left: 0; border-top: 1px solid var(--line); }
+  #thumbnailPanel { max-height: 250px; overscroll-behavior: contain; scrollbar-gutter: stable; transition: max-height .35s ease, opacity .25s ease; }
+  #thumbnailPanel.collapsed { max-height: 0 !important; height: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; opacity: 0; overflow: hidden; }
+  .thumbnail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0 5px 5px 5px; }
+  .gallery-toggle { display: flex; }
+  #mainPanel { display: flex; flex-direction: row; align-items: stretch; }
+  #infoPanel { top: 10px; width: 65vw; max-width: 260px; padding-left: 12px; z-index: 2000; background: transparent; border-radius: 10px; }
+  #map { height: 65vh; min-height: 450px; }
+  #speciesList { max-height: calc(65vh - 110px); }
 }
-@media (max-width: 480px) { .map-hint { font-size: 12.5px; padding: 7px 14px; max-width: calc(100% - 110px); } }
 
-/* Small screens: title on top, menu underneath, both centred */
+@media (max-width: 768px) {
+  .header-nav { gap: 14px; }
+  #thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; }
+  #thumbnailPanel { max-height: 180px; }
+  #countryName { font-size: 24px; }
+  #countryCount { font-size: 17px; line-height: 1.5; }
+  .species-btn { font-size: 17px; line-height: 1.3; }
+  .species-li { margin-bottom: 6px; }
+  .about-text { margin-top: 6px; }
+  .thumbnail-search { flex: 1 1 100%; }
+  .thumbnail-select { flex: 0 0 72px; width: 72px; }
+  .country-select { flex: 0 0 auto; width: auto; max-width: 40vw; }
+  .toolbar-right { flex-shrink: 1; }
+}
+
 @media (max-width: 700px) {
-header { min-height: 0; padding: 10px 12px; }
-.header-inner { flex-direction: column; gap: 5px; }
-header .site-title { font-size: 38px; }
-.header-nav { gap: 14px; }
-.nav-tab { font-size: 14px; letter-spacing: .06em; }
-#themeToggle { font-size: 18px; }
+  /* Header: title on top, menu underneath */
+  header { min-height: 0; padding: 10px 12px; }
+  .header-inner { flex-direction: column; gap: 5px; }
+  header .site-title { font-size: 38px; }
+  .nav-tab { font-size: 14px; letter-spacing: .06em; }
+  #themeToggle { font-size: 18px; }
+
+  /* Caption bar: name wraps (max 2 lines), copyright smaller and right-aligned */
+  .bird-caption-bar { padding: 6px 12px; min-height: 54px; gap: 8px; }
+  .bird-title-group { flex: 1 1 0; min-width: 0; }
+  #dailyBirdCaption { font-size: 16px; line-height: 1.2; white-space: normal; text-overflow: clip; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .bird-copyright { flex: 0 0 auto; margin-left: 0; font-size: 10.5px; letter-spacing: .02em; text-align: right; white-space: nowrap; }
+}
+
+@media (max-width: 600px) {
+  .nav-arrow { font-size: 30px; }
+  .left-arrow { left: 8px; }
+  .right-arrow { right: 8px; }
+  .stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 0; }
+  .stat { border-left: none; }
+  .stat:nth-child(even) { border-left: 1px solid rgba(0,0,0,.12); }
+  .stat-num { font-size: 1.5rem; }
+  .stat-label { font-size: .66rem; }
+  .explore-inner { padding: 14px 12px 10px; }
+  .lightbox { padding: 56px 12px 20px; }
+  .lightbox-nav { width: 40px; height: 40px; background: rgba(0,0,0,.45); }
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+}
+
+@media (max-width: 480px) {
+  #thumbnailGallery { gap: 4px; padding: 4px; }
+  #thumbnailGallery div > div { font-size: 10px !important; padding: 2px 4px !important; }
+  #thumbnailPanel { max-height: 160px; }
+  .thumbnail-search { padding-inline: 8px; }
+  .thumbnail-select { padding-inline: 7px; }
+  .center-dot { width: 36px; height: 36px; }
+  .map-hint { font-size: 12.5px; padding: 7px 14px; max-width: calc(100% - 110px); }
 }
 </style>
-
+ 
 <script type="text/javascript">
 (function(c,l,a,r,i,t,y){
 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -693,29 +577,13 @@ const map = L.map('map', {
   minZoom: 1.5,
   maxZoom: 5,
   zoomControl: false,
-
-  scrollWheelZoom: true,
-  touchZoom: true,
-
   zoomSnap: 0.5,
-
-  maxBounds: [
-    [-70, -180],
-    [85, 180]
-  ],
+  maxBounds: [[-85, -180], [85, 180]],
   maxBoundsViscosity: 1.0
 });
 L.control.zoom({ position: 'topright' }).addTo(map);
-map.touchZoom.enable();
-map.doubleClickZoom.enable();
-map.boxZoom.enable();
-map.keyboard.enable();
-  
+
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles © Esri' }).addTo(map);
-map.setMaxBounds([
-  [-85, -180],
-  [85, 180]
-]);
   
 /* ================= DATA ================= */
 /* Update these two numbers by hand when your totals change */
@@ -732,7 +600,12 @@ let slideshowTimer = null;
 let slideshowRunning = false;
 const ICON_PLAY = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="8.5,5 19.5,12 8.5,19"/></svg>';
 const ICON_PAUSE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>';
-
+const SLIDE_MS = 3500; /* time per photo in the slideshow (3500 for a bit livelier) */
+const preloader = new Image();
+function preloadNext() {
+  const next = birdKeys[(currentBirdIndex + 1) % birdKeys.length];
+  if (birds[next]?.photo) preloader.src = birds[next].photo;
+}
 /* Load scientific names, then birds.json */
 fetch('scientific_names.csv')
 .then(response => response.text())
@@ -813,6 +686,7 @@ document.getElementById("dailyBirdCaption").textContent = name;
 document.querySelector(".drawer-scientific").textContent = scientificNames[name] || "Scientific name unavailable";
 document.querySelector(".drawer-observed").textContent = `🌍 ${(birds[name].countries || []).join(", ")}`;
 img.style.opacity = "1";
+preloadNext();
 
 document.querySelectorAll("#thumbnailGallery img").forEach(t => {
 t.parentElement.classList.toggle("thumbnail-active", t.alt === name);
@@ -847,7 +721,7 @@ const btn = document.getElementById("slideshowToggle");
 btn.innerHTML = ICON_PAUSE;
 btn.classList.add("playing");
 btn.setAttribute("aria-label", "Pause slideshow");
-slideshowTimer = setInterval(() => goTo(currentBirdIndex + 1, 1), 5000);
+slideshowTimer = setInterval(() => goTo(currentBirdIndex + 1, 1), SLIDE_MS);
 }
 
 function stopSlideshow() {
@@ -1023,7 +897,6 @@ const drawer = document.getElementById("birdInfoDrawer");
 btn.addEventListener("click", () => {
 drawer.classList.toggle("open");
 btn.classList.toggle("open");
-btn.textContent = drawer.classList.contains("open") ? "▽" : "△";
 });
 })();
 
@@ -1120,10 +993,6 @@ div.innerHTML = `<div class="legend-container"><span class="legend-label">1</spa
 return div;
 };
 legend.addTo(map);
-
-/* Map hint wording: "Tap" on touch screens, "Select" with a mouse */
-document.getElementById('mapHint').textContent =
-'Select a country on the map to see its species and photos';
 
 fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
 .then(r => r.json())
