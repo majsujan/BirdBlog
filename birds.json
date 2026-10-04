@@ -1771,7 +1771,11 @@
   },
 
   "Northern Nutcracker": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471549/5_-_yCdlMXF_kjeqmm.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791147780/DSC_0560_kyrjnk.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791147722/DSC_0670-2_vrd60y.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471549/5_-_yCdlMXF_kjeqmm.jpg",
+    ],
     "countries": ["Norway"]
   },
 
