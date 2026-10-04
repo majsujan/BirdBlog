@@ -348,7 +348,10 @@
   },
 
   "Bluethroat": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788611663/2_-_ScarzHR_hnxuuc.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788611663/2_-_ScarzHR_hnxuuc.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791139487/DSC_6166-2_begews.jpg"
+    ],
     "countries": ["Bangladesh","Denmark","Estonia","Norway"]
   },
 
