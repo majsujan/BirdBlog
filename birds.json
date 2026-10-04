@@ -933,7 +933,11 @@
   },
 
   "Eurasian Jackdaw": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782940416/2_-_7HtKHPI_nunjl0.jpg",
+    "photos": [ 
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791152035/DSC_0317_2_qg5faf.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791152035/DSC_0317_2_qg5faf.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782940416/2_-_7HtKHPI_nunjl0.jpg"
+    ],
     "countries": ["Denmark","Finland","Netherlands","Norway","Sweden","United Kingdom"]
   },
 
