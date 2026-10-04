@@ -80,7 +80,10 @@
   },
 
   "Asian Green Bee-eater": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471540/1_-_rinr6Zc_cvo7ug.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471540/1_-_rinr6Zc_cvo7ug.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788611186/10_-_CBVEwNx_xften3.jpg"
+    ],
     "countries": ["Bangladesh", "Thailand"]
   },
 
