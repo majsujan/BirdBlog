@@ -1973,7 +1973,10 @@
   },
 
   "Purple Sandpiper": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789842921/bX7uX3u_-_Imgur_u1fc6j.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789842921/bX7uX3u_-_Imgur_u1fc6j.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791149125/DSC_0474_nbw095.jpg"
+    ],
     "countries": ["Norway"]
   },
 
