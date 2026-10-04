@@ -1421,7 +1421,10 @@
   },
 
   "House Sparrow": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1790633198/0MFxrVW_-_Imgur_m48b0q.jpg",
+    "photo": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791145754/DSC_7261-Edit_rxc0m8.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1790633198/0MFxrVW_-_Imgur_m48b0q.jpg"
+    ],
     "countries": ["Aruba","Curaçao","Bangladesh","Denmark","Estonia","Finland","Germany","Greece","Latvia","Netherlands","Norway","Thailand"]
   },
 
