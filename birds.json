@@ -1810,7 +1810,10 @@
   },
 
   "Northern Yellow Warbler": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782470337/15_-_Arq0xUb_uoysff.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782470337/15_-_Arq0xUb_uoysff.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788640713/8_-_MW6Dvba_d63juv.jpg"
+    ],
     "countries": ["Aruba"]
   },
 
