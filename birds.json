@@ -40,7 +40,11 @@
   },
 
   "Arctic Tern": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788610524/xhIrClt_-_Imgur_jhvqua.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151054/DSC_0731-2_ixggcy.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788610524/xhIrClt_-_Imgur_jhvqua.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151106/DSC_0704_tqnduq.jpg"
+    ],
     "countries": ["Norway"]
   },
 
@@ -1109,7 +1113,10 @@
   },
 
   "Fulvous-breasted Woodpecker": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789846238/4utcEXZ_-_Imgur_dwgaam.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789846238/4utcEXZ_-_Imgur_dwgaam.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151634/DSC_0178_ypeydn.jpg"
+    ],
     "countries": ["Bangladesh"]
   },
 
@@ -2096,7 +2103,11 @@
   },
 
   "Ring-necked Pheasant": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789842912/RQTVaxy_-_Imgur_pcuxmf.jpg",
+    "photos": [    
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151390/DSC_0813_xynayv.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791151411/Firefly_f9ncrd.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789842912/RQTVaxy_-_Imgur_pcuxmf.jpg"
+    ],
     "countries": ["Denmark","Italy","Netherlands"]
   },
 
