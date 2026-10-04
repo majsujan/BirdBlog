@@ -249,6 +249,16 @@ footer a:hover { color: var(--accent); }
 .lightbox-name { font-family: var(--font-main); font-weight: 300; font-size: 24px; letter-spacing: .04em; }
 .lightbox-scientific { font-style: italic; font-weight: 300; font-size: 16px; color: #dcdcdc; margin-top: 2px; }
 .lightbox-countries { font-size: 14px; color: #bdbdbd; margin-top: 4px; }
+.lightbox-meta { font-size: 13px; color: #bdbdbd; margin-top: 4px; }
+.lightbox-meta:empty { display: none; }
+.lightbox-strip { display: flex; justify-content: center; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+.lightbox-strip[hidden] { display: none; }
+.lightbox-strip button { padding: 0; border: 0; width: 56px; height: 40px; border-radius: 4px; overflow: hidden; cursor: pointer; background: #222; opacity: .55; outline: 2px solid transparent; outline-offset: 1px; transition: opacity .2s ease, outline-color .2s ease; }
+.lightbox-strip button:hover { opacity: .85; }
+.lightbox-strip button.active { opacity: 1; outline-color: #ffffff; }
+.lightbox-strip button:focus-visible { outline-color: #ffffff; }
+.lightbox-strip img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.photo-badge { position: absolute; top: 5px; right: 5px; padding: 1px 6px; border-radius: 10px; background: rgba(0,0,0,.55); color: #fff; font-size: 11px; line-height: 16px; pointer-events: none; }
 
 /* ================= Dark mode ================= */
 html[data-theme="dark"], html[data-theme="dark"] body { background-color: var(--outer); color: var(--ink); }
@@ -545,6 +555,8 @@ z6NOhUk2Q1yPgDgvvvv18454Q1xS+ePrFpTp8+KSezmbvnztv42q/9ag4XC67cuEFRVhzsHXDplVdZX1
 <div id="lightboxCaption" class="lightbox-name"></div>
 <div id="lightboxScientific" class="lightbox-scientific"></div>
 <div id="lightboxCountries" class="lightbox-countries"></div>
+<div id="lightboxMeta" class="lightbox-meta"></div>
+<div id="lightboxStrip" class="lightbox-strip" hidden></div>
 </div>
 </div>
 
@@ -606,6 +618,22 @@ function preloadNext() {
   const next = birdKeys[(currentBirdIndex + 1) % birdKeys.length];
   if (birds[next]?.photo) preloader.src = birds[next].photo;
 }
+/* birds.json may give a species either a single "photo" (old format) or a "photos" array
+   whose items are URL strings or {url, place, date} objects. Normalise to photos = [{url, ...}]
+   and keep bird.photo = the first (cover) photo so older code keeps working. */
+function normalizeBirds(data) {
+  for (const b of Object.values(data)) {
+    const raw = Array.isArray(b.photos) && b.photos.length ? b.photos : (b.photo ? [b.photo] : []);
+    b.photos = raw.map(p => typeof p === 'string' ? { url: p } : p).filter(p => p && p.url);
+    b.photo = b.photos[0]?.url;
+  }
+  return data;
+}
+/* Small Cloudinary rendition for thumbnails; other hosts are returned unchanged */
+function smallUrl(url, w = 120) {
+  return url.includes('/image/upload/') && !/\/upload\/[a-z]_/.test(url)
+    ? url.replace('/image/upload/', `/image/upload/f_auto,q_auto,w_${w}/`) : url;
+}
 /* Load scientific names, then birds.json */
 fetch('scientific_names.csv')
 .then(response => response.text())
@@ -618,7 +646,7 @@ return fetch('birds.json');
 })
 .then(response => response.json())
 .then(data => {
-birds = data;
+birds = normalizeBirds(data);
 birdKeys = Object.keys(birds);
 initApp();
 })
@@ -798,6 +826,13 @@ label.style = "position:absolute; bottom:0; left:0; width:100%; background:rgba(
 
 wrapper.appendChild(thumb);
 wrapper.appendChild(label);
+if (data.photos && data.photos.length > 1) {
+const badge = document.createElement("div");
+badge.className = "photo-badge";
+badge.textContent = `+${data.photos.length - 1}`;
+badge.title = `${data.photos.length} photos`;
+wrapper.appendChild(badge);
+}
 
 wrapper.onmouseenter = () => {
 thumb.style.transform = "scale(1.05)";
@@ -910,24 +945,64 @@ const lightbox = document.getElementById('lightbox');
 let lightboxList = [];
 let lightboxIndex = 0;
 
+let lightboxPhoto = 0;
+const lightboxPreloader = new Image();
+
 function renderLightbox() {
 const name = lightboxList[lightboxIndex];
 const bird = birds[name] || {};
+const photos = bird.photos || [];
+if (lightboxPhoto >= photos.length) lightboxPhoto = 0;
+const current = photos[lightboxPhoto] || { url: bird.photo };
 const img = document.getElementById('lightboxImage');
-img.src = bird.photo;
-img.alt = name;
+img.src = current.url;
+img.alt = photos.length > 1 ? `${name} (photo ${lightboxPhoto + 1} of ${photos.length})` : name;
 document.getElementById('lightboxCaption').textContent = name;
 document.getElementById('lightboxScientific').textContent = scientificNames[name] || '';
 document.getElementById('lightboxCountries').textContent = (bird.countries || []).join(', ');
-document.getElementById('lightboxCounter').textContent = `${lightboxIndex + 1} / ${lightboxList.length}`;
+document.getElementById('lightboxMeta').textContent = [current.place, current.date].filter(Boolean).join(' · ');
+let counter = `${lightboxIndex + 1} / ${lightboxList.length}`;
+if (photos.length > 1) counter += `  ·  photo ${lightboxPhoto + 1}/${photos.length}`;
+document.getElementById('lightboxCounter').textContent = counter;
 const single = lightboxList.length < 2;
 document.getElementById('lightboxPrev').hidden = single;
 document.getElementById('lightboxNext').hidden = single;
+
+/* Photo strip for this species */
+const strip = document.getElementById('lightboxStrip');
+strip.innerHTML = '';
+strip.hidden = photos.length < 2;
+if (photos.length > 1) {
+photos.forEach((p, i) => {
+const b = document.createElement('button');
+b.type = 'button';
+b.className = i === lightboxPhoto ? 'active' : '';
+b.setAttribute('aria-label', `Photo ${i + 1} of ${photos.length}`);
+b.setAttribute('aria-current', i === lightboxPhoto ? 'true' : 'false');
+const t = document.createElement('img');
+t.src = smallUrl(p.url);
+t.alt = '';
+b.appendChild(t);
+b.onclick = () => { lightboxPhoto = i; renderLightbox(); };
+strip.appendChild(b);
+});
+lightboxPreloader.src = photos[(lightboxPhoto + 1) % photos.length].url;
+}
 }
 
+/* Left/right: previous/next species */
 function stepLightbox(direction) {
 if (lightboxList.length < 2) return;
 lightboxIndex = (lightboxIndex + direction + lightboxList.length) % lightboxList.length;
+lightboxPhoto = 0;
+renderLightbox();
+}
+
+/* Up/down (or vertical swipe): previous/next photo of the same species */
+function stepPhoto(direction) {
+const n = (birds[lightboxList[lightboxIndex]]?.photos || []).length;
+if (n < 2) return;
+lightboxPhoto = (lightboxPhoto + direction + n) % n;
 renderLightbox();
 }
 
@@ -939,6 +1014,7 @@ return;
 }
 lightboxList = list;
 lightboxIndex = Math.max(0, list.indexOf(name));
+lightboxPhoto = 0;
 renderLightbox();
 lightbox.style.display = 'flex';
 }
@@ -955,15 +1031,20 @@ if (lightbox.style.display !== 'flex') return;
 if (e.key === 'Escape') { closeLightbox(); e.stopImmediatePropagation(); }
 else if (e.key === 'ArrowLeft') stepLightbox(-1);
 else if (e.key === 'ArrowRight') stepLightbox(1);
+else if (e.key === 'ArrowUp') { e.preventDefault(); stepPhoto(-1); }
+else if (e.key === 'ArrowDown') { e.preventDefault(); stepPhoto(1); }
 });
 
 /* Swipe left/right inside the lightbox */
 (function () {
-let startX = 0;
-lightbox.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; });
+let startX = 0, startY = 0;
+lightbox.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; startY = e.changedTouches[0].screenY; });
 lightbox.addEventListener('touchend', e => {
 const dx = e.changedTouches[0].screenX - startX;
-if (Math.abs(dx) > 50) stepLightbox(dx < 0 ? 1 : -1);
+const dy = e.changedTouches[0].screenY - startY;
+if (Math.abs(dy) > Math.abs(dx)) {
+if (Math.abs(dy) > 50) stepPhoto(dy < 0 ? 1 : -1);   /* swipe up = next photo */
+} else if (Math.abs(dx) > 50) stepLightbox(dx < 0 ? 1 : -1);
 });
 })();
 
