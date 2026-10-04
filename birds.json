@@ -90,7 +90,10 @@
   },
 
   "Asian Openbill": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788610045/IUM8Eg0_-_Imgur_rrnykn.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788610045/IUM8Eg0_-_Imgur_rrnykn.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788611248/DSC_9734-Edit_nxuqbv.jpg"
+    ],
     "countries": ["Bangladesh", "Thailand"]
   },
 
@@ -566,7 +569,10 @@
   },
 
   "Common Eider": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417662/DSC_0339-Edit_014334_lckmca.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417662/DSC_0339-Edit_014334_lckmca.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417674/DSC_0483-Edit_014117_sphvw8.jpg"
+    ],
     "countries": ["Denmark","Estonia","Norway"]
   },
 
@@ -736,7 +742,11 @@
   },
 
   "Common Wood-Pigeon": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782940422/10_-_Qk0vfQb_xfzr1c.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791143988/DSC_6110-2_txlfxq.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782940422/10_-_Qk0vfQb_xfzr1c.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791144018/DSC_0806-2_sv4lzy.jpg"
+    ],
     "countries": ["Belgium","Denmark","Estonia","Finland","Germany","Italy","Netherlands","Norway","Sweden","United Kingdom"]
   },
 
@@ -2366,7 +2376,10 @@
   },
 
   "Striated Babbler": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417762/DSC_9586-Edit_yjvowf.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417762/DSC_9586-Edit_yjvowf.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791144134/527992951_btliuw.jpg"
+    ],
     "countries": ["Bangladesh"]
   },
 
