@@ -1654,7 +1654,10 @@
   },
 
   "Long-tailed Shrike": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471571/14_-_B4ybD0y_oe7nbv.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791146898/DSC_0131_gdwq8l.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782471571/14_-_B4ybD0y_oe7nbv.jpg"
+    ],
     "countries": ["Bangladesh"]
   },
 
