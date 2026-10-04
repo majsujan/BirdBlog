@@ -324,10 +324,13 @@
     "countries": ["Thailand"]
   },
 
-  "Blue-tailed Emerald": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788722035/L5ZwvBB_-_Imgur_szpm7k.jpg",
-    "countries": ["Aruba","Curaçao"]
-  },
+"Blue-tailed Emerald": {
+  "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788722035/L5ZwvBB_-_Imgur_szpm7k.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788643394/2_-_lvFKl81_ulg9vs.jpg"
+  ],
+  "countries": ["Aruba", "Curaçao"]
+},
 
   "Blue-throated Barbet": {
     "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788640656/7_-_dNJCmzv_yt17f0.jpg",
