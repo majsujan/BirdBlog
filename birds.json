@@ -1763,7 +1763,10 @@
   },
 
   "Northern Lapwing": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788725126/DSC_3296_063532_rbksqc.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1788725126/DSC_3296_063532_rbksqc.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1791147499/2_-_e4WIpj5_lhzomy.jpg"
+     ],
     "countries": ["Denmark","Estonia","Finland","Netherlands","Norway","United Kingdom"]
   },
 
