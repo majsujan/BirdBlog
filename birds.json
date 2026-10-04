@@ -1745,7 +1745,10 @@
   },
 
   "Mute Swan": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417746/DSC_6650-Edit_vugssv.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417746/DSC_6650-Edit_vugssv.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1782417678/DSC_0703-Edit_kca9wm.jpg"
+    ],
     "countries": ["Denmark","Estonia","Finland","Italy","Netherlands","Norway","Sweden","United Kingdom","Poland"]
   },
 
