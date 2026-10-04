@@ -2523,7 +2523,10 @@
   },
 
   "Western Marsh Harrier": {
-    "photo": "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789758798/567663571_tmo60g.jpg",
+    "photos": [
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789758798/567663571_tmo60g.jpg",
+    "https://res.cloudinary.com/dtkdzyvah/image/upload/v1789758930/DSC_5825_ix2gz2.jpg"
+    ],
     "countries": ["Denmark","Italy","Netherlands","Norway"]
   },
 
