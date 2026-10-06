@@ -308,7 +308,12 @@ html[data-theme="dark"] .legend { background: rgba(29,43,40,.95); }
 html[data-theme="dark"] .legend-label { color: var(--ink); }
 html[data-theme="dark"] .map-hint { background: rgba(29,43,40,.95); color: var(--ink); }
 html[data-theme="dark"] .bird-day-main { background: var(--outer); }
-
+html[data-theme="dark"] #birdSort,
+html[data-theme="dark"] #countryFilter {
+  background: var(--paper-2);
+  color: var(--ink);
+  border-color: var(--line);
+}
 /* ================= Responsive ================= */
 @media (max-width: 1024px) {
   .bird-day-layout { grid-template-columns: 1fr; }
@@ -844,17 +849,26 @@ if (document.hidden && slideshowRunning) stopSlideshow();
 const btn = document.getElementById("surpriseBtn");
 let hideTimer = null;
 btn.addEventListener("click", () => {
-const pool = birdKeys.map((k, i) => i).filter(i => i !== currentBirdIndex && !isPlaceholder(birdKeys[i]));
-if (!pool.length) return;
-track("surprise");
-if (slideshowRunning) stopSlideshow();
-goTo(pool[Math.floor(Math.random() * pool.length)], 1);
-/* Show the label briefly (touch screens have no hover) and roll the dice */
-btn.classList.remove("rolling");
-void btn.offsetWidth;
-btn.classList.add("show", "rolling");
-clearTimeout(hideTimer);
-hideTimer = setTimeout(() => btn.classList.remove("show", "rolling"), 1600);
+  const pool = birdKeys
+    .map((k, i) => i)
+    .filter(i => i !== currentBirdIndex && !isPlaceholder(birdKeys[i]));
+
+  if (!pool.length) return;
+
+  track("surprise");
+
+  if (slideshowRunning) stopSlideshow();
+
+  goTo(pool[Math.floor(Math.random() * pool.length)], 1);
+
+  btn.classList.add("rolling");
+
+  setTimeout(() => {
+    btn.classList.remove("rolling");
+  }, 500);
+
+  /* permanently hide the label after first use */
+  btn.querySelector(".surprise-label").style.display = "none";
 });
 })();
 
@@ -1380,8 +1394,7 @@ closeList();
 clearBtn.hidden = false;
 const text = `${name}: recorded in ${countries.length} ${countries.length === 1 ? 'country' : 'countries'} (${countries.join(', ')})`;
 status.textContent = text;
-hint.textContent = text;
-hint.classList.remove('hidden');
+hint.classList.add('hidden');
 applyMapHighlight();
 track('map-search: ' + name);
 document.getElementById('mainPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1391,7 +1404,6 @@ function clearSearch() {
 highlightSet = null;
 input.value = '';
 status.textContent = '';
-hint.textContent = defaultHint;
 hint.classList.add('hidden');
 clearBtn.hidden = true;
 closeList();
