@@ -85,9 +85,9 @@ header { display: flex; align-items: center; position: sticky; top: 0; z-index: 
 .header-inner { width: 100%; display: flex; align-items: center; justify-content: space-between; }
 header .site-title { margin: 0; line-height: 0; }
 header .site-title img { display: block; height: clamp(34px, 4.4vw, 56px); width: auto; max-width: 100%; }
-.logo-dark { display: none; }
-html[data-theme="dark"] .logo-light { display: none; }
-html[data-theme="dark"] .logo-dark { display: block; }
+header .site-title .logo-dark { display: none; }
+html[data-theme="dark"] header .site-title .logo-light { display: none; }
+html[data-theme="dark"] header .site-title .logo-dark { display: block; }
 .header-nav { display: flex; align-items: center; gap: 38px; }
 .nav-tab { background: transparent; border: none; border-bottom: 2px solid transparent; color: inherit; font-weight: 500; font-size: 17px; line-height: 1; letter-spacing: var(--track-caps); text-transform: uppercase; padding: 10px 3px; cursor: pointer; transition: border-color .2s ease; }
 .nav-tab:hover { border-bottom-color: var(--accent); }
