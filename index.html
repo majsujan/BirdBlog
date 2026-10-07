@@ -128,7 +128,6 @@ footer p { margin: 0; }
 .map-search-empty { padding: 8px 12px; font-size: 14px; color: var(--ink-soft); }
 .map-search-status { font-size: .95rem; color: var(--ink-soft); text-align: center; }
 .map-search-status:not(:empty) { margin-top: 8px; }
-.map-tools-tip { margin: 6px 0 0; font-size: .9rem; color: var(--ink-soft); }
 
 /* ================= World map ================= */
 #mainPanel { position: relative; width: 100%; margin: 0; padding: 0; overflow: hidden; scroll-margin-top: 120px; }
@@ -142,8 +141,6 @@ footer p { margin: 0; }
 .scale { width: 140px; height: 12px; border-radius: 6px; background: linear-gradient(to right, rgb(255,245,0), rgb(255,205,0), rgb(245,165,0), rgb(235,125,0), rgb(220,85,0), rgb(200,45,0), rgb(175,20,0), rgb(145,0,0)); }
 .legend-label { font-family: var(--font-mono); font-size: 12px; color: var(--ink); }
 
-.map-hint { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 900; width: max-content; max-width: calc(100% - 120px); padding: 8px 18px; background: rgba(255,255,255,.95); color: #222; font-size: 14px; font-weight: 500; line-height: 1.35; letter-spacing: .02em; text-align: center; white-space: normal; border-radius: 22px; box-shadow: 0 3px 8px rgba(0,0,0,.2); pointer-events: none; transition: opacity .4s ease; }
-.map-hint.hidden { opacity: 0; }
 
 /* Country panel and species list */
 .panel-box.merged-panel { display: flex; flex-direction: column; gap: 6px; flex: 1 1 auto; min-height: 0; height: 100%; overflow: hidden; padding: 12px 20px; position: relative; background: white; color: var(--ink); border-radius: 10px; }
@@ -151,10 +148,6 @@ footer p { margin: 0; }
 .panel-close:hover { color: black; }
 .panel-box.merged-panel h2 { margin: 0 0 4px 0; padding-right: 28px; line-height: 1.25; font-size: 1.5rem; font-weight: 400; letter-spacing: .02em; }
 #countryCount { margin: 0 0 2px; font-size: 1rem; color: var(--ink); }
-.panel-photos-btn { align-self: flex-start; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--field); color: var(--ink); font-size: 14px; letter-spacing: .04em; cursor: pointer; transition: border-color .2s ease, color .2s ease; }
-.panel-photos-btn:hover { border-color: var(--accent); color: var(--accent); }
-.panel-photos-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.panel-photos-btn[hidden] { display: none; }
 #speciesList { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 6px 0; margin-top: 2px; }
 #speciesList::-webkit-scrollbar { width: 8px; }
 #speciesList::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
@@ -306,7 +299,6 @@ html[data-theme="dark"] #info { background: var(--paper-2); border-color: var(--
 html[data-theme="dark"] .panel-box.merged-panel { background: var(--paper-2); }
 html[data-theme="dark"] .panel-close { color: var(--ink-soft); }
 html[data-theme="dark"] .legend { background: rgba(29,43,40,.95); }
-html[data-theme="dark"] .map-hint { background: rgba(29,43,40,.95); color: var(--ink); }
 html[data-theme="dark"] .bird-day-main { background: var(--outer); }
 html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { background: var(--paper-2); }
 
@@ -371,7 +363,6 @@ html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { back
   .thumbnail-search { padding-inline: 8px; }
   .thumbnail-select { padding-inline: 7px; }
   .center-dot { width: 36px; height: 36px; }
-  .map-hint { font-size: 12.5px; padding: 7px 14px; max-width: calc(100% - 110px); }
 }
 </style>
 
@@ -383,7 +374,7 @@ html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { back
 <!-- Page header -->
 <header>
 <div class="header-inner">
-<h1 class="site-title" aria-label="BirdBlog">Birdbl<span class="o">o<img alt="" src="PASTE_YOUR_LOGO_DATA_URI_HERE"></span>g</h1>
+<h1 class="site-title" aria-label="BirdBlog">Birdbl<span class="o">o<img alt="" src="logo.png" onerror="this.style.display='none'"></span>g</h1>
 <nav class="header-nav">
 <button id="exploreTab" class="nav-tab">Explore Map</button>
 <button id="aboutTab" class="nav-tab" aria-controls="hamburgerPanel" aria-expanded="false">About</button>
@@ -490,7 +481,6 @@ html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { back
 <ul id="mapSearchList" class="map-search-list" hidden></ul>
 </div>
 <div id="mapSearchStatus" class="map-search-status" aria-live="polite"></div>
-<p class="map-tools-tip">Tip: click any country on the map to open its species list, then use “View photos” to see them in the gallery.</p>
 </div>
 </section>
 
@@ -501,14 +491,12 @@ html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { back
 <button id="closeCountryPanel" class="panel-close" aria-label="Close">✕</button>
 <h2 id="countryName">Country</h2>
 <p id="countryCount">Click a country to view species list</p>
-<button id="viewPhotosBtn" class="panel-photos-btn" type="button" hidden>View photos</button>
 <div id="speciesList"></div>
 </div>
 </div>
 
 <div id="mapContainer">
 <div id="map"></div>
-<div id="mapHint" class="map-hint">Select a country on the map to see its species and photos</div>
 </div>
 </div>
 
@@ -938,19 +926,6 @@ panel.classList.toggle("collapsed");
 toggleBtn.textContent = panel.classList.contains("collapsed") ? "+" : "−";
 });
 
-/* Map -> photos: filter the gallery to one country and scroll up to it */
-window.filterGalleryByCountry = function (country) {
-searchBox.value = "";
-searchBox.classList.add("collapsed-search");
-sortBox.value = "country";
-showCountryBox(true);
-countryBox.value = country;
-updateGallery();
-panel.classList.remove("collapsed");
-toggleBtn.textContent = "−";
-panel.scrollTop = 0;
-document.querySelector(".bird-day-layout").scrollIntoView({ behavior: "smooth", block: "start" });
-};
 })();
 
 /* Keep the thumbnail column the same height as the big photo on desktop */
@@ -1157,7 +1132,6 @@ const infoPanel = document.getElementById("infoPanel");
 const nameEl = document.getElementById('countryName');
 const countEl = document.getElementById('countryCount');
 const listEl = document.getElementById('speciesList');
-const photosBtn = document.getElementById('viewPhotosBtn');
 
 function resetCountryPanel() {
 selectedName = null;
@@ -1165,7 +1139,6 @@ selectedCount = 0;
 nameEl.textContent = 'Country';
 countEl.textContent = 'Click a country to view species list';
 listEl.innerHTML = '';
-photosBtn.hidden = true;
 }
 
 document.getElementById("closeCountryPanel").addEventListener("click", () => {
@@ -1177,13 +1150,6 @@ if (e.key === 'Escape') {
 resetCountryPanel();
 infoPanel.classList.remove("open");
 }
-});
-
-/* Photos <- map: filter the gallery to the selected country */
-photosBtn.addEventListener('click', () => {
-if (!selectedName) return;
-track('view-photos: ' + selectedName);
-window.filterGalleryByCountry(selectedName);
 });
 
 function renderSelectedSpeciesList() {
@@ -1218,7 +1184,6 @@ listEl.appendChild(ul);
 function hoverIn(name, count) {
 nameEl.textContent = name;
 countEl.textContent = `${count} species observed`;
-photosBtn.hidden = true;
 if (selectedName !== name) {
 listEl.innerHTML = `<p style="text-align:center; color:#777; margin: 6px 0;">Click to view details: ${name}...</p>`;
 }
@@ -1227,7 +1192,6 @@ listEl.innerHTML = `<p style="text-align:center; color:#777; margin: 6px 0;">Cli
 function hoverOut() {
 nameEl.textContent = selectedName || 'Country';
 countEl.textContent = selectedName ? `${selectedCount} species observed` : 'Click a country to view species details';
-photosBtn.hidden = !selectedName;
 renderSelectedSpeciesList();
 }
 
@@ -1236,10 +1200,8 @@ selectedName = name;
 selectedCount = count;
 track('country: ' + name);
 infoPanel.classList.add("open");
-document.getElementById('mapHint').classList.add('hidden');
 nameEl.textContent = name;
 countEl.textContent = `${count} species observed`;
-photosBtn.hidden = false;
 renderSelectedSpeciesList();
 }
 
@@ -1309,7 +1271,6 @@ const input = document.getElementById('mapSearch');
 const list = document.getElementById('mapSearchList');
 const clearBtn = document.getElementById('mapSearchClear');
 const status = document.getElementById('mapSearchStatus');
-const hint = document.getElementById('mapHint');
 const countryNames = Object.keys(birdData).sort((a, b) => a.localeCompare(b));
 
 const rank = q => (a, b) =>
@@ -1369,7 +1330,6 @@ input.value = name;
 closeList();
 clearBtn.hidden = false;
 status.textContent = '';
-hint.classList.add('hidden');
 applyMapHighlight();
 if (window.selectCountryFromSearch) window.selectCountryFromSearch(name, birdData[name] || 0);
 track('map-search-country: ' + name);
@@ -1383,7 +1343,6 @@ input.value = name;
 closeList();
 clearBtn.hidden = false;
 status.textContent = `${name}: recorded in ${countries.length} ${countries.length === 1 ? 'country' : 'countries'} (${countries.join(', ')})`;
-hint.classList.add('hidden');
 document.getElementById('closeCountryPanel').click(); /* close any open country panel */
 applyMapHighlight();
 track('map-search: ' + name);
