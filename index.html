@@ -46,6 +46,8 @@ document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
   --footer-bg: #efeadc;
   --track-caps: .14em;
   --ctl-h: 40px;
+  --fab: 44px;
+  --fab-bottom: 16px;
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 html[data-theme="dark"] {
@@ -121,8 +123,19 @@ footer p { margin: 0; }
 .map-search-clear:hover { color: var(--ink); }
 .map-search-clear[hidden], .map-search-list[hidden] { display: none; }
 .map-search-list { position: absolute; top: 44px; left: 0; right: 0; z-index: 1500; margin: 0; padding: 4px; list-style: none; max-height: 320px; overflow-y: auto; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
-.map-search-list button { display: block; width: 100%; padding: 8px 12px; border: none; border-radius: 8px; background: none; color: inherit; font-family: inherit; font-size: 15px; text-align: left; cursor: pointer; }
-.map-search-list button:hover, .map-search-list button:focus-visible { background: var(--paper-2); outline: none; }
+.map-search-list button, .menu-list button { display: block; width: 100%; padding: 8px 12px; border: none; border-radius: 8px; background: none; color: inherit; font-family: inherit; font-size: 15px; text-align: left; cursor: pointer; }
+.map-search-list button:hover, .map-search-list button:focus-visible, .menu-list button:hover, .menu-list button:focus-visible { background: var(--paper-2); outline: none; }
+.menu { position: relative; }
+.menu[hidden] { display: none; }
+.menu-btn { display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; background: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; font-size: 15px; letter-spacing: .02em; white-space: nowrap; cursor: pointer; }
+.menu-btn::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); opacity: .7; transition: transform .2s ease; }
+.menu-btn[aria-expanded="true"]::after { transform: rotate(225deg) translate(-1px, -1px); }
+.menu-btn:focus-visible { outline: 2px solid rgba(95,143,94,.35); outline-offset: 1px; border-color: #5f8f5e; }
+.menu-label { overflow: hidden; text-overflow: ellipsis; max-width: 34vw; }
+.menu-list { position: absolute; top: 40px; right: 0; z-index: 1500; min-width: 100%; margin: 0; padding: 4px; list-style: none; max-height: 260px; overflow-y: auto; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+.menu-list[hidden] { display: none; }
+.menu-list button { white-space: nowrap; }
+.menu-list button.current { font-weight: 500; }
 .map-search-group { padding: 6px 12px 2px; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
 .map-search-group:not(:first-child) { margin-top: 4px; border-top: 1px solid var(--line); padding-top: 8px; }
 .map-search-empty { padding: 8px 12px; font-size: 14px; color: var(--ink-soft); }
@@ -169,11 +182,10 @@ footer p { margin: 0; }
 .about-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ================= Thumbnail gallery ================= */
-.thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; margin: 0; padding: 0 6px; background: var(--paper-2) var(--grain); border-left: 1px solid var(--line); overflow: hidden; }
-.thumbnail-controls { display: flex; align-items: center; width: 100%; padding: 4px 6px; gap: 6px; }
+.thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; margin: 0; padding: 0 6px; background: var(--paper-2) var(--grain); border-left: 1px solid var(--line); }
+.thumbnail-controls { position: relative; z-index: 20; display: flex; align-items: center; width: 100%; padding: 4px 6px; gap: 6px; }
 .toolbar-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
-#birdSearch, #birdSort, #countryFilter { height: 36px; background-color: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; }
-#birdSort, #countryFilter { padding: 0 10px; }
+#birdSearch { height: 36px; background-color: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; }
 #birdSearch::placeholder { color: var(--ink-soft); opacity: 1; }
 .gallery-toggle { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; flex: 0 0 36px; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; font-size: 20px; font-weight: 300; line-height: 1; cursor: pointer; transition: background .2s ease; }
 .gallery-toggle:hover { background: var(--field); }
@@ -192,11 +204,9 @@ footer p { margin: 0; }
 .thumbnail-search-button:hover { opacity: .8; }
 .thumbnail-search-button svg { display: block; pointer-events: none; transform: translateX(-1px); }
 .thumbnail-search-button svg circle, .thumbnail-search-button svg line { stroke: currentColor; }
-.thumbnail-search { flex: 1 1 auto; min-width: 0; height: 36px; padding: 0 12px; transition: max-width .25s ease, opacity .25s ease, padding .25s ease; }
+.thumbnail-search { flex: 1 1 auto; min-width: 0; height: 36px; padding: 0 16px; letter-spacing: .02em; transition: max-width .25s ease, opacity .25s ease, padding .25s ease; }
 .collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
-.thumbnail-select { flex: 0 0 90px; }
-.country-select { display: none; flex: 0 0 0; height: 36px; width: 0; min-width: 0; opacity: 0; overflow: hidden; transition: flex-basis .25s ease, width .25s ease, opacity .25s ease; }
-.thumbnail-search:focus, .thumbnail-select:focus, .country-select:focus { outline: 2px solid rgba(95,143,94,.35); outline-offset: 1px; border-color: #5f8f5e; }
+.thumbnail-search:focus { outline: 2px solid rgba(95,143,94,.35); outline-offset: 1px; border-color: #5f8f5e; }
 
 /* ================= Leaflet overrides ================= */
 .leaflet-container { background: var(--paper); }
@@ -220,14 +230,14 @@ footer p { margin: 0; }
 .photos-btn:focus-visible, .surprise-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 .photos-btn svg, .surprise-btn svg { display: block; flex: 0 0 auto; }
 /* Surprise me: bottom right, label grows leftward so the dice stays under the thumb */
-.surprise-btn { bottom: 14px; right: 14px; height: 44px; padding: 0 11px; overflow: hidden; }
-.surprise-btn:hover { background: rgba(0,0,0,.7); }
+.surprise-btn { bottom: var(--fab-bottom); right: 14px; height: var(--fab); min-width: var(--fab); padding: 0 calc((var(--fab) - 22px) / 2); overflow: hidden; border-color: rgba(0,0,0,.45); border-radius: 999px; background: rgba(255,255,255,.92); color: #222; backdrop-filter: none; }
+.surprise-btn:hover { background: #ffffff; }
 .surprise-label { max-width: 0; opacity: 0; white-space: nowrap; overflow: hidden; transition: max-width .25s ease, opacity .2s ease, margin .25s ease; }
 .surprise-btn:focus-visible .surprise-label, .surprise-btn.show .surprise-label { max-width: 110px; opacity: 1; margin-right: 8px; }
 @media (hover: hover) { .surprise-btn:hover .surprise-label { max-width: 110px; opacity: 1; margin-right: 8px; } }
 .surprise-btn.rolling svg { animation: diceRoll .5s ease; }
 @keyframes diceRoll { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@media (max-width: 600px) { .photos-btn { top: 8px; right: 8px; padding: 6px 10px 6px 9px; font-size: 13px; } .surprise-btn { bottom: 10px; right: 10px; } }
+@media (max-width: 600px) { .photos-btn { top: 8px; right: 8px; padding: 6px 10px 6px 9px; font-size: 13px; } .surprise-btn { right: 10px; } :root { --fab: 36px; --fab-bottom: 8px; } }
 
 .bird-day-frame::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 35%; background: linear-gradient(to top, rgba(0,0,0,.55), transparent); pointer-events: none; z-index: 3; }
 .bird-day-image { display: block; width: 100%; height: 100%; object-fit: cover; background: white; transition: opacity .25s ease, transform .25s ease; }
@@ -254,9 +264,9 @@ footer p { margin: 0; }
 .drawer-map-btn { padding: 0; border: none; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
 .drawer-map-btn:hover, .drawer-map-btn:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 
-.swipe-indicator { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
+.swipe-indicator { position: absolute; left: 50%; bottom: calc(var(--fab-bottom) - 4px); transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
 .dot { border-radius: 50%; background: rgba(255,255,255,.35); border: 1px solid rgba(0,0,0,.35); box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s ease, opacity .25s ease, background .25s ease; }
-.center-dot { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(0,0,0,.45); background: rgba(255,255,255,.92); color: #222; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; cursor: pointer; padding: 0; line-height: 1; transition: transform .2s ease, background .2s ease; appearance: none; -webkit-appearance: none; }
+.center-dot { width: var(--fab); height: var(--fab); border-radius: 50%; border: 1px solid rgba(0,0,0,.45); background: rgba(255,255,255,.92); color: #222; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; cursor: pointer; padding: 0; line-height: 1; transition: transform .2s ease, background .2s ease; appearance: none; -webkit-appearance: none; }
 .center-dot:hover { transform: scale(1.08); }
 .center-dot.playing { background: #ffffff; }
 .left-dot, .right-dot { width: 6px; height: 6px; }
@@ -300,7 +310,6 @@ html[data-theme="dark"] .panel-box.merged-panel { background: var(--paper-2); }
 html[data-theme="dark"] .panel-close { color: var(--ink-soft); }
 html[data-theme="dark"] .legend { background: rgba(29,43,40,.95); }
 html[data-theme="dark"] .bird-day-main { background: var(--outer); }
-html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { background: var(--paper-2); }
 
 /* ================= Responsive ================= */
 @media (max-width: 1024px) {
@@ -325,8 +334,6 @@ html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { back
   .species-li { margin-bottom: 6px; }
   .about-text { margin-top: 6px; }
   .thumbnail-search { flex: 1 1 100%; }
-  .thumbnail-select { flex: 0 0 72px; width: 72px; }
-  .country-select { flex: 0 0 auto; width: auto; max-width: 40vw; }
   .toolbar-right { flex-shrink: 1; }
 }
 @media (max-width: 700px) {
@@ -360,9 +367,7 @@ html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { back
   #thumbnailGallery { gap: 4px; padding: 4px; }
   #thumbnailGallery div > div { font-size: 11px !important; padding: 2px 4px !important; }
   #thumbnailPanel { max-height: 160px; }
-  .thumbnail-search { padding-inline: 8px; }
-  .thumbnail-select { padding-inline: 7px; }
-  .center-dot { width: 36px; height: 36px; }
+  .thumbnail-search { padding-inline: 12px; }
 }
 </style>
 
@@ -439,11 +444,19 @@ html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { back
 <input type="text" id="birdSearch" class="thumbnail-search collapsed-search" placeholder="Search a species or a country…">
 
 <div class="toolbar-right">
-<select id="countryFilter" class="country-select" aria-label="Filter photos by country"></select>
-<select id="birdSort" class="thumbnail-select" aria-label="Sort photos">
-<option value="alpha">A-Z</option>
+<div id="countryMenu" class="menu" hidden>
+<button type="button" class="menu-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose a country"><span class="menu-label">Select country</span></button>
+<ul class="menu-list" role="listbox" hidden></ul>
+</div>
+<div id="sortMenu" class="menu">
+<button type="button" class="menu-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Sort photos"><span class="menu-label">A–Z</span></button>
+<ul class="menu-list" role="listbox" hidden></ul>
+</div>
+<select id="countryFilter" hidden aria-hidden="true"></select>
+<select id="birdSort" hidden aria-hidden="true">
+<option value="alpha">A–Z</option>
 <option value="random">Random</option>
-<option value="country">Country</option>
+<option value="country">By country</option>
 </select>
 <button id="toggleGalleryBtn" class="gallery-toggle" aria-label="Collapse gallery">−</button>
 </div>
@@ -894,12 +907,7 @@ list = list.filter(([name, data]) => data.countries && data.countries.includes(c
 loadThumbnails(list);
 }
 
-function showCountryBox(on) {
-countryBox.style.display = on ? "block" : "none";
-countryBox.style.flex = on ? "0 0 auto" : "0 0 0";
-countryBox.style.width = on ? "auto" : "0";
-countryBox.style.opacity = on ? "1" : "0";
-}
+function showCountryBox(on) { document.getElementById("countryMenu").hidden = !on; }
 
 sortBox.addEventListener("change", () => {
 showCountryBox(sortBox.value === "country");
@@ -926,6 +934,43 @@ panel.classList.toggle("collapsed");
 toggleBtn.textContent = panel.classList.contains("collapsed") ? "+" : "−";
 });
 
+})();
+
+/* Sort and country menus: styled like the map search list; the hidden selects hold the state */
+(function () {
+function setup(menuId, selectId) {
+const menu = document.getElementById(menuId);
+const btn = menu.querySelector('.menu-btn');
+const label = menu.querySelector('.menu-label');
+const list = menu.querySelector('.menu-list');
+const sel = document.getElementById(selectId);
+function sync() { const o = sel.options[sel.selectedIndex]; if (o) label.textContent = o.textContent; }
+function close() { list.hidden = true; btn.setAttribute('aria-expanded', 'false'); }
+function open() {
+list.innerHTML = '';
+[...sel.options].filter(o => o.value).forEach(o => {
+const li = document.createElement('li');
+const b = document.createElement('button');
+b.type = 'button';
+b.textContent = o.textContent;
+if (o.value === sel.value) b.className = 'current';
+b.addEventListener('click', () => { sel.value = o.value; sel.dispatchEvent(new Event('change')); sync(); close(); });
+li.appendChild(b);
+list.appendChild(li);
+});
+list.hidden = false;
+btn.setAttribute('aria-expanded', 'true');
+}
+btn.addEventListener('click', e => { e.stopPropagation(); list.hidden ? open() : close(); });
+document.addEventListener('click', e => { if (!menu.contains(e.target)) close(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+sel.addEventListener('change', sync);
+return sync;
+}
+const syncSort = setup('sortMenu', 'birdSort');
+const syncCountry = setup('countryMenu', 'countryFilter');
+document.getElementById('birdSort').addEventListener('change', syncCountry);
+syncSort(); syncCountry();
 })();
 
 /* Keep the thumbnail column the same height as the big photo on desktop */
