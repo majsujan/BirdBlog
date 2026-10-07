@@ -8,16 +8,15 @@
 <meta property="og:description" content="Photographic journal of birding lifelist.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 
-<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<!-- Dark mode: set before first paint (follows the device until the visitor presses the toggle) -->
+<!-- Dark mode: set before first paint -->
 <script>
 (function () {
 var saved = null;
@@ -45,6 +44,8 @@ document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
   --field: rgba(255,255,255,.65);
   --thumb: rgba(27,29,26,.30);
   --footer-bg: #efeadc;
+  --track-caps: .14em;
+  --ctl-h: 40px;
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 html[data-theme="dark"] {
@@ -61,7 +62,6 @@ html[data-theme="dark"] {
   --footer-bg: #0f1817;
   --outer: #0f1817;
   --header-bg: #23453a;
-  --tint: rgba(112,216,154,.18);
   --num: #70d89a;
   --cream: #16211f;
   --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -70,9 +70,13 @@ html[data-theme="dark"] {
 /* ================= Global ================= */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { min-height: 100%; margin: 0; background-color: #ffffff; }
-body { min-height: 100vh; color: #333; font-weight: 400; letter-spacing: .01em; }
+body { min-height: 100vh; color: var(--ink); font-size: 16px; line-height: 1.5; font-weight: 400; letter-spacing: .01em; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 body, button, input, select, textarea, .leaflet-container { font-family: var(--font-main); }
+input, select, textarea { font-size: .9375rem; }
 .site-page { width: 100%; max-width: var(--page-max-width); min-height: 100vh; margin: 0 auto; background-color: var(--cream); box-shadow: 0 0 13px 3px rgba(0,0,0,.23); }
+
+/* One heading style for every section title */
+.explore-title, .map-tools-title, .about-title { margin: 0; color: var(--ink); font-size: 1.1rem; font-weight: 500; letter-spacing: var(--track-caps); text-transform: uppercase; }
 
 /* ================= Header ================= */
 header { display: flex; align-items: center; position: sticky; top: 0; z-index: 3000; min-height: 108px; padding: 0 24px; background: #ffffff; color: #111111; box-shadow: 0 1px 0 rgba(0,0,0,.10); }
@@ -81,54 +85,54 @@ header .site-title { margin: 0; isolation: isolate; white-space: nowrap; font-fa
 header .site-title .o { position: relative; display: inline-block; --dx: -.02em; --dy: 0em; }
 header .site-title .o img { position: absolute; z-index: -1; left: calc(50% + var(--dx)); top: calc(50% + var(--dy)); width: .74em; height: auto; aspect-ratio: 1.0426; transform: translate(-50%, -50%); clip-path: ellipse(49% 49% at 50% 50%); }
 .header-nav { display: flex; align-items: center; gap: 38px; }
-.nav-tab { background: transparent; border: none; border-bottom: 2px solid transparent; color: inherit; font-family: var(--font-main); font-weight: 500; font-size: 17px; line-height: 1; letter-spacing: .14em; text-transform: uppercase; padding: 10px 3px; cursor: pointer; transition: border-color .2s ease; }
+.nav-tab { background: transparent; border: none; border-bottom: 2px solid transparent; color: inherit; font-weight: 500; font-size: 17px; line-height: 1; letter-spacing: var(--track-caps); text-transform: uppercase; padding: 10px 3px; cursor: pointer; transition: border-color .2s ease; }
 .nav-tab:hover { border-bottom-color: var(--accent); }
 .nav-tab:focus-visible, .nav-arrow:focus-visible, .center-dot:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
 .nav-tab:focus-visible { outline-color: #111111; }
 #themeToggle { font-size: 22px; letter-spacing: 0; }
 
 /* ================= Footer ================= */
-footer { width: 100%; margin: 0; padding: 16px; text-align: center; display: block; background: var(--footer-bg) var(--grain); color: var(--ink-soft); border-top: 1px solid var(--line); font-weight: 300; font-size: 14px; letter-spacing: .06em; }
+footer { width: 100%; margin: 0; padding: 16px; text-align: center; background: var(--footer-bg) var(--grain); color: var(--ink-soft); border-top: 1px solid var(--line); font-weight: 400; font-size: .875rem; letter-spacing: .06em; }
 footer p { margin: 0; }
-footer a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; margin: 0 8px; }
-footer a:hover { color: var(--accent); }
 
 /* ================= Info banner ================= */
 #info { text-align: center; padding: 10px; font-size: 16px; background: #f6f6f6; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; }
 #info:empty { display: none; }
 
-/* ================= Explore group ================= */
-.explore-banner { width: 100%; margin: 0; padding: 0; background: var(--cream); border-top: 1px solid rgba(0,0,0,.06); }
-.explore-inner { max-width: 960px; margin: 0 auto; padding: 16px 16px 12px; text-align: center; }
-.explore-title { margin: 0; color: #222; font-family: var(--font-main); font-weight: 300; font-size: 1.2rem; letter-spacing: .2em; text-transform: uppercase; }
-.explore-sub { margin: 3px 0 12px; color: #666; font-size: .95rem; font-weight: 400; letter-spacing: .03em; }
-.stats-strip { display: flex; justify-content: center; flex-wrap: wrap; margin: 0 auto 12px; }
-.stat { padding: 3px 24px; border-left: 1px solid rgba(0,0,0,.12); text-align: center; }
+/* ================= Species Explorer ================= */
+.explore-banner { width: 100%; background: var(--cream); border-top: 1px solid var(--line); }
+.explore-inner { max-width: 960px; margin: 0 auto; padding: 12px 16px 10px; text-align: center; }
+.explore-sub { margin: 2px 0 8px; color: var(--ink-soft); font-size: .9rem; }
+.stats-strip { display: flex; justify-content: center; flex-wrap: wrap; margin: 0 auto; }
+.stat { padding: 2px 20px; border-left: 1px solid var(--line); text-align: center; }
 .stat:first-child { border-left: none; }
-.stat-num { display: block; font-family: var(--font-main); font-weight: 200; font-size: 1.9rem; letter-spacing: .02em; color: var(--forest); line-height: 1.1; }
-.stat-label { display: block; font-family: var(--font-mono); font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; color: #555; margin-top: 3px; }
-.explore-ticker { overflow: hidden; white-space: nowrap; color: #444; font-size: 1.05rem; background: rgba(106,159,105,.14); border-radius: 999px; padding: 5px 0; }
-.explore-ticker:hover .explore-ticker-content { animation-play-state: paused; }
-.explore-ticker-content { display: inline-block; padding-left: 20%; animation: exploreTicker 80s linear infinite; font-size: .95rem; font-weight: 400; letter-spacing: .03em; white-space: nowrap; line-height: 1.4; }
-.ticker-flag { width: 18px; height: 13px; vertical-align: middle; margin-left: 12px; margin-right: 4px; border-radius: 2px; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
-@keyframes exploreTicker { from { transform: translateX(0); } to { transform: translateX(-100%); } }
-.map-search { position: relative; max-width: 440px; margin: 14px auto 0; text-align: left; }
-.map-search-input { width: 100%; height: 40px; padding: 0 40px 0 16px; background: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; font-size: 15px; letter-spacing: .02em; }
+.stat-num { display: block; font-weight: 300; font-size: 1.6rem; font-variant-numeric: lining-nums; letter-spacing: .02em; color: var(--num, var(--forest)); line-height: 1.1; }
+.stat-label { display: block; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); margin-top: 3px; }
+
+/* ================= Map tools band ================= */
+.map-tools { background: var(--paper-2) var(--grain); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); scroll-margin-top: 108px; }
+.map-tools-inner { max-width: 960px; margin: 0 auto; padding: 16px 16px 12px; text-align: center; }
+.map-tools-title { margin-bottom: 12px; }
+.map-search { position: relative; max-width: 440px; margin: 0 auto; text-align: left; }
+.map-search-input { width: 100%; height: var(--ctl-h); padding: 0 40px 0 16px; background: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; letter-spacing: .02em; }
 .map-search-input::placeholder { color: var(--ink-soft); opacity: 1; }
 .map-search-input:focus { outline: 2px solid rgba(95,143,94,.35); outline-offset: 1px; border-color: #5f8f5e; }
-.map-search-clear { position: absolute; top: 0; right: 4px; width: 36px; height: 40px; padding: 0; border: none; background: none; color: var(--ink-soft); font-size: 22px; line-height: 1; cursor: pointer; }
+.map-search-clear { position: absolute; top: 0; right: 4px; width: 36px; height: var(--ctl-h); padding: 0; border: none; background: none; color: var(--ink-soft); font-size: 22px; line-height: 1; cursor: pointer; }
 .map-search-clear:hover { color: var(--ink); }
-.map-search-clear[hidden] { display: none; }
+.map-search-clear[hidden], .map-search-list[hidden] { display: none; }
 .map-search-list { position: absolute; top: 44px; left: 0; right: 0; z-index: 1500; margin: 0; padding: 4px; list-style: none; max-height: 320px; overflow-y: auto; background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
-.map-search-list[hidden] { display: none; }
 .map-search-list button { display: block; width: 100%; padding: 8px 12px; border: none; border-radius: 8px; background: none; color: inherit; font-family: inherit; font-size: 15px; text-align: left; cursor: pointer; }
 .map-search-list button:hover, .map-search-list button:focus-visible { background: var(--paper-2); outline: none; }
+.map-search-group { padding: 6px 12px 2px; font-family: var(--font-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.map-search-group:not(:first-child) { margin-top: 4px; border-top: 1px solid var(--line); padding-top: 8px; }
 .map-search-empty { padding: 8px 12px; font-size: 14px; color: var(--ink-soft); }
-.map-search-status { min-height: 1.4em; margin-top: 8px; font-size: .95rem; color: var(--ink-soft); text-align: center; }
+.map-search-status { font-size: .95rem; color: var(--ink-soft); text-align: center; }
+.map-search-status:not(:empty) { margin-top: 8px; }
+.map-tools-tip { margin: 6px 0 0; font-size: .9rem; color: var(--ink-soft); }
 
 /* ================= World map ================= */
 #mainPanel { position: relative; width: 100%; margin: 0; padding: 0; overflow: hidden; scroll-margin-top: 120px; }
-#infoPanel { position: absolute; left: 0; top: 0; width: 320px; height: 60vh; min-height: 500px; z-index: 1000; padding: 0; box-sizing: border-box; overflow: hidden; transform: translateX(calc(-100% - 20px)); opacity: 0; visibility: hidden; pointer-events: none; transition: transform .3s ease, opacity .2s ease, visibility 0s linear .3s; }
+#infoPanel { position: absolute; left: 0; top: 0; width: 320px; height: 60vh; min-height: 500px; z-index: 1000; padding: 0; overflow: hidden; transform: translateX(calc(-100% - 20px)); opacity: 0; visibility: hidden; pointer-events: none; transition: transform .3s ease, opacity .2s ease, visibility 0s linear .3s; }
 #infoPanel.open { transform: translateX(0); opacity: 1; visibility: visible; pointer-events: auto; transition: transform .3s ease, opacity .2s ease, visibility 0s; }
 #mapContainer { position: relative; width: 100%; margin: 0; padding: 0; }
 #map { display: block; width: 100%; height: 60vh; min-height: 500px; margin: 0; padding: 0; border: 0; border-radius: 0; }
@@ -136,33 +140,36 @@ footer a:hover { color: var(--accent); }
 .legend { background: rgba(255,255,255,.96); padding: 10px 12px; line-height: 1.2; color: #222; border-radius: 8px; box-shadow: 0 3px 8px rgba(0,0,0,.20); border: 1px solid rgba(0,0,0,.15); backdrop-filter: blur(2px); }
 .legend-container { display: flex; align-items: center; gap: 8px; }
 .scale { width: 140px; height: 12px; border-radius: 6px; background: linear-gradient(to right, rgb(255,245,0), rgb(255,205,0), rgb(245,165,0), rgb(235,125,0), rgb(220,85,0), rgb(200,45,0), rgb(175,20,0), rgb(145,0,0)); }
-.legend-label { font-family: var(--font-mono); font-size: 12px; color: #333; }
+.legend-label { font-family: var(--font-mono); font-size: 12px; color: var(--ink); }
 
 .map-hint { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 900; width: max-content; max-width: calc(100% - 120px); padding: 8px 18px; background: rgba(255,255,255,.95); color: #222; font-size: 14px; font-weight: 500; line-height: 1.35; letter-spacing: .02em; text-align: center; white-space: normal; border-radius: 22px; box-shadow: 0 3px 8px rgba(0,0,0,.2); pointer-events: none; transition: opacity .4s ease; }
 .map-hint.hidden { opacity: 0; }
 
 /* Country panel and species list */
-.panel-box.merged-panel { display: flex; flex-direction: column; gap: 6px; flex: 1 1 auto; min-height: 0; height: 100%; overflow: hidden; padding: 12px 20px; position: relative; background: white; border-radius: 10px; box-sizing: border-box; margin-left: 0; }
+.panel-box.merged-panel { display: flex; flex-direction: column; gap: 6px; flex: 1 1 auto; min-height: 0; height: 100%; overflow: hidden; padding: 12px 20px; position: relative; background: white; color: var(--ink); border-radius: 10px; }
 .panel-close { position: absolute; top: 10px; right: 10px; border: none; background: none; font-size: 26px; font-weight: bold; cursor: pointer; color: #555; }
 .panel-close:hover { color: black; }
-.panel-box.merged-panel h2 { margin: 0 0 4px 0; line-height: 1.25; font-size: 1.5rem; font-weight: 400; letter-spacing: .02em; }
-#countryCount { margin-top: 0; margin-bottom: 2px; font-size: 1rem; color: #333; }
-#speciesList { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 6px 0; margin-top: 2px; box-sizing: border-box; }
-#speciesList ul { margin: 8px 0 0; font-size: 14px; }
+.panel-box.merged-panel h2 { margin: 0 0 4px 0; padding-right: 28px; line-height: 1.25; font-size: 1.5rem; font-weight: 400; letter-spacing: .02em; }
+#countryCount { margin: 0 0 2px; font-size: 1rem; color: var(--ink); }
+.panel-photos-btn { align-self: flex-start; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--field); color: var(--ink); font-size: 14px; letter-spacing: .04em; cursor: pointer; transition: border-color .2s ease, color .2s ease; }
+.panel-photos-btn:hover { border-color: var(--accent); color: var(--accent); }
+.panel-photos-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.panel-photos-btn[hidden] { display: none; }
+#speciesList { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 6px 0; margin-top: 2px; }
 #speciesList::-webkit-scrollbar { width: 8px; }
 #speciesList::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
 #speciesList::-webkit-scrollbar-thumb:hover { background: #999; }
-.species-ul { list-style: none; padding-left: 0; margin: 0; }
+.species-ul { list-style: none; padding-left: 0; margin: 0; font-size: 14px; }
 .species-li { position: relative; padding-left: 20px; margin-bottom: 4px; text-align: left; }
 .species-li::before { content: "📷"; position: absolute; left: 0; top: .7em; transform: translateY(-50%); font-size: .7rem; line-height: 1; }
-.species-btn { background: none; border: none; color: black; font-weight: 400; letter-spacing: .01em; cursor: pointer; text-align: left; padding: 0; font-size: 1rem; width: 100%; display: inline-block; line-height: 1.4; white-space: normal; word-break: break-word; }
+.species-btn { background: none; border: none; color: var(--ink); font-weight: 400; letter-spacing: .01em; cursor: pointer; text-align: left; padding: 0; font-size: 1rem; width: 100%; display: inline-block; line-height: 1.4; white-space: normal; word-break: break-word; }
 
 /* About panel */
 .hamburger-panel[hidden] { display: none !important; }
-.hamburger-panel { position: absolute; overflow-y: auto; background: var(--paper-2) var(--grain); color: var(--ink); border: 1px solid var(--line); border-radius: 0; padding: 16px; box-shadow: 0 8px 20px rgba(0,0,0,.25); box-sizing: border-box; z-index: 9990; display: flex; flex-direction: column; gap: 12px; width: 95%; }
-.about-title { margin-top: 12px; font-size: 1.25rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-align: left; }
-.about-text { margin-top: 8px; font-size: 1rem; font-weight: 300; line-height: 1.7; text-align: left; }
-.about-subtitle { margin-top: 10px; font-size: 1rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; text-align: left; }
+.hamburger-panel { position: absolute; overflow-y: auto; background: var(--paper-2) var(--grain); color: var(--ink); border: 1px solid var(--line); padding: 16px; box-shadow: 0 8px 20px rgba(0,0,0,.25); z-index: 9990; display: flex; flex-direction: column; gap: 12px; width: 95%; }
+.about-title { margin-top: 12px; text-align: left; }
+.about-text { margin-top: 8px; font-size: 1rem; font-weight: 400; line-height: 1.65; text-align: left; }
+.about-subtitle { margin-top: 10px; font-size: 1rem; font-weight: 500; letter-spacing: var(--track-caps); text-transform: uppercase; text-align: left; }
 .about-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
 .about-link { display: inline-block; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--field); color: var(--ink); text-decoration: none; font-size: 14px; letter-spacing: .06em; transition: border-color .2s ease, color .2s ease; }
 .about-link:hover { border-color: var(--accent); color: var(--accent); }
@@ -172,13 +179,11 @@ footer a:hover { color: var(--accent); }
 .thumbnail-column { display: flex; flex-direction: column; width: 100%; min-width: 0; margin: 0; padding: 0 6px; background: var(--paper-2) var(--grain); border-left: 1px solid var(--line); overflow: hidden; }
 .thumbnail-controls { display: flex; align-items: center; width: 100%; padding: 4px 6px; gap: 6px; }
 .toolbar-right { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
-
-#birdSearch, #birdSort, #countryFilter { height: 36px; background-color: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; }
+#birdSearch, #birdSort, #countryFilter { height: 36px; background-color: var(--field); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; }
+#birdSort, #countryFilter { padding: 0 10px; }
 #birdSearch::placeholder { color: var(--ink-soft); opacity: 1; }
-
-.gallery-toggle { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; flex: 0 0 36px; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; font-size: 20px; font-weight: 300; line-height: 1; cursor: pointer; transition: background .2s ease; }
+.gallery-toggle { display: none; align-items: center; justify-content: center; width: 36px; height: 36px; flex: 0 0 36px; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; font-size: 20px; font-weight: 300; line-height: 1; cursor: pointer; transition: background .2s ease; }
 .gallery-toggle:hover { background: var(--field); }
-
 #thumbnailPanel { flex: 1 1 auto; min-height: 0; width: 100%; margin: 0; padding: 0; overflow-x: hidden; overflow-y: auto; background: transparent; scrollbar-width: thin; scrollbar-color: var(--thumb) transparent; }
 #thumbnailGallery { width: 100%; margin: 0; background: transparent; }
 .thumbnail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; width: 100%; gap: 5px; padding: 2px 5px 5px 5px; margin: 0; }
@@ -190,7 +195,7 @@ footer a:hover { color: var(--accent); }
 #thumbnailPanel::-webkit-scrollbar-thumb:hover { background: var(--ink-soft); background-clip: padding-box; }
 @media (hover: none) { #thumbnailGallery div > div { opacity: 1 !important; transform: translateY(0) !important; } }
 
-.thumbnail-search-button { width: 36px; height: 36px; flex: 0 0 36px; background: transparent; border: none; box-shadow: none; color: var(--ink); font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
+.thumbnail-search-button { width: 36px; height: 36px; flex: 0 0 36px; background: transparent; border: none; box-shadow: none; color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; }
 .thumbnail-search-button:hover { opacity: .8; }
 .thumbnail-search-button svg { display: block; pointer-events: none; transform: translateX(-1px); }
 .thumbnail-search-button svg circle, .thumbnail-search-button svg line { stroke: currentColor; }
@@ -211,35 +216,36 @@ footer a:hover { color: var(--accent); }
 .right-arrow { right: 12px; }
 .nav-arrow:hover { transform: translateY(-50%) scale(1.08); }
 
-.bird-day-layout { display: grid; grid-template-columns: minmax(0, 22fr) minmax(420px, 12fr); width: 100%; margin: 0; align-items: start; background: var(--cream); }
+.bird-day-layout { display: grid; grid-template-columns: minmax(0, 22fr) minmax(420px, 12fr); width: 100%; margin: 0; align-items: start; background: var(--cream); scroll-margin-top: 108px; }
 .bird-day-main { width: 100%; min-width: 0; margin: 0; padding: 0; position: relative; background: #444; }
 .bird-day-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; touch-action: pan-y; }
-.photos-btn { position: absolute; top: 14px; right: 14px; z-index: 5; display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px 7px 11px; border: 1px solid rgba(255,255,255,.35); border-radius: 20px; background: rgba(0,0,0,.45); backdrop-filter: blur(4px); color: #fff; font-family: inherit; font-size: 14px; line-height: 1; letter-spacing: .02em; cursor: pointer; transition: background .2s ease, transform .15s ease; -webkit-tap-highlight-color: transparent; }
+
+.photos-btn, .surprise-btn { position: absolute; z-index: 5; display: inline-flex; align-items: center; border: 1px solid rgba(255,255,255,.35); border-radius: 20px; background: rgba(0,0,0,.45); backdrop-filter: blur(4px); color: #fff; font-family: inherit; font-size: 14px; line-height: 1; letter-spacing: .02em; cursor: pointer; transition: background .2s ease, transform .15s ease; -webkit-tap-highlight-color: transparent; }
+.photos-btn { top: 14px; right: 14px; gap: 7px; padding: 7px 13px 7px 11px; }
 .photos-btn[hidden] { display: none; }
-.surprise-btn { position: absolute; top: 14px; left: 14px; z-index: 5; display: inline-flex; align-items: center; height: 36px; padding: 0 8px; border: 1px solid rgba(255,255,255,.35); border-radius: 20px; background: rgba(0,0,0,.45); backdrop-filter: blur(4px); color: #fff; font-family: inherit; font-size: 14px; letter-spacing: .02em; cursor: pointer; overflow: hidden; transition: background .2s ease; -webkit-tap-highlight-color: transparent; }
+.photos-btn:hover { background: rgba(0,0,0,.7); transform: scale(1.04); }
+.photos-btn:focus-visible, .surprise-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.photos-btn svg, .surprise-btn svg { display: block; flex: 0 0 auto; }
+/* Surprise me: bottom right, label grows leftward so the dice stays under the thumb */
+.surprise-btn { bottom: 14px; right: 14px; height: 44px; padding: 0 11px; overflow: hidden; }
 .surprise-btn:hover { background: rgba(0,0,0,.7); }
-.surprise-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-.surprise-btn svg { display: block; flex: 0 0 auto; }
 .surprise-label { max-width: 0; opacity: 0; white-space: nowrap; overflow: hidden; transition: max-width .25s ease, opacity .2s ease, margin .25s ease; }
-.surprise-btn:focus-visible .surprise-label, .surprise-btn.show .surprise-label { max-width: 110px; opacity: 1; margin-left: 8px; }
-@media (hover: hover) { .surprise-btn:hover .surprise-label { max-width: 110px; opacity: 1; margin-left: 8px; } }
+.surprise-btn:focus-visible .surprise-label, .surprise-btn.show .surprise-label { max-width: 110px; opacity: 1; margin-right: 8px; }
+@media (hover: hover) { .surprise-btn:hover .surprise-label { max-width: 110px; opacity: 1; margin-right: 8px; } }
 .surprise-btn.rolling svg { animation: diceRoll .5s ease; }
 @keyframes diceRoll { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-@media (max-width: 600px) { .surprise-btn { top: 8px; left: 8px; } }
-.photos-btn:hover { background: rgba(0,0,0,.7); transform: scale(1.04); }
-.photos-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-.photos-btn svg { display: block; flex: 0 0 auto; }
-@media (max-width: 600px) { .photos-btn { top: 8px; right: 8px; padding: 6px 10px 6px 9px; font-size: 13px; } }
+@media (max-width: 600px) { .photos-btn { top: 8px; right: 8px; padding: 6px 10px 6px 9px; font-size: 13px; } .surprise-btn { bottom: 10px; right: 10px; } }
+
 .bird-day-frame::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 35%; background: linear-gradient(to top, rgba(0,0,0,.55), transparent); pointer-events: none; z-index: 3; }
 .bird-day-image { display: block; width: 100%; height: 100%; object-fit: cover; background: white; transition: opacity .25s ease, transform .25s ease; }
 
 /* Caption bar */
-.bird-caption-bar { position: relative; z-index: 10; display: flex; align-items: center; width: 100%; min-height: 36px; padding: 6px 20px; box-sizing: border-box; background: var(--paper-2) var(--grain); color: var(--ink); border-top: 1px solid var(--line); font-size: 18px; font-weight: 500; letter-spacing: .04em; }
+.bird-caption-bar { position: relative; z-index: 10; display: flex; align-items: center; width: 100%; min-height: 36px; padding: 6px 20px; background: var(--paper-2) var(--grain); color: var(--ink); border-top: 1px solid var(--line); font-size: 18px; font-weight: 500; letter-spacing: .04em; }
 .bird-title-group { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 0 1 auto; }
 #dailyBirdCaption { flex: 0 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 18px; line-height: 1.2; }
-.bird-copyright { position: static; flex-shrink: 0; margin-left: auto; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .04em; color: var(--ink-soft); }
+.bird-copyright { flex-shrink: 0; margin-left: auto; font-size: 12px; letter-spacing: .04em; color: var(--ink-soft); }
 
-.bird-info-toggle { position: relative; top: 0; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; background: none; border: none; font-size: 0; line-height: 1; color: var(--ink-soft); cursor: pointer; transform-origin: center; transition: transform .25s ease, opacity .25s ease, color .25s ease; }
+.bird-info-toggle { position: relative; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; background: none; border: none; font-size: 0; line-height: 1; color: var(--ink-soft); cursor: pointer; transition: transform .25s ease, opacity .25s ease, color .25s ease; }
 .bird-info-toggle::before { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-top: 1.5px solid currentColor; transform: rotate(45deg) translate(1px, 1px); }
 .bird-info-toggle.open::before { transform: rotate(225deg) translate(1px, 1px); }
 .bird-info-toggle:hover { color: var(--ink); }
@@ -247,11 +253,13 @@ footer a:hover { color: var(--accent); }
 .bird-info-toggle.open { transform: none; }
 .bird-info-toggle:active { transform: scale(.95); }
 
-.bird-info-drawer { position: absolute; left: 0; right: 0; bottom: 100%; min-height: 105px; height: auto; background: rgba(45,45,45,.72); backdrop-filter: blur(4px); box-shadow: 0 -4px 16px rgba(0,0,0,.15); padding: 10px 20px; border-top: 1px solid rgba(255,255,255,.08); box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity .32s ease, transform .32s cubic-bezier(.22,.8,.28,1); z-index: 1; }
+.bird-info-drawer { position: absolute; left: 0; right: 0; bottom: 100%; min-height: 105px; background: rgba(45,45,45,.72); backdrop-filter: blur(4px); box-shadow: 0 -4px 16px rgba(0,0,0,.15); padding: 10px 20px; border-top: 1px solid rgba(255,255,255,.08); display: flex; flex-direction: column; justify-content: center; opacity: 0; transform: translateY(20px); pointer-events: none; transition: opacity .32s ease, transform .32s cubic-bezier(.22,.8,.28,1); z-index: 1; }
 .bird-info-drawer.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-.drawer-scientific { font-style: italic; font-weight: 300; font-size: 18px; color: #ffffff; line-height: 1.5; margin-bottom: 6px; }
+.drawer-scientific { font-style: italic; font-weight: 400; font-size: 18px; color: #ffffff; line-height: 1.5; margin-bottom: 6px; }
 .drawer-observed { font-size: 16px; color: #ececec; line-height: 1.5; margin-bottom: 4px; }
 .drawer-trivia { font-size: 16px; color: #ececec; line-height: 1.5; }
+.drawer-map-btn { padding: 0; border: none; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.drawer-map-btn:hover, .drawer-map-btn:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 
 .swipe-indicator { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
 .dot { border-radius: 50%; background: rgba(255,255,255,.35); border: 1px solid rgba(0,0,0,.35); box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s ease, opacity .25s ease, background .25s ease; }
@@ -274,8 +282,8 @@ footer a:hover { color: var(--accent); }
 .lightbox-close:focus-visible, .lightbox-nav:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
 .lightbox-image { max-width: 100%; max-height: 68vh; object-fit: contain; border-radius: 8px; }
 .lightbox-info { margin-top: 14px; text-align: center; color: #ffffff; max-width: 90%; }
-.lightbox-name { font-family: var(--font-main); font-weight: 300; font-size: 24px; letter-spacing: .04em; }
-.lightbox-scientific { font-style: italic; font-weight: 300; font-size: 16px; color: #dcdcdc; margin-top: 2px; }
+.lightbox-name { font-weight: 300; font-size: 24px; letter-spacing: .04em; }
+.lightbox-scientific { font-style: italic; font-weight: 400; font-size: 16px; color: #dcdcdc; margin-top: 2px; }
 .lightbox-countries { font-size: 14px; color: #bdbdbd; margin-top: 4px; }
 .lightbox-meta { font-size: 13px; color: #bdbdbd; margin-top: 4px; }
 .lightbox-meta:empty { display: none; }
@@ -289,31 +297,19 @@ footer a:hover { color: var(--accent); }
 .photo-badge { position: absolute; top: 5px; right: 5px; padding: 1px 6px; border-radius: 10px; background: rgba(0,0,0,.55); color: #fff; font-size: 11px; line-height: 16px; pointer-events: none; }
 
 /* ================= Dark mode ================= */
-html[data-theme="dark"], html[data-theme="dark"] body { background-color: var(--outer); color: var(--ink); }
+html[data-theme="dark"], html[data-theme="dark"] body { background-color: var(--outer); }
 html[data-theme="dark"] .site-page { box-shadow: 0 0 13px 3px rgba(0,0,0,.6); }
 html[data-theme="dark"] header { background: var(--header-bg); color: var(--ink); box-shadow: 0 1px 0 rgba(255,255,255,.10); }
 html[data-theme="dark"] header .site-title .o img { background: #e6ebe4; }
 html[data-theme="dark"] .nav-tab:focus-visible { outline-color: var(--ink); }
-html[data-theme="dark"] .explore-banner { border-top-color: var(--line); }
-html[data-theme="dark"] .explore-title { color: var(--ink); }
-html[data-theme="dark"] .explore-sub, html[data-theme="dark"] .stat-label { color: var(--ink-soft); }
-html[data-theme="dark"] .explore-ticker { background: var(--tint); color: var(--ink); }
-html[data-theme="dark"] .stat { border-left-color: var(--line); }
-html[data-theme="dark"] .stat-num { color: var(--num); }
 html[data-theme="dark"] #info { background: var(--paper-2); border-color: var(--line); color: var(--ink); }
-html[data-theme="dark"] .panel-box.merged-panel { background: var(--paper-2); color: var(--ink); }
-html[data-theme="dark"] .species-btn, html[data-theme="dark"] #countryCount { color: var(--ink); }
+html[data-theme="dark"] .panel-box.merged-panel { background: var(--paper-2); }
 html[data-theme="dark"] .panel-close { color: var(--ink-soft); }
 html[data-theme="dark"] .legend { background: rgba(29,43,40,.95); }
-html[data-theme="dark"] .legend-label { color: var(--ink); }
 html[data-theme="dark"] .map-hint { background: rgba(29,43,40,.95); color: var(--ink); }
 html[data-theme="dark"] .bird-day-main { background: var(--outer); }
-html[data-theme="dark"] #birdSort,
-html[data-theme="dark"] #countryFilter {
-  background: var(--paper-2);
-  color: var(--ink);
-  border-color: var(--line);
-}
+html[data-theme="dark"] #birdSort, html[data-theme="dark"] #countryFilter { background: var(--paper-2); }
+
 /* ================= Responsive ================= */
 @media (max-width: 1024px) {
   .bird-day-layout { grid-template-columns: 1fr; }
@@ -325,9 +321,8 @@ html[data-theme="dark"] #countryFilter {
   #mainPanel { display: flex; flex-direction: row; align-items: stretch; }
   #infoPanel { top: 10px; width: 65vw; max-width: 260px; padding-left: 12px; z-index: 2000; background: transparent; border-radius: 10px; }
   #map { height: 65vh; min-height: 450px; }
-  #speciesList { max-height: calc(65vh - 110px); }
+  #speciesList { max-height: calc(65vh - 150px); }
 }
-
 @media (max-width: 768px) {
   .header-nav { gap: 14px; }
   #thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; }
@@ -342,41 +337,36 @@ html[data-theme="dark"] #countryFilter {
   .country-select { flex: 0 0 auto; width: auto; max-width: 40vw; }
   .toolbar-right { flex-shrink: 1; }
 }
-
 @media (max-width: 700px) {
-  /* Header: title on top, menu underneath */
+  input, select, textarea { font-size: 16px; } /* stops iOS zoom */
   header { min-height: 0; padding: 10px 12px; }
   .header-inner { flex-direction: column; gap: 5px; }
   header .site-title { font-size: 38px; }
   .nav-tab { font-size: 14px; letter-spacing: .06em; }
   #themeToggle { font-size: 18px; }
-
-  /* Caption bar: name wraps (max 2 lines), copyright smaller and right-aligned */
   .bird-caption-bar { padding: 6px 12px; min-height: 54px; gap: 8px; }
   .bird-title-group { flex: 1 1 0; min-width: 0; }
   #dailyBirdCaption { font-size: 16px; line-height: 1.2; white-space: normal; text-overflow: clip; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .bird-copyright { flex: 0 0 auto; margin-left: 0; font-size: 10.5px; letter-spacing: .02em; text-align: right; white-space: nowrap; }
+  .bird-copyright { flex: 0 0 auto; margin-left: 0; font-size: 11px; letter-spacing: .02em; text-align: right; white-space: nowrap; }
 }
-
 @media (max-width: 600px) {
   .nav-arrow { font-size: 30px; }
   .left-arrow { left: 8px; }
   .right-arrow { right: 8px; }
   .stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 0; }
   .stat { border-left: none; }
-  .stat:nth-child(even) { border-left: 1px solid rgba(0,0,0,.12); }
-  .stat-num { font-size: 1.5rem; }
-  .stat-label { font-size: .66rem; }
-  .explore-inner { padding: 14px 12px 10px; }
+  .stat:nth-child(even) { border-left: 1px solid var(--line); }
+  .stat-num { font-size: 1.4rem; }
+  .stat-label { font-size: .68rem; }
+  .explore-inner, .map-tools-inner { padding-left: 12px; padding-right: 12px; }
   .lightbox { padding: 56px 12px 20px; }
   .lightbox-nav { width: 40px; height: 40px; background: rgba(0,0,0,.45); }
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
 }
-
 @media (max-width: 480px) {
   #thumbnailGallery { gap: 4px; padding: 4px; }
-  #thumbnailGallery div > div { font-size: 10px !important; padding: 2px 4px !important; }
+  #thumbnailGallery div > div { font-size: 11px !important; padding: 2px 4px !important; }
   #thumbnailPanel { max-height: 160px; }
   .thumbnail-search { padding-inline: 8px; }
   .thumbnail-select { padding-inline: 7px; }
@@ -384,10 +374,8 @@ html[data-theme="dark"] #countryFilter {
   .map-hint { font-size: 12.5px; padding: 7px 14px; max-width: calc(100% - 110px); }
 }
 </style>
- 
-<!-- GoatCounter: cookieless visit statistics -->
-<script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
+<script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <div class="site-page">
@@ -395,54 +383,7 @@ html[data-theme="dark"] #countryFilter {
 <!-- Page header -->
 <header>
 <div class="header-inner">
-<h1 class="site-title" 
-aria-label="BirdBlog"
->Birdbl<span class="o">o<img alt=
-"" src="data:image/png;base64,
-     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">
-</span>g</h1>
+<h1 class="site-title" aria-label="BirdBlog">Birdbl<span class="o">o<img alt="" src="PASTE_YOUR_LOGO_DATA_URI_HERE"></span>g</h1>
 <nav class="header-nav">
 <button id="exploreTab" class="nav-tab">Explore Map</button>
 <button id="aboutTab" class="nav-tab" aria-controls="hamburgerPanel" aria-expanded="false">About</button>
@@ -451,17 +392,12 @@ z6NOhUk2Q1yPgDgvvvv18454Q1xS+ePrFpTp8+KSezmbvnztv42q/9ag4XC67cuEFRVhzsHXDplVdZX1
 </div>
 </header>
 
-<!-- Bird photo of the day -->
+<!-- Bird photo of the day + gallery -->
 <div class="bird-day-layout">
 <div class="bird-day-main">
 
 <div class="bird-day-frame">
 <img id="dailyBirdImage" class="bird-day-image" src="" alt="Featured Bird">
-
-<button type="button" id="surpriseBtn" class="surprise-btn" aria-label="Surprise me: show a random bird">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/></svg>
-<span class="surprise-label">Surprise me</span>
-</button>
 
 <button type="button" id="photosBtn" class="photos-btn" hidden>
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="14" height="14" rx="2"/><path d="M3 7v12a2 2 0 0 0 2 2h12"/><circle cx="12" cy="8" r="1.3"/><path d="M21 13l-4-4-6 6"/></svg>
@@ -476,6 +412,11 @@ z6NOhUk2Q1yPgDgvvvv18454Q1xS+ePrFpTp8+KSezmbvnztv42q/9ag4XC67cuEFRVhzsHXDplVdZX1
 <button id="slideshowToggle" class="center-dot" aria-label="Start slideshow"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="8.5,5 19.5,12 8.5,19"/></svg></button>
 <span class="dot right-dot"></span>
 </div>
+
+<button type="button" id="surpriseBtn" class="surprise-btn" aria-label="Surprise me: show a random bird">
+<span class="surprise-label">Surprise me</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1" fill="currentColor"/></svg>
+</button>
 </div>
 
 <div id="birdNameBar" class="bird-caption-bar">
@@ -495,21 +436,20 @@ z6NOhUk2Q1yPgDgvvvv18454Q1xS+ePrFpTp8+KSezmbvnztv42q/9ag4XC67cuEFRVhzsHXDplVdZX1
 
 </div>
 
-<!-- Thumbnails -->
 <div class="thumbnail-column">
 <div id="thumbnailControls" class="thumbnail-controls">
-<button id="searchToggle" class="thumbnail-search-button" aria-label="Search species">
+<button id="searchToggle" class="thumbnail-search-button" aria-label="Search species or country">
 <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
-<circle cx="10" cy="10" r="6" fill="none" stroke="#ffffff" stroke-width="2.2"/>
-<line x1="14.5" y1="14.5" x2="19" y2="19" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+<circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2.2"/>
+<line x1="14.5" y1="14.5" x2="19" y2="19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
 </svg>
 </button>
 
-<input type="text" id="birdSearch" class="thumbnail-search collapsed-search" placeholder="Search species...">
+<input type="text" id="birdSearch" class="thumbnail-search collapsed-search" placeholder="Search a species or a country…">
 
 <div class="toolbar-right">
-<select id="countryFilter" class="country-select"></select>
-<select id="birdSort" class="thumbnail-select">
+<select id="countryFilter" class="country-select" aria-label="Filter photos by country"></select>
+<select id="birdSort" class="thumbnail-select" aria-label="Sort photos">
 <option value="alpha">A-Z</option>
 <option value="random">Random</option>
 <option value="country">Country</option>
@@ -524,41 +464,44 @@ z6NOhUk2Q1yPgDgvvvv18454Q1xS+ePrFpTp8+KSezmbvnztv42q/9ag4XC67cuEFRVhzsHXDplVdZX1
 </div>
 </div>
 
-<!-- Explore group: heading, stats, ribbon -->
+<!-- Species Explorer -->
 <section class="explore-banner">
 <div class="explore-inner">
 <h2 class="explore-title">Species Explorer</h2>
 <p class="explore-sub">My life list and photo record</p>
-
 <div class="stats-strip">
 <div class="stat"><span class="stat-num" id="statObserved">0</span><span class="stat-label">Species observed</span></div>
 <div class="stat"><span class="stat-num" id="statPhotographed">0</span><span class="stat-label">Species photographed</span></div>
 <div class="stat"><span class="stat-num" id="statCountries">0</span><span class="stat-label">Countries</span></div>
 <div class="stat"><span class="stat-num">2020</span><span class="stat-label">Birding since</span></div>
 </div>
-
-<div class="explore-ticker">
-<div id="exploreTicker" class="explore-ticker-content"></div>
-</div>
-
-<div class="map-search">
-<input id="mapSearch" class="map-search-input" type="text" placeholder="Where have I seen…? Search a species" autocomplete="off" aria-label="Search a species to see where it was recorded">
-<button id="mapSearchClear" class="map-search-clear" type="button" aria-label="Clear search" hidden>&times;</button>
-<ul id="mapSearchList" class="map-search-list" hidden></ul>
-<div id="mapSearchStatus" class="map-search-status" aria-live="polite"></div>
-</div>
 </div>
 </section>
 
 <div id="info"></div>
 
+<!-- Map tools -->
+<section id="mapTools" class="map-tools" aria-label="Explore map">
+<div class="map-tools-inner">
+<h2 class="map-tools-title">Explore Map</h2>
+<div class="map-search">
+<input id="mapSearch" class="map-search-input" type="text" placeholder="Search a species or a country…" autocomplete="off" aria-label="Search a species or a country to highlight it on the map">
+<button id="mapSearchClear" class="map-search-clear" type="button" aria-label="Clear search" hidden>&times;</button>
+<ul id="mapSearchList" class="map-search-list" hidden></ul>
+</div>
+<div id="mapSearchStatus" class="map-search-status" aria-live="polite"></div>
+<p class="map-tools-tip">Tip: click any country on the map to open its species list, then use “View photos” to see them in the gallery.</p>
+</div>
+</section>
+
 <!-- Map -->
 <div id="mainPanel">
 <div id="infoPanel">
 <div class="panel-box merged-panel">
-<button id="closeCountryPanel" class="panel-close">✕</button>
+<button id="closeCountryPanel" class="panel-close" aria-label="Close">✕</button>
 <h2 id="countryName">Country</h2>
 <p id="countryCount">Click a country to view species list</p>
+<button id="viewPhotosBtn" class="panel-photos-btn" type="button" hidden>View photos</button>
 <div id="speciesList"></div>
 </div>
 </div>
@@ -630,13 +573,12 @@ const map = L.map('map', {
 L.control.zoom({ position: 'topright' }).addTo(map);
 
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles © Esri' }).addTo(map);
-  
+
 /* ================= DATA ================= */
 /* Update these two numbers by hand when your totals change */
 const WORLD_SPECIES = 545;        /* species observed */
 const PHOTOGRAPHED_SPECIES = 474; /* species photographed */
 const birdData = { "Norway": 192, "Sweden": 61, "Finland": 35, "Denmark": 115, "Italy": 60, "United Kingdom": 44, "Netherlands": 127, "Germany": 18, "Poland": 3, "Czech Republic": 2, "Latvia": 13, "Greece": 22, "Estonia": 55, "Bangladesh": 185, "Thailand": 126, "Aruba": 72, "Curaçao": 60, "Belgium": 33 };
-const flags = { "Norway": "no", "Sweden": "se", "Finland": "fi", "Denmark": "dk", "Italy": "it", "United Kingdom": "gb", "Netherlands": "nl", "Germany": "de", "Poland": "pl", "Czech Republic": "cz", "Latvia": "lv", "Greece": "gr", "Estonia": "ee", "Bangladesh": "bd", "Thailand": "th", "Aruba": "aw", "Curaçao": "cw", "Belgium": "be" };
 
 let birds = {};
 let birdKeys = [];
@@ -648,7 +590,7 @@ const ICON_PLAY = '<svg width="16" height="16" viewBox="0 0 24 24" fill="current
 const ICON_PAUSE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>';
 const SLIDE_PLACEHOLDER_MS = 1200; /* species without a real photo yet flash by quickly */
 const PLACEHOLDER_MARK = 'Designer_qslnqv'; /* part of the placeholder image's URL */
-const SLIDE_MS = 3500; /* time per photo in the slideshow (3500 for a bit livelier) */
+const SLIDE_MS = 3500; /* time per photo in the slideshow */
 const preloader = new Image();
 function isPlaceholder(name) {
   return !!birds[name]?.photo && birds[name].photo.includes(PLACEHOLDER_MARK);
@@ -662,8 +604,7 @@ function track(name) {
   try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: name, event: true }); } catch (e) {}
 }
 /* birds.json may give a species either a single "photo" (old format) or a "photos" array
-   whose items are URL strings or {url, place, date} objects. Normalise to photos = [{url, ...}]
-   and keep bird.photo = the first (cover) photo so older code keeps working. */
+   whose items are URL strings or {url, place, date} objects. */
 function normalizeBirds(data) {
   for (const b of Object.values(data)) {
     const raw = Array.isArray(b.photos) && b.photos.length ? b.photos : (b.photo ? [b.photo] : []);
@@ -696,7 +637,6 @@ initApp();
 .catch(error => console.error("Error loading birds.json:", error));
 
 function initApp() {
-updateTicker();
 updateStats();
 showBirdOfTheDay();
 loadThumbnails([...Object.entries(birds)].sort((a, b) => a[0].localeCompare(b[0])));
@@ -712,16 +652,6 @@ countryFilter.appendChild(option);
 });
 }
 
-function updateTicker() {
-let html = "";
-Object.entries(birdData).sort((a, b) => b[1] - a[1]).forEach(([country, count]) => {
-const code = flags[country];
-if (!code) return;
-html += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://flagcdn.com/24x18/${code}.png" alt="${country}" class="ticker-flag">${country} ${count}`;
-});
-document.getElementById("exploreTicker").innerHTML = html;
-}
-
 function updateStats() {
 document.getElementById("statObserved").textContent = WORLD_SPECIES;
 document.getElementById("statPhotographed").textContent = PHOTOGRAPHED_SPECIES;
@@ -730,18 +660,14 @@ document.getElementById("statCountries").textContent = Object.keys(birdData).len
 
 /* ================= BIRD OF THE DAY + NAVIGATION ================= */
 function showBirdOfTheDay() {
-  /* Only species with a real photo can be the random bird */
   const eligible = birdKeys.map((k, i) => i).filter(i => !isPlaceholder(birdKeys[i]));
   const pool = eligible.length ? eligible : birdKeys.map((k, i) => i);
   const last = Number(sessionStorage.getItem("lastFeaturedBird"));
   let newIndex;
-
   do {
     newIndex = pool[Math.floor(Math.random() * pool.length)];
   } while (pool.length > 1 && newIndex === last);
-
   sessionStorage.setItem("lastFeaturedBird", newIndex);
-
   currentBirdIndex = newIndex;
   const name = birdKeys[currentBirdIndex];
   showBird(name, birds[name].photo);
@@ -773,7 +699,17 @@ img.src = url;
 img.alt = name;
 document.getElementById("dailyBirdCaption").textContent = name;
 document.querySelector(".drawer-scientific").textContent = scientificNames[name] || "Scientific name unavailable";
-document.querySelector(".drawer-observed").textContent = `🌍 ${(birds[name].countries || []).join(", ")}`;
+
+/* Countries line doubles as a "Show on map" button */
+const obs = document.querySelector(".drawer-observed");
+obs.innerHTML = "";
+const mapBtn = document.createElement("button");
+mapBtn.type = "button";
+mapBtn.className = "drawer-map-btn";
+mapBtn.textContent = `🌍 ${(birds[name].countries || []).join(", ")} · Show on map`;
+mapBtn.onclick = () => window.showSpeciesOnMap && window.showSpeciesOnMap(name);
+obs.appendChild(mapBtn);
+
 updatePhotosButton(name);
 img.style.opacity = "1";
 preloadNext();
@@ -804,7 +740,6 @@ setTimeout(() => dot.classList.remove("swipe-active"), 250);
 }
 
 /* Slideshow */
-/* Real photos stay SLIDE_MS; placeholder images pass in SLIDE_PLACEHOLDER_MS */
 function scheduleNextSlide() {
 const delay = isPlaceholder(birdKeys[currentBirdIndex]) ? SLIDE_PLACEHOLDER_MS : SLIDE_MS;
 slideshowTimer = setTimeout(() => {
@@ -847,26 +782,16 @@ if (document.hidden && slideshowRunning) stopSlideshow();
 /* Surprise me: jump to a random species that has a real photo */
 (function () {
 const btn = document.getElementById("surpriseBtn");
-let hideTimer = null;
 btn.addEventListener("click", () => {
   const pool = birdKeys
     .map((k, i) => i)
     .filter(i => i !== currentBirdIndex && !isPlaceholder(birdKeys[i]));
-
   if (!pool.length) return;
-
   track("surprise");
-
   if (slideshowRunning) stopSlideshow();
-
   goTo(pool[Math.floor(Math.random() * pool.length)], 1);
-
   btn.classList.add("rolling");
-
-  setTimeout(() => {
-    btn.classList.remove("rolling");
-  }, 500);
-
+  setTimeout(() => btn.classList.remove("rolling"), 500);
   /* permanently hide the label after first use */
   btn.querySelector(".surprise-label").style.display = "none";
 });
@@ -959,12 +884,17 @@ gallery.appendChild(wrapper);
 const searchBox = document.getElementById("birdSearch");
 const sortBox = document.getElementById("birdSort");
 const countryBox = document.getElementById("countryFilter");
+const panel = document.getElementById("thumbnailPanel");
+const toggleBtn = document.getElementById("toggleGalleryBtn");
 
 function updateGallery() {
 let list = Object.entries(birds);
 const search = searchBox.value.toLowerCase();
 
-if (search) list = list.filter(([name]) => name.toLowerCase().includes(search));
+/* Matches species names and country names */
+if (search) list = list.filter(([name, d]) =>
+  name.toLowerCase().includes(search) ||
+  (d.countries || []).some(c => c.toLowerCase().includes(search)));
 
 if (sortBox.value === "alpha") {
 list.sort((a, b) => a[0].localeCompare(b[0]));
@@ -976,22 +906,18 @@ list = list.filter(([name, data]) => data.countries && data.countries.includes(c
 loadThumbnails(list);
 }
 
-sortBox.addEventListener("change", () => {
-if (sortBox.value === "country") {
-countryBox.style.display = "block";
-countryBox.style.flex = "0 0 auto";
-countryBox.style.width = "auto";
-countryBox.style.opacity = "1";
-} else {
-countryBox.style.display = "none";
-countryBox.style.flex = "0 0 0";
-countryBox.style.width = "0";
-countryBox.style.opacity = "0";
-countryBox.value = "";
+function showCountryBox(on) {
+countryBox.style.display = on ? "block" : "none";
+countryBox.style.flex = on ? "0 0 auto" : "0 0 0";
+countryBox.style.width = on ? "auto" : "0";
+countryBox.style.opacity = on ? "1" : "0";
 }
+
+sortBox.addEventListener("change", () => {
+showCountryBox(sortBox.value === "country");
+if (sortBox.value !== "country") countryBox.value = "";
 updateGallery();
 });
-
 countryBox.addEventListener("change", updateGallery);
 searchBox.addEventListener("input", updateGallery);
 
@@ -1007,12 +933,24 @@ searchBox.dispatchEvent(new Event("input"));
 });
 
 /* Collapse / expand gallery on small screens */
-const toggleBtn = document.getElementById("toggleGalleryBtn");
-const panel = document.getElementById("thumbnailPanel");
 toggleBtn.addEventListener("click", () => {
 panel.classList.toggle("collapsed");
 toggleBtn.textContent = panel.classList.contains("collapsed") ? "+" : "−";
 });
+
+/* Map -> photos: filter the gallery to one country and scroll up to it */
+window.filterGalleryByCountry = function (country) {
+searchBox.value = "";
+searchBox.classList.add("collapsed-search");
+sortBox.value = "country";
+showCountryBox(true);
+countryBox.value = country;
+updateGallery();
+panel.classList.remove("collapsed");
+toggleBtn.textContent = "−";
+panel.scrollTop = 0;
+document.querySelector(".bird-day-layout").scrollIntoView({ behavior: "smooth", block: "start" });
+};
 })();
 
 /* Keep the thumbnail column the same height as the big photo on desktop */
@@ -1036,16 +974,15 @@ btn.classList.toggle("open");
 });
 })();
 
-/* "Explore Map" scrolls to the map */
+/* "Explore Map" scrolls to the map tools band */
 document.getElementById("exploreTab").addEventListener("click", () => {
-document.getElementById("mainPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+document.getElementById("mapTools").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 /* ================= LIGHTBOX ================= */
 const lightbox = document.getElementById('lightbox');
 let lightboxList = [];
 let lightboxIndex = 0;
-
 let lightboxPhoto = 0;
 const lightboxPreloader = new Image();
 
@@ -1137,7 +1074,7 @@ else if (e.key === 'ArrowUp') { e.preventDefault(); stepPhoto(-1); }
 else if (e.key === 'ArrowDown') { e.preventDefault(); stepPhoto(1); }
 });
 
-/* Swipe left/right inside the lightbox */
+/* Swipe inside the lightbox */
 (function () {
 let startX = 0, startY = 0;
 lightbox.addEventListener('touchstart', e => { startX = e.changedTouches[0].screenX; startY = e.changedTouches[0].screenY; });
@@ -1165,7 +1102,7 @@ return `rgb(${lerp(stops[idx][0], stops[next][0])},${lerp(stops[idx][1], stops[n
 const aliasMap = { "United States of America": "United States", "Russian Federation": "Russia", "Curacao": "Curaçao", "Aruba": "Aruba" };
 const normalizeName = n => aliasMap[n] || n;
 
-/* Species search: countries where the chosen species was recorded (null = no search active) */
+/* Search highlight: countries to light up (null = no search active) */
 let highlightSet = null;
 let geoLayerRef = null;
 const islandMarkerRefs = [];
@@ -1220,6 +1157,7 @@ const infoPanel = document.getElementById("infoPanel");
 const nameEl = document.getElementById('countryName');
 const countEl = document.getElementById('countryCount');
 const listEl = document.getElementById('speciesList');
+const photosBtn = document.getElementById('viewPhotosBtn');
 
 function resetCountryPanel() {
 selectedName = null;
@@ -1227,6 +1165,7 @@ selectedCount = 0;
 nameEl.textContent = 'Country';
 countEl.textContent = 'Click a country to view species list';
 listEl.innerHTML = '';
+photosBtn.hidden = true;
 }
 
 document.getElementById("closeCountryPanel").addEventListener("click", () => {
@@ -1238,6 +1177,13 @@ if (e.key === 'Escape') {
 resetCountryPanel();
 infoPanel.classList.remove("open");
 }
+});
+
+/* Photos <- map: filter the gallery to the selected country */
+photosBtn.addEventListener('click', () => {
+if (!selectedName) return;
+track('view-photos: ' + selectedName);
+window.filterGalleryByCountry(selectedName);
 });
 
 function renderSelectedSpeciesList() {
@@ -1272,6 +1218,7 @@ listEl.appendChild(ul);
 function hoverIn(name, count) {
 nameEl.textContent = name;
 countEl.textContent = `${count} species observed`;
+photosBtn.hidden = true;
 if (selectedName !== name) {
 listEl.innerHTML = `<p style="text-align:center; color:#777; margin: 6px 0;">Click to view details: ${name}...</p>`;
 }
@@ -1280,6 +1227,7 @@ listEl.innerHTML = `<p style="text-align:center; color:#777; margin: 6px 0;">Cli
 function hoverOut() {
 nameEl.textContent = selectedName || 'Country';
 countEl.textContent = selectedName ? `${selectedCount} species observed` : 'Click a country to view species details';
+photosBtn.hidden = !selectedName;
 renderSelectedSpeciesList();
 }
 
@@ -1291,7 +1239,14 @@ infoPanel.classList.add("open");
 document.getElementById('mapHint').classList.add('hidden');
 nameEl.textContent = name;
 countEl.textContent = `${count} species observed`;
+photosBtn.hidden = false;
 renderSelectedSpeciesList();
+}
+
+/* A click on the map replaces any search highlight */
+function selectFromMap(name, count) {
+if (window.clearMapSearch) window.clearMapSearch();
+selectCountry(name, count);
 }
 
 const geoLayer = L.geoJSON(filtered, {
@@ -1309,12 +1264,13 @@ layer.on('mouseout', () => {
 hoverOut();
 geoLayer.resetStyle(layer);
 });
-layer.on('click', () => selectCountry(name, count));
+layer.on('click', () => selectFromMap(name, count));
 layer.bindTooltip(`${name}: ${count} species`, { sticky: true });
 }
 }).addTo(map);
 
 geoLayerRef = geoLayer;
+window.selectCountryFromSearch = selectCountry;
 
 /* Island markers (Aruba and Curaçao are too small to see as shapes) */
 const customMarkers = {
@@ -1339,7 +1295,7 @@ marker.setStyle(markerStyle(name));
 marker.bindTooltip(`${name}: ${count} species`, { permanent: false, direction: 'top' });
 marker.on('mouseover', () => hoverIn(name, count));
 marker.on('mouseout', hoverOut);
-marker.on('click', () => selectCountry(name, count));
+marker.on('click', () => selectFromMap(name, count));
 });
 })
 .catch(err => {
@@ -1347,68 +1303,103 @@ console.error('GeoJSON load error:', err);
 document.getElementById('info').textContent = 'Could not load map data. Check your internet connection.';
 });
 
-/* ================= SPECIES SEARCH ON THE MAP ================= */
+/* ================= MAP SEARCH (countries + species) ================= */
 (function () {
 const input = document.getElementById('mapSearch');
 const list = document.getElementById('mapSearchList');
 const clearBtn = document.getElementById('mapSearchClear');
 const status = document.getElementById('mapSearchStatus');
 const hint = document.getElementById('mapHint');
-const defaultHint = hint.textContent;
+const countryNames = Object.keys(birdData).sort((a, b) => a.localeCompare(b));
+
+const rank = q => (a, b) =>
+  (b.toLowerCase().startsWith(q)) - (a.toLowerCase().startsWith(q)) || a.localeCompare(b);
 
 function closeList() { list.hidden = true; }
+
+function addGroup(label) {
+const li = document.createElement('li');
+li.className = 'map-search-group';
+li.textContent = label;
+list.appendChild(li);
+}
+function addItem(name, onPick) {
+const li = document.createElement('li');
+const b = document.createElement('button');
+b.type = 'button';
+b.textContent = name;
+b.addEventListener('click', onPick);
+li.appendChild(b);
+list.appendChild(li);
+}
 
 function renderList() {
 const q = input.value.trim().toLowerCase();
 clearBtn.hidden = !input.value;
 list.innerHTML = '';
 if (!q) { closeList(); return; }
-const matches = birdKeys
-.filter(n => n.toLowerCase().includes(q))
-.sort((a, b) => (b.toLowerCase().startsWith(q)) - (a.toLowerCase().startsWith(q)) || a.localeCompare(b))
-.slice(0, 8);
-if (!matches.length) {
+
+const countries = countryNames.filter(n => n.toLowerCase().includes(q)).sort(rank(q)).slice(0, 4);
+const species = birdKeys.filter(n => n.toLowerCase().includes(q)).sort(rank(q)).slice(0, 8);
+
+if (countries.length) {
+addGroup('Countries');
+countries.forEach(n => addItem(n, () => chooseCountry(n)));
+}
+if (species.length) {
+addGroup('Species');
+species.forEach(n => addItem(n, () => chooseSpecies(n)));
+}
+if (!countries.length && !species.length) {
 const li = document.createElement('li');
 li.className = 'map-search-empty';
-li.textContent = 'No matching species';
+li.textContent = 'No matching country or species';
 list.appendChild(li);
-} else {
-matches.forEach(name => {
-const li = document.createElement('li');
-const b = document.createElement('button');
-b.type = 'button';
-b.textContent = name;
-b.addEventListener('click', () => choose(name));
-li.appendChild(b);
-list.appendChild(li);
-});
 }
 list.hidden = false;
 }
 
-function choose(name) {
+function scrollToTools() {
+document.getElementById('mapTools').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function chooseCountry(name) {
+highlightSet = new Set([name]);
+input.value = name;
+closeList();
+clearBtn.hidden = false;
+status.textContent = '';
+hint.classList.add('hidden');
+applyMapHighlight();
+if (window.selectCountryFromSearch) window.selectCountryFromSearch(name, birdData[name] || 0);
+track('map-search-country: ' + name);
+scrollToTools();
+}
+
+function chooseSpecies(name) {
 const countries = birds[name]?.countries || [];
 highlightSet = new Set(countries);
 input.value = name;
 closeList();
 clearBtn.hidden = false;
-const text = `${name}: recorded in ${countries.length} ${countries.length === 1 ? 'country' : 'countries'} (${countries.join(', ')})`;
-status.textContent = text;
+status.textContent = `${name}: recorded in ${countries.length} ${countries.length === 1 ? 'country' : 'countries'} (${countries.join(', ')})`;
 hint.classList.add('hidden');
+document.getElementById('closeCountryPanel').click(); /* close any open country panel */
 applyMapHighlight();
 track('map-search: ' + name);
-document.getElementById('mainPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+scrollToTools();
 }
+window.showSpeciesOnMap = chooseSpecies; /* used by the drawer's "Show on map" */
 
 function clearSearch() {
 highlightSet = null;
 input.value = '';
 status.textContent = '';
-hint.classList.add('hidden');
 clearBtn.hidden = true;
 closeList();
 applyMapHighlight();
 }
+window.clearMapSearch = () => { if (highlightSet || input.value) clearSearch(); };
 
 input.addEventListener('input', () => {
 if (!input.value && highlightSet) { clearSearch(); return; }
@@ -1479,7 +1470,6 @@ aboutBtn.setAttribute('aria-expanded', 'true');
 }
 
 aboutBtn.addEventListener('click', () => toggle(aboutPanel));
-
 document.addEventListener('keydown', e => { if (e.key === 'Escape') hideAll(); });
 
 /* Click anywhere else closes the panels */
