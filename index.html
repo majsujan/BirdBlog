@@ -10,8 +10,6 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-<link rel="preconnect" href="https://ik.imagekit.io">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
@@ -31,44 +29,44 @@ document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
 <style>
 /* ================= Variables ================= */
 :root {
-  --page-max-width: 1632px;
-  --font-main: 'Jost', 'Futura', 'Century Gothic', sans-serif;
-  --font-mono: 'Space Mono', 'Courier New', monospace;
-  --forest: #6a9f69;
-  --cream: #faf8f3;
-  --accent: #d0572c;
-  --active: #d0572c;
-  --paper: #faf8f3;
-  --paper-2: #efeadc;
-  --ink: #1b1d1a;
-  --ink-soft: #5b6058;
-  --line: rgba(27,29,26,.14);
-  --field: rgba(255,255,255,.65);
-  --thumb: rgba(27,29,26,.30);
-  --footer-bg: #efeadc;
-  --track-caps: .14em;
-  --ctl-h: 40px;
-  --fab: 44px;
-  --fab-bottom: 16px;
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+--page-max-width: 1632px;
+--font-main: 'Jost', 'Futura', 'Century Gothic', sans-serif;
+--font-mono: 'Space Mono', 'Courier New', monospace;
+--forest: #6a9f69;
+--cream: #faf8f3;
+--accent: #d0572c;
+--active: #d0572c;
+--paper: #faf8f3;
+--paper-2: #efeadc;
+--ink: #1b1d1a;
+--ink-soft: #5b6058;
+--line: rgba(27,29,26,.14);
+--field: rgba(255,255,255,.65);
+--thumb: rgba(27,29,26,.30);
+--footer-bg: #efeadc;
+--track-caps: .14em;
+--ctl-h: 40px;
+--fab: 44px;
+--fab-bottom: 16px;
+--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 html[data-theme="dark"] {
-  color-scheme: dark;
-  --accent: #e08a63;
-  --active: #7fb5a6;
-  --paper: #16211f;
-  --paper-2: #1d2b28;
-  --ink: #e4e9e4;
-  --ink-soft: #9fb1ab;
-  --line: rgba(228,233,228,.14);
-  --field: rgba(255,255,255,.06);
-  --thumb: rgba(228,233,228,.32);
-  --footer-bg: #0f1817;
-  --outer: #0f1817;
-  --header-bg: #23453a;
-  --num: #70d89a;
-  --cream: #16211f;
-  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+color-scheme: dark;
+--accent: #e08a63;
+--active: #7fb5a6;
+--paper: #16211f;
+--paper-2: #1d2b28;
+--ink: #e4e9e4;
+--ink-soft: #9fb1ab;
+--line: rgba(228,233,228,.14);
+--field: rgba(255,255,255,.06);
+--thumb: rgba(228,233,228,.32);
+--footer-bg: #0f1817;
+--outer: #0f1817;
+--header-bg: #23453a;
+--num: #70d89a;
+--cream: #16211f;
+--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* ================= Global ================= */
@@ -316,61 +314,61 @@ html[data-theme="dark"] .bird-day-main { background: var(--outer); }
 
 /* ================= Responsive ================= */
 @media (max-width: 1024px) {
-  .bird-day-layout { grid-template-columns: 1fr; }
-  .thumbnail-column { border-left: 0; border-top: 1px solid var(--line); }
-  #thumbnailPanel { max-height: 250px; overscroll-behavior: contain; scrollbar-gutter: stable; transition: max-height .35s ease, opacity .25s ease; }
-  #thumbnailPanel.collapsed { max-height: 0 !important; height: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; opacity: 0; overflow: hidden; }
-  .thumbnail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0 5px 5px 5px; }
-  .gallery-toggle { display: flex; }
-  #mainPanel { display: flex; flex-direction: row; align-items: stretch; }
-  #infoPanel { top: 10px; width: 65vw; max-width: 260px; padding-left: 12px; z-index: 2000; background: transparent; border-radius: 10px; }
-  #map { height: 65vh; min-height: 450px; }
-  #speciesList { max-height: calc(65vh - 150px); }
+.bird-day-layout { grid-template-columns: 1fr; }
+.thumbnail-column { border-left: 0; border-top: 1px solid var(--line); }
+#thumbnailPanel { max-height: 250px; overscroll-behavior: contain; scrollbar-gutter: stable; transition: max-height .35s ease, opacity .25s ease; }
+#thumbnailPanel.collapsed { max-height: 0 !important; height: 0 !important; min-height: 0 !important; padding: 0 !important; margin: 0 !important; opacity: 0; overflow: hidden; }
+.thumbnail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0 5px 5px 5px; }
+.gallery-toggle { display: flex; }
+#mainPanel { display: flex; flex-direction: row; align-items: stretch; }
+#infoPanel { top: 10px; width: 65vw; max-width: 260px; padding-left: 12px; z-index: 2000; background: transparent; border-radius: 10px; }
+#map { height: 65vh; min-height: 450px; }
+#speciesList { max-height: calc(65vh - 150px); }
 }
 @media (max-width: 768px) {
-  .header-nav { gap: 14px; }
-  #thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; }
-  #thumbnailPanel { max-height: 180px; }
-  #countryName { font-size: 24px; }
-  #countryCount { font-size: 17px; line-height: 1.5; }
-  .species-btn { font-size: 17px; line-height: 1.3; }
-  .species-li { margin-bottom: 6px; }
-  .about-text { margin-top: 6px; }
-  .thumbnail-search { flex: 1 1 100%; }
-  .toolbar-right { flex-shrink: 1; }
+.header-nav { gap: 14px; }
+#thumbnailGallery { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px; }
+#thumbnailPanel { max-height: 180px; }
+#countryName { font-size: 24px; }
+#countryCount { font-size: 17px; line-height: 1.5; }
+.species-btn { font-size: 17px; line-height: 1.3; }
+.species-li { margin-bottom: 6px; }
+.about-text { margin-top: 6px; }
+.thumbnail-search { flex: 1 1 100%; }
+.toolbar-right { flex-shrink: 1; }
 }
 @media (max-width: 700px) {
-  input, select, textarea { font-size: 16px; } /* stops iOS zoom */
-  header { min-height: 0; padding: 10px 12px; }
-  .header-inner { flex-direction: column; gap: 5px; }
-  header .site-title img { height: 30px; }
-  .nav-tab { font-size: 14px; letter-spacing: .06em; }
-  #themeToggle { font-size: 18px; }
-  .bird-caption-bar { padding: 6px 12px; min-height: 54px; gap: 8px; }
-  .bird-title-group { flex: 1 1 0; min-width: 0; }
-  #dailyBirdCaption { font-size: 16px; line-height: 1.2; white-space: normal; text-overflow: clip; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .bird-copyright { flex: 0 0 auto; margin-left: 0; font-size: 11px; letter-spacing: .02em; text-align: right; white-space: nowrap; }
+input, select, textarea { font-size: 16px; } /* stops iOS zoom */
+header { min-height: 0; padding: 10px 12px; }
+.header-inner { flex-direction: column; gap: 5px; }
+header .site-title img { height: 30px; }
+.nav-tab { font-size: 14px; letter-spacing: .06em; }
+#themeToggle { font-size: 18px; }
+.bird-caption-bar { padding: 6px 12px; min-height: 54px; gap: 8px; }
+.bird-title-group { flex: 1 1 0; min-width: 0; }
+#dailyBirdCaption { font-size: 16px; line-height: 1.2; white-space: normal; text-overflow: clip; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.bird-copyright { flex: 0 0 auto; margin-left: 0; font-size: 11px; letter-spacing: .02em; text-align: right; white-space: nowrap; }
 }
 @media (max-width: 600px) {
-  .nav-arrow { font-size: 30px; }
-  .left-arrow { left: 8px; }
-  .right-arrow { right: 8px; }
-  .stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 0; }
-  .stat { border-left: none; }
-  .stat:nth-child(even) { border-left: 1px solid var(--line); }
-  .stat-num { font-size: 1.4rem; }
-  .stat-label { font-size: .68rem; }
-  .explore-inner, .map-tools-inner { padding-left: 12px; padding-right: 12px; }
-  .lightbox { padding: 56px 12px 20px; }
-  .lightbox-nav { width: 40px; height: 40px; background: rgba(0,0,0,.45); }
-  .lightbox-prev { left: 8px; }
-  .lightbox-next { right: 8px; }
+.nav-arrow { font-size: 30px; }
+.left-arrow { left: 8px; }
+.right-arrow { right: 8px; }
+.stats-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 0; }
+.stat { border-left: none; }
+.stat:nth-child(even) { border-left: 1px solid var(--line); }
+.stat-num { font-size: 1.4rem; }
+.stat-label { font-size: .68rem; }
+.explore-inner, .map-tools-inner { padding-left: 12px; padding-right: 12px; }
+.lightbox { padding: 56px 12px 20px; }
+.lightbox-nav { width: 40px; height: 40px; background: rgba(0,0,0,.45); }
+.lightbox-prev { left: 8px; }
+.lightbox-next { right: 8px; }
 }
 @media (max-width: 480px) {
-  #thumbnailGallery { gap: 4px; padding: 4px; }
-  #thumbnailGallery div > div { font-size: 11px !important; padding: 2px 4px !important; }
-  #thumbnailPanel { max-height: 160px; }
-  .thumbnail-search { padding-inline: 12px; }
+#thumbnailGallery { gap: 4px; padding: 4px; }
+#thumbnailGallery div > div { font-size: 11px !important; padding: 2px 4px !important; }
+#thumbnailPanel { max-height: 160px; }
+.thumbnail-search { padding-inline: 12px; }
 }
 </style>
 
@@ -383,8 +381,8 @@ html[data-theme="dark"] .bird-day-main { background: var(--outer); }
 <header>
 <div class="header-inner">
 <h1 class="site-title">
-  <img class="logo-light" src="logo-title.svg" alt="BirdBlog">
-  <img class="logo-dark" src="logo-title-dark.svg" alt="BirdBlog">
+<img class="logo-light" src="logo-title.svg" alt="BirdBlog">
+<img class="logo-dark" src="logo-title-dark.svg" alt="BirdBlog">
 </h1>
 <nav class="header-nav">
 <button id="exploreTab" class="nav-tab">Explore Map</button>
@@ -399,7 +397,7 @@ html[data-theme="dark"] .bird-day-main { background: var(--outer); }
 <div class="bird-day-main">
 
 <div class="bird-day-frame">
-<img id="dailyBirdImage" class="bird-day-image" src="" alt="Featured Bird" fetchpriority="high" decoding="async">
+<img id="dailyBirdImage" class="bird-day-image" src="" alt="Featured Bird">
 
 <button type="button" id="photosBtn" class="photos-btn" hidden>
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="14" height="14" rx="2"/><path d="M3 7v12a2 2 0 0 0 2 2h12"/><circle cx="12" cy="8" r="1.3"/><path d="M21 13l-4-4-6 6"/></svg>
@@ -568,14 +566,14 @@ Bird enthusiast and photographer, medical doctor, and life science researcher fr
 <script>
 /* ================= MAP ================= */
 const map = L.map('map', {
-  center: [20, 0],
-  zoom: 1.5,
-  minZoom: 1.5,
-  maxZoom: 5,
-  zoomControl: false,
-  zoomSnap: 0.5,
-  maxBounds: [[-85, -180], [85, 180]],
-  maxBoundsViscosity: 1.0
+center: [20, 0],
+zoom: 1.5,
+minZoom: 1.5,
+maxZoom: 5,
+zoomControl: false,
+zoomSnap: 0.5,
+maxBounds: [[-85, -180], [85, 180]],
+maxBoundsViscosity: 1.0
 });
 L.control.zoom({ position: 'topright' }).addTo(map);
 
@@ -598,97 +596,33 @@ const ICON_PAUSE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="curren
 const SLIDE_PLACEHOLDER_MS = 1200; /* species without a real photo yet flash by quickly */
 const PLACEHOLDER_MARK = 'Designer_qslnqv'; /* part of the placeholder image's URL */
 const SLIDE_MS = 3500; /* time per photo in the slideshow */
+const preloader = new Image();
 function isPlaceholder(name) {
-  return !!birds[name]?.photo && birds[name].photo.includes(PLACEHOLDER_MARK);
+return !!birds[name]?.photo && birds[name].photo.includes(PLACEHOLDER_MARK);
+}
+function preloadNext() {
+const next = birdKeys[(currentBirdIndex + 1) % birdKeys.length];
+  if (birds[next]?.photo) preloader.src = birds[next].photo;
+  if (birds[next]?.photo) preloader.src = smallUrl(birds[next].photo, 1600);
 }
 /* Cookieless click statistics via GoatCounter (does nothing if GoatCounter is blocked) */
 function track(name) {
-  try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: name, event: true }); } catch (e) {}
+try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: name, event: true }); } catch (e) {}
 }
 /* birds.json may give a species either a single "photo" (old format) or a "photos" array
-   whose items are URL strings or {url, place, date} objects. */
+  whose items are URL strings or {url, place, date} objects. */
 function normalizeBirds(data) {
-  for (const b of Object.values(data)) {
-    const raw = Array.isArray(b.photos) && b.photos.length ? b.photos : (b.photo ? [b.photo] : []);
-    b.photos = raw.map(p => typeof p === 'string' ? { url: p } : p).filter(p => p && p.url);
-    b.photo = b.photos[0]?.url;
-  }
-  return data;
+for (const b of Object.values(data)) {
+const raw = Array.isArray(b.photos) && b.photos.length ? b.photos : (b.photo ? [b.photo] : []);
+b.photos = raw.map(p => typeof p === 'string' ? { url: p } : p).filter(p => p && p.url);
+b.photo = b.photos[0]?.url;
 }
-/* ================= IMAGEKIT DELIVERY ================= */
-const IMAGE_WIDTHS = {
-  strip: 120,
-  thumbnail: 320,
-  large: 1600
-};
-
-function imageKitUrl(url, width) {
-  if (!url || !url.includes("ik.imagekit.io")) return url || "";
-  const parsed = new URL(url);
-  parsed.searchParams.delete("tr");
-  parsed.searchParams.set("tr", `w-${width}`);
-  return parsed.toString();
+return data;
 }
-
-function smallUrl(url, width = IMAGE_WIDTHS.thumbnail) {
-  return imageKitUrl(url, width);
-}
-
-function largeUrl(url) {
-  return imageKitUrl(url, IMAGE_WIDTHS.large);
-}
-
-const preloadedLargeUrls = new Set();
-const preloadObjects = new Map();
-
-function preloadLargeImage(url, priority = "low") {
-  if (!url || preloadedLargeUrls.has(url)) return;
-
-  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  if (connection && connection.saveData) return;
-
-  preloadedLargeUrls.add(url);
-  const image = new Image();
-  image.decoding = "async";
-  image.fetchPriority = priority;
-  image.onload = () => {
-    if (preloadObjects.size > 24) {
-      const oldest = preloadObjects.keys().next().value;
-      preloadObjects.delete(oldest);
-    }
-  };
-  image.onerror = () => {
-    preloadedLargeUrls.delete(url);
-    preloadObjects.delete(url);
-  };
-  image.src = url;
-  preloadObjects.set(url, image);
-}
-
-function preloadNextBird() {
-  if (!birdKeys.length) return;
-  const nextName = birdKeys[(currentBirdIndex + 1) % birdKeys.length];
-  const nextUrl = largeUrl(birds[nextName]?.photo);
-  const run = () => preloadLargeImage(nextUrl);
-  if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1200 });
-  else setTimeout(run, 400);
-}
-
-let visibleLargeImageObserver = null;
-function getVisibleLargeImageObserver() {
-  if (visibleLargeImageObserver) return visibleLargeImageObserver;
-  visibleLargeImageObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      preloadLargeImage(entry.target.dataset.largeUrl);
-      visibleLargeImageObserver.unobserve(entry.target);
-    });
-  }, {
-    root: document.getElementById("thumbnailPanel"),
-    rootMargin: "180px 0px",
-    threshold: 0.01
-  });
-  return visibleLargeImageObserver;
+/* Small Cloudinary rendition for thumbnails; other hosts are returned unchanged */
+function smallUrl(url, w = 120) {
+return url.includes('/image/upload/') && !/\/upload\/[a-z]_/.test(url)
+? url.replace('/image/upload/', `/image/upload/f_auto,q_auto,w_${w}/`) : url;
 }
 /* Load scientific names, then birds.json */
 fetch('scientific_names.csv')
@@ -711,9 +645,7 @@ initApp();
 function initApp() {
 updateStats();
 showBirdOfTheDay();
-requestAnimationFrame(() => {
-  loadThumbnails([...Object.entries(birds)].sort((a, b) => a[0].localeCompare(b[0])));
-});
+loadThumbnails([...Object.entries(birds)].sort((a, b) => a[0].localeCompare(b[0])));
 
 const countryFilter = document.getElementById("countryFilter");
 const countries = [...new Set(Object.values(birds).flatMap(b => b.countries || []))].sort();
@@ -734,17 +666,17 @@ document.getElementById("statCountries").textContent = Object.keys(birdData).len
 
 /* ================= BIRD OF THE DAY + NAVIGATION ================= */
 function showBirdOfTheDay() {
-  const eligible = birdKeys.map((k, i) => i).filter(i => !isPlaceholder(birdKeys[i]));
-  const pool = eligible.length ? eligible : birdKeys.map((k, i) => i);
-  const last = Number(sessionStorage.getItem("lastFeaturedBird"));
-  let newIndex;
-  do {
-    newIndex = pool[Math.floor(Math.random() * pool.length)];
-  } while (pool.length > 1 && newIndex === last);
-  sessionStorage.setItem("lastFeaturedBird", newIndex);
-  currentBirdIndex = newIndex;
-  const name = birdKeys[currentBirdIndex];
-  showBird(name, birds[name].photo);
+const eligible = birdKeys.map((k, i) => i).filter(i => !isPlaceholder(birdKeys[i]));
+const pool = eligible.length ? eligible : birdKeys.map((k, i) => i);
+const last = Number(sessionStorage.getItem("lastFeaturedBird"));
+let newIndex;
+do {
+newIndex = pool[Math.floor(Math.random() * pool.length)];
+} while (pool.length > 1 && newIndex === last);
+sessionStorage.setItem("lastFeaturedBird", newIndex);
+currentBirdIndex = newIndex;
+const name = birdKeys[currentBirdIndex];
+showBird(name, birds[name].photo);
 }
 
 /* "N photos" button on the big photo: only for species with more than one photo */
@@ -764,40 +696,35 @@ if (slideshowRunning) stopSlideshow();
 showSpecies(e.currentTarget.dataset.species);
 });
 
-let featuredLoadToken = 0;
 function showBird(name, url) {
-  const token = ++featuredLoadToken;
-  const img = document.getElementById("dailyBirdImage");
-  const finalUrl = largeUrl(url);
+const img = document.getElementById("dailyBirdImage");
+img.style.opacity = "0";
 
-  document.getElementById("dailyBirdCaption").textContent = name;
-  document.querySelector(".drawer-scientific").textContent = scientificNames[name] || "Scientific name unavailable";
+setTimeout(() => {
+img.src = url;
+img.src = smallUrl(url, 1600);
+img.alt = name;
+document.getElementById("dailyBirdCaption").textContent = name;
+document.querySelector(".drawer-scientific").textContent = scientificNames[name] || "Scientific name unavailable";
 
-  const obs = document.querySelector(".drawer-observed");
-  obs.innerHTML = "";
-  const mapBtn = document.createElement("button");
-  mapBtn.type = "button";
-  mapBtn.className = "drawer-map-btn";
-  mapBtn.textContent = `🌍 ${(birds[name].countries || []).join(", ")} · Show on map`;
-  mapBtn.onclick = () => window.showSpeciesOnMap && window.showSpeciesOnMap(name);
-  obs.appendChild(mapBtn);
-  updatePhotosButton(name);
+/* Countries line doubles as a "Show on map" button */
+const obs = document.querySelector(".drawer-observed");
+obs.innerHTML = "";
+const mapBtn = document.createElement("button");
+mapBtn.type = "button";
+mapBtn.className = "drawer-map-btn";
+mapBtn.textContent = `🌍 ${(birds[name].countries || []).join(", ")} · Show on map`;
+mapBtn.onclick = () => window.showSpeciesOnMap && window.showSpeciesOnMap(name);
+obs.appendChild(mapBtn);
 
-  const loader = new Image();
-  loader.decoding = "async";
-  loader.fetchPriority = "high";
-  loader.onload = () => {
-    if (token !== featuredLoadToken) return;
-    img.src = finalUrl;
-    img.alt = name;
-    preloadNextBird();
-  };
-  loader.onerror = () => console.error("Could not load featured image:", finalUrl);
-  loader.src = finalUrl;
+updatePhotosButton(name);
+img.style.opacity = "1";
+preloadNext();
 
-  document.querySelectorAll("#thumbnailGallery img").forEach(t => {
-    t.parentElement.classList.toggle("thumbnail-active", t.alt === name);
-  });
+document.querySelectorAll("#thumbnailGallery img").forEach(t => {
+t.parentElement.classList.toggle("thumbnail-active", t.alt === name);
+});
+}, 50);
 }
 
 function goTo(index, direction) {
@@ -863,17 +790,17 @@ if (document.hidden && slideshowRunning) stopSlideshow();
 (function () {
 const btn = document.getElementById("surpriseBtn");
 btn.addEventListener("click", () => {
-  const pool = birdKeys
-    .map((k, i) => i)
-    .filter(i => i !== currentBirdIndex && !isPlaceholder(birdKeys[i]));
-  if (!pool.length) return;
-  track("surprise");
-  if (slideshowRunning) stopSlideshow();
-  goTo(pool[Math.floor(Math.random() * pool.length)], 1);
-  btn.classList.add("rolling");
-  setTimeout(() => btn.classList.remove("rolling"), 500);
-  /* permanently hide the label after first use */
-  btn.querySelector(".surprise-label").style.display = "none";
+const pool = birdKeys
+.map((k, i) => i)
+.filter(i => i !== currentBirdIndex && !isPlaceholder(birdKeys[i]));
+if (!pool.length) return;
+track("surprise");
+if (slideshowRunning) stopSlideshow();
+goTo(pool[Math.floor(Math.random() * pool.length)], 1);
+btn.classList.add("rolling");
+setTimeout(() => btn.classList.remove("rolling"), 500);
+/* permanently hide the label after first use */
+btn.querySelector(".surprise-label").style.display = "none";
 });
 })();
 
@@ -915,19 +842,16 @@ gallery.innerHTML = "";
 
 list.forEach(([name, data]) => {
 const wrapper = document.createElement("div");
-wrapper.dataset.largeUrl = largeUrl(data.photo);
 wrapper.style = "position:relative; width:100%; aspect-ratio:16 / 9; cursor:pointer; overflow:hidden; border-radius:4px; background:#e8e8e8;";
 if (name === birdKeys[currentBirdIndex]) wrapper.classList.add("thumbnail-active");
 
 const thumb = document.createElement("img");
 thumb.loading = "lazy";
 thumb.decoding = "async";
-thumb.fetchPriority = "low";
-thumb.src = smallUrl(data.photo, IMAGE_WIDTHS.thumbnail);
+thumb.src = data.photo;
+thumb.src = smallUrl(data.photo, 400);
 thumb.alt = name;
 thumb.title = name;
-thumb.width = 400;
-thumb.height = 225;
 thumb.style = "display:block; width:100%; height:100%; object-fit:cover; border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,0.18); transition:transform 0.2s ease;";
 
 const label = document.createElement("div");
@@ -944,28 +868,22 @@ badge.title = `${data.photos.length} photos`;
 wrapper.appendChild(badge);
 }
 
-const preloadOnIntent = () => preloadLargeImage(wrapper.dataset.largeUrl, "high");
-wrapper.addEventListener("pointerenter", preloadOnIntent, { once: true });
-wrapper.addEventListener("pointerdown", preloadOnIntent, { once: true });
-
 wrapper.onmouseenter = () => {
-  thumb.style.transform = "scale(1.05)";
-  label.style.opacity = "1";
-  label.style.transform = "translateY(0)";
+thumb.style.transform = "scale(1.05)";
+label.style.opacity = "1";
+label.style.transform = "translateY(0)";
 };
 wrapper.onmouseleave = () => {
-  thumb.style.transform = "scale(1)";
-  label.style.opacity = "0";
-  label.style.transform = "translateY(100%)";
+thumb.style.transform = "scale(1)";
+label.style.opacity = "0";
+label.style.transform = "translateY(100%)";
 };
 wrapper.onclick = () => {
-  if (slideshowRunning) stopSlideshow();
-  currentBirdIndex = birdKeys.indexOf(name);
-  showBird(name, data.photo);
+currentBirdIndex = birdKeys.indexOf(name);
+showBird(name, data.photo);
 };
 
 gallery.appendChild(wrapper);
-getVisibleLargeImageObserver().observe(wrapper);
 });
 }
 
@@ -983,8 +901,8 @@ const search = searchBox.value.toLowerCase();
 
 /* Matches species names and country names */
 if (search) list = list.filter(([name, d]) =>
-  name.toLowerCase().includes(search) ||
-  (d.countries || []).some(c => c.toLowerCase().includes(search)));
+name.toLowerCase().includes(search) ||
+(d.countries || []).some(c => c.toLowerCase().includes(search)));
 
 if (sortBox.value === "alpha") {
 list.sort((a, b) => a[0].localeCompare(b[0]));
@@ -1093,6 +1011,7 @@ const lightbox = document.getElementById('lightbox');
 let lightboxList = [];
 let lightboxIndex = 0;
 let lightboxPhoto = 0;
+const lightboxPreloader = new Image();
 
 function renderLightbox() {
 const name = lightboxList[lightboxIndex];
@@ -1101,7 +1020,7 @@ const photos = bird.photos || [];
 if (lightboxPhoto >= photos.length) lightboxPhoto = 0;
 const current = photos[lightboxPhoto] || { url: bird.photo };
 const img = document.getElementById('lightboxImage');
-img.src = largeUrl(current.url);
+img.src = current.url;
 img.alt = photos.length > 1 ? `${name} (photo ${lightboxPhoto + 1} of ${photos.length})` : name;
 document.getElementById('lightboxCaption').textContent = name;
 document.getElementById('lightboxScientific').textContent = scientificNames[name] || '';
@@ -1126,16 +1045,13 @@ b.className = i === lightboxPhoto ? 'active' : '';
 b.setAttribute('aria-label', `Photo ${i + 1} of ${photos.length}`);
 b.setAttribute('aria-current', i === lightboxPhoto ? 'true' : 'false');
 const t = document.createElement('img');
-t.loading = 'lazy';
-t.decoding = 'async';
-t.fetchPriority = 'low';
-t.src = smallUrl(p.url, IMAGE_WIDTHS.strip);
+t.src = smallUrl(p.url);
 t.alt = '';
 b.appendChild(t);
 b.onclick = () => { lightboxPhoto = i; renderLightbox(); };
 strip.appendChild(b);
 });
-preloadLargeImage(largeUrl(photos[(lightboxPhoto + 1) % photos.length].url));
+lightboxPreloader.src = photos[(lightboxPhoto + 1) % photos.length].url;
 }
 }
 
@@ -1410,7 +1326,7 @@ const status = document.getElementById('mapSearchStatus');
 const countryNames = Object.keys(birdData).sort((a, b) => a.localeCompare(b));
 
 const rank = q => (a, b) =>
-  (b.toLowerCase().startsWith(q)) - (a.toLowerCase().startsWith(q)) || a.localeCompare(b);
+(b.toLowerCase().startsWith(q)) - (a.toLowerCase().startsWith(q)) || a.localeCompare(b);
 
 function closeList() { list.hidden = true; }
 
