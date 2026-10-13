@@ -733,28 +733,37 @@ globe.textContent = "🌍 ";
 obs.appendChild(globe);
 
 countries.forEach((country, i) => {
+
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "drawer-map-btn";
     btn.textContent = country;
 
-  btn.onclick = () => {
-    highlightSet = new Set([country]);
-    applyMapHighlight();
+    btn.onclick = () => {
+        highlightSet = new Set([country]);
+        applyMapHighlight();
 
-    if (window.selectCountryFromSearch) {
-        window.selectCountryFromSearch(
-            country,
-            birdData[country] || 0
-        );
-    }
+        if (window.selectCountryFromSearch) {
+            window.selectCountryFromSearch(
+                country,
+                birdData[country] || 0
+            );
+        }
 
-    document.getElementById("mapTools")
-        .scrollIntoView({
+        document.getElementById("mapTools").scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
-};
+    };
+
+    obs.appendChild(btn);
+
+    if (i < countries.length - 1) {
+        obs.appendChild(
+            document.createTextNode(", ")
+        );
+    }
+});
 
 updatePhotosButton(name);
 img.style.opacity = "1";
