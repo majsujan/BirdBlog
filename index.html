@@ -263,8 +263,23 @@ footer p { margin: 0; }
 .drawer-scientific { font-style: italic; font-weight: 400; font-size: 18px; color: #ffffff; line-height: 1.5; margin-bottom: 6px; }
 .drawer-observed { font-size: 16px; color: #ececec; line-height: 1.5; margin-bottom: 4px; }
 .drawer-trivia { font-size: 16px; color: #ececec; line-height: 1.5; }
-.drawer-map-btn { padding: 0; border: none; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
-.drawer-map-btn:hover, .drawer-map-btn:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.drawer-map-btn {
+    padding: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.drawer-map-btn:hover {
+    color: var(--accent);
+}
+
+.drawer-map-btn:focus-visible {
+    outline: 1px solid currentColor;
+    outline-offset: 2px;
+}
 
 .swipe-indicator { position: absolute; left: 50%; bottom: calc(var(--fab-bottom) - 4px); transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
 .dot { border-radius: 50%; background: rgba(255,255,255,.35); border: 1px solid rgba(0,0,0,.35); box-shadow: 0 1px 4px rgba(0,0,0,.4); transition: transform .25s ease, opacity .25s ease, background .25s ease; }
@@ -710,13 +725,41 @@ document.querySelector(".drawer-scientific").textContent = scientificNames[name]
 /* Countries line doubles as a "Show on map" button */
 const obs = document.querySelector(".drawer-observed");
 obs.innerHTML = "";
-const mapBtn = document.createElement("button");
-mapBtn.type = "button";
-mapBtn.className = "drawer-map-btn";
-mapBtn.textContent = `🌍 ${(birds[name].countries || []).join(", ")} · Show on map`;
-mapBtn.onclick = () => window.showSpeciesOnMap && window.showSpeciesOnMap(name);
-obs.appendChild(mapBtn);
 
+const countries = birds[name].countries || [];
+
+const globe = document.createElement("span");
+globe.textContent = "🌍 ";
+obs.appendChild(globe);
+
+countries.forEach((country, i) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "drawer-map-btn";
+    btn.textContent = country;
+
+    btn.onclick = () => {
+        if (window.selectCountryFromSearch) {
+            window.selectCountryFromSearch(
+                country,
+                birdData[country] || 0
+            );
+        }
+
+        highlightSet = new Set([country]);
+        applyMapHighlight();
+
+        document.getElementById("mapTools")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    obs.appendChild(btn);
+
+    if (i < countries.length - 1) {
+        obs.appendChild(document.createTextNode(", "));
+    }
+});
+`
 updatePhotosButton(name);
 img.style.opacity = "1";
 preloadNext();
