@@ -609,7 +609,7 @@ let slideshowRunning = false;
 const ICON_PLAY = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="8.5,5 19.5,12 8.5,19"/></svg>';
 const ICON_PAUSE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>';
 const SLIDE_PLACEHOLDER_MS = 1200; /* species without a real photo yet flash by quickly */
-const PLACEHOLDER_MARK = 'Designer_qslnqv'; /* part of the placeholder image's URL */
+const PLACEHOLDER_MARK = 'placeholder.jpg'; /* part of the placeholder image's URL */
 const SLIDE_MS = 3500; /* time per photo in the slideshow */
 const preloader = new Image();
 function isPlaceholder(name) {
@@ -631,6 +631,10 @@ for (const b of Object.values(data)) {
 const raw = Array.isArray(b.photos) && b.photos.length ? b.photos : (b.photo ? [b.photo] : []);
 b.photos = raw.map(p => typeof p === 'string' ? { url: p } : p).filter(p => p && p.url);
 b.photo = b.photos[0]?.url;
+/* countries may be a string ("Norway"), "Norway, Sweden", or an array: always make it an array */
+b.countries = Array.isArray(b.countries) ? b.countries
+  : typeof b.countries === 'string' ? b.countries.split(/[,;]/).map(s => s.trim()).filter(Boolean)
+  : [];
 }
 return data;
 }
