@@ -264,21 +264,21 @@ footer p { margin: 0; }
 .drawer-observed { font-size: 16px; color: #ececec; line-height: 1.5; margin-bottom: 4px; }
 .drawer-trivia { font-size: 16px; color: #ececec; line-height: 1.5; }
 .drawer-map-btn {
-padding: 0;
-border: none;
-background: none;
-color: inherit;
-font: inherit;
-cursor: pointer;
+    padding: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
 }
 
 .drawer-map-btn:hover {
-color: var(--accent);
+    color: var(--accent);
 }
 
 .drawer-map-btn:focus-visible {
-outline: 1px solid currentColor;
-outline-offset: 2px;
+    outline: 1px solid currentColor;
+    outline-offset: 2px;
 }
 
 .swipe-indicator { position: absolute; left: 50%; bottom: calc(var(--fab-bottom) - 4px); transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
@@ -609,7 +609,6 @@ let slideshowRunning = false;
 const ICON_PLAY = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="8.5,5 19.5,12 8.5,19"/></svg>';
 const ICON_PAUSE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>';
 const SLIDE_PLACEHOLDER_MS = 1200; /* species without a real photo yet flash by quickly */
-const PLACEHOLDER_MARK = 'Designer_qslnqv'; /* part of the placeholder image's URL */
 const PLACEHOLDER_MARK = 'placeholder.jpg'; /* part of the placeholder image's URL */
 const SLIDE_MS = 3500; /* time per photo in the slideshow */
 const preloader = new Image();
@@ -618,15 +617,15 @@ return !!birds[name]?.photo && birds[name].photo.includes(PLACEHOLDER_MARK);
 }
 function preloadNext() {
 const next = birdKeys[(currentBirdIndex + 1) % birdKeys.length];
-if (birds[next]?.photo) preloader.src = birds[next].photo;
-if (birds[next]?.photo) preloader.src = smallUrl(birds[next].photo, 1600);
+  if (birds[next]?.photo) preloader.src = birds[next].photo;
+  if (birds[next]?.photo) preloader.src = smallUrl(birds[next].photo, 1600);
 }
 /* Cookieless click statistics via GoatCounter (does nothing if GoatCounter is blocked) */
 function track(name) {
 try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: name, event: true }); } catch (e) {}
 }
 /* birds.json may give a species either a single "photo" (old format) or a "photos" array
- whose items are URL strings or {url, place, date} objects. */
+  whose items are URL strings or {url, place, date} objects. */
 function normalizeBirds(data) {
 for (const b of Object.values(data)) {
 const raw = Array.isArray(b.photos) && b.photos.length ? b.photos : (b.photo ? [b.photo] : []);
@@ -739,35 +738,35 @@ obs.appendChild(globe);
 
 countries.forEach((country, i) => {
 
-const btn = document.createElement("button");
-btn.type = "button";
-btn.className = "drawer-map-btn";
-btn.textContent = country;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "drawer-map-btn";
+    btn.textContent = country;
 
-btn.onclick = () => {
-highlightSet = new Set([country]);
-applyMapHighlight();
+    btn.onclick = () => {
+        highlightSet = new Set([country]);
+        applyMapHighlight();
 
-if (window.selectCountryFromSearch) {
-window.selectCountryFromSearch(
-country,
-birdData[country] || 0
-);
-}
+        if (window.selectCountryFromSearch) {
+            window.selectCountryFromSearch(
+                country,
+                birdData[country] || 0
+            );
+        }
 
-document.getElementById("mapTools").scrollIntoView({
-behavior: "smooth",
-block: "start"
-});
-};
+        document.getElementById("mapTools").scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    };
 
-obs.appendChild(btn);
+    obs.appendChild(btn);
 
-if (i < countries.length - 1) {
-obs.appendChild(
-document.createTextNode(", ")
-);
-}
+    if (i < countries.length - 1) {
+        obs.appendChild(
+            document.createTextNode(", ")
+        );
+    }
 });
 
 updatePhotosButton(name);
