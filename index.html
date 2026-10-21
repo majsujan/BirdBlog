@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <title>BIRDBLOG by Sujan Abu Jafar</title>
-<meta name="description" content="Bird photography and sightings from 18 countries. Explore species on an interactive globe.">
+<meta name="description" content="Bird photography and sightings from 18 countries. Explore species on an interactive map.">
 <meta property="og:title" content="BIRDBLOG by Sujan Abu Jafar">
 <meta property="og:description" content="Photographic journal of birding lifelist.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 
-<script src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <!-- Dark mode: set before first paint -->
 <script>
@@ -73,7 +73,7 @@ color-scheme: dark;
 *, *::before, *::after { box-sizing: border-box; }
 html, body { min-height: 100%; margin: 0; background-color: #ffffff; }
 body { min-height: 100vh; color: var(--ink); font-size: 16px; line-height: 1.5; font-weight: 400; letter-spacing: .01em; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-body, button, input, select, textarea, .maplibregl-map { font-family: var(--font-main); }
+body, button, input, select, textarea, .leaflet-container { font-family: var(--font-main); }
 input, select, textarea { font-size: .9375rem; }
 .site-page { width: 100%; max-width: var(--page-max-width); min-height: 100vh; margin: 0 auto; background-color: var(--cream); box-shadow: 0 0 13px 3px rgba(0,0,0,.23); }
 
@@ -210,34 +210,9 @@ footer p { margin: 0; }
 .collapsed-search { width: 0; max-width: 0; padding: 0; border: none; opacity: 0; overflow: hidden; flex: 0 0 0; }
 .thumbnail-search:focus { outline: 2px solid rgba(95,143,94,.35); outline-offset: 1px; border-color: #5f8f5e; }
 
-/* ================= MapLibre overrides ================= */
-#map { background: #0b1620; }
-.maplibregl-ctrl-group { border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
-.maplibregl-ctrl-group button.spin-btn { font-size: 19px; line-height: 1; color: #222; opacity: .6; }
-.maplibregl-ctrl-group button.spin-btn.on { opacity: 1; color: var(--accent); }
-.maplibregl-popup.map-tip { pointer-events: none; }
-.maplibregl-popup.map-tip .maplibregl-popup-tip { display: none; }
-.maplibregl-popup.map-tip .maplibregl-popup-content { padding: 6px 10px; border-radius: 8px; font-size: 13px; line-height: 1.35; color: #1b1d1a; box-shadow: 0 3px 10px rgba(0,0,0,.3); }
-.map-tip strong { font-weight: 500; }
-.map-tip .tip-sub { font-size: 12px; color: #5b6058; }
-html[data-theme="dark"] .maplibregl-popup.map-tip .maplibregl-popup-content { background: #1d2b28; color: #e4e9e4; }
-html[data-theme="dark"] .map-tip .tip-sub { color: #9fb1ab; }
-
-/* Legend (bottom right, above the attribution) */
-.map-legend { position: absolute; right: 10px; bottom: 28px; z-index: 5; }
-.legend-row + .legend-row { margin-top: 8px; }
-.legend-row[hidden] { display: none; }
-.legend-cap { margin-bottom: 4px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
-
-/* Regions in the country panel */
-.region-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 8px; }
-.region-chip { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--field); color: var(--ink); font-family: inherit; font-size: 13px; letter-spacing: .02em; cursor: pointer; }
-.region-chip:hover { border-color: var(--accent); color: var(--accent); }
-.region-chip b { font-weight: 500; margin-left: 4px; color: var(--ink-soft); }
-.panel-back { align-self: flex-start; margin: 0 0 6px; padding: 2px 0; border: none; background: none; color: var(--ink-soft); font-family: inherit; font-size: 14px; cursor: pointer; }
-.panel-back:hover { color: var(--accent); }
-.species-li.nophoto::before { content: "·"; top: .55em; font-size: 1.1rem; opacity: .55; }
-.species-text { color: var(--ink-soft); font-size: 1rem; line-height: 1.4; }
+/* ================= Leaflet overrides ================= */
+.leaflet-container { background: var(--paper); }
+.leaflet-control { background: none !important; border: none !important; box-shadow: none !important; }
 
 /* ================= Bird of the day ================= */
 .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 8px; font-family: inherit; font-size: 34px; color: rgba(255,255,255,.95); text-shadow: 0 0 4px rgba(40,40,40,.7), 0 0 10px rgba(40,40,40,.5), 1px 1px 4px rgba(0,0,0,.35); cursor: pointer; user-select: none; z-index: 4; transition: transform .15s ease, opacity .15s ease; -webkit-tap-highlight-color: transparent; }
@@ -289,21 +264,21 @@ html[data-theme="dark"] .map-tip .tip-sub { color: #9fb1ab; }
 .drawer-observed { font-size: 16px; color: #ececec; line-height: 1.5; margin-bottom: 4px; }
 .drawer-trivia { font-size: 16px; color: #ececec; line-height: 1.5; }
 .drawer-map-btn {
-    padding: 0;
-    border: none;
-    background: none;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
+padding: 0;
+border: none;
+background: none;
+color: inherit;
+font: inherit;
+cursor: pointer;
 }
 
 .drawer-map-btn:hover {
-    color: var(--accent);
+color: var(--accent);
 }
 
 .drawer-map-btn:focus-visible {
-    outline: 1px solid currentColor;
-    outline-offset: 2px;
+outline: 1px solid currentColor;
+outline-offset: 2px;
 }
 
 .swipe-indicator { position: absolute; left: 50%; bottom: calc(var(--fab-bottom) - 4px); transform: translateX(-50%); display: flex; align-items: center; gap: 6px; z-index: 6; padding: 4px 8px; border-radius: 20px; background: rgba(0,0,0,.20); backdrop-filter: blur(4px); }
@@ -604,32 +579,20 @@ Bird enthusiast and photographer, medical doctor, and life science researcher fr
 
 
 <script>
-/* ================= MAP (globe) ================= */
-const mapEl = document.getElementById('map');
-/* Start zoom so the whole globe fits the box (a globe is about 163 px wide at zoom 0) */
-const startZoom = Math.max(0.8, Math.min(2.2, Math.log2(Math.min(mapEl.clientWidth, mapEl.clientHeight) * 0.86 / 163)));
-
-const map = new maplibregl.Map({
-container: 'map',
-style: {
-version: 8,
-projection: { type: 'globe' },
-sources: {
-esri: { type: 'raster', tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}'], tileSize: 256, maxzoom: 12, attribution: 'Tiles © Esri' }
-},
-layers: [
-{ id: 'ocean', type: 'background', paint: { 'background-color': '#9cc3d5' } },
-{ id: 'esri', type: 'raster', source: 'esri' }
-]
-},
-center: [10, 25],
-zoom: startZoom,
-minZoom: 0.6,
-maxZoom: 11,
-dragRotate: false,
-attributionControl: { compact: true }
+/* ================= MAP ================= */
+const map = L.map('map', {
+center: [20, 0],
+zoom: 1.5,
+minZoom: 1.5,
+maxZoom: 5,
+zoomControl: false,
+zoomSnap: 0.5,
+maxBounds: [[-85, -180], [85, 180]],
+maxBoundsViscosity: 1.0
 });
-map.touchZoomRotate.disableRotation();
+L.control.zoom({ position: 'topright' }).addTo(map);
+
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Tiles © Esri' }).addTo(map);
 
 /* ================= DATA ================= */
 /* Update these two numbers by hand when your totals change */
@@ -646,6 +609,7 @@ let slideshowRunning = false;
 const ICON_PLAY = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="8.5,5 19.5,12 8.5,19"/></svg>';
 const ICON_PAUSE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>';
 const SLIDE_PLACEHOLDER_MS = 1200; /* species without a real photo yet flash by quickly */
+const PLACEHOLDER_MARK = 'Designer_qslnqv'; /* part of the placeholder image's URL */
 const PLACEHOLDER_MARK = 'placeholder.jpg'; /* part of the placeholder image's URL */
 const SLIDE_MS = 3500; /* time per photo in the slideshow */
 const preloader = new Image();
@@ -654,15 +618,15 @@ return !!birds[name]?.photo && birds[name].photo.includes(PLACEHOLDER_MARK);
 }
 function preloadNext() {
 const next = birdKeys[(currentBirdIndex + 1) % birdKeys.length];
-  if (birds[next]?.photo) preloader.src = birds[next].photo;
-  if (birds[next]?.photo) preloader.src = smallUrl(birds[next].photo, 1600);
+if (birds[next]?.photo) preloader.src = birds[next].photo;
+if (birds[next]?.photo) preloader.src = smallUrl(birds[next].photo, 1600);
 }
 /* Cookieless click statistics via GoatCounter (does nothing if GoatCounter is blocked) */
 function track(name) {
 try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: name, title: name, event: true }); } catch (e) {}
 }
 /* birds.json may give a species either a single "photo" (old format) or a "photos" array
-  whose items are URL strings or {url, place, date} objects. */
+ whose items are URL strings or {url, place, date} objects. */
 function normalizeBirds(data) {
 for (const b of Object.values(data)) {
 const raw = Array.isArray(b.photos) && b.photos.length ? b.photos : (b.photo ? [b.photo] : []);
@@ -775,35 +739,35 @@ obs.appendChild(globe);
 
 countries.forEach((country, i) => {
 
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "drawer-map-btn";
-    btn.textContent = country;
+const btn = document.createElement("button");
+btn.type = "button";
+btn.className = "drawer-map-btn";
+btn.textContent = country;
 
-    btn.onclick = () => {
-        highlightSet = new Set([country]);
-        applyMapHighlight();
+btn.onclick = () => {
+highlightSet = new Set([country]);
+applyMapHighlight();
 
-        if (window.selectCountryFromSearch) {
-            window.selectCountryFromSearch(
-                country,
-                birdData[country] || 0
-            );
-        }
+if (window.selectCountryFromSearch) {
+window.selectCountryFromSearch(
+country,
+birdData[country] || 0
+);
+}
 
-        document.getElementById("mapTools").scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    };
+document.getElementById("mapTools").scrollIntoView({
+behavior: "smooth",
+block: "start"
+});
+};
 
-    obs.appendChild(btn);
+obs.appendChild(btn);
 
-    if (i < countries.length - 1) {
-        obs.appendChild(
-            document.createTextNode(", ")
-        );
-    }
+if (i < countries.length - 1) {
+obs.appendChild(
+document.createTextNode(", ")
+);
+}
 });
 
 updatePhotosButton(name);
@@ -1203,21 +1167,16 @@ if (Math.abs(dy) > 50) stepPhoto(dy < 0 ? 1 : -1);   /* swipe up = next photo */
 });
 })();
 
-/* ================= MAP COLOURS, LEGEND, COUNTRIES, REGIONS ================= */
-const RAMP = [[255,245,0],[255,205,0],[245,165,0],[235,125,0],[220,85,0],[200,45,0],[175,20,0],[145,0,0]];
-
-function rampColor(ratio) {
-ratio = Math.max(0, Math.min(1, ratio));
-const idx = Math.floor(ratio * (RAMP.length - 1));
-const next = Math.min(idx + 1, RAMP.length - 1);
-const local = (ratio * (RAMP.length - 1)) % 1;
-const lerp = (a, b) => Math.round(a + (b - a) * local);
-return `rgb(${lerp(RAMP[idx][0], RAMP[next][0])},${lerp(RAMP[idx][1], RAMP[next][1])},${lerp(RAMP[idx][2], RAMP[next][2])})`;
-}
-
+/* ================= MAP COLOURS, LEGEND, COUNTRIES ================= */
 function getColor(count) {
 if (!count || count <= 0) return '#ffffff';
-return rampColor(Math.min(count / 200, 1));
+const ratio = Math.min(count / 200, 1);
+const stops = [[255,245,0],[255,205,0],[245,165,0],[235,125,0],[220,85,0],[200,45,0],[175,20,0],[145,0,0]];
+const idx = Math.floor(ratio * (stops.length - 1));
+const next = Math.min(idx + 1, stops.length - 1);
+const local = (ratio * (stops.length - 1)) % 1;
+const lerp = (a, b) => Math.round(a + (b - a) * local);
+return `rgb(${lerp(stops[idx][0], stops[next][0])},${lerp(stops[idx][1], stops[next][1])},${lerp(stops[idx][2], stops[next][2])})`;
 }
 
 const aliasMap = { "United States of America": "United States", "Russian Federation": "Russia", "Curacao": "Curaçao", "Aruba": "Aruba" };
@@ -1225,333 +1184,130 @@ const normalizeName = n => aliasMap[n] || n;
 
 /* Search highlight: countries to light up (null = no search active) */
 let highlightSet = null;
+let geoLayerRef = null;
+const islandMarkerRefs = [];
 const HIGHLIGHT_FILL = '#1e88a8';
 const HIGHLIGHT_LINE = '#0d4b5e';
 
-/* Aruba and Curaçao are too small to see as shapes. They get a bubble at a visible spot;
-   the camera flies to the real island. */
-const ISLANDS = {
-"Aruba":   { bubble: [-73.0, 14.2], real: [-69.97, 12.52] },
-"Curaçao": { bubble: [-66.5, 9.8],  real: [-68.99, 12.17] }
-};
-const CC_COUNTRY = { AW: "Aruba", CW: "Curaçao" };   /* spots in places that have no state/province */
-
-let mapReady = false;
-let panelSel = null;            /* { type: 'country'|'region'|'spot', ... } */
-const countryBox = {};          /* country -> [w, s, e, n] of its biggest polygon */
-let regionData = null;          /* regions.json */
-const regionById = {};
-const regionsByCountry = {};
-let selectedRegionId = null;
-let selectedSpotId = null;
-let hoveredCountry = null;
-let hoverKey = '';
-
-const mapLoaded = new Promise(res => map.once('load', res));
-
-/* ---------- Controls ---------- */
-let spinEnabled = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-let mapVisible = false;
-let spinBtn = null;
-const SPIN_LNG_PER_STEP = 30;   /* degrees per step */
-const SPIN_STEP_MS = 6000;      /* 30 deg per 6 s = 5 deg per second */
-const SPIN_MAX_ZOOM = 3.5;      /* no idle spin once zoomed in */
-
-function updateSpinBtn() {
-if (!spinBtn) return;
-spinBtn.classList.toggle('on', spinEnabled);
-spinBtn.setAttribute('aria-pressed', String(spinEnabled));
-spinBtn.title = spinEnabled ? 'Pause rotation' : 'Rotate globe';
-spinBtn.setAttribute('aria-label', spinBtn.title);
+function countryStyle(name) {
+const fill = getColor(birdData[name] || 0);
+if (highlightSet) {
+return highlightSet.has(name)
+? { fillColor: HIGHLIGHT_FILL, color: HIGHLIGHT_LINE, weight: 2, fillOpacity: 0.85 }
+: { fillColor: fill, color: '#333', weight: 0.6, fillOpacity: 0.12 };
 }
-function spinStep() {
-if (!spinEnabled || !mapVisible || document.hidden || map.getZoom() > SPIN_MAX_ZOOM) return;
-const c = map.getCenter();
-c.lng -= SPIN_LNG_PER_STEP;
-map.easeTo({ center: c, duration: SPIN_STEP_MS, easing: t => t });
+return { fillColor: fill, color: '#333', weight: 0.8, fillOpacity: 0.65 };
 }
-function stopSpin() {
-if (!spinEnabled) return;
-spinEnabled = false;
-map.stop();
-updateSpinBtn();
-}
-function startSpin() { spinEnabled = true; updateSpinBtn(); spinStep(); }
 
-class SpinControl {
-onAdd() {
-this._c = document.createElement('div');
-this._c.className = 'maplibregl-ctrl maplibregl-ctrl-group';
-const b = document.createElement('button');
-b.type = 'button';
-b.className = 'spin-btn';
-b.textContent = '⟳';
-b.addEventListener('click', () => { spinEnabled ? stopSpin() : startSpin(); });
-this._c.appendChild(b);
-spinBtn = b;
-updateSpinBtn();
-return this._c;
+function markerStyle(name) {
+const fill = getColor(birdData[name] || 0);
+if (highlightSet) {
+return highlightSet.has(name)
+? { fillColor: HIGHLIGHT_FILL, color: HIGHLIGHT_LINE, weight: 2.5, fillOpacity: 0.95 }
+: { fillColor: fill, color: '#333', weight: 1, fillOpacity: 0.2 };
 }
-onRemove() { this._c.remove(); }
+return { fillColor: fill, color: '#333', weight: 1.5, fillOpacity: 0.75 };
 }
-map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
-map.addControl(new SpinControl(), 'top-right');
 
-map.on('moveend', spinStep);
-['mousedown', 'touchstart', 'wheel'].forEach(ev => map.on(ev, stopSpin));
-document.addEventListener('visibilitychange', () => { if (!document.hidden) spinStep(); });
-new IntersectionObserver(entries => {
-mapVisible = entries[0].isIntersecting;
-if (mapVisible) spinStep(); else map.stop();
-}, { threshold: 0.3 }).observe(mapEl);
-mapLoaded.then(() => spinStep());
-
-/* ---------- Legend ---------- */
-const legendEl = document.createElement('div');
-legendEl.className = 'legend map-legend';
-legendEl.innerHTML =
-'<div class="legend-row"><div class="legend-cap">Country / region</div><div class="legend-container"><span class="legend-label">1</span><div class="scale"></div><span class="legend-label">200+</span></div></div>' +
-'<div class="legend-row" id="spotLegend" hidden><div class="legend-cap">Location</div><div class="legend-container"><span class="legend-label">1</span><div class="scale"></div><span class="legend-label" id="spotMax">90</span></div></div>';
-document.getElementById('mapContainer').appendChild(legendEl);
-map.on('zoom', () => { document.getElementById('spotLegend').hidden = map.getZoom() < 5 || !regionData; });
-
-/* ---------- Camera ---------- */
-function ringBox(ring) {
-let w = 180, s = 90, e = -180, n = -90;
-ring.forEach(([x, y]) => { if (x < w) w = x; if (x > e) e = x; if (y < s) s = y; if (y > n) n = y; });
-return [w, s, e, n];
-}
-function biggestBox(feature) {
-const g = feature.geometry;
-const polys = g.type === 'Polygon' ? [g.coordinates] : g.coordinates;
-let best = null, bestArea = -1;
-polys.forEach(p => {
-const b = ringBox(p[0]);
-const a = (b[2] - b[0]) * (b[3] - b[1]);
-if (a > bestArea) { bestArea = a; best = b; }
-});
-return best;
-}
-function viewFor(box) {
-const w = mapEl.clientWidth * (window.innerWidth > 1024 ? 0.8 : 0.9);
-const h = mapEl.clientHeight;
-const latc = (box[1] + box[3]) / 2;
-const dx = Math.max(box[2] - box[0], 0.3);
-const dy = Math.max((box[3] - box[1]) / Math.max(Math.cos(latc * Math.PI / 180), 0.2), 0.3);
-const z = Math.min(Math.log2(w * 360 / (dx * 512)), Math.log2(h * 360 / (dy * 512))) - 0.4;
-return { center: [(box[0] + box[2]) / 2, latc], zoom: Math.max(1.2, Math.min(6.5, z)) };
-}
-window.flyToCountries = function (names) {
-const boxes = [];
-names.forEach(n => {
-if (ISLANDS[n]) { const [x, y] = ISLANDS[n].real; boxes.push([x - 0.25, y - 0.25, x + 0.25, y + 0.25]); }
-else if (countryBox[n]) boxes.push(countryBox[n]);
-});
-if (!boxes.length) return;
-const u = [Math.min(...boxes.map(b => b[0])), Math.min(...boxes.map(b => b[1])),
-Math.max(...boxes.map(b => b[2])), Math.max(...boxes.map(b => b[3]))];
-const v = viewFor(u);
-if (names.length === 1 && regionsByCountry[names[0]]) v.zoom = Math.max(v.zoom, 3.3);   /* so the regions show */
-stopSpin();
-map.flyTo({ center: v.center, zoom: v.zoom, duration: 1600 });
-};
-
-/* ---------- Highlight ---------- */
 function applyMapHighlight() {
-if (!mapReady) return;
-const on = !!highlightSet;
-const names = on && highlightSet.size ? [...highlightSet] : ['__none__'];
-const hov = ['boolean', ['feature-state', 'hover'], false];
-map.setPaintProperty('c-fill', 'fill-color', on ? ['match', ['get', 'bn'], names, HIGHLIGHT_FILL, ['get', 'fill']] : ['get', 'fill']);
-map.setPaintProperty('c-fill', 'fill-opacity', on ? ['match', ['get', 'bn'], names, 0.85, 0.12] : 0.65);
-map.setPaintProperty('c-line', 'line-color', ['case', hov, '#111111', on ? ['match', ['get', 'bn'], names, HIGHLIGHT_LINE, '#333333'] : '#333333']);
-map.setPaintProperty('c-line', 'line-width', ['case', hov, 2, on ? ['match', ['get', 'bn'], names, 2, 0.6] : 0.8]);
-map.setPaintProperty('isl', 'circle-color', on ? ['match', ['get', 'bn'], names, HIGHLIGHT_FILL, ['get', 'fill']] : ['get', 'fill']);
-map.setPaintProperty('isl', 'circle-stroke-color', on ? ['match', ['get', 'bn'], names, HIGHLIGHT_LINE, '#333333'] : '#333333');
-map.setPaintProperty('isl', 'circle-opacity', on ? ['match', ['get', 'bn'], names, 0.95, 0.2] : 0.75);
+if (geoLayerRef) geoLayerRef.setStyle(f => countryStyle(normalizeName(f.properties.name)));
+islandMarkerRefs.forEach(r => r.marker.setStyle(markerStyle(r.name)));
 }
 
-/* ---------- Country / region / location panel ---------- */
+const legend = L.control({ position: 'bottomright' });
+legend.onAdd = function () {
+const div = L.DomUtil.create('div', 'legend');
+div.innerHTML = `<div class="legend-container"><span class="legend-label">1</span><div class="scale"></div><span class="legend-label">200+</span></div>`;
+return div;
+};
+legend.addTo(map);
+
+fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
+.then(r => r.json())
+.then(data => {
+const filtered = {
+type: 'FeatureCollection',
+features: data.features.filter(f => normalizeName(f.properties.name) in birdData)
+};
+
+/* Selection state */
+let selectedName = null;
+let selectedCount = 0;
 const infoPanel = document.getElementById("infoPanel");
 const nameEl = document.getElementById('countryName');
 const countEl = document.getElementById('countryCount');
 const listEl = document.getElementById('speciesList');
 
-function buildList(allNames, onlyPhotographed) {
-const photographed = allNames.filter(n => birds[n] && birds[n].photo);
-const hasPhoto = new Set(photographed);
-const shown = onlyPhotographed ? photographed : allNames;
-const ul = document.createElement('ul');
-ul.className = 'species-ul';
-shown.forEach(n => {
-const li = document.createElement('li');
-li.className = 'species-li';
-if (hasPhoto.has(n)) {
-const btn = document.createElement('button');
-btn.className = 'species-btn';
-btn.textContent = n;
-btn.onclick = () => showSpecies(n, photographed);
-li.appendChild(btn);
-} else {
-li.classList.add('nophoto');
-const sp = document.createElement('span');
-sp.className = 'species-text';
-sp.textContent = n;
-li.appendChild(sp);
-}
-ul.appendChild(li);
-});
-return ul;
-}
-
-function backButton(label, fn) {
-const b = document.createElement('button');
-b.type = 'button';
-b.className = 'panel-back';
-b.textContent = '‹ ' + label;
-b.addEventListener('click', fn);
-return b;
-}
-
-const speciesOf = idxList => idxList.map(i => regionData.names[i]).sort((a, b) => a.localeCompare(b));
-const checklistText = k => k ? ` · ${k} checklist${k === 1 ? '' : 's'}` : '';
-
-function renderPanel() {
-listEl.innerHTML = '';
-if (!panelSel) {
+function resetCountryPanel() {
+selectedName = null;
+selectedCount = 0;
 nameEl.textContent = 'Country';
-countEl.textContent = 'Click a country to view species details';
-return;
+countEl.textContent = 'Click a country to view species list';
+listEl.innerHTML = '';
 }
 
-if (panelSel.type === 'country') {
-nameEl.textContent = panelSel.name;
-countEl.textContent = `${panelSel.count} species observed`;
-
-const regs = regionsByCountry[panelSel.name] || [];
-if (regs.length) {
-const chips = document.createElement('div');
-chips.className = 'region-chips';
-regs.forEach(r => {
-const b = document.createElement('button');
-b.type = 'button';
-b.className = 'region-chip';
-b.textContent = r.n;
-const num = document.createElement('b');
-num.textContent = r.s.length;
-b.appendChild(num);
-b.addEventListener('click', () => { if (window.clearMapSearch) window.clearMapSearch(); selectRegion(r.id); });
-chips.appendChild(b);
+document.getElementById("closeCountryPanel").addEventListener("click", () => {
+resetCountryPanel();
+infoPanel.classList.remove("open");
 });
-listEl.appendChild(chips);
-}
-
-const names = Object.entries(birds).filter(([n, d]) => (d.countries || []).includes(panelSel.name)).map(([n]) => n);
-if (!names.length) {
-const p = document.createElement('p');
-p.style.cssText = 'text-align:center; color:#555;';
-p.textContent = `No species data available for ${panelSel.name}`;
-listEl.appendChild(p);
-} else {
-listEl.appendChild(buildList(names, true));
-}
-return;
-}
-
-if (panelSel.type === 'region') {
-const r = regionById[panelSel.id];
-nameEl.textContent = r.n;
-countEl.textContent = `${r.s.length} species observed` + checklistText(r.k);
-listEl.appendChild(backButton(r.c, () => selectCountry(r.c, birdData[r.c] || 0, { fly: false })));
-listEl.appendChild(buildList(speciesOf(r.s), false));
-return;
-}
-
-if (panelSel.type === 'spot') {
-const sp = regionData.spots[panelSel.index];
-nameEl.textContent = sp.n;
-countEl.textContent = `${sp.s.length} species observed` + checklistText(sp.k);
-if (regionById[sp.r]) {
-const r = regionById[sp.r];
-listEl.appendChild(backButton(r.n, () => selectRegion(r.id, { fly: false })));
-} else if (CC_COUNTRY[sp.r]) {
-const c = CC_COUNTRY[sp.r];
-listEl.appendChild(backButton(c, () => selectCountry(c, birdData[c] || 0, { fly: false })));
-}
-listEl.appendChild(buildList(speciesOf(sp.s), false));
-}
-}
-
-function clearSelectionStates() {
-if (!mapReady) return;
-if (selectedRegionId !== null && map.getSource('regions')) map.setFeatureState({ source: 'regions', id: selectedRegionId }, { selected: false });
-if (selectedSpotId !== null && map.getSource('spots')) map.setFeatureState({ source: 'spots', id: selectedSpotId }, { selected: false });
-selectedRegionId = null;
-selectedSpotId = null;
-}
-
-function resetPanel() {
-panelSel = null;
-clearSelectionStates();
-renderPanel();
+document.addEventListener('keydown', e => {
+if (e.key === 'Escape') {
+resetCountryPanel();
 infoPanel.classList.remove("open");
 }
+});
 
-document.getElementById("closeCountryPanel").addEventListener("click", resetPanel);
-document.addEventListener('keydown', e => { if (e.key === 'Escape') resetPanel(); });
+function renderSelectedSpeciesList() {
+listEl.innerHTML = '';
+if (!selectedName) return;
 
-/* Shared hover preview for countries and the two island bubbles */
+const filteredBirds = Object.entries(birds)
+.filter(([name, d]) => (d.countries || []).includes(selectedName))
+.map(([name]) => name);
+
+if (filteredBirds.length === 0) {
+listEl.innerHTML = `<p style="text-align:center; color:#555;">No species data available for ${selectedName}</p>`;
+return;
+}
+
+const ul = document.createElement('ul');
+ul.className = 'species-ul';
+filteredBirds.forEach(birdName => {
+const li = document.createElement('li');
+li.className = 'species-li';
+const btn = document.createElement('button');
+btn.className = 'species-btn';
+btn.textContent = birdName;
+btn.onclick = () => showSpecies(birdName, filteredBirds);
+li.appendChild(btn);
+ul.appendChild(li);
+});
+listEl.appendChild(ul);
+}
+
+/* Shared behaviour for countries and the two island markers */
 function hoverIn(name, count) {
 nameEl.textContent = name;
 countEl.textContent = `${count} species observed`;
-if (!(panelSel && panelSel.type === 'country' && panelSel.name === name)) {
-listEl.innerHTML = '';
-const p = document.createElement('p');
-p.style.cssText = 'text-align:center; color:#777; margin: 6px 0;';
-p.textContent = `Click to view details: ${name}...`;
-listEl.appendChild(p);
-}
-}
-function hoverOut() { renderPanel(); }
-
-function selectCountry(name, count, opts) {
-opts = opts || {};
-clearSelectionStates();
-panelSel = { type: 'country', name, count };
-if (opts.fly !== false) track('country: ' + name);
-infoPanel.classList.add("open");
-renderPanel();
-if (opts.fly !== false) window.flyToCountries([name]);
-}
-
-function selectRegion(id, opts) {
-opts = opts || {};
-const r = regionById[id];
-if (!r) return;
-clearSelectionStates();
-panelSel = { type: 'region', id };
-selectedRegionId = id;
-map.setFeatureState({ source: 'regions', id }, { selected: true });
-if (opts.fly !== false) track('region: ' + id);
-infoPanel.classList.add("open");
-renderPanel();
-if (opts.fly !== false) {
-stopSpin();
-map.flyTo({ center: [r.lng, r.lat], zoom: Math.max(map.getZoom(), 6.8), duration: 1400 });
+if (selectedName !== name) {
+listEl.innerHTML = `<p style="text-align:center; color:#777; margin: 6px 0;">Click to view details: ${name}...</p>`;
 }
 }
 
-function selectSpot(index) {
-const sp = regionData.spots[index];
-clearSelectionStates();
-panelSel = { type: 'spot', index };
-selectedSpotId = index;
-map.setFeatureState({ source: 'spots', id: index }, { selected: true });
-if (regionById[sp.r]) { selectedRegionId = sp.r; map.setFeatureState({ source: 'regions', id: sp.r }, { selected: true }); }
+function hoverOut() {
+nameEl.textContent = selectedName || 'Country';
+countEl.textContent = selectedName ? `${selectedCount} species observed` : 'Click a country to view species details';
+renderSelectedSpeciesList();
+}
+
+function selectCountry(name, count) {
+selectedName = name;
+selectedCount = count;
+track('country: ' + name);
 infoPanel.classList.add("open");
-renderPanel();
-stopSpin();
-map.flyTo({ center: [sp.lng, sp.lat], zoom: Math.max(map.getZoom(), 10), duration: 1200 });
+nameEl.textContent = name;
+countEl.textContent = `${count} species observed`;
+renderSelectedSpeciesList();
 }
 
 /* A click on the map replaces any search highlight */
@@ -1559,166 +1315,60 @@ function selectFromMap(name, count) {
 if (window.clearMapSearch) window.clearMapSearch();
 selectCountry(name, count);
 }
-window.selectCountryFromSearch = (name, count) => selectCountry(name, count);
 
-/* ---------- Pointer: hover tips and clicks ---------- */
-const tip = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, className: 'map-tip', maxWidth: '260px' });
-function showTip(lngLat, title, sub) {
-const d = document.createElement('div');
-const b = document.createElement('strong');
-b.textContent = title;
-d.appendChild(b);
-if (sub) { const s = document.createElement('div'); s.className = 'tip-sub'; s.textContent = sub; d.appendChild(s); }
-tip.setLngLat(lngLat).setDOMContent(d).addTo(map);
-}
+const geoLayer = L.geoJSON(filtered, {
+style: f => countryStyle(normalizeName(f.properties.name)),
+onEachFeature: (feature, layer) => {
+const name = normalizeName(feature.properties.name);
+const count = birdData[name] || 0;
 
-function hitAt(point) {
-const q = id => (map.getLayer(id) ? map.queryRenderedFeatures(point, { layers: [id] }) : []);
-let f;
-if ((f = q('h-dots')[0])) return { type: 'spot', f };
-if ((f = q('r-dots')[0])) return { type: 'region', f };
-if ((f = q('isl')[0])) return { type: 'island', f };
-if ((f = q('c-fill')[0])) return { type: 'country', f };
-return null;
-}
-
-function setCountryHover(name) {
-if (hoveredCountry === name) return;
-if (hoveredCountry) map.setFeatureState({ source: 'countries', id: hoveredCountry }, { hover: false });
-hoveredCountry = name;
-if (name) map.setFeatureState({ source: 'countries', id: name }, { hover: true });
-}
-
-map.on('mousemove', e => {
-if (!mapReady) return;
-const h = hitAt(e.point);
-map.getCanvas().style.cursor = h ? 'pointer' : '';
-
-let key = '', title = '', sub = '';
-if (h) {
-const p = h.f.properties;
-if (h.type === 'country' || h.type === 'island') { key = h.type[0] + ':' + p.bn; title = p.bn; sub = `${p.count} species`; }
-else if (h.type === 'region') { key = 'r:' + p.id; title = p.name; sub = `${p.country} · ${p.n} species`; }
-else { key = 's:' + p.id; title = p.name; sub = `${p.n} species${checklistText(p.k)}`; }
-}
-
-if (key === hoverKey) { if (key) tip.setLngLat(e.lngLat); return; }
-const wasPlace = hoverKey[0] === 'c' || hoverKey[0] === 'i';
-hoverKey = key;
-
-if (!key) { setCountryHover(null); tip.remove(); if (wasPlace) hoverOut(); return; }
-
-if (h.type === 'country' || h.type === 'island') {
-hoverIn(title, h.f.properties.count);
-setCountryHover(h.type === 'country' ? title : null);
-} else {
-setCountryHover(null);
-if (wasPlace) hoverOut();
-}
-showTip(e.lngLat, title, sub);
+layer.on('mouseover', () => {
+hoverIn(name, count);
+layer.setStyle({ weight: 2, color: '#111' });
+if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) layer.bringToFront();
 });
-
-map.getCanvas().addEventListener('mouseleave', () => {
-const wasPlace = hoverKey[0] === 'c' || hoverKey[0] === 'i';
-hoverKey = '';
-setCountryHover(null);
-tip.remove();
-if (wasPlace) hoverOut();
+layer.on('mouseout', () => {
+hoverOut();
+geoLayer.resetStyle(layer);
 });
+layer.on('click', () => selectFromMap(name, count));
+layer.bindTooltip(`${name}: ${count} species`, { sticky: true });
+}
+}).addTo(map);
 
-map.on('click', e => {
-if (!mapReady) return;
-const h = hitAt(e.point);
-if (!h) return;
-stopSpin();
-const p = h.f.properties;
-if (h.type === 'country' || h.type === 'island') selectFromMap(p.bn, p.count);
-else if (h.type === 'region') { if (window.clearMapSearch) window.clearMapSearch(); selectRegion(p.id); }
-else { if (window.clearMapSearch) window.clearMapSearch(); selectSpot(p.id); }
+geoLayerRef = geoLayer;
+window.selectCountryFromSearch = selectCountry;
+
+/* Island markers (Aruba and Curaçao are too small to see as shapes) */
+const customMarkers = {
+"Aruba": { lat: 14.2, lng: -73.0, radius: 10 },
+"Curaçao": { lat: 9.8, lng: -66.5, radius: 10 }
+};
+
+Object.entries(customMarkers).forEach(([rawName, coords]) => {
+const name = normalizeName(rawName);
+const count = birdData[name] || 0;
+
+const marker = L.circleMarker([coords.lat, coords.lng], {
+radius: coords.radius || 6,
+fillColor: getColor(count),
+color: '#333',
+weight: 1.5,
+fillOpacity: 0.75
+}).addTo(map);
+
+islandMarkerRefs.push({ marker, name });
+marker.setStyle(markerStyle(name));
+marker.bindTooltip(`${name}: ${count} species`, { permanent: false, direction: 'top' });
+marker.on('mouseover', () => hoverIn(name, count));
+marker.on('mouseout', hoverOut);
+marker.on('click', () => selectFromMap(name, count));
 });
-
-/* ---------- Load the data ---------- */
-Promise.all([
-fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json').then(r => r.json()),
-mapLoaded
-]).then(([data]) => {
-const feats = data.features.filter(f => normalizeName(f.properties.name) in birdData);
-feats.forEach(f => {
-const bn = normalizeName(f.properties.name);
-f.properties.bn = bn;
-f.properties.count = birdData[bn];
-f.properties.fill = getColor(birdData[bn]);
-countryBox[bn] = biggestBox(f);
-});
-
-map.addSource('countries', { type: 'geojson', data: { type: 'FeatureCollection', features: feats }, promoteId: 'bn' });
-map.addLayer({ id: 'c-fill', type: 'fill', source: 'countries', paint: { 'fill-color': ['get', 'fill'], 'fill-opacity': 0.65 } });
-map.addLayer({ id: 'c-line', type: 'line', source: 'countries', paint: { 'line-color': '#333333', 'line-width': 0.8 } });
-
-const islandFeats = Object.entries(ISLANDS).filter(([n]) => n in birdData).map(([n, v]) => ({
-type: 'Feature',
-properties: { bn: n, count: birdData[n], fill: getColor(birdData[n]) },
-geometry: { type: 'Point', coordinates: v.bubble }
-}));
-map.addSource('islands', { type: 'geojson', data: { type: 'FeatureCollection', features: islandFeats } });
-map.addLayer({ id: 'isl', type: 'circle', source: 'islands', maxzoom: 5.5, paint: {
-'circle-radius': 9, 'circle-color': ['get', 'fill'], 'circle-opacity': 0.75, 'circle-stroke-color': '#333333', 'circle-stroke-width': 1.5 } });
-
-mapReady = true;
-applyMapHighlight();
-loadRegions();
-}).catch(err => {
+})
+.catch(err => {
 console.error('GeoJSON load error:', err);
 document.getElementById('info').textContent = 'Could not load map data. Check your internet connection.';
 });
-
-/* Regional layer: one bubble per state/province, one dot per location (built from the eBird export by make_regions.py) */
-function loadRegions() {
-fetch('regions.json').then(r => r.json()).then(rd => {
-regionData = rd;
-const maxSpot = Math.max(1, ...rd.spots.map(s => s.s.length));
-document.getElementById('spotMax').textContent = maxSpot;
-
-rd.regions.forEach(r => {
-regionById[r.id] = r;
-(regionsByCountry[r.c] = regionsByCountry[r.c] || []).push(r);
-});
-Object.values(regionsByCountry).forEach(list => list.sort((a, b) => b.s.length - a.s.length));
-
-map.addSource('regions', { type: 'geojson', promoteId: 'id', data: { type: 'FeatureCollection', features: rd.regions.map(r => ({
-type: 'Feature',
-properties: { id: r.id, name: r.n, country: r.c, n: r.s.length, fill: getColor(r.s.length) },
-geometry: { type: 'Point', coordinates: [r.lng, r.lat] }
-})) } });
-
-map.addSource('spots', { type: 'geojson', promoteId: 'id', data: { type: 'FeatureCollection', features: rd.spots.map((s, i) => ({
-type: 'Feature',
-properties: { id: i, name: s.n, n: s.s.length, k: s.k, fill: rampColor(s.s.length / maxSpot) },
-geometry: { type: 'Point', coordinates: [s.lng, s.lat] }
-})) } });
-
-const selected = ['boolean', ['feature-state', 'selected'], false];
-
-map.addLayer({ id: 'r-dots', type: 'circle', source: 'regions', minzoom: 2.6, paint: {
-'circle-radius': ['interpolate', ['linear'], ['zoom'],
-3, ['max', 5, ['*', 1.1, ['sqrt', ['get', 'n']]]],
-8, ['max', 7, ['*', 2, ['sqrt', ['get', 'n']]]]],
-'circle-color': ['get', 'fill'],
-'circle-opacity': ['interpolate', ['linear'], ['zoom'], 2.6, 0, 3.2, 0.9, 8, 0.9, 10, 0.3],
-'circle-stroke-color': ['case', selected, '#111111', '#ffffff'],
-'circle-stroke-width': ['case', selected, 3, 1.5],
-'circle-stroke-opacity': ['interpolate', ['linear'], ['zoom'], 2.6, 0, 3.2, 1, 8, 1, 10, 0.3]
-} });
-
-map.addLayer({ id: 'h-dots', type: 'circle', source: 'spots', minzoom: 4.8, paint: {
-'circle-radius': ['interpolate', ['linear'], ['zoom'], 5, 2.5, 8, 4.5, 11, 8],
-'circle-color': ['get', 'fill'],
-'circle-opacity': ['interpolate', ['linear'], ['zoom'], 4.8, 0, 5.6, 0.95],
-'circle-stroke-color': ['case', selected, '#111111', '#ffffff'],
-'circle-stroke-width': ['case', selected, 2.5, 1]
-} });
-}).catch(err => console.warn('regions.json not loaded (regional layer skipped):', err));
-}
 
 /* ================= MAP SEARCH (countries + species) ================= */
 (function () {
@@ -1800,7 +1450,6 @@ clearBtn.hidden = false;
 status.textContent = `${name}: recorded in ${countries.length} ${countries.length === 1 ? 'country' : 'countries'} (${countries.join(', ')})`;
 document.getElementById('closeCountryPanel').click(); /* close any open country panel */
 applyMapHighlight();
-if (window.flyToCountries) window.flyToCountries(countries);
 track('map-search: ' + name);
 scrollToTools();
 }
