@@ -19,7 +19,10 @@
     ]
   },
   "American Flamingo": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/american-flamingo.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/american-flamingo.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/american-flamingo-2.jpg"
+    ],
     "countries": [
       "Curaçao"
     ]
@@ -32,7 +35,10 @@
     ]
   },
   "American Oystercatcher": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/american-oystercatcher.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/american-oystercatcher.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/american-oystercatcher-2.jpg"
+    ],  
     "countries": [
       "Aruba"
     ]
@@ -60,7 +66,10 @@
     ]
   },
   "Ashy Drongo": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/ashy-drongo.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/ashy-drongo.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/ashy-drongo-2.jpg"
+      ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -74,7 +83,10 @@
     ]
   },
   "Ashy Woodswallow": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/ashy-woodswallow.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/ashy-woodswallow.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/ashy-woodswallow-2.jpg"
+      ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -107,7 +119,9 @@
   "Asian Green Bee-eater": {
     "photos": [
       "https://ik.imagekit.io/majsujan/birdblog/asian-green-bee-eater.jpg",
-      "https://ik.imagekit.io/majsujan/birdblog/asian-green-bee-eater-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/asian-green-bee-eater-2.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/asian-green-bee-eater-3.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/asian-green-bee-eater-4.jpg"
     ],
     "countries": [
       "Bangladesh",
@@ -115,7 +129,10 @@
     ]
   },
   "Asian Koel": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-koel.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/asian-koel.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/asian-koel-2.jpg",
+      ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -124,7 +141,8 @@
   "Asian Openbill": {
     "photos": [
       "https://ik.imagekit.io/majsujan/birdblog/asian-openbill.jpg",
-      "https://ik.imagekit.io/majsujan/birdblog/asian-openbill-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/asian-openbill-2.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/asian-openbill-3.jpg"
     ],
     "countries": [
       "Bangladesh",
@@ -139,13 +157,20 @@
     ]
   },
   "Asian Tit": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/asian-tit.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/asian-tit.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/asian-tit-2.jpg"
+    ],
     "countries": [
       "Bangladesh"
     ]
   },
   "Atlantic Puffin": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/atlantic-puffin.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/atlantic-puffin.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/atlantic-puffin-2.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/atlantic-puffin-3.jpg"
+      ],
     "countries": [
       "Norway"
     ]
