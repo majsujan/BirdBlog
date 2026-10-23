@@ -1276,7 +1276,12 @@
     ]
   },
   "Eurasian Blue Tit": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/eurasian-blue-tit.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/eurasian-blue-tit.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/eurasian-blue-tit-2.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/eurasian-blue-tit-3.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/eurasian-blue-tit-4.jpg"
+    ],
     "countries": [
       "Belgium",
       "Denmark",
