@@ -213,14 +213,21 @@
     ]
   },
   "Bare-eyed Pigeon": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/bare-eyed-pigeon.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/bare-eyed-pigeon.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/bare-eyed-pigeon-2.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/bare-eyed-pigeon-3.jpg"
+    ],
     "countries": [
       "Aruba",
       "Curaçao"
     ]
   },
   "Barn Swallow": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/barn-swallow.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/barn-swallow.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/barn-swallow-2.jpg"
+      ],
     "countries": [
       "Aruba",
       "Bangladesh",
@@ -238,7 +245,11 @@
     ]
   },
   "Barnacle Goose": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose.jpg",
+    "photos": 
+    "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose-2.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose-3.jpg"
+    ],
     "countries": [
       "Belgium",
       "Denmark",
@@ -249,7 +260,11 @@
     ]
   },
   "Baya Weaver": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/baya-weaver.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/baya-weaver.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/baya-weaver-2.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/baya-weaver-3.jpg"
+      ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -268,7 +283,10 @@
     ]
   },
   "Bengal Bushlark": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/bengal-bushlark.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/bengal-bushlark.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/bengal-bushlark-2.jpg"
+    ],
     "countries": [
       "Bangladesh"
     ]
@@ -299,7 +317,10 @@
     ]
   },
   "Black Kite": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/black-kite.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/black-kite.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/black-kite-2.jpg"
+    ],
     "countries": [
       "Bangladesh",
       "Italy"
@@ -313,14 +334,20 @@
     ]
   },
   "Black Woodpecker": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/black-woodpecker.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/black-woodpecker.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/black.-woodpecker-2.jpg"
+    ],
     "countries": [
       "Norway",
       "Sweden"
     ]
   },
   "Black-bellied Plover": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/black-bellied-plover.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/black-bellied-plover.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/black-bellied-plover-2.jpg"
+    ],
     "countries": [
       "Aruba",
       "Curaçao",
@@ -348,14 +375,20 @@
     ]
   },
   "Black-crowned Night Heron": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/black-crowned-night-heron.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/black-crowned-night-heron.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/black-crowned-night-heron-2.jpg"
+      ],
     "countries": [
       "Aruba",
       "Bangladesh"
     ]
   },
   "Black-faced Grassquit": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/black-faced-grassquit.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/black-faced-grassquit.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/black.faced-grassquit-2.jpg"
+    ],
     "countries": [
       "Aruba",
       "Curaçao"
@@ -374,7 +407,11 @@
     ]
   },
   "Black-headed Gull": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/black-headed-gull.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/black-headed-gull.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/black-headed-gull-2.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/black-headed-gull-3.jpg"
+      ],
     "countries": [
       "Denmark",
       "Estonia",
@@ -405,7 +442,10 @@
     ]
   },
   "Black-naped Monarch": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/black-naped-monarch.jpg",
+    "photos": [
+      "https://ik.imagekit.io/majsujan/birdblog/black-naped-monarch.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/black-naped-monarch-2.jpg"
+    ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -555,14 +595,20 @@
     ]
   },
   "Brahminy Kite": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/brahminy-kite.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/brahminy-kite.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/brahminy-kite-2.jpg"
+    ],
     "countries": [
       "Bangladesh",
       "Thailand"
     ]
   },
   "Brambling": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/brambling.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/brambling.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/brambling-2.jpg"
+    ],
     "countries": [
       "Denmark",
       "Netherlands",
@@ -577,7 +623,10 @@
     ]
   },
   "Bronze-winged Jacana": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/bronze-winged-jacana.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/bronze-winged-jacana.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/bronze-winged-jacana-2.jpg"
+    ],
     "countries": [
       "Bangladesh"
     ]
