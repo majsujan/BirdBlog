@@ -1501,6 +1501,7 @@ function loadGlobe(){
  if(window.d3)return Promise.resolve();
  if(!globeLoading)globeLoading=new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js';s.onload=resolve;s.onerror=()=>{globeLoading=null;s.remove();reject(Error('Globe unavailable'));};document.head.append(s);});return globeLoading;
 }
+function hasRegionalView(){return !!selectedCountry&&regionsData.regions.some(r=>r.c===selectedCountry);}
 function usesRegionalOutline(feature){const name=normalizeName(feature.properties.name);return selectedCountry===name&&regionsData.regions.some(r=>r.c===name);}
 function drawCountryGlobe(){
  if(!globeProjection||!globeActive)return;
@@ -1517,7 +1518,7 @@ function drawCountryGlobe(){
  const sphere={type:'Sphere'};
  globeSVG.selectAll('.ocean').data([sphere]).join('path').attr('class','ocean').attr('d',globePath).attr('fill',dark?'#193b50':'#c9e2ec').attr('stroke',dark?'#668b9b':'#93b4c1');
  if(!globeLand&&worldGeometry){globeLand=worldGeometry.features.map(orientGlobeFeature);}
- globeSVG.selectAll('.country').data(globeLand||[]).join('path').attr('class','country').attr('d',globePath).attr('fill',f=>countryStyle(normalizeName(f.properties.name)).fillColor).attr('fill-opacity',f=>usesRegionalOutline(f)?0:highlightSet&&!highlightSet.has(normalizeName(f.properties.name))?.2:selectedCountry&&normalizeName(f.properties.name)!==selectedCountry?.32:.75).attr('stroke',f=>usesRegionalOutline(f)?'none':dark?'#77918a':'#87968a').attr('stroke-width',.65).style('cursor',f=>normalizeName(f.properties.name) in birdData?'pointer':'default').on('click',(event,f)=>{const n=normalizeName(f.properties.name);if(n in birdData)selectBirdCountry(n);}).selectAll('title').data(f=>[f]).join('title').text(f=>{const n=normalizeName(f.properties.name);return n+(birdData[n]?`: ${birdData[n]} species`:'');});
+ globeSVG.selectAll('.country').data(globeLand||[]).join('path').attr('class','country').attr('d',globePath).attr('fill',f=>countryStyle(normalizeName(f.properties.name)).fillColor).attr('fill-opacity',f=>usesRegionalOutline(f)?0:highlightSet&&!highlightSet.has(normalizeName(f.properties.name))?.2:selectedCountry&&normalizeName(f.properties.name)!==selectedCountry?.32:.75).attr('stroke',f=>hasRegionalView()?'none':dark?'#77918a':'#87968a').attr('stroke-width',.65).attr('mask',()=>hasRegionalView()?'url(#regionalCountryCutout)':null).style('pointer-events',f=>usesRegionalOutline(f)?'none':'auto').style('cursor',f=>normalizeName(f.properties.name) in birdData?'pointer':'default').on('click',(event,f)=>{const n=normalizeName(f.properties.name);if(n in birdData)selectBirdCountry(n);}).selectAll('title').data(f=>[f]).join('title').text(f=>{const n=normalizeName(f.properties.name);return n+(birdData[n]?`: ${birdData[n]} species`:'');});
  drawGlobeRegions();
  updateGlobeControls(k);
  const center=globeProjection.invert([w/2,visibleH/2]);
@@ -1605,8 +1606,16 @@ function showRegionTooltip(event,feature){
 }
 function drawGlobeRegions(){
  if(!globeRegions)globeRegions=regionsData.boundaries.features.map(orientGlobeFeature);
- const paths=globeSVG.selectAll('.region').data(globeRegions.filter(f=>f.properties.country===selectedCountry),f=>f.properties.id).join('path').attr('class','region').attr('d',globePath).attr('fill',regionFill).attr('fill-opacity',f=>selectedRegion&&f.properties.id!==selectedRegion?.55:.88).attr('stroke',f=>regionStyle(f).color).attr('stroke-width',f=>regionStyle(f).weight).style('cursor','pointer').attr('tabindex',0).attr('role','button').attr('aria-label',f=>`${f.properties.name}, ${f.properties.count} species in my records`).on('pointerenter',showRegionTooltip).on('pointermove',showRegionTooltip).on('pointerleave',hideRegionTooltip).on('focus',showRegionTooltip).on('blur',hideRegionTooltip).on('click',(e,f)=>{e.stopPropagation();selectBirdRegion(f.properties.id);}).on('keydown',(e,f)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();selectBirdRegion(f.properties.id);}if(e.key==='Escape')hideRegionTooltip();});
+ const projected=new Map();
+ const paths=globeSVG.selectAll('.region').data(globeRegions.filter(f=>f.properties.country===selectedCountry),f=>f.properties.id).join('path').attr('class','region').attr('d',f=>{const path=globePath(f);projected.set(f.properties.id,path);return path;}).attr('fill',regionFill).attr('fill-opacity',f=>selectedRegion&&f.properties.id!==selectedRegion?.55:.88).attr('stroke',f=>regionStyle(f).color).attr('stroke-width',f=>regionStyle(f).weight).style('cursor','pointer').attr('tabindex',0).attr('role','button').attr('aria-label',f=>`${f.properties.name}, ${f.properties.count} species in my records`).on('pointerenter',showRegionTooltip).on('pointermove',showRegionTooltip).on('pointerleave',hideRegionTooltip).on('focus',showRegionTooltip).on('blur',hideRegionTooltip).on('click',(e,f)=>{e.stopPropagation();selectBirdRegion(f.properties.id);}).on('keydown',(e,f)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();selectBirdRegion(f.properties.id);}if(e.key==='Escape')hideRegionTooltip();});
  paths.selectAll('title').remove();
+ // Remove the base country's and its neighbors' paint beneath these exact paths.
+ // Reuse projected paths so the mask stays aligned while rotating and zooming.
+ const box=$map('birdGlobe').getBoundingClientRect();
+ const defs=globeSVG.selectAll('defs.regional-defs').data([null]).join('defs').attr('class','regional-defs');
+ const mask=defs.selectAll('mask').data([null]).join('mask').attr('id','regionalCountryCutout').attr('maskUnits','userSpaceOnUse').attr('maskContentUnits','userSpaceOnUse').attr('x',0).attr('y',0).attr('width',box.width).attr('height',box.height).style('mask-type','luminance');
+ mask.selectAll('rect').data([null]).join('rect').attr('x',0).attr('y',0).attr('width',box.width).attr('height',box.height).attr('fill','white');
+ mask.selectAll('path').data([...projected.entries()],d=>d[0]).join('path').attr('d',d=>d[1]).attr('fill','black').attr('stroke','black').attr('stroke-width',.8).attr('stroke-linejoin','round');
 }
 function globeViewport(){
  const box=$map('birdGlobe').getBoundingClientRect();
