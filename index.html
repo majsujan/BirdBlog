@@ -697,6 +697,12 @@ html:not([data-theme="dark"]) .surprise-label{text-shadow:0 1px 3px rgba(0,0,0,.
 #birdGlobe .region:hover,#birdGlobe .region:focus-visible{stroke:var(--active);stroke-width:2;outline:none}
 .bird-list-row~p,#birdListRows>p{padding:15px 0;color:var(--ink-soft);font-size:13px;line-height:1.6}
 
+
+/* Desktop explorer fills more of the viewport while allowing for its heading and footer. */
+@media(min-width:761px){
+ #mapStage,#birdSidebar{height:clamp(560px,calc(100svh - 104px),860px)}
+}
+
 </style>
 
 <script data-goatcounter="https://birdblog-majsujan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -943,18 +949,21 @@ countryFilter.appendChild(option);
 function updateStats() {}
 
 /* ================= BIRD OF THE DAY + NAVIGATION ================= */
+/* One shared featured bird per calendar day in Europe/Oslo. */
+function dailyBirdName(date=new Date()) {
+ const pool=birdKeys.filter(name=>birds[name]?.photo&&!isPlaceholder(name));
+ if(!pool.length)return null;
+ const hash=name=>{let value=2166136261;for(let i=0;i<name.length;i++){value^=name.charCodeAt(i);value=Math.imul(value,16777619);}return value>>>0;};
+ pool.sort((a,b)=>hash(a)-hash(b)||(a<b?-1:a>b?1:0));
+ const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Oslo',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(date);
+ const values=Object.fromEntries(parts.map(p=>[p.type,p.value]));
+ const day=Math.floor(Date.UTC(Number(values.year),Number(values.month)-1,Number(values.day))/86400000);
+ return pool[((day%pool.length)+pool.length)%pool.length];
+}
 function showBirdOfTheDay() {
-const eligible = birdKeys.map((k, i) => i).filter(i => !isPlaceholder(birdKeys[i]));
-const pool = eligible.length ? eligible : birdKeys.map((k, i) => i);
-const last = Number(sessionStorage.getItem("lastFeaturedBird"));
-let newIndex;
-do {
-newIndex = pool[Math.floor(Math.random() * pool.length)];
-} while (pool.length > 1 && newIndex === last);
-sessionStorage.setItem("lastFeaturedBird", newIndex);
-currentBirdIndex = newIndex;
-const name = birdKeys[currentBirdIndex];
-showBird(name, birds[name].photo);
+ const name=dailyBirdName();if(!name)return;
+ currentBirdIndex=birdKeys.indexOf(name);
+ showBird(name,birds[name].photo);
 }
 
 /* "N photos" button on the big photo: only for species with more than one photo */
@@ -1449,7 +1458,7 @@ let regionByCode=Object.fromEntries(regionsData.regions.map(r=>[r.id,r]));
 let highlightSet=null, selectedCountry=null, globeActive=true, worldGeometry=null;
 let globeProjection, globeSVG, globePath, globeLand, globeLoading, globeZoomBehavior;
 const $map=id=>document.getElementById(id);
-function countryStyle(name){return {fillColor:selectedCountry===name&&regionsData.regions.some(r=>r.c===name)?(document.documentElement.dataset.theme==='dark'?'#354b54':'#f4f3ed'):!birdData[name]&&document.documentElement.dataset.theme==='dark'?'#425462':getColor(birdData[name]||0),color:selectedCountry===name?'#9cb5b2':'#667c7b',weight:selectedCountry===name?1.2:.7,fillOpacity:highlightSet&&!highlightSet.has(name)?.18:.65};}
+function countryStyle(name){return {fillColor:!birdData[name]&&document.documentElement.dataset.theme==='dark'?'#425462':getColor(birdData[name]||0),color:selectedCountry===name?'#9cb5b2':'#667c7b',weight:selectedCountry===name?1.2:.7,fillOpacity:highlightSet&&!highlightSet.has(name)?.18:.65};}
 function applyMapHighlight(){if(globeProjection)drawCountryGlobe();}
 function renderBirdList(){
  const query=$map('mapSearch').value.trim().toLowerCase();
@@ -1492,6 +1501,7 @@ function loadGlobe(){
  if(window.d3)return Promise.resolve();
  if(!globeLoading)globeLoading=new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js';s.onload=resolve;s.onerror=()=>{globeLoading=null;s.remove();reject(Error('Globe unavailable'));};document.head.append(s);});return globeLoading;
 }
+function usesRegionalOutline(feature){const name=normalizeName(feature.properties.name);return selectedCountry===name&&regionsData.regions.some(r=>r.c===name);}
 function drawCountryGlobe(){
  if(!globeProjection||!globeActive)return;
  if($map('mapTools').hidden)return;
@@ -1507,7 +1517,7 @@ function drawCountryGlobe(){
  const sphere={type:'Sphere'};
  globeSVG.selectAll('.ocean').data([sphere]).join('path').attr('class','ocean').attr('d',globePath).attr('fill',dark?'#193b50':'#c9e2ec').attr('stroke',dark?'#668b9b':'#93b4c1');
  if(!globeLand&&worldGeometry){globeLand=worldGeometry.features.map(orientGlobeFeature);}
- globeSVG.selectAll('.country').data(globeLand||[]).join('path').attr('class','country').attr('d',globePath).attr('fill',f=>countryStyle(normalizeName(f.properties.name)).fillColor).attr('fill-opacity',f=>highlightSet&&!highlightSet.has(normalizeName(f.properties.name))?.2:selectedCountry&&normalizeName(f.properties.name)!==selectedCountry?.32:.75).attr('stroke',f=>selectedCountry===normalizeName(f.properties.name)?'#a8c2bf':'#7f9397').attr('stroke-width',f=>selectedCountry===normalizeName(f.properties.name)?1.1:.55).style('cursor',f=>normalizeName(f.properties.name) in birdData?'pointer':'default').on('click',(event,f)=>{const n=normalizeName(f.properties.name);if(n in birdData)selectBirdCountry(n);}).selectAll('title').data(f=>[f]).join('title').text(f=>{const n=normalizeName(f.properties.name);return n+(birdData[n]?`: ${birdData[n]} species`:'');});
+ globeSVG.selectAll('.country').data(globeLand||[]).join('path').attr('class','country').attr('d',globePath).attr('fill',f=>countryStyle(normalizeName(f.properties.name)).fillColor).attr('fill-opacity',f=>usesRegionalOutline(f)?0:highlightSet&&!highlightSet.has(normalizeName(f.properties.name))?.2:selectedCountry&&normalizeName(f.properties.name)!==selectedCountry?.32:.75).attr('stroke',f=>usesRegionalOutline(f)?'none':dark?'#77918a':'#87968a').attr('stroke-width',.65).style('cursor',f=>normalizeName(f.properties.name) in birdData?'pointer':'default').on('click',(event,f)=>{const n=normalizeName(f.properties.name);if(n in birdData)selectBirdCountry(n);}).selectAll('title').data(f=>[f]).join('title').text(f=>{const n=normalizeName(f.properties.name);return n+(birdData[n]?`: ${birdData[n]} species`:'');});
  drawGlobeRegions();
  updateGlobeControls(k);
  const center=globeProjection.invert([w/2,visibleH/2]);
