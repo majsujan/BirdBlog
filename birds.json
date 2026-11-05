@@ -38,7 +38,7 @@
     "photos": [
       "https://ik.imagekit.io/majsujan/birdblog/american-oystercatcher.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/american-oystercatcher-2.jpg"
-    ],  
+    ],
     "countries": [
       "Aruba"
     ]
@@ -69,7 +69,7 @@
     "photos": [
       "https://ik.imagekit.io/majsujan/birdblog/ashy-drongo.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/ashy-drongo-2.jpg"
-      ],
+    ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -86,7 +86,7 @@
     "photos": [
       "https://ik.imagekit.io/majsujan/birdblog/ashy-woodswallow.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/ashy-woodswallow-2.jpg"
-      ],
+    ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -132,7 +132,7 @@
     "photos": [
       "https://ik.imagekit.io/majsujan/birdblog/asian-koel.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/asian-koel-2.jpg"
-      ],
+    ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -170,7 +170,7 @@
       "https://ik.imagekit.io/majsujan/birdblog/atlantic-puffin.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/atlantic-puffin-2.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/atlantic-puffin-3.jpg"
-      ],
+    ],
     "countries": [
       "Norway"
     ]
@@ -227,7 +227,7 @@
     "photos": [
       "https://ik.imagekit.io/majsujan/birdblog/barn-swallow.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/barn-swallow-2.jpg"
-      ],
+    ],
     "countries": [
       "Aruba",
       "Bangladesh",
@@ -246,9 +246,9 @@
   },
   "Barnacle Goose": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose-2.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose-3.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose-2.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/barnacle-goose-3.jpg"
     ],
     "countries": [
       "Belgium",
@@ -261,10 +261,10 @@
   },
   "Baya Weaver": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/baya-weaver.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/baya-weaver-2.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/baya-weaver-3.jpg"
-      ],
+      "https://ik.imagekit.io/majsujan/birdblog/baya-weaver.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/baya-weaver-2.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/baya-weaver-3.jpg"
+    ],
     "countries": [
       "Bangladesh",
       "Thailand"
@@ -284,8 +284,8 @@
   },
   "Bengal Bushlark": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/bengal-bushlark.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/bengal-bushlark-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/bengal-bushlark.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/bengal-bushlark-2.jpg"
     ],
     "countries": [
       "Bangladesh"
@@ -318,8 +318,8 @@
   },
   "Black Kite": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/black-kite.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/black-kite-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/black-kite.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/black-kite-2.jpg"
     ],
     "countries": [
       "Bangladesh",
@@ -335,8 +335,8 @@
   },
   "Black Woodpecker": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/black-woodpecker.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/black-woodpecker-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/black-woodpecker.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/black-woodpecker-2.jpg"
     ],
     "countries": [
       "Norway",
@@ -345,8 +345,8 @@
   },
   "Black-bellied Plover": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/black-bellied-plover.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/black-bellied-plover-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/black-bellied-plover.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/black-bellied-plover-2.jpg"
     ],
     "countries": [
       "Aruba",
@@ -378,7 +378,7 @@
     "photos": [
       "https://ik.imagekit.io/majsujan/birdblog/black-crowned-night-heron.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/black-crowned-night-heron-2.jpg"
-      ],
+    ],
     "countries": [
       "Aruba",
       "Bangladesh"
@@ -386,8 +386,8 @@
   },
   "Black-faced Grassquit": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/black-faced-grassquit.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/black-faced-grassquit-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/black-faced-grassquit.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/black-faced-grassquit-2.jpg"
     ],
     "countries": [
       "Aruba",
@@ -411,7 +411,7 @@
       "https://ik.imagekit.io/majsujan/birdblog/black-headed-gull.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/black-headed-gull-2.jpg",
       "https://ik.imagekit.io/majsujan/birdblog/black-headed-gull-3.jpg"
-      ],
+    ],
     "countries": [
       "Denmark",
       "Estonia",
@@ -497,7 +497,7 @@
       "Bangladesh"
     ]
   },
-  "Blue Whistling-Thrush": {
+  "Yellow-billed Whistling-Thrush": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/blue-whistling-thrush.jpg",
     "countries": [
       "Bangladesh",
@@ -596,8 +596,8 @@
   },
   "Brahminy Kite": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/brahminy-kite.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/brahminy-kite-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/brahminy-kite.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/brahminy-kite-2.jpg"
     ],
     "countries": [
       "Bangladesh",
@@ -606,8 +606,8 @@
   },
   "Brambling": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/brambling.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/brambling-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/brambling.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/brambling-2.jpg"
     ],
     "countries": [
       "Denmark",
@@ -624,8 +624,8 @@
   },
   "Bronze-winged Jacana": {
     "photos": [
-    "https://ik.imagekit.io/majsujan/birdblog/bronze-winged-jacana.jpg",
-    "https://ik.imagekit.io/majsujan/birdblog/bronze-winged-jacana-2.jpg"
+      "https://ik.imagekit.io/majsujan/birdblog/bronze-winged-jacana.jpg",
+      "https://ik.imagekit.io/majsujan/birdblog/bronze-winged-jacana-2.jpg"
     ],
     "countries": [
       "Bangladesh"
@@ -1248,7 +1248,7 @@
       "Bangladesh"
     ]
   },
-  "Dollarbird": {
+  "Oriental Dollarbird": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/dollarbird.jpg",
     "countries": [
       "Thailand"
@@ -2272,7 +2272,7 @@
       "Thailand"
     ]
   },
-  "House Swift": {
+  "Little Swift": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/house-swift.jpg",
     "countries": [
       "Thailand"
@@ -2594,7 +2594,7 @@
       "Curaçao"
     ]
   },
-  "Malaysian Pied-Fantail": {
+  "Sunda Pied-Fantail": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/placeholder.jpg",
     "countries": [
       "Thailand"
@@ -3941,7 +3941,7 @@
       "Norway"
     ]
   },
-  "Willet": {
+  "Saltmarsh Willet": {
     "photo": "https://ik.imagekit.io/majsujan/birdblog/willet.jpg",
     "countries": [
       "Curaçao"
