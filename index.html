@@ -704,7 +704,7 @@ html:not([data-theme="dark"]) .surprise-label{text-shadow:0 1px 3px rgba(0,0,0,.
 }
 
 /* Quiet, theme-aware visit total; absent when the service is unavailable. */
-.footer-visits{font-size:10px;color:var(--ink-soft);white-space:nowrap;font-variant-numeric:tabular-nums}
+.footer-visits{font-size:11px;color:var(--ink);font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
 .footer-visits::before{content:"·";margin-right:10px;opacity:.6}
 .footer-visits[hidden]{display:none}
 .about-privacy p{font-size:12px;line-height:1.65;color:var(--ink-soft)}
@@ -828,7 +828,7 @@ html:not([data-theme="dark"]) .surprise-label{text-shadow:0 1px 3px rgba(0,0,0,.
 <div id="birdListRows"></div>
 </div></aside></div></section>
 
-<footer><p class="footer-line"><span>BirdBlog © Sujan Abu Jafar</span><span id="footerVisits" class="footer-visits" hidden title="Visits recorded by GoatCounter; not a lifetime count of distinct people. Updated periodically."></span></p></footer>
+<footer><p class="footer-line"><span>BirdBlog © Sujan Abu Jafar</span><span id="footerVisits" class="footer-visits" hidden title="Recorded page visits · updated periodically"></span></p></footer>
 
 </div><!-- End .site-page -->
 
@@ -870,7 +870,7 @@ Bird enthusiast and photographer, medical doctor, and life science researcher fr
 <a class="about-link" href="https://ebird.org/profile/MTk3MTk3MQ" target="_blank" rel="noopener" data-goatcounter-click="link-ebird">eBird</a>
 </div>
 <section class="about-credits" aria-labelledby="creditsHeading"><div id="creditsHeading" class="about-subtitle">Credits</div><p>Bird records · eBird</p><p>Map boundaries · Natural Earth &amp; geoBoundaries</p></section>
-<section class="about-credits about-privacy" aria-labelledby="privacyHeading"><div id="privacyHeading" class="about-subtitle">Privacy</div><p>BirdBlog uses GoatCounter to measure visits and selected link clicks without analytics cookies or browser storage. Statistics may include the page visited, referring website, browser, device and approximate country. To distinguish repeat visits, GoatCounter temporarily processes IP addresses and browser information in memory for up to eight hours; it does not store those IP addresses in its analytics database.</p><p>The footer shows recorded visits, not a lifetime count of distinct people. <a class="about-link" href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">GoatCounter privacy details</a></p></section>
+<section class="about-credits about-privacy" aria-labelledby="privacyHeading"><div id="privacyHeading" class="about-subtitle">Privacy</div><p>BirdBlog uses <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:3px">GoatCounter</a> for basic visit and link-click statistics, without analytics cookies. It temporarily uses IP addresses and browser information to recognise repeat visits, but does not save IP addresses in its analytics database.</p></section>
 </div>
 
 
@@ -1824,7 +1824,7 @@ sync();
     const data=await response.json();
     const count=String(data.count??'').trim();
     if(!/^\d[\d, .\u00a0\u202f]*$/.test(count))return;
-    counter.textContent=count+' visits';
+    counter.textContent='Total page visits · '+count;
     counter.hidden=false;
   }catch(error){/* Keep the footer quiet when blocked, disabled, or offline. */}
   finally{clearTimeout(timeout);}
