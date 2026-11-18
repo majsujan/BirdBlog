@@ -583,7 +583,10 @@
     ]
   },
   "Bohemian Waxwing": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/bohemian-waxwing.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/bohemian-waxwing.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/bohemian-waxwing-2.jpg"
+    ],
     "countries": [
       "Norway"
     ]
@@ -990,7 +993,10 @@
     ]
   },
   "Common Merganser": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/common-merganser.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/common-merganser.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/common-merganser-2.jpg"
+      ],
     "countries": [
       "Estonia",
       "Italy",
