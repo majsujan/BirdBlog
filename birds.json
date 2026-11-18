@@ -1546,7 +1546,11 @@
     ]
   },
   "Eurasian Siskin": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/eurasian-siskin.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/eurasian-siskin.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/eurasian-siskin-2.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/eurasian-siskin-3.jpg"
+    ],
     "countries": [
       "Denmark",
       "Estonia",
@@ -2038,7 +2042,10 @@
     ]
   },
   "Great Spotted Woodpecker": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/great-spotted-woodpecker.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/great-spotted-woodpecker-2.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/great-spotted-woodpecker.jpg",
+      ],
     "countries": [
       "Belgium",
       "Denmark",
@@ -2168,7 +2175,11 @@
     ]
   },
   "Green-winged Teal": {
-    "photo": "https://ik.imagekit.io/majsujan/birdblog/green-winged-teal.jpg",
+    "photos": [
+    "https://ik.imagekit.io/majsujan/birdblog/green-winged-teal.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/green-winged-teal-2.jpg",
+    "https://ik.imagekit.io/majsujan/birdblog/green-winged-teal-3.jpg"
+    ],
     "countries": [
       "Denmark",
       "Netherlands",
